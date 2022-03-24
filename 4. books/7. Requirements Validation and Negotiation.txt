@@ -1,0 +1,13 @@
+<------------7. Requirements Validation and Negotiation------------>
+
+7.3.1 Quality Aspect “Content”
+
+- Content:
+  - Completeness (set of all requirements)
+  - Completeness (individual requirements)
+  - Traceability
+  - Correctness/Adequacy            - Do they accurately reflect stakeholder needs?
+  - Consistency 
+  - No premature design decisions   - Going against constraints 
+  - Verifiability                   - Testable, Quantifiable/Measurable 
+  - Necessity

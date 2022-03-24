@@ -1,0 +1,168 @@
+<------------8. Requirements Management------------>
+
+- Requirements Management
+  - Assigning attributes to requirments 
+    - Examples:
+      - Views 
+      - Rank
+      - Tracing
+      - Versioning
+      - ID 
+      - Name 
+      - Description
+      - Author
+      - Sources etc. etc.
+
+    - Attribute Scheme 
+      - Attribute types:
+        - Specific properties of project 
+        - Constraints of organization
+        - Properties and regulations of application domain 
+        - Constraints and restrictions of deployment process 
+
+      - Models used to define attribute structure of requirements
+    
+  - Views on Requirements
+    - "Views" are basically filters on requirements based on attributes 
+      - Like "show me Adventure and Action games" 
+
+    - Views generated to
+      - Selectively access requirements 
+      - Filter requirements depending on the current task
+    
+    - Different views are shared to different people/teams 
+    - Condensed view  - Statistics of requirements ie. Pie charts, bar graphs
+
+  - Prioritizing Requirements 
+    - Ways to prioritize:
+      - By order of implementation
+      - Priority of the contractor 
+      - Urgency
+      - Priority based on sub-activities
+
+    - Method for Requirements Prioritization 
+      1. Define purpose of prioritization 
+      2. Check constraints before prioritization 
+      3. Depending on the above, one or more criteria are chosen
+        - Cost 
+        - Risk
+        - Damage if not completed
+        - Volatility
+        - Importance 
+        - How long it takes to implement
+      
+      4. Involve stakeholders 
+      5. Prioritize requirements of the same level of abstraction
+      6. Based on above, chose technique (ad hoc prioritization techniques etc.)
+        - Ranking
+        - Top-Ten
+        - Single Criterion    (Mandatory, Optional, Nice-to-have)
+        - Kano Classification (Dissatisfiers, Satisfier, Delighters)
+    
+    - Prioritization Matrix (Wiergers 1999)
+      - Steps
+        - Determine reletive weights for benefit, determinent cost, risk
+        - Determine requirements to be prrioritized 
+        - Estimate relative benefit
+        - Estimate relative detriment 
+        - Calculate the total values and percentage values for each requirement   - Value = Benefit * WeightBenefit + Detriment * WeightDetriment
+        - Estimate relative cost and calculate the cost %age for each requirement 
+        - Estimate relative risks and calculate the risk %age for each requirement
+        - Calculate individual requirement priorities   - Priority = Value / Cost * WeightCost + Risk * Weight 
+        - Assert the rank of individual requirements  
+    
+  - Traceability of Requirements 
+    - Ability to trace a requirement over the entire lifecycle 
+    - Advantages:
+      - Verifiability
+      - Identification of unneeded properties in the system (functional or qualitative)
+      - Identification of unneeded solutions in the requirements - that do not contribute to any sustem goal 
+      - Impact analysis   - Analysis of effect of changes 
+      - Reuse             - Reuse requirement artifacts
+      - Accountability    
+      - Maintenance      - Cause and effect of failure determined
+    
+    - Purpose-driven definition of Traceability
+      - Only information necessary for system development or system evolution should be recorded 
+
+    - Classification of traceability relations 
+      - Pre-Requirements-Specification (pre-RS)     - Links between requirements and artifacts that are the basis for those requirements  
+      - Post-Requirements-Specification (post-RS)   - Links between requirements and artifacts of subsequent development activites 
+      - Between requirements                        - Mapping dependencies between requirements 
+    
+    - Representation of Requirements Traceability
+      - Common ways:
+        - Simple Textual references 
+        - Hyperlinks 
+        - Trace matrices
+        - Trace graphs
+
+  - Versioning of Requirements 
+    - Unique version numbers    
+      - Small Increments for small changes
+      - Version increments in 'v' on big changes 
+      - v1.0, v1.1, v1.2, v2.0, v2.1
+
+    - Requirements Configurations
+      - Consists of a set of requirements with exactly one version 
+      - Properties:
+        - Logical Connection between requirements 
+        - Consistency (No contradictions)
+        - Unique ID
+        - Immutable (Not changed over time) 
+        - Basis for roll backs (if changes are undone we can go back to old configuration)
+
+      - Requirements Baselines
+        - A stable version or system release
+        - Activites supported:
+          - Basis for release planning
+          - Estimation of effort to implement 
+          - Comparison of competing products
+          
+  - Management of Requirements Changes
+    - Change frequency can be used as an indicator of process quality 
+      - Indicates bad requirement engineering activities - elicitation, negotiation
+      - High frequency takes up a lot of resources
+
+    - Change control board
+      - Change requests in requirements need to be approved 
+      - What it does?
+        - Estimate effort to perform change
+        - Evaluate change requests
+        - Define new requirements on the basis of change requests 
+        - Whether to accept or reject change requests 
+        - Classify incoming requests 
+        - Assign accepted rquests to change projects 
+      
+      - Who are on it?
+        - Change manager (chairperson of the board)
+        - Contractor
+        - Architect
+        - Developer
+        - Configuration manager
+        - Customer representative
+        - Product manager
+        - Project manager
+        - Quality assurance representative
+        - Requirements engineer
+
+    - Change request
+      - Identifier
+      - Title
+      - Description
+      - Justification 
+      - Date filed 
+      - Applicant Name
+      - Priority 
+
+      - Change validator
+      - Impact analysis status (whether impact analysis has been performed or not)
+      - CCB decision status 
+      - CCB Priority
+      - Responsible 
+      - System release 
+      
+    - Classification of change requests 
+      - Corrective 
+      - Adaptive
+      - Exceptional (hotfix)

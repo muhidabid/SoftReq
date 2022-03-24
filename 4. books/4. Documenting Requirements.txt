@@ -1,0 +1,24 @@
+<------------4. Documenting Requirements------------>
+
+4.5 Quality Criteria for Documents
+  - Unambiguous
+  - Consistent
+  - Clear structure
+  - Modifiability 
+  - Extendability
+  - Completeness
+  - Traceability 
+  
+4.6 Quality Criteria for Requirements 
+  - Agreed 
+  - Ranked 
+  - Unambiguous 
+  - Valid         - In system context 
+  - Up-to-date
+  - Correct       - Adequately represents idea of stakeholder 
+  - Consistent    - No contradictions 
+  - Verifiable    - Testable, Quantifiable/Measurable 
+  - Realizable 
+  - Traceable
+  - Complete 
+  - Understandabiity 
