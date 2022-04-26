@@ -12,22 +12,22 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { UsernamePasswordComponent } from './login-page/username-password/username-password.component';
 import { LeftSidebarComponent } from './dashboard/left-sidebar/left-sidebar.component';
-import { DashboardGridComponent } from './dashboard/dashboard-grid/dashboard-grid.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { WorkspaceAddButtonComponent } from './dashboard/workspace/workspace-add-button/workspace-add-button.component';
 import { WorkspaceExpansionPanelComponent } from './dashboard/workspace/workspace-expansion-panel/workspace-expansion-panel.component';
 import { WorkspaceAddPopupComponent } from './dashboard/workspace/workspace-add-popup/workspace-add-popup.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsernamePasswordComponent,
     LeftSidebarComponent,
-    DashboardGridComponent,
+    DashboardComponent,
     WorkspaceAddButtonComponent,
     WorkspaceExpansionPanelComponent,
-    WorkspaceAddPopupComponent
+    WorkspaceAddPopupComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,

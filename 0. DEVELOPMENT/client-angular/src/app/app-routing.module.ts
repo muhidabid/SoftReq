@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { WorkspaceAddButtonComponent } from './dashboard/workspace/workspace-add-button/workspace-add-button.component';
 import { WorkspaceAddPopupComponent } from './dashboard/workspace/workspace-add-popup/workspace-add-popup.component';
-import { UsernamePasswordComponent } from './login-page/username-password/username-password.component';
-import { DashboardGridComponent } from './dashboard/dashboard-grid/dashboard-grid.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -13,11 +12,11 @@ const routes: Routes = [
   },
   {
     path: "loginPage",
-    component: UsernamePasswordComponent
+    component: LoginPageComponent
   },
   {
     path: "dashBoard",
-    component: DashboardGridComponent
+    component: DashboardComponent
   }
 ];
 
@@ -26,4 +25,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [WorkspaceAddPopupComponent, UsernamePasswordComponent, DashboardGridComponent]
+export const routingComponents = [WorkspaceAddPopupComponent, LoginPageComponent, DashboardComponent]

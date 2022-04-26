@@ -1,11 +1,12 @@
+
 .wrapper0{
+  background-color: #f7fafd;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 13fr;
   gap: 3em;
   height: 100%;
   width: 100%;
-  /* grid-auto-columns: 1000px; */
 }
 
 .header{
