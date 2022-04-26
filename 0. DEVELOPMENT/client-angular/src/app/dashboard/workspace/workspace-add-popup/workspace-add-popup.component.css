@@ -1,0 +1,25 @@
+/* .bg-modal{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content{
+  width: 500px;
+  height: 300px;
+  background-color: white;
+  border-radius: 4px;
+  position: relative;
+}
+
+#cross{
+  top: 7px;
+  right: 10px;
+  position: absolute;
+} */

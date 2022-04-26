@@ -1,0 +1,26 @@
+.left-sidebar{
+  background-color: #f7fafd;
+  color: #D6DAE1;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  /* display: grid; */
+
+  grid-template-columns: 1fr;
+  /* align-content:flex-start; */
+}
+
+/* app-workspace-expansion-panel{
+  width: 100%;
+} */
+
+/*
+hr{
+  width:90%;
+  height: 0.1mm;
+  margin: 10px auto;
+  margin: 1;
+  background-color: #D6DAE1;
+  border: none;
+}
+*/
