@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Workspace } from '../../../workspace'
+import { Workspace } from '../../../../workspace'
 
 @Component({
   selector: 'app-workspace-expansion-panel',

@@ -14,9 +14,9 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LeftSidebarComponent } from './dashboard/left-sidebar/left-sidebar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { WorkspaceAddButtonComponent } from './dashboard/workspace/workspace-add-button/workspace-add-button.component';
-import { WorkspaceExpansionPanelComponent } from './dashboard/workspace/workspace-expansion-panel/workspace-expansion-panel.component';
-import { WorkspaceAddPopupComponent } from './dashboard/workspace/workspace-add-popup/workspace-add-popup.component';
+import { WorkspaceAddButtonComponent } from './dashboard/left-sidebar/workspace/workspace-add-button/workspace-add-button.component';
+import { WorkspaceExpansionPanelComponent } from './dashboard/left-sidebar/workspace/workspace-expansion-panel/workspace-expansion-panel.component';
+import { WorkspaceAddPopupComponent } from './dashboard/left-sidebar/workspace/workspace-add-popup/workspace-add-popup.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
