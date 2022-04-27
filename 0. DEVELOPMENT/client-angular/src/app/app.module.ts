@@ -18,6 +18,8 @@ import { WorkspaceAddButtonComponent } from './dashboard/left-sidebar/workspace/
 import { WorkspaceExpansionPanelComponent } from './dashboard/left-sidebar/workspace/workspace-expansion-panel/workspace-expansion-panel.component';
 import { WorkspaceAddPopupComponent } from './dashboard/left-sidebar/workspace/workspace-add-popup/workspace-add-popup.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { ProjectComponent } from './project/project.component';
+import { EditorComponent } from './project/editor/editor.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { LoginPageComponent } from './login-page/login-page.component';
     WorkspaceAddButtonComponent,
     WorkspaceExpansionPanelComponent,
     WorkspaceAddPopupComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    ProjectComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,29 @@
+.wrapper0{
+    background-color: #f7fafd;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 13fr;
+    gap: 3em;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .header{
+    background-color: #e7f0f9;
+  }
+  
+  /* .wrapper0 > div:nth-child(odd){
+    background-color: #ddd;
+  } */
+  
+  .header{
+    display: grid;
+    align-items: center;
+  }
+  
+  .logo{
+    height: 35px;
+    padding-left: 5px;
+    /* height: 100%; */
+  }
+  
