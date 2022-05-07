@@ -1,0 +1,22 @@
+av_req
+The product shall be available during normal business hours. As long as the user has access to the client PC  the system will be available 99% of the time during the first six months of operation.
+The product shall adhere to the corporate online availability schedule.  The application is brought down only within 98% of the scheduled outages per the availability schedule.
+The product shall achieve a 98% uptime. The product shall not fail more than 2% of the available online time.
+Aside from server failure  the software product shall achieve 99.99% up time.
+The website shall be available for use 24 hours per day  365 days per year.
+The website shall achieve 99.5% up time.
+All movies shall be streamed on demand  at any time of the day.
+The system will provide a 24 hour 800 toll free number for support to its customers.
+Velkat staff will be available for phone support between 7am-7pm  M-F to provide technical support to the Izogn administrators.
+Defect reports will be available to technical units on a 24x7 basis.
+The product shall be available 24 hours per day  seven days per week.
+The system shall have high availability every day of the year.The system must be available for use between 12:00AM and 6:00PM all days of the year.
+The system must be available for use between 7:00AM and 11:59PM all days of the year.
+The product shall be available 99% of the time. Rationale: To avoid service interruption during busiest customer service response periods. The product shall be available 99.99% of the time for regular business days.
+The WCS system shall be available at all times as long as IBMï¿½s internal intranet W3 is accessible. The WCS system will be available 95% of the time IBMï¿½s internal intranet W3 is available.
+The application shall have a downtime of at most 10 minutes per year.
+The system shall achieve 95% up time.
+The product shall be available for use 24 hours per day  365 days  per year
+Out of 1000 accesses to the system  the system is available 999 times.
+The system shall be available for use between the hours of 8am and 6pm.
+The RFS system should be available 24/7  especially during the budgeting period. The RFS system shall be available 90% of the time all year  and 98% during the budgeting period. 2% of the time  the system will become available within 1 hour of the time that the situation is reported.

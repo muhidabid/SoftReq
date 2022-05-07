@@ -1,0 +1,11 @@
+ft_req
+The product shall create an exception log of problems encountered within the product for transmission to our company for analysis and resolution.
+The product and/or dependent databases/filesystems shall remain operational as a result of the input of malicious data.  The product and/or dependent databases/filesystems shall not crash 100% of the time that malicious data is input into the product.
+The website shall continue to operate if the streaming server goes down.
+The website shall continue to operate if the payment gateway goes down.
+The product shall be robust.The product shall have fault avoidance based on standards adoption.
+The product shall be robust with fault tolerance.The product shall have fault tolerance by using recovery technique compensatory transaction and routing around failures.
+The product shall operate in offline mode whenever internet connection is unavailable.
+The product shall allow the user to view previously downloaded search results  CMA reports  and appointments.
+The product shall retain user preferences in the event of a failure.
+100% of saved user preferences shall be restored when system comes back online.

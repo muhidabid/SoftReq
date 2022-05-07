@@ -1,0 +1,35 @@
+lf_req
+The application shall match the color of the schema set forth by Department of Homeland Security
+The product shall comply with corporate User Interface Guidelines
+The product shall comply with corporate color scheme
+The appearance of the product shall appear professional
+The productï¿½s Look and Feel shall be able to incorporate aspects of the customerï¿½s organization such as logo  branding  and identity
+The product shall have a conservative and professional appearance.
+The website shall be attractive to all audiences.  The website shall appear to be fun and the colors should be bright and vibrant.
+The website should have an African feel  but should not alienate non-Africans.  The website should use animation on pages which are describing the services  to grab the users attention and encourage them to sign up.
+The website design should be modern  clean  and concise.
+The website should cater to all tribes in Nigeria.
+The website shall not be offensive to religious or ethnic groups.
+The website should appeal to all Africans  not only Nigerians.
+The product shall simulate the look of ships at sea.
+The product shall display the grids within a circle as a view from a periscope.
+The product shall display each type of ship in a grid using an image of the specific type of ship.
+When the offensive player takes a shot  the product shall simulate the sound of a ship at sea.
+When a shot is marked as a miss  the product shall simulate the sound of a shot missing its target.
+When a shot is marked as a hit  the product shall simulate the sound of a shot hitting its target.
+When a ship is sunk  the product shall simulate the sound of a sinking ship.
+The interface shall have a simple look. In the interface and usability survey  90% of beta testers must report that the interface is adequately simple.
+The interface shall be appealing to callers and supervisors. In the interface and usability survey  80% of beta testers must report that the interface is appealing.
+The product shall provide GUI based Monitoring Services.System Administrators shall monitor message exchanges will predict and determine problems and will also provide internal and external support.
+The product shall comply with City of Chicago Application Development Guide Framework.Application Development Framework will provide structured Graphical User Interface.
+The system shall use IBM and CCR branding standards. The interface must have one IBM logo and one CCR logo.
+The system shall be displayable on any work computer a CCR user may have. The system interface shall be formatted to display at 800 by 600 pixel resolution.
+The system interface will use CCR nomenclature. The system must use the same nomenclature used in the existing WCS system and reports
+The interface must summarize the data in a fashion thatï¿½s appealing to CCR management. Every report type must have at least one high level summary shown in the results dashboard/interface
+Each page shall contain a navigation menu which shows the index into which the current page is contained.
+Each page shall contain a similar format with action items in one location and navigation buttons in a different location.
+The message board shall contain the 5 most recently posted messages on the league page. The messages will contain up to the first 150 characters of the message.
+The system shall have a professional appearance
+The product shall have a consistent color scheme and fonts.
+The product must comply with the intranet page standards and requirements of ENET Securities. 95% of the product look & feel will be approved by the Architecture group  prior to implementation. The remaining 5% will be corrected and approved within one month of product release.
+The intranet pages should display appropriately in all resolutions  from 800x600 and higher. The display of all the pages will be correct in 95% of the resolutions  prior to implementation. The remaining 5% will be corrected within a week of notification of the incorrect display.

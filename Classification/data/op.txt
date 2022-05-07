@@ -1,0 +1,59 @@
+op_req
+The product must support Internet Explorer 5.5 and above.
+The product must support Mozilla Firefox 1.0 and above.
+The product shall interface with the Choice Parts System.  This provides the feed of recycled parts data.
+The product shall run on the existing hardware for all environments.
+The product shall adhere to the corporate Architecture guidelines
+For estimators  the product shall be able to be operated in a repair facility during dirty and noisy conditions.
+The product shall interface with the ChoiceParts system once per day at approximately 1:00 AM.
+The maintenance of the product will fall within the established corporate maintenance windows.
+The product shall be supported using the corporate support center.
+Product installations and upgrades shall be handled by the middleware technology team within established launch time frames.
+The product must work with most database management systems (DBMS) on the market  whether the DBMS is colocated with the product on the same machine or is located on a different machine on the computer network.
+The product will function alongside server software on any operating system where the Java runtime can be installed.
+The product will require collaboration with a database management system (DBMS).  The DBMS may be located on the same machine as the product or on a separate machine residing on the same computer network.
+The product must make use of web/application server technology.  Open source examples include Apache web server  Tomcat  and the JBoss application server.
+A database management system such as Oracle  DB2  MySql or HSQL will need to be integrated with the product.
+The product shall be used in office environments.
+The product must be able to interface with any HTML browser.  The product shall transmit data between the user and the product without problems. The product shall display HTML properly in 80% of all HTML browsers tested (minimum is to test 8 browsers).
+The product must be able to interface with various database management systems. The product shall communicate successfully with the database management system on 100% of all transactions.
+The product must be able to interface with various email servers. The product shall be able to send email.
+The product shall be available for distribution via the Internet as a binary or ZIP file.
+The product shall be available for distribution as a packaged CD.
+The product will be available for licensing as a one-server  two-five servers  or five-or-more servers license.
+The product is expected to integrate with multiple database management systems.  The product will operate with Oracle  SQL Server  DB2  MySQL  HSQL  and MS Access.
+The product shall be able to be installed in any operating environment within 2 days.
+The product must be developed with the J2SE/J2EE programming language libraries
+The System shall utilize currently owned computer equipment.
+The System shall be able to automatically backup business data and restore them on demand.
+The System shall not require additional third party licenses resulting in royalty fees.
+All aspects of the website shall be accessed by a web browser over the Internet.
+The same hardware supporting the current website will be used to support the new system.
+We must be able to interface with the following browsers: IE 5.X  6.0  Netscape 6.x  7.x  8.x and Firefox 1.0.
+Website must interface with the CyberSource API to process credit card transactions.
+Website must be fully operational with MSN TV2.
+Movies shall be encoded and streamed via Windows Media Player 9.0.
+Movies shall be encoded for 56k and 256k streams.
+The product shall be able to be installed in the specified environment within 1 working day.
+The website should use Flash to provide animation on the home page.
+The lead washing process will operate within the established physical web service structure.
+The washing process must use a non binding  neutral data format  such as xml  when receiving and processing lead data.
+The product shall be platform independent.The product shall enable access to any type of development environment and platform.
+The product shall interface CSR and Datastream.The product shall exchange messages between CSR and EAM on a real time basis without any direct interfaces between two systems.
+The WCS system shall be run in a Windows environment. The WCS shall be accessed by users through the Internet on an IBM computer running a Windows 2000 or above operating system.
+The Brio portion of the WCS system must be able to export files in spreadsheet form (Microsoft Excel and Lotus 1-2-3 formats).  Brio will provide buttons in the user interface that produce/export reports in .xls or .123 file formats.
+The application shall run on a web application server.
+The Disputes application shall be available 24x7x365  with the exception of the following scheduled maintenance windows.  Monday ï¿½ Saturday 3:00am to 4:00am EST Sunday 1:00amd to 5:00am EST
+The Disputes application shall interface with the Statement Database. The Statement Database provides the transaction details to the Disputes System. All transaction details must be obtained from the Statement Database
+A primary database will be used to store cached data for active users.
+The system shall able to operate within a business office environment typical of the Nursing Department at DePaul University.
+The system shall be used within the specifications defined by the computers used by the Program Administrators/Nursing Staff Members.
+A secondary database will be used to store historical statistics and data.
+The system shall operate within the Windows XP Professional operating system.
+The system shall interface with CampusConnectï¿½s central server
+The system shall interface with the faculty central server.
+The system shall interface with the student master server.
+We must be able to interface with any HTML browser.
+98% of the user workstations shall meet the minimum hardware requirements prior to implementation. Minimum Hard Disk Space:  400MB.
+98% of the user workstations shall meet the minimum software requirements prior to implementation: Microsoft Internet Explorer 5.0. Microsoft .NET Framework 1.1. Microsoft Internet Explorer Web Controls
+"The RFS system should be able to easily interface with the BDW environment  in order to load the data. ï¿½	7 data files shall be received from the BDW and loaded into the RFS system within 3 hours one day prior to the start of budgeting process  every year. The data will be as of October month-end. 	Test files (7) shall be loaded up to 5 times throughout the year  from the BDW."

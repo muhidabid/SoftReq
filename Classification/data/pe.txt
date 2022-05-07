@@ -1,0 +1,55 @@
+pe_req
+The system shall refresh the display every 60 seconds.
+The product shall respond fast to keep up-to-date data in the display.
+The search for recycled parts shall take no longer than 15 seconds.  The search results shall be returned in under 15 seconds.
+The search for the preferred repair facility shall take no longer than 8 seconds.  The preferred repair facility is returned within 8 seconds
+The recycled parts audit report shall be returned to the user within 10 seconds.  The audit report shall be returned within 10 seconds.
+The preferred repair facility ratings shall be saved within 5 seconds. The save shall occur within 5 seconds.
+The response shall be fast enough to avoid interrupting the userï¿½s flow of thought.  90% of tasks shall complete within 5 seconds.  98% of tasks shall complete within 8 seconds.
+Recreation of Inventory Quantity Adjustment for the period of previous 30 days shall take no more than 30min.
+The System shall allow for a minimum of  6 users to work at the same time.
+Administrator shall be able to activate a pre-paid card via the Administration section in under 5 seconds.
+Customer shall be able to check the status of their prepaid card  by entering in the PIN number  in under 5 seconds.
+System shall let customers register on the website as a ï¿½pay as you goï¿½ user in under 5 minutes.
+System shall let customers register on the website as a ï¿½unlimited movie subscriberï¿½ user in under 10 minutes.
+System shall let existing customers log into the website with their email address and password in under 5 seconds.
+System shall let customers cancel their account  process shall take no longer than 2 minutes.  Database will mark the account as inactive  and user will not be able to log into the website.
+System shall let administrator de-activate a customer account in under 1 minute. Customer will no longer be able to access the website.
+System shall let administrator add/remove movies on the website in under 5 minutes.  Entered movie information will be stored in the database and will now be available on the website.
+System shall let the administrator add/remove categories on the website in under 5 minutes.
+System shall let Izogn Manager access sales and usage statistics in under 2 minutes.
+System shall let administrators generate unique pre-paid pins in under 2 minutes and generate an Excel file with the generated PINs.
+Any interface between a user and the automated system shall have a maximum response time of 5 seconds  unless noted by an exception below.
+When purchasing a streaming movie or pre-paid card via credit card  the processing time should have a maximum response time of 15 seconds.
+When streaming a movie  the buffering time should take no longer than 10 seconds (plus any latency on the userï¿½s connection.)
+While streaming a movie  buffering should only occur if there is latency in the userï¿½s connection.
+Izogn Administrator must be able to update the category listings on the website within 2 minutes.
+Izogn Administrator must be able to add new products to the website within 2 minutes.
+Total lead cycle time must be completed in 5 minutes for 90% of lead volume between the business hours of 8AM CST to 8PM CST; then 3 minutes for 99% of lead volume during off business hours.
+No lead evaluation will complete in a time period longer than 25 seconds for 97% of all leads processed.
+For leads that process longer than 25 seconds the system will record the event and duration
+The process must fit within the processing time conditions set forth by the Auto Rep Assignment process in which a lead is assigned within 3 minutes of the total life cycle.
+The product shall able to handle a large number of games simultaneously.
+The response time shall be fast enough to maintain the flow of the game.  The response time shall be no more than 2 seconds for 95% of responses and no more than 4% for the remaining responses.
+The product shall protect the identity of the players. The product shall provide players no access to information that might reveal the identity of another player.
+The response time shall be fast enough to maintain the flow of the game. The response time shall be no more than 2 seconds for 95% of responses and no more than 4% for the remaining responses.
+The system shall be responsive. At the DePaul TeleServices Center  when a supervisor uses the system to view a callers schedule  the system response time must be no more than 2 seconds 90% of the time and no more than 5 seconds the rest of the time.
+On a 56k connection  the system response time for all operations must be no more than 6 seconds 90% of the time.
+On a 112k connection or faster  the system response time for all operations must be no more than 3 seconds 90% of the time.
+The product shall provide Asynchronous Messaging.The product shall provide asynchronous messaging to enable parallel processing and reduce the overhead in communications
+The product shall provide Multi-threading and Load Balancing.The product shall provide multi-threading technology as well as load balancing to overcome data load spikes and traffic.
+The product shall process messages within 2 seconds.The product shall have a maximum message processing time of 2 seconds
+The product shall poll the system for messages every second.The product shall poll the system for new messages at a maximum of every 1 second.
+The product shall provide Dynamic Change Support and Transparent resource addition.The product shall support Transparent Resource addition and Dynamic Change support to provide scalability and avoid service interruptions of more than 1 day.
+The application shall be able to complete every user transaction within one fourth of a second of receiving the request over the network.
+The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.
+The Disputes application shall support 350 concurrent users without any degradation of performance in the application.
+The product shall produce search results in an acceptable time
+The search results shall be returned no later 30      seconds  after the user has entered the search criteria
+The product shall generate a CMA report in an acceptable time.
+The CMA report shall be returned no later 60 seconds after the user has entered the CMA report criteria.
+The product shall synchronize contacts and appointments in an acceptable time.
+The product shall synchronize with the office system every hour.
+Staff members shall be able to complete a set of tasks in a timely manner.
+The response time of general student management tasks shall take no longer than 5 seconds and the response time of schedule generation shall take no longer than 30 seconds.
+The product interface should be fast. The response time of the product interface should not exceed 2 seconds 90% of the time. For 10% of the time  the response time should not be more than 10 seconds.not be more than 10 seconds.

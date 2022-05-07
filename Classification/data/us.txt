@@ -1,0 +1,64 @@
+us_req
+If projected  the data must be readable.  On a 10x10 projection screen  90% of viewers must be able to read Event / Activity data from a viewing distance of 30
+If projected  the data must be understandable. On a 10x10 projection screen  90% of viewers must be able to determine that Events or Activities are occuring in current time from a viewing distance of 100
+The product shall be intuitive and self-explanatory.  :  90% of new users shall be able to start the display of Events or Activities within 90 minutes of using the product.
+The product shall be easy to use by Adjusters and Collision Estimators.  95% of Adjusters and Collision Estimators shall find the product easy to use.
+The product shall increase productivity of Collision Estimators. 80% of the Collision Estimators shall agree their productivity has increase within 1 month of using the product.
+Users shall feel satisfied using the product.  85% of all users will be satisfied with the product.
+The product shall be easy to learn by Adjusters and Collision Estimators.  The product shall be learned with two days onsite training
+The user shall easily locate instructions while using the product.  User help can be found within 90% of the system.
+The product shall make the users want to use it. 80% of the users surveyed report they are regularly using the product after the first 2 weeks post-launch.
+The product shall be easy to use. 90% of users will be able to successfully reserve a conference room within 5 minutes of product use.
+The product shall give users feedback when necessary. 80% of the users surveyed report that the product accurately confirms their actions.
+The product shall allow the user to select a chosen language from one of the target market countries.
+The product shall allow for customization of start page and views preferences.
+An employee will be able to successfully use the product within a few minutes.  After informally navigating the product for less than 15 minutes  users shall be able to successfully setup meetings and reserve conference rooms.
+The product shall use a standard navigation menu familiar to most web users.
+The product shall allow for intuitive searching of available conference rooms.
+The product shall conform to the Americans with Disabilities Act.
+A new user must be able to be added to the system within 10 minutes.  90% of new users are able to log into the system within 10 minutes.
+Every registered user will have access to the productï¿½s support site via the Internet.  70% of registered users shall find a solution to their problem within 5 minutes of using the support site.
+The product shall be translated into foreign languages other than the target market countriesï¿½ languages in future releases.  For each emerging target market  it shall take no more than 5 days to configure the product for that marketï¿½s language.
+The product shall be able to display calendar dates and times according to the userï¿½s locale.  90% of survey respondents from each target market country will find that the date and time formatting of the product is correct.
+The product should be able to be used by 90% of novice users on the Internet.
+Users should only have to navigate through a maximum of 4 pages  to create an account with the website.
+Users should be able to access their streaming movies in under 2 clicks after logging into the website.
+An anonymous survey will show that 70% of customers are comfortable purchasing streaming movies after 2 weeks using the website.
+An anonymous survey will show that 95% of customers are comfortable using and purchasing pre-paid cards after a month of using the system.
+The product shall retain the customerï¿½s buying preferences and information.
+The product shall be easy for customers with novice skills on the  Internet to purchase and watch streaming movies.  Customers should be able to purchase and watch a pre-determined movie in under 3 minutes.
+The product shall use symbols and words that are naturally understandable by users familiar with websites
+The website will use standard Internet conventions when interacting with the user.
+The website will provide a help section with answers and solutions to common problems.
+The product shall be intuitive and self-explanatory.  Nine out ten users shall be able to successfully complete a game with no training.
+The product shall be available to players who understand English  Spanish and French.  The product shall allow the user to select the language upon accessing the product.
+The system shall be easy to use by callers and supervisors. Callers and supervisors must be able to accomplish any system task within 2 minutes.
+The system shall be easy to learn by callers and supervisors. Callers and supervisors shall learn how to use the system within 10 minutes.
+The product shall provide Monitoring Services.The product shall be easy for System Administrators and DBAs to use after two weeks of usage.
+The product shall provide Error Tracking Services.The product shall help the System Administrators and DBAs to resolve transaction errors 99% of the time.
+The product shall provide Portals.The product shall help System Administrators to analyze the transactions with ad-hoc reporting and KPIs (Key Performance Indicators)
+The system must use a point and click interface. 100% of all selection and navigation functionality must be able to be activated/selected by either a mouse or a keyboard
+The interface shall be easy to use. 90% of users should be able to successfully use the system to generate a report on their first use. The interface should adhere to IBM usability standards.
+Rreports must be easy to generate. eports must be generated within one button click and exported within one button click (after selecting the report)
+A user shall be able to use the system without instruction after a short amount of time. After one use a user should understand and remember 90% of the system usage and navigation.
+All CCR users shall receive training before the WCS system is deployed. One training session will be held for 100% of CCR users before system deployment (based on a CCR user being available)
+The WCS system shall use appropriate nomenclature and terminology as defined by the Corporate Community Grants organization. All interfaces and reports will undergo usability tests by CCR users.
+A new user shall be able to navigate through the league and team pages within 30 seconds of reaching the start-up page.
+Users shall be able to reach the ï¿½addï¿½  ï¿½dropï¿½  and ï¿½trade playerï¿½ pages with one click from the team ownerï¿½s page.
+Users shall be able to view at least 25 NFL player statistics and points on each page.
+The application shall ask the user to confirm dropping a player or trading a player before performing the action.
+The system shall be used by realtors with no training.
+The system shall be intuitive and self explanatory.
+The product shall be easy for a realtor to learn.
+The product shall use symbols and words that are naturally understandable by the realtor community.
+The product shall be installed by an untrained realtor   without recourse to separately-printed instructions.
+90% of untrained realtors shall be able to install the product on their device without printed instructions
+The system shall be easy to use by the Program Administrators/Nursing Staff Members.
+All of the users shall be able to use the system after one day of training.
+The system shall help the user avoid making mistakes while scheduling classes and clinicals for the nursing students.
+The number of mistakes noted by the students shall be decreased by 50% in the first year.
+The system shall be intuitive to the Program Administrators/Nursing Staff Members.
+2 out of 3 Program Administrators/Nursing Staff Members shall successfully be able to use the system to manage the scheduling of classes and clinicals.
+The system shall use symbols and words that are naturally understandable by the user community.
+The verbiage used within the system shall be consistent with Standard English and the terminology of the national Nursing Community.
+The users should be able to easily use the system to successfully complete their budgets  within the stipulated time for completion. With a week of training prior to product implementation  98% of the users shall complete their budgets within the stipulated time.

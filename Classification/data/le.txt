@@ -1,0 +1,11 @@
+le_req
+All business rules specified in the Disputes System shall be in compliance to the guidelines of Regulation E and Regulation Z.
+The Disputes application must maintain a detailed history of every action that a user takes on a dispute case.  This ensures a complete audit trail if questions arise later on with regard to a particular dispute case.
+All actions that modify an existing dispute case must be recorded in the case history.
+The product must comply with Sarbanes-Oxley.
+The product shall comply with the estimatics laws relating to recycled parts usage.
+The product shall comply with insurance regulations regarding claims processing.
+The System shall meet all applicable accounting standards.  The final version of the System must successfully pass independent audit performed by a certified auditor.
+IzognMovies shall meet the licensing requirements set forth by the appropriate organizations in order to stream African movies.
+The website will comply with W3C standards.
+The PHP code will comply with PEAR standards.

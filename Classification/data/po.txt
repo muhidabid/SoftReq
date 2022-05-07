@@ -1,0 +1,3 @@
+po_req
+The software product is expected to run on Windows or Linux platforms.
+The product is expected to run on Windows CE and Palm operating systems.

@@ -1,0 +1,18 @@
+mn_req
+The product must be designed using Design Patterns and coding best practices.  90% of maintenance software developers are able to integrate new functionality into the product with 2 working days.
+The product must be highly configurable for use with various database management systems for the end users.  80% of end users are able to integrate new database management systems with the product without changing the productï¿½s software code.
+Maintenance releases will be offered to customers once a year.  The releases shall take no longer than 5 minutes for 80% of the customer base to install.
+The customer shall be able to easily integrate new building maps with the product throughout the productï¿½s lifecycle.  Integration of new maps with the product shall be possible with little to no support from product support staff.
+The product shall be expected to operate within the maximum maintenance budget for a minimum of 2 years.
+Promotional updates to the website should take a day to update.
+Washing parameters will be updated during scheduled maintenance hours.
+The product shall be internet browser independent.The product must run using Internet Explorer and Netscape Navigator.
+The product shall continue to operate during upgrade  change or new resource addition.The product shall be able to continue to operate with no interruption in service due to new resource additions.
+The product shall be updated on a regular basis.The product will have a new major feature introduced every six months and quarterly maintenance releases every six months.
+The product shall operate with every platform.The product shall accommodate any new technology without any change in its architecture.
+The WCS system must run queries to the WCS databases once again (on a specified day) to update the available data available to CCR users. Queries must be made to external databases for data refresh once a week.
+All changes  updates  and additions to the WCS system shall be updated in the WCS Developer and WCS User Guides. Every change must be reflected in WCS system documentation
+Application updates shall occur between 3AM and 6 AM CST on Wednesday morning during the middle of the NFL season.
+New System version releases shall be released at the beginning of each NFL season.
+Changes to revenue and expense formulae must be applied to the RFS system  every year  prior to the budgeting process start. Revenue and expense formulae will be updated within one week of their receipt  after which 2 weeks will be allotted to testing of the budget calculations  to be conducted jointly by the project development team and PCG Finance.
+New branches/complexes/districts/regions and revenue/expense accounts added to the BDW  must be reflected in the RFS system. 100% of the entities (mentioned above) available as of October month-end  will be loaded into the RFS system  prior to the budget start process.
