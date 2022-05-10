@@ -10,6 +10,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { LeftSidebarComponent } from './dashboard/left-sidebar/left-sidebar.component';
@@ -30,8 +31,11 @@ import { EditorComponent } from './project/editor/editor.component';
     WorkspaceExpansionPanelComponent,
     WorkspaceAddPopupComponent,
     LoginPageComponent,
+<<<<<<< Updated upstream
     ProjectComponent,
     EditorComponent
+=======
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,8 @@ import { EditorComponent } from './project/editor/editor.component';
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
