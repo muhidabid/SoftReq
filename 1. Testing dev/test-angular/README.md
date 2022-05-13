@@ -1,25 +1,6 @@
-# SoftReq
-<--Angular, MongoDB, Python, NodeJS-->
+# TestAngular
 
-This project is an Integrated Software Requirements Management Tool under development.
-
-
-"0. DEVELOPMENT"
-- This folder is the main development folder of our project.
-- It's an Angular project
-
-
---> All other folders are for testing purposes
-
-
-(Final Year Project 2022) 
-Muhid Abid	i180560
-Ayesha Rauf	i181594
-Hassan Riaz	i180580
-
-# ClientAngular
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
 
 ## Development server
 
