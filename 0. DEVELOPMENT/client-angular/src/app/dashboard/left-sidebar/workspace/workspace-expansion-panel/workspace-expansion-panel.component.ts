@@ -9,22 +9,13 @@ import { WorkspaceService } from 'src/app/services/workspace.service';
 })
 // export class WorkspaceExpansionPanelComponent implements OnInit {
 export class WorkspaceExpansionPanelComponent {
-  workspaces: Workspace[] = [
-    // {
-    //   name: 'Home workspace',
-    //   description: "Xyz 123 brooo",
-    //   projects: [{name:'test'}]
-    // },
-    // {
-    //   name: 'Not Home workspace',
-    //   description: "Xyz 123 description brooo",
-    //   projects: [{name:'test'},{name:'test'},{name:'not test'}]
-    // },
-  ];
+  // array holding workspace object
+  workspaces: Workspace[] = [];
 
   constructor(private _workspaceService: WorkspaceService) { }
 
   ngOnInit(): void {
+    // fetch data from workspace service
     this.workspaces = this._workspaceService.getWorkspaces();
   }
 
