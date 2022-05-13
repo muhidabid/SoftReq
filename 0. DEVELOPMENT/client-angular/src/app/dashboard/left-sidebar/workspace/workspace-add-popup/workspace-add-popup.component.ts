@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
@@ -7,9 +7,6 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
   styleUrls: ['./workspace-add-popup.component.css']
 })
 export class WorkspaceAddPopupComponent implements OnInit {
-  enteredWorkspaceName = "";
-  enteredWorkspaceDescription = "";
-  @Output() workspaceCreated = new EventEmitter();
 
   constructor(
     public dialogRef: MatDialogRef<WorkspaceAddPopupComponent>,
@@ -21,14 +18,5 @@ export class WorkspaceAddPopupComponent implements OnInit {
 
   closePopup(): void{
     this.dialogRef.close();
-  }
-
-  onCreateWorkspace(){
-    const newWorkspace = {
-      name: this.enteredWorkspaceName,
-      description: this.enteredWorkspaceDescription,
-      projects: []
-    };
-    this.workspaceCreated.emit(newWorkspace);
   }
 }

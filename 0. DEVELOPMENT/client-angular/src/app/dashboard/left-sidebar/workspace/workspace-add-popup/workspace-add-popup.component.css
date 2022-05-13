@@ -1,65 +1,19 @@
 ::ng-deep .mat-focused .mat-form-field-label {
   /*change color of label*/
   color: #5496d3 !important;
-
  }
 
-/* ::ng-deep.mat-form-field-appearance-outline {
-  change color of underline
+::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
   background-color: #5496d3 !important;
-} */
+}
 
-/* Border */
-/* .mat-form-field-appearance-outline .mat-form-field-outline {
-  background-color: #5496d3 !important;
-
-} */
-
-/* ::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
-  background-color: blue !important;
-} */
-
-/* ::ng-deep.mat-form-field-ripple {
-  change color of underline when focused
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
   background-color: #5496d3 !important;;
- } */
-
-/* .mat-form-field-appearance-outline .mat-form-field-outline-thick {
-  color: rgb(255, 0, 0);
-} */
-
+ }
 
 .popupCard{
   display: grid;
-  grid-template-columns: 1fr;
-  grid-column: 1;
-  margin: 6% 9%;
-}
-
-.card-heading{
-  font-weight: 700;
-  font-size: 27px;
-  line-height: 32px;
-}
-
-.form-title{
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 21px;
-  color: #797D8B;
-  margin-top: 5px;
-}
-
-.mat-form-field{
-  width: 100%;
-}
-
-.add-workspace-button{
-  color: white;
-  background: #141C2C;
-  height: 50px;
-  font-weight: 700;
-  font-size: 20px;
-  margin-top: 30px;
-
+  grid-template-columns: 4fr 1fr;
 }
