@@ -1,8 +1,61 @@
-<div class="wrapper0">
+<head>
+  <script>
+    var dt = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+  
+    today = mm + '/' + dd + '/' + yyyy;
+    document.getElementById('date-time').innerHTML = today;
+    console.log('this is date: ', today)
+  </script>
+</head>
+
+
+<body>
+  <div class="wrapper0">
 
     <div class="header">
       <img class="logo" src = "assets/images/softreq-logo/softreq-logo.svg" alt="SoftReq Logo"/>
     </div>
 
     <h1>User Story Requirements Editor</h1>
+
+    <div class="wrapper1">
+      <p>User Story</p> 
+      <input label="User Story" type="text" rows="4" cols="50" #text>
+        
+      <br><br>
+
+      <p>Date</p>
+      <input type="text" label="Date" #d><br><br>
+      
+      <!-- #d = new Date; -->
+
+      <input type="button" (click)="AddReq(text, d)" value="Add Requirement">
+
+      <br>
+      <h2>Existing User Stories</h2>
+      <table [ngStyle]="{'border': '1px solid'}">
+        <tr>
+          <th>Requirement</th>
+          <!-- <th>Created On</th> -->
+          <!-- <th>Date</th> -->
+        </tr>
+        <tr *ngFor="let us of req; let i = index">
+          <td>{{us.text}}</td>
+          <!-- <td>{{us.d}}</td> -->
+          <td>
+            <span id="date-time"></span>
+          </td>
+
+        </tr>
+      </table>
+    </div>
+    
 </div>
+
+
+
+
+</body>
