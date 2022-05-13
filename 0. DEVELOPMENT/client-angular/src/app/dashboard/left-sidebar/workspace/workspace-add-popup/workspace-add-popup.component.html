@@ -1,8 +1,21 @@
 <div class="popupCard">
+  <p class="card-heading">Build a workspace!</p>
+  <hr>
+  <p class="form-title">Workspace name</p>
   <form>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <input matInput type="text" name="workSpaceName">
+      <!-- <mat-label>Workspace name</mat-label> -->
+      <mat-hint>Client XYZ...</mat-hint>
     </mat-form-field>
   </form>
-  <button mat-stroked-button>Add Workspace</button>
+  <p class="form-title">Workspace description</p>
+  <form>
+    <mat-form-field appearance="outline">
+      <input matInput type="text" name="workSpaceDescription">
+      <!-- <mat-label>Workspace description</mat-label> -->
+      <mat-hint>This workspace is for Client XYZ's web projects...</mat-hint>
+    </mat-form-field>
+  </form>
+  <button mat-stroked-button class="add-workspace-button">Create Workspace</button>
 </div>

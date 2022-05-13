@@ -21,6 +21,8 @@ import { WorkspaceAddPopupComponent } from './dashboard/left-sidebar/workspace/w
 import { LoginPageComponent } from './login-page/login-page.component';
 import { ProjectComponent } from './project/project.component';
 import { EditorComponent } from './project/editor/editor.component';
+import { WorkspaceService } from './services/workspace.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,11 +33,11 @@ import { EditorComponent } from './project/editor/editor.component';
     WorkspaceExpansionPanelComponent,
     WorkspaceAddPopupComponent,
     LoginPageComponent,
-<<<<<<< Updated upstream
+// <<<<<<< Updated upstream
     ProjectComponent,
     EditorComponent
-=======
->>>>>>> Stashed changes
+// =======
+// >>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
@@ -48,9 +50,10 @@ import { EditorComponent } from './project/editor/editor.component';
     FormsModule,
     MatInputModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [WorkspaceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
