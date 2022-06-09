@@ -74,6 +74,37 @@
   /* gap: 4em; */
 }
 
+.project-view{
+  padding: 20px;
+  font-size: large;
+  color: beige;
+}
+
+h3 {
+  font-size: small;
+}
+
+h4 {
+  color: black;
+  font-size: small;
+}
+
 .wrapper2 > div{
   background-color: brown;
+}
+
+.workspace-1 {
+  background-color: brown;
+  display: flex;
+  flex-direction: row;
+}
+
+.workspace-block {
+  background-color: lightgoldenrodyellow;
+  width: 100px;
+  height: 50px;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-right: 10px;
 }

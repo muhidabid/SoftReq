@@ -31,11 +31,8 @@ import { EditorComponent } from './project/editor/editor.component';
     WorkspaceExpansionPanelComponent,
     WorkspaceAddPopupComponent,
     LoginPageComponent,
-<<<<<<< Updated upstream
     ProjectComponent,
     EditorComponent
-=======
->>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
