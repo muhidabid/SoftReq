@@ -9,6 +9,7 @@ import { WorkspaceAddPopupComponent } from '../workspace-add-popup/workspace-add
 })
 export class WorkspaceAddButtonComponent implements OnInit {
 
+  show=false;
   constructor(private addWorkspacePopup: MatDialog) { }
 
   ngOnInit(): void {
@@ -23,5 +24,8 @@ export class WorkspaceAddButtonComponent implements OnInit {
     addPopupRef.afterClosed().subscribe(result => {
       console.log('The popup was closed');
     })
+  }
+  pop(){
+    this.show=true;
   }
 }

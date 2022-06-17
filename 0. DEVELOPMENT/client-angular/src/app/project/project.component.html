@@ -1,5 +1,4 @@
-<div class="wrapper0">
-    <div class="bgBox"></div>
+<!-- <div class="wrapper0">
     <div class="wrapper1">
         <div class="header">
             <img class="logo" src = "assets/images/softreq-logo/softreq-logo.svg" alt="SoftReq Logo"/>
@@ -10,13 +9,91 @@
             </ul>
         </div>
 
-        <p>Try the User Story Requirements Editor for your next Project!</p>
-        <button>Submit</button>
-        <button class="btn" routerLink="/editor">Go To Editor</button>
+        <mat-toolbar>
+            <img class="logo" src = "assets/images/softreq-logo/softreq-logo.svg" alt="SoftReq Logo"/>
+            <p>SoftReq</p>
+            <div class="menu-links">
+                <a routerLink="/dashBoard">Home</a>
+                <a routerLink="/project">Editor</a>
+                <a routerLink="/loginPage">My Account</a>
+            </div>
+        </mat-toolbar>
 
-        <p>No. of Projects: </p>
-        <p>No. of Requirements: </p>
+        <div class="wrapper3">
+            <p>Try the User Story Requirements Editor for your next Project!</p>
+            <button class="btn" routerLink="/editor">Go To Editor</button>
+
+            <br>
+
+            <p>No. of Projects: </p>
+            <p>No. of Requirements: </p>
+        </div>
 
     </div>
 
+</div> -->
+
+<mat-toolbar color="primary">
+    <img class="logo" src = "assets/images/softreq-logo/softreq-logo.svg" alt="SoftReq Logo"/>
+    <span>SoftReq</span>
+    <div class="menu-links">
+        <a routerLink="/home">Home</a>
+        <a routerLink="/dashBoard">Dashboard</a>
+        <a routerLink="/project">Editor</a>
+        <a routerLink="/loginPage">Account</a>
+    </div>
+</mat-toolbar>
+
+<!-- <div class="header">
+    <img class="logo" src = "assets/images/softreq-logo/softreq-logo.svg" alt="SoftReq Logo"/>
+    <ul>
+      <li><a routerLink="/dashBoard">Home</a></li>
+      <li><a routerLink="/project">Editor</a></li>
+      <li><a routerLink="/loginPage">My Account</a></li>
+    </ul>
+  </div> -->
+
+<div class="main">
+    <h1>Project</h1>
+    <p>Some random lines here</p>
+    
+    <!-- <mat-sidenav-container>
+        <p>Something here</p>
+        <mat-sidenav>Start</mat-sidenav>
+        <mat-sidenav-content>Main</mat-sidenav-content>
+    </mat-sidenav-container> -->
+
+    <div class="main-wrapper">
+        <div class="left-sidebar">
+            <h4>Project Details</h4>
+            <ul>
+                <li>User Stories: 14</li>
+                <li>Tasks: 6</li>
+            </ul>
+            
+        </div>
+    
+        <!-- <div class="main-content"> -->
+
+        <div class="project-view">
+            <h2>Project Overview</h2>
+            <br>
+            <div class="userstories">
+                <h3>User Stories</h3>
+            </div>
+
+            <div class="tasks">
+                <h3>Tasks</h3>
+            </div>
+
+            <br>
+        </div>
+    
+        <!-- </div> -->
+    </div>
+    
+
+
 </div>
+
+

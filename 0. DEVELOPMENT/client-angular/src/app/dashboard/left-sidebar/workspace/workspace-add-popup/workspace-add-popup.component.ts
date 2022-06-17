@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-workspace-add-popup',
@@ -12,6 +13,7 @@ export class WorkspaceAddPopupComponent implements OnInit {
     public dialogRef: MatDialogRef<WorkspaceAddPopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: null,
   ) { }
+  
 
   ngOnInit(): void {
   }
