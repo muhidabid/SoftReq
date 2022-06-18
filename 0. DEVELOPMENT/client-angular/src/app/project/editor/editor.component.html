@@ -1,61 +1,64 @@
-<head>
-  <script>
-    var dt = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
+<mat-toolbar color="primary">
+  <img class="logo" src = "assets/images/softreq-logo/softreq-logo.svg" alt="SoftReq Logo"/>
+  <span>SoftReq</span>
+  <div class="menu-links">
+      <a routerLink="/home">Home</a>
+      <a routerLink="/dashBoard">Dashboard</a>
+      <a routerLink="/editor">Editor</a>
+      <a routerLink="/project">Project</a>
+      <a routerLink="/loginPage">Account</a>
+  </div>
+</mat-toolbar>
+
+
+<div class="main">
+  <h1>Editor</h1>
+  <p>Some random lines here</p>
   
-    today = mm + '/' + dd + '/' + yyyy;
-    document.getElementById('date-time').innerHTML = today;
-    console.log('this is date: ', today)
-  </script>
-</head>
+  <div class="main-wrapper">
+
+      <div class="left-sidebar">
+          <h4>Add a User Story</h4>
+          
+          <label for="roles">As a </label>
+
+          <select name="roles" id="roles" #roles>
+            <option value="Admin" #admin>Admin</option>
+            <option value="Customer" #customer>Customer</option>
+            <option value="">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+
+          <br>
+
+          <textarea spellcheck="true" rows="10">As a #roles</textarea>
+
+          <br>
+
+          <button mat-flat-button color="primary">Add User Story</button>
+          
+      </div>
+  
+      <!-- <div class="main-content"> -->
+
+      <div class="project-view">
+          <h2>User Stories</h2>
+          <br>
+          <div class="userstories">
+              <h3>User Stories</h3>
+          </div>
+
+          <div class="tasks">
+              <h3>Tasks</h3>
+          </div>
+
+          <br>
+      </div>
+  
+      <!-- </div> -->
+  </div>
 
 
-<body>
-  <div class="wrapper0">
-
-    <div class="header">
-      <img class="logo" src = "assets/images/softreq-logo/softreq-logo.svg" alt="SoftReq Logo"/>
-    </div>
-
-    <h1>User Story Requirements Editor</h1>
-
-    <div class="wrapper1">
-      <p>User Story</p> 
-      <input label="User Story" type="text" rows="4" cols="50" #text>
-        
-      <br><br>
-
-      <p>Date</p>
-      <input type="text" label="Date" #d><br><br>
-      
-      <!-- #d = new Date; -->
-
-      <input type="button" (click)="AddReq(text, d)" value="Add Requirement">
-
-      <br>
-      <h2>Existing User Stories</h2>
-      <table [ngStyle]="{'border': '1px solid'}">
-        <tr>
-          <th>Requirement</th>
-          <!-- <th>Created On</th> -->
-          <!-- <th>Date</th> -->
-        </tr>
-        <tr *ngFor="let us of req; let i = index">
-          <td>{{us.text}}</td>
-          <!-- <td>{{us.d}}</td> -->
-          <td>
-            <span id="date-time"></span>
-          </td>
-
-        </tr>
-      </table>
-    </div>
-    
 </div>
 
 
-
-
-</body>
