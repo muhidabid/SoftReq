@@ -35,6 +35,65 @@
   box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
 }
 
+.logo{
+  height: 50px;
+  /* padding-left: 5px; */
+  margin: 0 2.37%;
+  /* height: 100%; */
+}
+
+/* .background {
+  background-color: #E7F0F9;
+} */
+
+.menu-links {
+margin-left: auto; 
+margin-right: 0;
+}
+
+.menu-links a {
+text-decoration: none;
+color: rgb(0, 0, 0);
+margin-left: 5px;
+margin-right: 5px;
+font-size: smaller;
+padding: 20px;
+padding-left: 10px;
+padding-right: 10px;
+}
+
+.menu-links a:hover {
+background-color: lightblue;
+}
+
+
+.header{
+  /* display: flex;
+  flex-direction: row; */
+  background-color: lightblue;
+  padding: 30px;
+}
+
+.header ul {
+  list-style-type: none;
+  background-color: aqua;
+}
+
+.header li {
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  display: inline;
+}
+
+.header li a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 .header{
   /* position: relative; */
   /* background-color: #e7f0f9; */

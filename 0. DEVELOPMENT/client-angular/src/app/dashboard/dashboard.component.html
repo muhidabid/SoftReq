@@ -2,9 +2,22 @@
 <div class="wrapper0">
   <div class="bgBox"></div>
   <div class="wrapper1">
-    <div class="header">
+
+    <mat-toolbar color="primary">
       <img class="logo" src = "assets/images/softreq-logo/softreq-logo.svg" alt="SoftReq Logo"/>
-    </div>
+      <span>SoftReq</span>
+      <div class="menu-links">
+          <a routerLink="/home">Home</a>
+          <a routerLink="/dashBoard">Dashboard</a>
+          <a routerLink="/editor">Editor</a>
+          <a routerLink="/project">Project</a>
+          <a routerLink="/loginPage">Account</a>
+      </div>
+    </mat-toolbar>
+
+    <!-- <div class="header">
+      <img class="logo" src = "assets/images/softreq-logo/softreq-logo.svg" alt="SoftReq Logo"/>
+    </div> -->
     <div class="wrapper2">
       <app-left-sidebar></app-left-sidebar>
       <div class="detail-view">
