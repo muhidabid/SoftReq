@@ -12,27 +12,32 @@ const getAllWorkspaces = async (req, res, next) => {
   }
   return res.status(200).json({ Workspaces });
 };
+
+const newWorkspace = async() => {
+
+};
+
 ////////////////////////////////////////////////////////////////////
-// const addAssessment = async (req, res, next) => {
-//   const { title, img, overview, price, offeredBy, skills, materials, assesments, enrolled, mid, failed, passed } = req.body;
-//   let assessment;
-//   try {
-//     assessment = new Assessment({
-//       title,
-//       duration,
-//       minPassingCriteria,
-//       questions,
-//       answers,
-//     });
-//     await assessment.save();
-//   } catch (err) {
-//     console.log("Error adding the assessment" + JSON.stringify(err, undefined, 2));
-//   }
-//   if (!assessment) {
-//     return res.status(404).json({ message: "Unable to Add assessment" });
-//   }
-//   return res.status(200).json({ assessment });
-// };
+
+const addWorkspace = async (req, res, next) => {
+  const { name, description, projects, createdOn } = req.body;
+  let workspace;
+  try {
+    workspace = new Workspace({
+      name,
+      description,
+      projects,
+      createdOn
+    });
+    await workspace.save();
+  } catch (err) {
+    console.log("Error adding the workspace" + JSON.stringify(err, undefined, 2));
+  }
+  if (!assessment) {
+    return res.status(404).json({ message: "Unable to Add workspace" });
+  }
+  return res.status(200).json({ assessment });
+};
 
 // const getAssessmentbyID = async (req, res, next) => {
 //   let assessment;

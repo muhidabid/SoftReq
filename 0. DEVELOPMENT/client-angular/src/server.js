@@ -80,11 +80,9 @@ connectWithMongoDB().then(() => {
     });
 
     const newModel = new workspaceModel({
-        name: 'Test123',
-        description: 'SOmething long here'
+        name: 'Test999',
+        description: 'SOmething even longer here'
     });
-
-
 
     // newModel.save();
 })
