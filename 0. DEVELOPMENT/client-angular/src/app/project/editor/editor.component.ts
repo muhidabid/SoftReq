@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserStories } from 'src/app/models/userstories';
+import { UserstoriesService } from 'src/app/services/userstories.service';
 
 @Component({
   selector: 'app-editor',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditorComponent implements OnInit {
 
-  constructor() { }
+  userstories: UserStories[] = [];
+
+  constructor(private _userstoriesservice: UserstoriesService) {}
 
   ngOnInit(): void {
+    // fetch data from workspace service
+    this.userstories = this._userstoriesservice.getUserStories();
   }
 
 }

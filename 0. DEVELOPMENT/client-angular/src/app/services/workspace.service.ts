@@ -21,6 +21,11 @@ export class WorkspaceService {
         description: "Xyz 987 description",
         projects: [{name:'Mobile app'},{name:'Web app'},{name:'Web app 2'}]
       },
+      {
+        name: 'XYZ Work',
+        description: 'Some random description here',
+        projects: [{name: 'FrontEnd X'}, {name: 'Backend Y'}]
+      }
     ];
   }
 }
