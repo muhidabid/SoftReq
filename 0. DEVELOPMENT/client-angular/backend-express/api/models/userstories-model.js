@@ -12,5 +12,3 @@ const userstoriesSchema = new Schema({
 
 // module.exports = mongoose.model('Assessment', assessmentSchema);
 module.exports = mongoose.model('userstoriesModel', userstoriesSchema);
-
-

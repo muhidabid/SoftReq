@@ -35,18 +35,18 @@
   box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
 }
 
-.logo{
+/* .logo{
   height: 50px;
-  /* padding-left: 5px; */
+  padding-left: 5px;
   margin: 0 2.37%;
-  /* height: 100%; */
-}
+  height: 100%;
+} */
 
 /* .background {
   background-color: #E7F0F9;
 } */
 
-.menu-links {
+/* .menu-links {
 margin-left: auto;
 margin-right: 0;
 }
@@ -64,7 +64,7 @@ padding-right: 10px;
 
 .menu-links a:hover {
 background-color: lightblue;
-}
+} */
 
 
 .header{
@@ -119,12 +119,12 @@ background-color: lightblue;
   align-items: center;
 }
 
-.logo{
+/* .logo{
   height: 35px;
-  /* padding-left: 5px; */
+  padding-left: 5px;
   margin: 0 2.37%;
-  /* height: 100%; */
-}
+  height: 100%;
+} */
 
 .wrapper2{
   margin: 0 4%;

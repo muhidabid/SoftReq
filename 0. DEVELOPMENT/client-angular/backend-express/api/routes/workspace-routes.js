@@ -4,7 +4,6 @@ const Workspace = require("../models/workspace-model");
 const workspaceController = require("../controllers/workspace-controller");
 
 router.get("/", workspaceController.getAllWorkspaces);
-
 router.post("/", workspaceController.addWorkspace)
 
 

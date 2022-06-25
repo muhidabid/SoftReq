@@ -23,6 +23,7 @@ import { ProjectComponent } from './project/project.component';
 import { EditorComponent } from './project/editor/editor.component';
 import { WorkspaceService } from './services/workspace.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginPageComponent,
 // <<<<<<< Updated upstream
     ProjectComponent,
-    EditorComponent
+    EditorComponent,
+    ToolbarComponent
 // =======
 // >>>>>>> Stashed changes
   ],
