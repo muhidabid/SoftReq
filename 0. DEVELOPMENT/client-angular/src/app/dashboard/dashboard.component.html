@@ -1,4 +1,3 @@
-
 <div class="wrapper0">
   <div class="bgBox"></div>
   <div class="wrapper1">
@@ -24,7 +23,7 @@
         <!-- Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, suscipit officiis? Assumenda adipisci ex neque! Est deserunt impedit commodi assumenda, aspernatur quos ipsam amet delectus inventore beatae incidunt similique! Facere! -->
         <div class="workspace-detail" *ngFor="let workspace of workspaces">
           <p class="workspace-heading">{{workspace.name}}</p>
-          <div class="project-under-workspace-heading" *ngFor="let project of workspace.projects">
+          <div class="project-under-workspace-heading" *ngFor="let project of workspace.projects" routerLink="/editor">
             <p>{{project.name}}</p>
           </div>
         </div>

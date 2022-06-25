@@ -47,7 +47,7 @@
 } */
 
 .menu-links {
-margin-left: auto; 
+margin-left: auto;
 margin-right: 0;
 }
 
@@ -158,4 +158,5 @@ background-color: lightblue;
   margin: 10px;
   font-size: medium;
   font-weight: 500;
+  cursor: pointer;
 }
