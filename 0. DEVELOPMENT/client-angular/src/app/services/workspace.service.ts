@@ -1,12 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { WebRequestService } from './web-request.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WorkspaceService {
 
-  constructor(private http: HttpClient) { } // HttpClient is a "dependency" of WorkspaceService
+  // readonly ENDPOINT;
+
+  constructor(private webReqService: WebRequestService) {
+    // this.ENDPOINT = "workspaces";
+  } // HttpClient is a "dependency" of WorkspaceService
+
+  addWorkspace(name: string, description: string){
+    // We want to send a web request to create a list
+    return this.webReqService.post('addWorkspace', {name, description})
+  }
 
   getWorkspaces(){
     // return this.http.get();

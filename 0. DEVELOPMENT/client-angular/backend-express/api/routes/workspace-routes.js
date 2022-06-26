@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const Workspace = require("../models/workspace-model");
 const workspaceController = require("../controllers/workspace-controller");
+// const Workspace = require("../models/workspace-model");
 
-router.get("/", workspaceController.getAllWorkspaces);
-router.post("/", workspaceController.addWorkspace)
+router.get("/getWorkspaces", workspaceController.getAllWorkspaces);
+router.post("/addWorkspace", workspaceController.addWorkspace);
 
 
 // router.post("/", assessmentController.addAssessment);

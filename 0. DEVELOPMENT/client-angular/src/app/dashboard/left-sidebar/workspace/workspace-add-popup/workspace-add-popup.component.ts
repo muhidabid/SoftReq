@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { WorkspaceService } from 'src/app/services/workspace.service';
 
 @Component({
   selector: 'app-workspace-add-popup',
@@ -14,6 +15,7 @@ export class WorkspaceAddPopupComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<WorkspaceAddPopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: null,
+    private workspaceService: WorkspaceService
   ) { }
 
   ngOnInit(): void {
@@ -30,5 +32,12 @@ export class WorkspaceAddPopupComponent implements OnInit {
       projects: []
     };
     this.workspaceCreated.emit(newWorkspace);
+  }
+
+  addWorkspace(){
+    this.workspaceService.addWorkspace(this.enteredWorkspaceName, this.enteredWorkspaceDescription).subscribe((response: any) =>{
+      console.log("added");
+      console.log(response);
+    });
   }
 }

@@ -24,7 +24,7 @@ const connectWithMongoDB = async () => {
     try {
       await mongoose
         .connect(
-          "mongodb+srv://user0:pass1234@softreq-main.beooq.mongodb.net/?retryWrites=true&w=majority",
+          "mongodb+srv://user0:pass1234@softreq-main.beooq.mongodb.net/SoftReq_DB?retryWrites=true&w=majority",
           {
             useNewUrlParser: true,
             useUnifiedTopology: true,

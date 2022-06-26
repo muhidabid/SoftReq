@@ -3,40 +3,37 @@ const Workspace = require("../models/workspace-model");
 const getAllWorkspaces = async (req, res, next) => {
   let workspaces;
   try {
-    workpspaces = await Workspace.find();
+    workpspaces = await Workspace.find({});
   } catch (err) {
-    console.log(err);
+    console.log(err + 'aosd');
   }
   if (!assessments) {
     return res.status(404).json({ message: "No Workspace to display" });
   }
-  return res.status(200).json({ Workspaces });
-};
-
-const newWorkspace = async() => {
-
+  return res.status(200).json({ workspaces });
 };
 
 ////////////////////////////////////////////////////////////////////
 
 const addWorkspace = async (req, res, next) => {
-  const { name, description, projects, createdOn } = req.body;
+  // const { name, description, projects, createdOn } = req.body;
+  const { name, description } = req.body;
   let workspace;
   try {
     workspace = new Workspace({
       name,
       description,
-      projects,
-      createdOn
+      // projects,
+      // createdOn
     });
     await workspace.save();
   } catch (err) {
     console.log("Error adding the workspace" + JSON.stringify(err, undefined, 2));
   }
-  if (!assessment) {
+  if (!workspace) {
     return res.status(404).json({ message: "Unable to Add workspace" });
   }
-  return res.status(200).json({ assessment });
+  return res.status(200).json({ workspace });
 };
 
 // const getAssessmentbyID = async (req, res, next) => {
@@ -86,3 +83,4 @@ const addWorkspace = async (req, res, next) => {
 // exports.getAssessmentbyID = getAssessmentbyID;
 // exports.addAssessment = addAssessment;
 exports.getAllWorkspaces = getAllWorkspaces;
+exports.addWorkspace = addWorkspace;

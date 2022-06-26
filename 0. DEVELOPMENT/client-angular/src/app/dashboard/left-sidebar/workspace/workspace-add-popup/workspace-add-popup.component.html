@@ -1,21 +1,25 @@
 <div class="popupCard">
   <p class="card-heading">Build a workspace!</p>
   <hr>
-  <p class="form-title">Workspace name</p>
-  <form>
+
+  <form novalidate (ngSubmit)="addWorkspace()">
+    <p class="form-title">Workspace name</p>
     <mat-form-field appearance="outline">
-      <input matInput type="text" name="workSpaceName">
+      <input matInput type="text" name="workSpaceName" [(ngModel)]="enteredWorkspaceName">
       <!-- <mat-label>Workspace name</mat-label> -->
       <mat-hint>Client XYZ...</mat-hint>
     </mat-form-field>
-  </form>
+  <!-- </form> -->
+
   <p class="form-title">Workspace description</p>
-  <form>
+  <!-- <form novalidate> -->
     <mat-form-field appearance="outline">
-      <input matInput type="text" name="workSpaceDescription">
+      <input matInput type="text" name="workSpaceDescription" [(ngModel)]="enteredWorkspaceDescription">
       <!-- <mat-label>Workspace description</mat-label> -->
       <mat-hint>This workspace is for Client XYZ's web projects...</mat-hint>
     </mat-form-field>
+
+    <!-- <button mat-stroked-button class="add-workspace-button" (click)="addWorkspace()" type="submit">Create Workspace</button> -->
+    <button mat-stroked-button class="add-workspace-button" type="submit">Create Workspace</button>
   </form>
-  <button mat-stroked-button class="add-workspace-button">Create Workspace</button>
 </div>

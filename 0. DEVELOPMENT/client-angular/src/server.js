@@ -1,103 +1,45 @@
-// 'use strict'
-
-// // require express and bodyParser
-// const  express = require("express");
-// const  bodyParser = require("body-parser");
-
-// // Import DB Connection
-// require("./config/db");
-
-// // Import API route
-// var routes = require('./api/routes/todoRoutes'); //importing route
-// routes(app);
-
-// // create express app
-// const  app = express();
-
-// // define port to run express app
-// const  port = process.env.PORT || 3000;
-
-// // use bodyParser middleware on express app
-// app.use(bodyParser.urlencoded({ extended:true }));
-// app.use(bodyParser.json());
-
-// // Add endpoint
-// app.get('/', (req, res) => {
-// res.send("Hello World");
-// });
-
-// // Listen to server
-// app.listen(port, () => {
-
-// console.log(`Server running at http://localhost:${port}`);
-// });
-
-'use strict'
-
+"use strict";
 
 // require express and bodyParser
-const  express = require("express");
-const  bodyParser = require("body-parser");
-
-const {connectWithMongoDB} = require("../backend-express/config/db.js")
-
-// const workspacemodel = require("../backend-express/api/models/workspace-model.js");
-const workspaceModel = require("../backend-express/api/models/workspace-model.js");
-
-
+const express = require("express");
+const bodyParser = require("body-parser");
+const { connectWithMongoDB } = require("../backend-express/config/db.js");
 
 // create express app
-const  app = express();
+const app = express();
 
 // define port to run express app
-const  port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 // use bodyParser middleware on express app
-app.use(bodyParser.urlencoded({ extended:true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Add endpoint
-app.get('/', (req, res) => {
-
-    workspaceModel.find(function (err, workspaceModels) {
-        if (err) {
-            return res.status(500).json({
-                message: 'Error when getting Workspaec.',
-                error: err
-            });
-        }
-
-        return res.json(workspaceModels);
-    });
+// CORS HEADERS MIDDLEWARE - set CORS headers on our responses [https://enable-cors.org/server_expressjs.html]
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
 });
 
+//------> Connect routes here:
+
+// importing routers
+const workpspaceRoutes = require("../backend-express/api/routes/workspace-routes.js");
+
+// connecting endpoints to routess
+app.use("/", workpspaceRoutes);
+
+// -----------------------------
 
 // Listen to server
-
 connectWithMongoDB().then(() => {
-    app.listen(port, () => {
-        console.log(`Server running at http://localhost: ${port}`);
-    });
+  app.listen(port, () => {
+    console.log(`Server running at http://localhost: ${port}`);
+  });
+});
 
-    const newModel = new workspaceModel({
-        name: 'Test999',
-        description: 'SOmething even longer here'
-    });
-
-    // newModel.save();
-})
-
-
-
-
-
-
-// Import DB Connection
-// require("../backend-express/config/db.js");
-
-// Import API route
-// var routes = require('../backend-express/api/routes/workspace-routes.js'); //importing route
-
-console.log('SOMETHING WORKS HERE');
-
-// routes(app);
+console.log("SOMETHING WORKS HERE");
