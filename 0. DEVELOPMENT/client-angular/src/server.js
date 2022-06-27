@@ -28,10 +28,13 @@ app.use(function (req, res, next) {
 //------> Connect routes here:
 
 // importing routers
-const workpspaceRoutes = require("../backend-express/api/routes/workspace-routes.js");
+const workspaceRoutes = require("../backend-express/api/routes/workspace-routes.js");
+const projectRoutes = require("../backend-express/api/routes/project-routes.js");
 
 // connecting endpoints to routess
-app.use("/", workpspaceRoutes);
+app.use("/", [workspaceRoutes, projectRoutes]);
+// app.use("/", workspaceRoutes);
+// app.use("/", projectRoutes);
 
 // -----------------------------
 

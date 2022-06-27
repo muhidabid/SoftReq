@@ -14,11 +14,11 @@ export class WorkspaceService {
 
   addWorkspace(name: string, description: string){
     // We want to send a web request to create a list
-    return this.webReqService.post('addWorkspace', {name, description})
+    return this.webReqService.post('addWorkspace', {name, description});
   }
 
   getWorkspaces(){
-    // return this.http.get();
+    // return this.webReqService.get('getWorkspaces');
     return [
       {
         name: 'Home workspace',

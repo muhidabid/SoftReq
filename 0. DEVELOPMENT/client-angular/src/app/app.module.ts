@@ -24,6 +24,7 @@ import { EditorComponent } from './project/editor/editor.component';
 import { WorkspaceService } from './services/workspace.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { ProjectAddPopupComponent } from './dashboard/project-add-popup/project-add-popup.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 // <<<<<<< Updated upstream
     ProjectComponent,
     EditorComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    ProjectAddPopupComponent
 // =======
 // >>>>>>> Stashed changes
   ],

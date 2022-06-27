@@ -7,7 +7,7 @@ const workspaceSchema = new Schema(
     description: {type: String},
     // projects: {
     //   type: [Schema.Types.ObjectId],
-    //   ref: 'userstory'
+    //   ref: 'Projects'
     // },
     // createdOn: {
     //   type: Date,

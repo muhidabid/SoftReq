@@ -33,39 +33,10 @@
   /* height: 95%;
   width: 90%; */
   box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
+
+  overflow: hidden;
+
 }
-
-/* .logo{
-  height: 50px;
-  padding-left: 5px;
-  margin: 0 2.37%;
-  height: 100%;
-} */
-
-/* .background {
-  background-color: #E7F0F9;
-} */
-
-/* .menu-links {
-margin-left: auto;
-margin-right: 0;
-}
-
-.menu-links a {
-text-decoration: none;
-color: rgb(0, 0, 0);
-margin-left: 5px;
-margin-right: 5px;
-font-size: smaller;
-padding: 20px;
-padding-left: 10px;
-padding-right: 10px;
-}
-
-.menu-links a:hover {
-background-color: lightblue;
-} */
-
 
 .header{
   /* display: flex;
@@ -119,17 +90,12 @@ background-color: lightblue;
   align-items: center;
 }
 
-/* .logo{
-  height: 35px;
-  padding-left: 5px;
-  margin: 0 2.37%;
-  height: 100%;
-} */
-
 .wrapper2{
   margin: 0 4%;
   display: grid;
   grid-template-columns: 1fr 5fr;
+  overflow: hidden;
+  /* grid-template-rows: 1fr; */
   /* gap: 4em; */
 }
 
@@ -140,10 +106,13 @@ background-color: lightblue;
 .detail-view{
   margin-left: 50px;
   margin-top: 20px;
+  overflow-y: auto;
+  background-color: aquamarine;
 }
 
 .workspace-detail{
   margin-bottom: 50px;
+  display: grid;
 }
 
 .workspace-heading{
@@ -151,7 +120,7 @@ background-color: lightblue;
   font-weight: 575;
 }
 
-.project-under-workspace-heading{
+.project-under-workspace-heading, .project-under-workspace-add-button{
   background-color: darkgrey;
   height: 40px;
   padding: 5px;
@@ -159,4 +128,41 @@ background-color: lightblue;
   font-size: medium;
   font-weight: 500;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .project-under-workspace-add-button{
+  align-items: center;
+  justify-content: center;
+} */
+
+.left-bar{
+  overflow-y: auto;
+}
+
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #A9A9A9;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
 }

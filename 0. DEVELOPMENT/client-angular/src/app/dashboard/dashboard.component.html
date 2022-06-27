@@ -2,31 +2,23 @@
   <div class="bgBox"></div>
   <div class="wrapper1">
 
-    <!-- <mat-toolbar color="primary">
-      <img class="logo" src = "assets/images/softreq-logo/softreq-logo.svg" alt="SoftReq Logo"/>
-      <span>SoftReq</span>
-      <div class="menu-links">
-          <a routerLink="/home">Home</a>
-          <a routerLink="/dashBoard">Dashboard</a>
-          <a routerLink="/editor">Editor</a>
-          <a routerLink="/project">Project</a>
-          <a routerLink="/loginPage">Account</a>
-      </div>
-    </mat-toolbar> -->
-
     <app-toolbar></app-toolbar>
 
-    <!-- <div class="header">
-      <img class="logo" src = "assets/images/softreq-logo/softreq-logo.svg" alt="SoftReq Logo"/>
-    </div> -->
     <div class="wrapper2">
-      <app-left-sidebar></app-left-sidebar>
+
+      <div class="left-bar">
+        <app-left-sidebar></app-left-sidebar>
+      </div>
+
+
       <div class="detail-view">
-        <!-- Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, suscipit officiis? Assumenda adipisci ex neque! Est deserunt impedit commodi assumenda, aspernatur quos ipsam amet delectus inventore beatae incidunt similique! Facere! -->
         <div class="workspace-detail" *ngFor="let workspace of workspaces">
           <p class="workspace-heading">{{workspace.name}}</p>
           <div class="project-under-workspace-heading" *ngFor="let project of workspace.projects" routerLink="/editor">
             <p>{{project.name}}</p>
+          </div>
+          <div class="project-under-workspace-add-button" (click)="openProjectPopup()">
+            <mat-icon>add</mat-icon>
           </div>
         </div>
       </div>

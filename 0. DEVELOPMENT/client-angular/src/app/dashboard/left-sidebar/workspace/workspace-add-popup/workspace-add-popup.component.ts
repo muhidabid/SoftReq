@@ -10,7 +10,7 @@ import { WorkspaceService } from 'src/app/services/workspace.service';
 export class WorkspaceAddPopupComponent implements OnInit {
   enteredWorkspaceName = "";
   enteredWorkspaceDescription = "";
-  @Output() workspaceCreated = new EventEmitter();
+  // @Output() workspaceCreated = new EventEmitter();
 
   constructor(
     public dialogRef: MatDialogRef<WorkspaceAddPopupComponent>,
@@ -25,14 +25,14 @@ export class WorkspaceAddPopupComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  onCreateWorkspace(){
-    const newWorkspace = {
-      name: this.enteredWorkspaceName,
-      description: this.enteredWorkspaceDescription,
-      projects: []
-    };
-    this.workspaceCreated.emit(newWorkspace);
-  }
+  // onCreateWorkspace(){
+  //   const newWorkspace = {
+  //     name: this.enteredWorkspaceName,
+  //     description: this.enteredWorkspaceDescription,
+  //     projects: []
+  //   };
+  //   this.workspaceCreated.emit(newWorkspace);
+  // }
 
   addWorkspace(){
     this.workspaceService.addWorkspace(this.enteredWorkspaceName, this.enteredWorkspaceDescription).subscribe((response: any) =>{
