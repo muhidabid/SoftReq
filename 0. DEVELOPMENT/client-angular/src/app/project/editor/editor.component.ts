@@ -1,39 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { UserStories } from 'src/app/models/userstories';
+import { UserstoriesService } from 'src/app/services/userstories.service';
 
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.css']
 })
-
-
 export class EditorComponent implements OnInit {
 
-  req:Requirements[] = [];
-  currentDate: Date = new Date();
+  userstories: UserStories[] = [];
 
-  constructor() {
-    this.req = [new Requirements("System should have 2-factor authentication", "22-05-2022")]
-    console.log("constructor called")
-    console.log("date: ", this.currentDate.toDateString)
-  }
+  constructor(private _userstoriesservice: UserstoriesService) {}
 
   ngOnInit(): void {
-    console.log("ngOnIt claled")
+    // fetch data from workspace service
+    this.userstories = this._userstoriesservice.getUserStories();
   }
 
-  AddReq(text:HTMLInputElement, d:HTMLInputElement) {
-    this.req.push(new Requirements(text.value, d.value))
-  }
-
-}
-
-class Requirements{
-  constructor(public text:string, public d:string) {
-
-  }
-
-  print():void{
-    console.log("User Story: " + this.text);
-  }
 }

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -12,7 +11,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
-import {MatSidenavModule} from '@angular/material/sidenav';
 
 import { AppComponent } from './app.component';
 import { LeftSidebarComponent } from './dashboard/left-sidebar/left-sidebar.component';
@@ -23,7 +21,10 @@ import { WorkspaceAddPopupComponent } from './dashboard/left-sidebar/workspace/w
 import { LoginPageComponent } from './login-page/login-page.component';
 import { ProjectComponent } from './project/project.component';
 import { EditorComponent } from './project/editor/editor.component';
-import { HomeComponent } from './home/home.component';
+import { WorkspaceService } from './services/workspace.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { ProjectAddPopupComponent } from './dashboard/project-add-popup/project-add-popup.component';
 
 @NgModule({
   declarations: [
@@ -34,9 +35,13 @@ import { HomeComponent } from './home/home.component';
     WorkspaceExpansionPanelComponent,
     WorkspaceAddPopupComponent,
     LoginPageComponent,
+// <<<<<<< Updated upstream
     ProjectComponent,
     EditorComponent,
-    HomeComponent
+    ToolbarComponent,
+    ProjectAddPopupComponent
+// =======
+// >>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
@@ -50,10 +55,9 @@ import { HomeComponent } from './home/home.component';
     MatInputModule,
     MatDialogModule,
     MatButtonModule,
-    MatCardModule,
-    MatSidenavModule
+    HttpClientModule
   ],
-  providers: [],
+  providers: [WorkspaceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

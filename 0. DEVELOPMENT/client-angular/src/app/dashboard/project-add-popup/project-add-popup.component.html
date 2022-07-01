@@ -1,0 +1,25 @@
+<div class="popupCard">
+  <p class="card-heading">Start a project!</p>
+  <hr>
+
+  <form novalidate (ngSubmit)="addProject()">
+    <p class="form-title">Project name</p>
+    <mat-form-field appearance="outline">
+      <input matInput type="text" name="projectName" [(ngModel)]="enteredProjectName">
+      <!-- <mat-label>project name</mat-label> -->
+      <mat-hint>Client XYZ...</mat-hint>
+    </mat-form-field>
+  <!-- </form> -->
+
+  <p class="form-title">Project description</p>
+  <!-- <form novalidate> -->
+    <mat-form-field appearance="outline">
+      <input matInput type="text" name="projectDescription" [(ngModel)]="enteredProjectDescription">
+      <!-- <mat-label>project description</mat-label> -->
+      <mat-hint>This project is for Client XYZ's web projects...</mat-hint>
+    </mat-form-field>
+
+    <!-- <button mat-stroked-button class="add-project-button" (click)="addproject()" type="submit">Create project</button> -->
+    <button mat-stroked-button class="add-project-button" type="submit">Create project</button>
+  </form>
+</div>

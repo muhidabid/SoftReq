@@ -1,59 +1,27 @@
-
 <div class="wrapper0">
   <div class="bgBox"></div>
   <div class="wrapper1">
-    <div class="header">
-      <img class="logo" src = "assets/images/softreq-logo/softreq-logo.svg" alt="SoftReq Logo"/>
-      <ul>
-        <li><a routerLink="/dashBoard">Home</a></li>
-        <li><a routerLink="/project">Editor</a></li>
-        <li><a routerLink="/loginPage">My Account</a></li>
-      </ul>
-    </div>
+
+    <app-toolbar></app-toolbar>
+
     <div class="wrapper2">
-      <!-- <app-left-sidebar></app-left-sidebar> -->
 
-      <div class="workspace-sidebar">
-        <h3>Workspaces</h3>
-        
+      <div class="left-bar">
+        <app-left-sidebar></app-left-sidebar>
       </div>
 
-      <div class="project-view">
-        <h2>Your Workspaces</h2>
 
-        <br>
-
-        <div class="workspace-1">
-            <h3>Resturaunt App</h3>
-
-            <div class="workspace-block">
-                <h4>FrontEnd</h4>
-            </div>
-
-            <div class="workspace-block">
-              <h4>BackEnd</h4>
+      <div class="detail-view">
+        <div class="workspace-detail" *ngFor="let workspace of workspaces">
+          <p class="workspace-heading">{{workspace.name}}</p>
+          <div class="project-under-workspace-heading" *ngFor="let project of workspace.projects" routerLink="/editor">
+            <p>{{project.name}}</p>
           </div>
-
-        </div>
-
-        <br>
-
-        <div class="workspace-1">
-          <h3>Client TopSecret</h3>
-          
-          <div class="workspace-block">
-              <h4>Web App X</h4>
+          <div class="project-under-workspace-add-button" (click)="openProjectPopup()">
+            <mat-icon>add</mat-icon>
           </div>
-
-          <div class="workspace-block">
-            <h4>Mobile App X</h4>
         </div>
-
-        <br>
-
       </div>
-      </div>
-
     </div>
   </div>
 </div>

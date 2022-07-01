@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Workspace } from '../../../../workspace'
+import { Workspace } from '../../../../models/workspace'
+import { WorkspaceService } from 'src/app/services/workspace.service';
 
 @Component({
   selector: 'app-workspace-expansion-panel',
@@ -8,16 +9,14 @@ import { Workspace } from '../../../../workspace'
 })
 // export class WorkspaceExpansionPanelComponent implements OnInit {
 export class WorkspaceExpansionPanelComponent {
-  workspaces: Workspace[] = [
-    {
-      name: 'Home workspace',
-      projects: []
-    },
-  ];
+  // array holding workspace object
+  workspaces: Workspace[] = [];
 
-  constructor() { }
+  constructor(private _workspaceService: WorkspaceService) { }
 
   ngOnInit(): void {
+    // fetch data from workspace service
+    this.workspaces = this._workspaceService.getWorkspaces();
   }
 
 }

@@ -18,10 +18,11 @@
 }
 
 .project-in-expansion-panel{
-  background-color: brown;
+  background-color: darkgrey;
   /* padding: 5px; */
   margin: 10px;
   /* width: 100%; */
+  cursor: pointer;
 }
 
 /* ng-deep .workspace-expansion-panel > .mat-expansion-indicator:after {

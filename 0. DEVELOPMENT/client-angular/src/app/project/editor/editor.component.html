@@ -1,4 +1,13 @@
-<mat-toolbar color="primary">
+<!-- <div class="wrapper0">
+
+    <div class="header">
+      <img class="logo" src = "assets/images/softreq-logo/softreq-logo.svg" alt="SoftReq Logo"/>
+    </div>
+
+    <h1>User Story Requirements Editor</h1>
+</div> -->
+
+<!-- <mat-toolbar color="primary">
   <img class="logo" src = "assets/images/softreq-logo/softreq-logo.svg" alt="SoftReq Logo"/>
   <span>SoftReq</span>
   <div class="menu-links">
@@ -8,18 +17,19 @@
       <a routerLink="/project">Project</a>
       <a routerLink="/loginPage">Account</a>
   </div>
-</mat-toolbar>
+</mat-toolbar> -->
 
+<app-toolbar></app-toolbar>
 
 <div class="main">
   <h1>Editor</h1>
   <p>Some random lines here</p>
-  
+
   <div class="main-wrapper">
 
       <div class="left-sidebar">
           <h4>Add a User Story</h4>
-          
+
           <label for="roles">As a </label>
 
           <select name="roles" id="roles" #roles>
@@ -36,9 +46,9 @@
           <br>
 
           <button mat-flat-button color="primary">Add User Story</button>
-          
+
       </div>
-  
+
       <!-- <div class="main-content"> -->
 
       <div class="project-view">
@@ -46,19 +56,19 @@
           <br>
           <div class="userstories">
               <h3>User Stories</h3>
+
+              <div class="workspace-detail" *ngFor="let us of userstories">
+                <p class="workspace-heading">{{us.role}}</p>
+                <p class="workspace-heading">{{us.req}}</p>
+              </div>
+
           </div>
 
-          <div class="tasks">
-              <h3>Tasks</h3>
-          </div>
-
-          <br>
       </div>
-  
+
       <!-- </div> -->
   </div>
 
 
 </div>
-
 

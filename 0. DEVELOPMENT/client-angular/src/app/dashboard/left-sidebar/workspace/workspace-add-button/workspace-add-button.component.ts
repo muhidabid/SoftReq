@@ -17,8 +17,8 @@ export class WorkspaceAddButtonComponent implements OnInit {
 
   openPopup(): void{
     const addPopupRef = this.addWorkspacePopup.open(WorkspaceAddPopupComponent, {
-      height: '50%',
-      width: '50%',
+      height: '70%',
+      width: '36%',
     });
 
     addPopupRef.afterClosed().subscribe(result => {

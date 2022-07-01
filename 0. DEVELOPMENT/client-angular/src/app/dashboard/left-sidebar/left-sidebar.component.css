@@ -1,12 +1,13 @@
 .left-sidebar{
   background-color: #f7fafd;
   color: #D6DAE1;
-  width: 100%;
+  width: 85%;
   height: 100%;
   padding: 10px;
   /* display: grid; */
 
   grid-template-columns: 1fr;
+  /* overflow: hidden; */
   /* align-content:flex-start; */
 }
 

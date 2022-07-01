@@ -33,6 +33,36 @@
   /* height: 95%;
   width: 90%; */
   box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
+
+  overflow: hidden;
+
+}
+
+.header{
+  /* display: flex;
+  flex-direction: row; */
+  background-color: lightblue;
+  padding: 30px;
+}
+
+.header ul {
+  list-style-type: none;
+  background-color: aqua;
+}
+
+.header li {
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  display: inline;
+}
+
+.header li a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .header{
@@ -60,51 +90,79 @@
   align-items: center;
 }
 
-.logo{
-  height: 35px;
-  /* padding-left: 5px; */
-  margin: 0 2.37%;
-  /* height: 100%; */
-}
-
 .wrapper2{
   margin: 0 4%;
   display: grid;
   grid-template-columns: 1fr 5fr;
+  overflow: hidden;
+  /* grid-template-rows: 1fr; */
   /* gap: 4em; */
 }
 
-.project-view{
-  padding: 20px;
-  font-size: large;
-  color: beige;
-}
-
-h3 {
-  font-size: small;
-}
-
-h4 {
-  color: black;
-  font-size: small;
-}
-
-.wrapper2 > div{
+/* .wrapper2 > div{
   background-color: brown;
+} */
+
+.detail-view{
+  margin-left: 50px;
+  margin-top: 20px;
+  overflow-y: auto;
+  background-color: aquamarine;
 }
 
-.workspace-1 {
-  background-color: brown;
+.workspace-detail{
+  margin-bottom: 50px;
+  display: grid;
+}
+
+.workspace-heading{
+  font-size: x-large;
+  font-weight: 575;
+}
+
+.project-under-workspace-heading, .project-under-workspace-add-button{
+  background-color: darkgrey;
+  height: 40px;
+  padding: 5px;
+  margin: 10px;
+  font-size: medium;
+  font-weight: 500;
+  cursor: pointer;
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
-.workspace-block {
-  background-color: lightgoldenrodyellow;
-  width: 100px;
-  height: 50px;
-  padding: 20px;
+/* .project-under-workspace-add-button{
+  align-items: center;
+  justify-content: center;
+} */
+
+.left-bar{
+  overflow-y: auto;
+}
+
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
   border-radius: 10px;
-  margin-top: 30px;
-  margin-right: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #A9A9A9;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
 }
