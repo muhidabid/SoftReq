@@ -1,22 +1,26 @@
 const Workspace = require("../models/workspace-model");
 
-const getAllWorkspaces = async (req, res, next) => {
+const getWorkspaces = async  (req, res, next) => {
   let workspaces;
   try {
-    workpspaces = await Workspace.find({});
+    await Workspace.find({}, function(err, result){
+      if (err) {
+        res.status(400).send("Error fetching workspace list");
+      } else {
+        res.json(result);
+        console.log('Found:');
+        console.log(result);
+      }
+    });
   } catch (err) {
-    console.log(err + 'aosd');
+    console.log(err + 'Error');
   }
-  if (!workpspaces) {
-    return res.status(404).json({ message: "No Workspace to display" });
-  }
-  return res.status(200).json({ workspaces });
 };
 
 ////////////////////////////////////////////////////////////////////
 
 const addWorkspace = async (req, res, next) => {
-  // const { name, description, projects, createdOn } = req.body;
+  // create new workspace object from request body
   const { name, description } = req.body;
   let workspace;
   try {
@@ -26,16 +30,44 @@ const addWorkspace = async (req, res, next) => {
       // projects,
       // createdOn
     });
+    // save to specified collection of DB specified in workspacemodel
     await workspace.save();
   } catch (err) {
+    // catch and display error
     console.log("Error adding the workspace" + JSON.stringify(err, undefined, 2));
   }
   if (!workspace) {
+    // if workspace not created then
     return res.status(404).json({ message: "Unable to Add workspace" });
   }
+  // workspace created!
   console.log("Workspace added successfully!" + JSON.stringify(workspace));
   return res.status(200).json({ workspace });
 };
 
-exports.getAllWorkspaces = getAllWorkspaces;
+////////////////////////////////////////////////////////////////////////////////
+const addProject = async (req, res, next) => {
+  // get project ID from request body
+  const { p_id } = req.body;
+  let workspace;
+  try {
+    workspace = new Workspace({
+    });
+    // save to specified collection of DB specified in workspacemodel
+    await workspace.save();
+  } catch (err) {
+    // catch and display error
+    console.log("Error adding the workspace" + JSON.stringify(err, undefined, 2));
+  }
+  if (!workspace) {
+    // if workspace not created then
+    return res.status(404).json({ message: "Unable to Add workspace" });
+  }
+  // workspace created!
+  console.log("Workspace added successfully!" + JSON.stringify(workspace));
+  return res.status(200).json({ workspace });
+}
+
+exports.getWorkspaces = getWorkspaces;
 exports.addWorkspace = addWorkspace;
+exports.addProject = addProject;

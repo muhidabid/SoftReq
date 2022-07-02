@@ -14,9 +14,9 @@
       <div class="detail-view">
         <div class="workspace-detail" *ngFor="let workspace of workspaces">
           <p class="workspace-heading">{{workspace.name}}</p>
-          <div class="project-under-workspace-heading" *ngFor="let project of workspace.projects" routerLink="/editor">
+          <!-- <div class="project-under-workspace-heading" *ngFor="let project of workspace.projects" routerLink="/editor">
             <p>{{project.name}}</p>
-          </div>
+          </div> -->
           <div class="project-under-workspace-add-button" (click)="openProjectPopup()">
             <mat-icon>add</mat-icon>
           </div>

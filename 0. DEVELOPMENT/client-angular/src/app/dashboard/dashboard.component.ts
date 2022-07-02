@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     // fetch data from workspace service
-    this.workspaces = this._workspaceService.getWorkspaces();
+    // this.workspaces = this._workspaceService.getWorkspaces<Workspace[]>();
   }
 
   openProjectPopup(): void{

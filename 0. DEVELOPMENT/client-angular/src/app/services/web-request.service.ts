@@ -5,6 +5,7 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Workspace } from '../models/workspace';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,8 @@ export class WebRequestService {
     this.ROOT_URL = 'http://localhost:3000';
   }
 
-  get(uri: string) {
-    return this.http.get(`${this.ROOT_URL}/${uri}`);
+  get<T>(uri: string) {
+    return this.http.get<T>(`${this.ROOT_URL}/${uri}`);
   }
 
   post(uri: string, payload: Object) {

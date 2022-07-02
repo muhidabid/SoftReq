@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Workspace } from '../../../../models/workspace'
 import { WorkspaceService } from 'src/app/services/workspace.service';
+import { HttpResponse } from '@angular/common/http';
+import { ObjectUnsubscribedErrorCtor } from 'rxjs/internal/util/ObjectUnsubscribedError';
 
 @Component({
   selector: 'app-workspace-expansion-panel',
@@ -16,7 +18,9 @@ export class WorkspaceExpansionPanelComponent {
 
   ngOnInit(): void {
     // fetch data from workspace service
-    this.workspaces = this._workspaceService.getWorkspaces();
+    this._workspaceService.getWorkspaces().subscribe((response:Workspace[]) => {
+      this.workspaces = response
+    });
   }
 
 }
