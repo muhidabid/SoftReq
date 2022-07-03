@@ -3,13 +3,13 @@ const Schema = mongoose.Schema;
 
 const workspaceSchema = new Schema(
   {
-    _id: {type: String},
-    name: {type: String},
-    description: {type: String},
-    // projects: {
-    //   type: [Schema.Types.ObjectId],
-    //   ref: 'Projects'
-    // },
+    _id: {type: Schema.Types.ObjectId},
+    name: {type:String},
+    description: {type:String},
+    projects: [{ type: Schema.Types.ObjectId, ref:'Projects'}]
+      // name: {type:String},
+      // description: {type:String}
+    // ]//,
     // createdOn: {
     //   type: Date,
     //   default: Date.now()

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { WebRequestService } from './web-request.service';
 import { Workspace } from '../models/workspace';
+import { Project } from '../models/project';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +9,15 @@ import { Workspace } from '../models/workspace';
 export class WorkspaceService {
 
   // readonly ENDPOINT;
+  workspaces: Workspace[] = [];
 
   constructor(private webReqService: WebRequestService) {
     // this.ENDPOINT = "workspaces";
   } // HttpClient is a "dependency" of WorkspaceService
+
+  // initialize(){
+  //   return this.webReqService.get<Workspace[]>('getWorkspaces');
+  // }
 
   addProject(p_id: string){
     return this.webReqService.post('addProject', {p_id});
@@ -24,6 +30,15 @@ export class WorkspaceService {
 
   getWorkspaces(){
     return this.webReqService.get<Workspace[]>('getWorkspaces');
+    // // if (this.workspaces.length === 0){
+    //   console.log('Initializing workspace array...');
+    //   this.initialize().subscribe((response:Workspace[]) => {
+    //       this.workspaces = response;
+    //   });
+    // // }
+    // console.log('Returning workspaces...');
+    // return this.workspaces;
+
     // return [
     //   {
     //     name: 'Home workspace',
@@ -42,4 +57,6 @@ export class WorkspaceService {
     //   }
     // ];
   }
+
+
 }

@@ -3,9 +3,10 @@
     <mat-expansion-panel-header>
       {{workspace.name}}
     </mat-expansion-panel-header>
-    <!-- <div class="project-in-expansion-panel" *ngFor="let project of workspace.projects" routerLink="/editor">
-      <p>{{project.name}}</p>
-    </div> -->
+    <div class="project-in-expansion-panel" *ngFor="let p of workspace.projects" routerLink="/editor">
+      <p>{{p.project?.name}}</p>
+      <!-- <p>{{(p.project | json)}}</p> -->
+    </div>
   </mat-expansion-panel>
 </mat-accordion>
 <p class="info-text mat-body-1" *ngIf="workspaces.length <= 0">No workspace added yet</p>
