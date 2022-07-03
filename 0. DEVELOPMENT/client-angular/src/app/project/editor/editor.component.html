@@ -30,22 +30,36 @@
       <div class="left-sidebar">
           <h4>Add a User Story</h4>
 
-          <label for="roles">As a </label>
+          <!-- <form novalidate (ngSubmit)="addUserStory()"> -->
+            <!-- <p class="form-title">Role</p>
 
-          <select name="roles" id="roles" #roles>
-            <option value="Admin" #admin>Admin</option>
-            <option value="Customer" #customer>Customer</option>
-            <option value="">Mercedes</option>
-            <option value="audi">Audi</option>
-          </select>
+            <label for="roles">As a </label>
+
+            <select name="roles" id="roles" [(ngModel)]="enteredRole">
+              <option value="Admin" #admin>Admin</option>
+              <option value="Employee" #customer>Employee</option>
+              <option value="Customer">Customer</option>
+              <option value="Manager">Manager</option>
+            </select> -->
+        
+            <!-- <p class="form-title">User Story Requirement</p>
+            <mat-form-field appearance="outline">
+              <textarea spellcheck="true" rows="10" name="userstoryReq" [(ngModel)]="enteredReq">As a </textarea>
+            </mat-form-field>
+        
+            <br>
+            <button mat-stroked-button class="add-workspace-button" type="submit">Add User Story</button>
+          </form> -->
+
+          
 
           <br>
 
-          <textarea spellcheck="true" rows="10">As a #roles</textarea>
+          <textarea spellcheck="true" rows="10" name="userstoryReq" [(ngModel)]="enteredReq" #req></textarea>
 
           <br>
 
-          <button mat-flat-button color="primary">Add User Story</button>
+          <button mat-flat-button color="primary" (click)="addUserStoryToPage(req)">Add User Story</button>
 
       </div>
 
@@ -55,12 +69,11 @@
           <h2>User Stories</h2>
           <br>
           <div class="userstories">
-              <h3>User Stories</h3>
 
               <div class="workspace-detail" *ngFor="let us of userstories">
-                <p class="workspace-heading">{{us.role}}</p>
                 <p class="workspace-heading">{{us.req}}</p>
               </div>
+
 
           </div>
 
@@ -71,4 +84,3 @@
 
 
 </div>
-

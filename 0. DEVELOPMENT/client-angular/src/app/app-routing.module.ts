@@ -6,15 +6,13 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjectComponent } from './project/project.component';
 import { EditorComponent } from './project/editor/editor.component';
-import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: "routeToPopup", component: WorkspaceAddPopupComponent},
   { path: "loginPage", component: LoginPageComponent},
   { path: "dashBoard", component: DashboardComponent},
   { path: "project", component: ProjectComponent},
-  { path: "editor", component: EditorComponent},
-  { path: "home", component: HomeComponent}
+  { path: "editor", component: EditorComponent}
 ];
 
 @NgModule({

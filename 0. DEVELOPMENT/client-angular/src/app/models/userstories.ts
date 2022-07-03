@@ -2,5 +2,4 @@
 
 export interface UserStories {
   req: string;
-  role: string;
 }
