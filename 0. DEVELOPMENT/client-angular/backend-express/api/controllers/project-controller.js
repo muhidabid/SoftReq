@@ -1,5 +1,8 @@
 const Project = require("../models/project-model");
 var ObjectId = require('mongoose').Types.ObjectId;
+var mongoose = require('mongoose');
+// const { addProjectRefToWorkspace } = require("./workspace-controller")
+var workspaceController = require("./workspace-controller");
 
 const getAllProjects = async (req, res, next) => {
   let projects;
@@ -17,21 +20,36 @@ const getAllProjects = async (req, res, next) => {
 ////////////////////////////////////////////////////////////////////
 
 const addProject = async (req, res, next) => {
-  const { name, description } = req.body;
+  const { WID, name, description } = req.body;
   let project;
+  // var _WID = mongoose.Types.ObjectId(WID);
+  var _WID = mongoose.Types.ObjectId(WID);
+  var _id =  new mongoose.Types.ObjectId();
   try {
     project = new Project({
+      _id,
+      _WID,
       name,
       description,
     });
+    console.log('Displaying project: '+project);
+    // await project.save((err, p) => {
+    //   res.json(p._id);
+    // });
     await project.save();
+
+    // add reference to workspace
+    // workspaceController.addProjectRefToWorkspace(_WID, _id);
+    // this.workspaceService.addProject(this.data._WID, response._id).subscribe((response: any)=>{
+    //   console.log(response);
+    // });
+
   } catch (err) {
-    console.log(
-      "Error adding the project" + JSON.stringify(err, undefined, 2)
-    );
+    console.log("Error adding the project" + JSON.stringify(err, undefined, 2));
+    return "Error adding the project" + JSON.stringify(err, undefined, 2);
   }
   if (!project) {
-    return res.status(404).json({ message: "Unable to Add workspace" });
+    return res.status(404).json({ message: "Unable to Add prroject" });
   }
   console.log("Project added successfully!" + JSON.stringify(project));
   return res.status(200).json({ project });

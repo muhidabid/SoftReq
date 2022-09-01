@@ -5,7 +5,7 @@ const workspaceController = require("../controllers/workspace-controller");
 
 router.get("/getWorkspaces", workspaceController.getWorkspaces);
 router.post("/addWorkspace", workspaceController.addWorkspace);
-router.post("/addProject", workspaceController.addProject);
+router.post("/addProjectRefToWorkspace", workspaceController.addProjectRefToWorkspace);
 
 // router.post("/", assessmentController.addAssessment);
 // router.get("/:id", assessmentController.getAssessmentbyID);

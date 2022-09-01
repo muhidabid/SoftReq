@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { WebRequestService } from './web-request.service';
 import { Workspace } from '../models/workspace';
 import { Project } from '../models/project';
+import { Observable, shareReplay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,8 @@ export class WorkspaceService {
   //   return this.webReqService.get<Workspace[]>('getWorkspaces');
   // }
 
-  addProject(p_id: string){
-    return this.webReqService.post('addProject', {p_id});
+  addProject(w_id: string, p_id: string){
+    return this.webReqService.post('addProjectRefToWorkspace', {w_id, p_id});
   }
 
   addWorkspace(name: string, description: string){
@@ -29,7 +30,7 @@ export class WorkspaceService {
   }
 
   getWorkspaces(){
-    return this.webReqService.get<Workspace[]>('getWorkspaces');
+    return this.webReqService.get<Workspace[]>('getWorkspaces').pipe(shareReplay(1));
     // // if (this.workspaces.length === 0){
     //   console.log('Initializing workspace array...');
     //   this.initialize().subscribe((response:Workspace[]) => {

@@ -9,9 +9,9 @@ export class ProjectService {
 
   constructor(private webReqService: WebRequestService) {}
 
-  addProject(name: string, description: string){
+  addProject(_WID:string, name: string, description: string){
     // We want to send a web request to create a list
-    return this.webReqService.post('addProject', {name, description});
+    return this.webReqService.post('addProject', {_WID, name, description});
   }
 
   getProjectById(id: string){

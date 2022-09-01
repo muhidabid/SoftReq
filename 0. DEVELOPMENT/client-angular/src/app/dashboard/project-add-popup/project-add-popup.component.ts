@@ -15,7 +15,7 @@ export class ProjectAddPopupComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ProjectAddPopupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: null,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private projectService: ProjectService,
     private workspaceService: WorkspaceService
   ) { }
@@ -28,11 +28,14 @@ export class ProjectAddPopupComponent implements OnInit {
   }
 
   addProject(){
-    this.projectService.addProject(this.enteredProjectName, this.enteredProjectDescription).subscribe((response: any) =>{
+    console.log('--> addProject called in project-add-popup.component.ts');
+    console.log("_WID: ", this.data._WID);
+    this.projectService.addProject(this.data._WID, this.enteredProjectName, this.enteredProjectDescription).subscribe((response: any) =>{
       console.log("added");
       console.log(response);
 
-      this.workspaceService.addProject(response._id).subscribe((response: any)=>{
+      // add project id into workspace
+      this.workspaceService.addProject(this.data._WID, response._id).subscribe((response: any)=>{
         console.log(response);
       });
     });
