@@ -6,13 +6,19 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjectComponent } from './project/project.component';
 import { EditorComponent } from './project/editor/editor.component';
+import { BoardComponent } from './project/board/board.component';
+import { CardComponent } from './project/card/card.component';
+import { ListComponent } from './project/list/list.component';
 
 const routes: Routes = [
   { path: "routeToPopup", component: WorkspaceAddPopupComponent},
   { path: "loginPage", component: LoginPageComponent},
   { path: "dashBoard", component: DashboardComponent},
   { path: "project", component: ProjectComponent},
-  { path: "editor", component: EditorComponent}
+  { path: "editor", component: EditorComponent},
+  { path: "board", component: BoardComponent},
+  { path: "card", component: CardComponent},
+  { path: "list", component: ListComponent}
 ];
 
 @NgModule({

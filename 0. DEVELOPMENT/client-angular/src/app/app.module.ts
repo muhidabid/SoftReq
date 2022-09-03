@@ -11,6 +11,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
+import {MatChipsModule} from '@angular/material/chips';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppComponent } from './app.component';
 import { LeftSidebarComponent } from './dashboard/left-sidebar/left-sidebar.component';
@@ -25,6 +28,9 @@ import { WorkspaceService } from './services/workspace.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ProjectAddPopupComponent } from './dashboard/project-add-popup/project-add-popup.component';
+import { BoardComponent } from './project/board/board.component';
+import { ListComponent } from './project/list/list.component';
+import { CardComponent } from './project/card/card.component';
 
 
 @NgModule({
@@ -40,7 +46,10 @@ import { ProjectAddPopupComponent } from './dashboard/project-add-popup/project-
     ProjectComponent,
     EditorComponent,
     ToolbarComponent,
-    ProjectAddPopupComponent
+    ProjectAddPopupComponent,
+    BoardComponent,
+    ListComponent,
+    CardComponent
 // =======
 // >>>>>>> Stashed changes
   ],
@@ -56,7 +65,11 @@ import { ProjectAddPopupComponent } from './dashboard/project-add-popup/project-
     MatInputModule,
     MatDialogModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatListModule,
+    MatCardModule,
+    MatChipsModule,
+    DragDropModule
   ],
   providers: [WorkspaceService],
   bootstrap: [AppComponent]
