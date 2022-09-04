@@ -9,6 +9,8 @@ import { EditorComponent } from './project/editor/editor.component';
 import { BoardComponent } from './project/board/board.component';
 import { CardComponent } from './project/card/card.component';
 import { ListComponent } from './project/list/list.component';
+import { ListitemsComponent } from './project/editor/listitems/listitems.component';
+import { BoarditemsComponent } from './project/editor/boarditems/boarditems.component';
 
 const routes: Routes = [
   { path: "routeToPopup", component: WorkspaceAddPopupComponent},
@@ -18,7 +20,8 @@ const routes: Routes = [
   { path: "editor", component: EditorComponent},
   { path: "board", component: BoardComponent},
   { path: "card", component: CardComponent},
-  { path: "list", component: ListComponent}
+  { path: "list", component: ListComponent},
+  { path: "listitems", component: ListitemsComponent}
 ];
 
 @NgModule({
@@ -26,4 +29,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [WorkspaceAddPopupComponent, LoginPageComponent, DashboardComponent]
+export const routingComponents = [WorkspaceAddPopupComponent, LoginPageComponent, DashboardComponent, ListitemsComponent]

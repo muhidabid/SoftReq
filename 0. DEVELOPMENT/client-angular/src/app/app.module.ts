@@ -31,6 +31,8 @@ import { ProjectAddPopupComponent } from './dashboard/project-add-popup/project-
 import { BoardComponent } from './project/board/board.component';
 import { ListComponent } from './project/list/list.component';
 import { CardComponent } from './project/card/card.component';
+import { ListitemsComponent } from './project/editor/listitems/listitems.component';
+import { BoarditemsComponent } from './project/editor/boarditems/boarditems.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { CardComponent } from './project/card/card.component';
     ProjectAddPopupComponent,
     BoardComponent,
     ListComponent,
-    CardComponent
+    CardComponent,
+    ListitemsComponent,
+    BoarditemsComponent
 // =======
 // >>>>>>> Stashed changes
   ],

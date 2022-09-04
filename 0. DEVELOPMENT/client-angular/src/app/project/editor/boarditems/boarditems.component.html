@@ -1,0 +1,5 @@
+<p>boarditems works!</p>
+<button (click)="addList()" mat-raised-button color="primary">Add List</button>
+<div class="list-container" cdkDropListGroup>
+    <app-listitems *ngFor="let list of lists"></app-listitems>
+</div>
