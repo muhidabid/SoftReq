@@ -18,6 +18,6 @@ export class BoarditemsComponent implements OnInit {
   addList() {
     var newList = new ListitemsComponent();
     this.lists.push(newList);
+    
   }
-
 }

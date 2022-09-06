@@ -1,4 +1,4 @@
-<p>listitems works!</p>
+
 <!-- <div cdkDropList [cdkDropListData]="items" (cdkDropListDropped)="drop($event)">
     <div *ngFor="let item of items" cdkDrag>{{item}}</div>
 </div>
@@ -7,6 +7,7 @@
 </form> -->
 
 <div class="container">
+
     <div class="list" cdkDropList [cdkDropListData]="items" (cdkDropListDropped)="drop($event)">
         <mat-card class="list-item" *ngFor="let item of items" cdkDrag>
             <mat-card-content>

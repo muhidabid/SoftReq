@@ -22,13 +22,10 @@
 <app-toolbar></app-toolbar>
 
 <div class="main">
-  <h1>Editor</h1>
-  <p>Some random lines here</p>
+  <h1>User Stories</h1>
 
   <div class="main-wrapper">
 
-      <div class="left-sidebar">
-          <h4>Add a User Story</h4>
 
           <!-- <form novalidate (ngSubmit)="addUserStory()"> -->
             <!-- <p class="form-title">Role</p>
@@ -51,21 +48,21 @@
             <button mat-stroked-button class="add-workspace-button" type="submit">Add User Story</button>
           </form> -->
 
+          <app-boarditems></app-boarditems>
           
 
+
+          <!-- <textarea spellcheck="true" rows="10" name="userstoryReq" [(ngModel)]="enteredReq" #req></textarea>
+
           <br>
 
-          <textarea spellcheck="true" rows="10" name="userstoryReq" [(ngModel)]="enteredReq" #req></textarea>
-
-          <br>
-
-          <button mat-flat-button color="primary" (click)="addUserStoryToPage(req)">Add User Story</button>
+          <button mat-flat-button color="primary" (click)="addUserStoryToPage(req)">Add User Story</button> -->
 
       </div>
 
       <!-- <div class="main-content"> -->
 
-      <div class="project-view">
+      <!-- <div class="project-view">
           <h2>User Stories</h2>
           <br>
           <div class="userstories">
@@ -77,12 +74,7 @@
 
           </div>
 
-      </div>
+      </div> -->
 
       <!-- </div> -->
   </div>
-
-  <app-boarditems></app-boarditems>
-
-
-</div>

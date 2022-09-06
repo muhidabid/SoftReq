@@ -10,6 +10,7 @@ import { NgForm } from '@angular/forms';
 export class ListitemsComponent implements OnInit {
 
   items: string[] = [];
+  title: string[] = [];
 
   constructor() { }
 
@@ -35,5 +36,6 @@ export class ListitemsComponent implements OnInit {
     this.items.push(newItemForm.value.newItem);
     newItemForm.reset();
   }
+
 
 }
