@@ -1,14 +1,24 @@
 import { Injectable } from '@angular/core';
+import { response } from 'express';
+import { catchError, Observable } from 'rxjs';
+import { Workspace } from '../models/workspace';
 import { WebRequestService } from './web-request.service';
+import { map } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+export interface WorkspaceModelServerResponse {
+  workspaces: Workspace[];
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class WorkspaceService {
 
+  attrib: any;
   // readonly ENDPOINT;
 
-  constructor(private webReqService: WebRequestService) {
+  constructor(private http: HttpClient, private webReqService: WebRequestService) {
     // this.ENDPOINT = "workspaces";
   } // HttpClient is a "dependency" of WorkspaceService
 
@@ -17,24 +27,7 @@ export class WorkspaceService {
     return this.webReqService.post('addWorkspace', {name, description});
   }
 
-  getWorkspaces(){
-    // return this.webReqService.get('getWorkspaces');
-    return [
-      {
-        name: 'Home workspace',
-        description: "Xyz 123",
-        projects: [{name:'Welcome Project!'}]
-      },
-      {
-        name: 'Client ABC',
-        description: "Xyz 987 description",
-        projects: [{name:'Mobile app'},{name:'Web app'},{name:'Web app 2'}]
-      },
-      {
-        name: 'XYZ Work',
-        description: 'Some random description here',
-        projects: [{name: 'FrontEnd X'}, {name: 'Backend Y'}]
-      }
-    ];
+  getWorkspaces(): Observable<Workspace[]> {
+    return this.webReqService.get<WorkspaceModelServerResponse>('getWorkspaces').pipe(map(response => response.workspaces));
   }
 }
