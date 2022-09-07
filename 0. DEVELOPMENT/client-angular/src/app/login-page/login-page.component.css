@@ -150,3 +150,11 @@ input:not([type="checkbox"]) {
       border-right: 0;
   }
 }
+
+.logo{
+  height: 100px;
+  /* padding-left: 5px; */
+  margin: 0 2.37%;
+  /* height: 100%; */
+  align-items: center;
+}

@@ -5,6 +5,9 @@ import { Workspace } from '../models/workspace';
 import { ProjectService } from '../services/project.service';
 import { WorkspaceService } from '../services/workspace.service';
 import { ProjectAddPopupComponent } from './project-add-popup/project-add-popup.component';
+import { map, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { ExecOptionsWithStringEncoding } from 'child_process';
 
 @Component({
   selector: 'app-dashboard-grid',
@@ -13,20 +16,30 @@ import { ProjectAddPopupComponent } from './project-add-popup/project-add-popup.
 })
 export class DashboardComponent implements OnInit {
   // array holding workspace object
-  db_workspaces: Workspace[] = [];
-  workspaces: any[] = [];
-  projects: Project[] = [];
+  public workspaces$: Workspace[] = [];
+  // private wap: any;
+  constructor(private http: HttpClient, private _projectService: ProjectService, private _workspaceService: WorkspaceService, private addProjectPopup: MatDialog) {}
 
-  constructor(private addProjectPopup: MatDialog, private projectService: ProjectService, private workspaceService: WorkspaceService) {}
+  ngOnInit() {
+    // fetch data from workspace service
 
-  openProjectPopup(WID:string): void{
-    console.log('--> openProjectPopup called in dashboard.component.ts');
+    this._workspaceService.getWorkspaces().subscribe((response)=>{
+      this.workspaces$ = response;
+      // Object.assign(this.workspaces, response);
+      console.log("Workspaces response (angular): ");
+      console.log(response);
+      // console.log("Workspaces variable (angular): ");
+      // console.log(this.workspaces);
+    });
+    // console.log("Workspaces variable after (angular): ");
+    // console.log(this.workspaces);
+
+  }
+
+  openProjectPopup(): void{
     const addPopupRef = this.addProjectPopup.open(ProjectAddPopupComponent, {
       height: '70%',
       width: '36%',
-      data:{
-        _WID: WID,
-      }
     });
 
     addPopupRef.afterClosed().subscribe(result => {
@@ -34,42 +47,8 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-    // fetch data from workspace service
-    // this.workspaces = this._workspaceService.getWorkspaces<Workspace[]>();
-    // fetch data from workspace service
-    this.workspaceService.getWorkspaces().subscribe((response:Workspace[]) => {
-      this.db_workspaces = response;
-      console.log(this.db_workspaces);
-      console.log(this.db_workspaces[1].projects[0].toString());
+  addProject(): void{
 
-      // make a copy of workspaces from DB
-      console.log('Copying workspaces...');
-      // this.workspaces = this.db_workspaces;
-      this.db_workspaces.forEach(val => this.workspaces.push(Object.assign({}, val)));
-      console.log('Copied');
-
-      // replace their IDs with Project objects (project metadata)
-      for (let i = 0; i < this.db_workspaces.length; i++) {
-        for (let j = 0; j < this.db_workspaces[i].projects.length; j++) {
-          console.log('Loop running...');
-          this.projectService.getProjectById(this.db_workspaces[i].projects[j].toString()).subscribe((response:Project[]) => {
-            this.workspaces[i].projects[j] = response;
-            console.log("Project:::::"+response);
-          });
-        }
-      }
-
-      console.log("---WORKSPACES WITH PROJECTS---");
-      console.log(this.workspaces);
-    });
-  }
   }
 
-
-
-  // addProject(): void{
-
-  // }
-
-// }
+}

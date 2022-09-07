@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 
 const userstoriesSchema = new Schema({
   req: {type: String},
-  role: {type: String},
   createdOn: {
     type: Date,
     default: Date.now()

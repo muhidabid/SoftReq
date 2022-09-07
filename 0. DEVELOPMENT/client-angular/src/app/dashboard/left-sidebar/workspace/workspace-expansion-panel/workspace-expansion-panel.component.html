@@ -1,12 +1,12 @@
-<mat-accordion *ngIf="workspaces.length > 0">
-  <mat-expansion-panel id="workspace-expansion-panel" class="mat-elevation-z0" *ngFor="let workspace of workspaces">
+<mat-accordion>
+  <!-- *ngIf="workspaces.length | async> 0"> -->
+  <mat-expansion-panel id="workspace-expansion-panel" class="mat-elevation-z0" *ngFor="let workspace of workspaces$">
     <mat-expansion-panel-header>
       {{workspace.name}}
     </mat-expansion-panel-header>
-    <div class="project-in-expansion-panel" *ngFor="let p of workspace.projects" routerLink="/editor">
-      <p>{{p.project?.name}}</p>
-      <!-- <p>{{(p.project | json)}}</p> -->
+    <div class="project-in-expansion-panel" *ngFor="let P_ID of workspace.P_IDs" routerLink="/editor">
+      <p>{{P_ID}}</p>
     </div>
   </mat-expansion-panel>
 </mat-accordion>
-<p class="info-text mat-body-1" *ngIf="workspaces.length <= 0">No workspace added yet</p>
+<!-- <p class="info-text mat-body-1" *ngIf="workspaces.length <= 0">No workspace added yet</p> -->
