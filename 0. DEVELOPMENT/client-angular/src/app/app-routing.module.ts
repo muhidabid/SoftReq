@@ -11,6 +11,8 @@ import { CardComponent } from './project/card/card.component';
 import { ListComponent } from './project/list/list.component';
 import { ListitemsComponent } from './project/editor/listitems/listitems.component';
 import { BoarditemsComponent } from './project/editor/boarditems/boarditems.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { ReqEditorComponent } from './req-editor/req-editor.component';
 
 const routes: Routes = [
   { path: "routeToPopup", component: WorkspaceAddPopupComponent},
@@ -21,7 +23,9 @@ const routes: Routes = [
   { path: "board", component: BoardComponent},
   { path: "card", component: CardComponent},
   { path: "list", component: ListComponent},
-  { path: "listitems", component: ListitemsComponent}
+  { path: "listitems", component: ListitemsComponent},
+  { path: "toolbar", component: ToolbarComponent},
+  { path: "reqEditor", component: ReqEditorComponent}
 ];
 
 @NgModule({

@@ -33,6 +33,7 @@ import { ListComponent } from './project/list/list.component';
 import { CardComponent } from './project/card/card.component';
 import { ListitemsComponent } from './project/editor/listitems/listitems.component';
 import { BoarditemsComponent } from './project/editor/boarditems/boarditems.component';
+import { ReqEditorComponent } from './req-editor/req-editor.component';
 
 
 @NgModule({
@@ -44,7 +45,6 @@ import { BoarditemsComponent } from './project/editor/boarditems/boarditems.comp
     WorkspaceExpansionPanelComponent,
     WorkspaceAddPopupComponent,
     LoginPageComponent,
-// <<<<<<< Updated upstream
     ProjectComponent,
     EditorComponent,
     ToolbarComponent,
@@ -53,7 +53,28 @@ import { BoarditemsComponent } from './project/editor/boarditems/boarditems.comp
     ListComponent,
     CardComponent,
     ListitemsComponent,
-    BoarditemsComponent
+    BoarditemsComponent,
+    ReqEditorComponent
+
+//     AppComponent,
+//     LeftSidebarComponent,
+//     DashboardComponent,
+//     WorkspaceAddButtonComponent,
+//     WorkspaceExpansionPanelComponent,
+//     WorkspaceAddPopupComponent,
+//     LoginPageComponent,
+// // <<<<<<< Updated upstream
+//     ProjectComponent,
+//     EditorComponent,
+//     ToolbarComponent,
+//     ProjectAddPopupComponent,
+//     BoardComponent,
+//     ListComponent,
+//     CardComponent,
+//     ListitemsComponent,
+//     BoarditemsComponent,
+//     Project2Component,
+//     Card2Component
 // =======
 // >>>>>>> Stashed changes
   ],
