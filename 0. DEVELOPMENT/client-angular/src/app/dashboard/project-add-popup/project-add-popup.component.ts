@@ -35,9 +35,9 @@ export class ProjectAddPopupComponent implements OnInit {
       console.log(response);
 
       // add project id into workspace
-      this.workspaceService.addProject(this.data._WID, response._id).subscribe((response: any)=>{
-        console.log(response);
-      });
+      // this.workspaceService.addProject(this.data._WID, response._id).subscribe((response: any)=>{
+      //   console.log(response);
+      // });
     });
   }
 }
