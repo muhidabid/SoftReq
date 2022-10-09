@@ -1,0 +1,33 @@
+.black-border {
+    border: 1px solid black;
+}
+
+main {
+    width: 80%;
+    margin: 3rem auto 0px;
+}
+
+/* .toolbar {
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} */
+
+.add-req {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-req {
+    width: 50%;
+    height: 90%;
+}
+
+.search-req input {
+    width: 100%;
+    height: 100%;
+    font-size: 1.3rem;
+}

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -9,10 +10,11 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
-import { FormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatChipsModule} from '@angular/material/chips';
+
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppComponent } from './app.component';
@@ -28,12 +30,15 @@ import { WorkspaceService } from './services/workspace.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ProjectAddPopupComponent } from './dashboard/project-add-popup/project-add-popup.component';
-import { BoardComponent } from './project/board/board.component';
-import { ListComponent } from './project/list/list.component';
-import { CardComponent } from './project/card/card.component';
-import { ListitemsComponent } from './project/editor/listitems/listitems.component';
-import { BoarditemsComponent } from './project/editor/boarditems/boarditems.component';
-import { ReqEditorComponent } from './req-editor/req-editor.component';
+// import { BoardComponent } from './project/board/board.component';
+// import { ListComponent } from './project/list/list.component';
+// import { CardComponent } from './project/card/card.component';
+// import { ListitemsComponent } from './project/editor/listitems/listitems.component';
+// import { BoarditemsComponent } from './project/editor/boarditems/boarditems.component';
+import { ReqEditor2Component } from './req-editor2/req-editor2.component';
+import { TestCompComponent } from './test-comp/test-comp.component';
+import { HeaderModule } from './project/editor/header/header.module';
+import { BoardModule } from './project/editor/board/board.module';
 
 
 @NgModule({
@@ -49,12 +54,13 @@ import { ReqEditorComponent } from './req-editor/req-editor.component';
     EditorComponent,
     ToolbarComponent,
     ProjectAddPopupComponent,
-    BoardComponent,
-    ListComponent,
-    CardComponent,
-    ListitemsComponent,
-    BoarditemsComponent,
-    ReqEditorComponent
+    // BoardComponent,
+    // ListComponent,
+    // CardComponent,
+    // ListitemsComponent,
+    // BoarditemsComponent,
+    ReqEditor2Component,
+    TestCompComponent
 
 //     AppComponent,
 //     LeftSidebarComponent,
@@ -94,7 +100,10 @@ import { ReqEditorComponent } from './req-editor/req-editor.component';
     MatListModule,
     MatCardModule,
     MatChipsModule,
-    DragDropModule
+    DragDropModule,
+    ReactiveFormsModule,
+    HeaderModule,
+    BoardModule
   ],
   providers: [WorkspaceService],
   bootstrap: [AppComponent]

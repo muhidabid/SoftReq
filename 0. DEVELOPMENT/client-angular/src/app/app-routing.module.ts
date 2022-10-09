@@ -6,13 +6,14 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjectComponent } from './project/project.component';
 import { EditorComponent } from './project/editor/editor.component';
-import { BoardComponent } from './project/board/board.component';
-import { CardComponent } from './project/card/card.component';
-import { ListComponent } from './project/list/list.component';
-import { ListitemsComponent } from './project/editor/listitems/listitems.component';
-import { BoarditemsComponent } from './project/editor/boarditems/boarditems.component';
+// import { BoardComponent } from './project/board/board.component';
+// import { CardComponent } from './project/card/card.component';
+// import { ListComponent } from './project/list/list.component';
+// import { ListitemsComponent } from './project/editor/listitems/listitems.component';
+// import { BoarditemsComponent } from './project/editor/boarditems/boarditems.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { ReqEditorComponent } from './req-editor/req-editor.component';
+import { ReqEditor2Component } from './req-editor2/req-editor2.component';
+import { TestCompComponent } from './test-comp/test-comp.component';
 
 const routes: Routes = [
   { path: "routeToPopup", component: WorkspaceAddPopupComponent},
@@ -20,12 +21,13 @@ const routes: Routes = [
   { path: "dashBoard", component: DashboardComponent},
   { path: "project", component: ProjectComponent},
   { path: "editor", component: EditorComponent},
-  { path: "board", component: BoardComponent},
-  { path: "card", component: CardComponent},
-  { path: "list", component: ListComponent},
-  { path: "listitems", component: ListitemsComponent},
+  // { path: "board", component: BoardComponent},
+  // { path: "card", component: CardComponent},
+  // { path: "list", component: ListComponent},
+  // { path: "listitems", component: ListitemsComponent},
   { path: "toolbar", component: ToolbarComponent},
-  { path: "reqEditor", component: ReqEditorComponent}
+  { path: "reqEditor2", component: ReqEditor2Component},
+  { path: "testComp", component: TestCompComponent}
 ];
 
 @NgModule({
@@ -33,4 +35,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [WorkspaceAddPopupComponent, LoginPageComponent, DashboardComponent, ListitemsComponent]
+export const routingComponents = [WorkspaceAddPopupComponent, LoginPageComponent, DashboardComponent]
