@@ -22,6 +22,8 @@ const addWorkspace = async (req, res, next) => {
   const { name, description } = req.body;
   let workspace;
   try {
+    Workspace.init(); // document gets generated (to generate _id)
+
     workspace = new Workspace({
       name,
       description,
@@ -30,14 +32,33 @@ const addWorkspace = async (req, res, next) => {
     });
     await workspace.save();
   } catch (err) {
-    console.log("Error adding the workspace" + JSON.stringify(err, undefined, 2));
-  }
-  if (Object.entries(workspace).length === 0) {
+    console.log("Error adding the workspace");
+    console.log(err);
     return res.status(404).json({ message: "Unable to Add workspace" });
   }
   console.log("Workspace added successfully!" + JSON.stringify(workspace));
   return res.status(200).json({ workspace });
 };
 
+//////////////////////////////////////////////////////////////////////////
+
+const addProjectReference = async (req, res, next) => {
+  const { projectID, workspaceID } = req.body;
+
+  try {
+    Workspace.findByIdAndUpdate(workspaceID,
+      {
+        "$push": {"P_IDs": projectID}
+      }
+    );
+  } catch (err) {
+    console.log("Error adding the project reference to workspace" + JSON.stringify(err, undefined, 2));
+  }
+
+  return res.status(200);
+
+}
+
 exports.getAllWorkspaces = getAllWorkspaces;
 exports.addWorkspace = addWorkspace;
+exports.addProjectReference = addProjectReference;

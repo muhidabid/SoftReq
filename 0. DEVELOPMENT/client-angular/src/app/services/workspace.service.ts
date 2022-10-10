@@ -30,4 +30,9 @@ export class WorkspaceService {
   getWorkspaces(): Observable<Workspace[]> {
     return this.webReqService.get<WorkspaceModelServerResponse>('getWorkspaces').pipe(map(response => response.workspaces));
   }
+
+  // post method
+  addProjectReference(projectID: string, workspaceID: string){
+    return this.webReqService.post('addProjectReference', {projectID, workspaceID});
+  }
 }

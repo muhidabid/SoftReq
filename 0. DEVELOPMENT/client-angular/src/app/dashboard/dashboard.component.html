@@ -16,10 +16,10 @@
         <!-- <div class="workspace-detail" *ngFor="let workspace of workspaces$ | async"> -->
           <div class="workspace-detail" *ngFor="let workspace of workspaces$">
             <p class="workspace-heading">{{workspace.name}}</p>
-            <div class="project-under-workspace-heading" *ngFor="let P_ID of workspace.P_IDs" routerLink="/editor">
+            <div class="project-under-workspace-heading" *ngFor="let P_ID of workspace.projectsRef" routerLink="/editor">
               <p>{{P_ID}}</p>
             </div>
-            <div class="project-under-workspace-add-button" (click)="openProjectPopup()">
+            <div class="project-under-workspace-add-button" (click)="openProjectPopup(workspace.name)">
               <mat-icon>add</mat-icon>
             </div>
           </div>

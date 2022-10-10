@@ -36,4 +36,5 @@ const connectWithMongoDB = async () => {
     }
 };
 
-exports.connectWithMongoDB = connectWithMongoDB;
+// exports.connectWithMongoDB = connectWithMongoDB;
+module.exports = connectWithMongoDB;
