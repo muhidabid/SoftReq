@@ -39,5 +39,6 @@ export class WorkspaceAddPopupComponent implements OnInit {
       console.log("added");
       console.log(response);
     });
+    window.location.reload();
   }
 }

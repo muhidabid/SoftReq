@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Workspace } from '../../../../models/workspace'
 import { WorkspaceService } from 'src/app/services/workspace.service';
+import { stringify } from 'querystring';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-workspace-expansion-panel',
@@ -10,13 +12,15 @@ import { WorkspaceService } from 'src/app/services/workspace.service';
 // export class WorkspaceExpansionPanelComponent implements OnInit {
 export class WorkspaceExpansionPanelComponent {
   // array holding workspace object
-  workspaces: Workspace[] = [];
+  public workspaces$: Workspace[] = [];
 
   constructor(private _workspaceService: WorkspaceService) { }
 
   ngOnInit(): void {
     // fetch data from workspace service
-    this.workspaces = this._workspaceService.getWorkspaces();
+    this._workspaceService.getWorkspaces().subscribe((response)=>{
+      this.workspaces$ = response;
+    });
   }
 
 }
