@@ -1,10 +1,13 @@
 const Workspace = require("../models/workspace-model");
 
 const getAllWorkspaces = async (req, res, next) => {
+  console.log("-getAllWorkspaces controller endpoint called-");
   let workspaces;
   try {
+    console.log("Inside try");
     workspaces = await Workspace.find({});
-    console.log('Workspaces found (express):'+workspaces);
+    console.log('Workspaces found (express):');
+    console.log(workspaces);
 
   } catch (err) {
     console.log(err + 'Workspaces not found');
