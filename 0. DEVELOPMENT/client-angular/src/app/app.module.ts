@@ -35,7 +35,7 @@ import { ProjectAddPopupComponent } from './dashboard/project-add-popup/project-
 // import { CardComponent } from './project/card/card.component';
 // import { ListitemsComponent } from './project/editor/listitems/listitems.component';
 // import { BoarditemsComponent } from './project/editor/boarditems/boarditems.component';
-import { ReqEditor2Component } from './req-editor2/req-editor2.component';
+// import { ReqEditor2Component } from './req-editor2/req-editor2.component';
 import { TestCompComponent } from './test-comp/test-comp.component';
 import { HeaderModule } from './project/editor/header/header.module';
 import { BoardModule } from './project/editor/board/board.module';
@@ -59,7 +59,7 @@ import { BoardModule } from './project/editor/board/board.module';
     // CardComponent,
     // ListitemsComponent,
     // BoarditemsComponent,
-    ReqEditor2Component,
+    // ReqEditor2Component,
     TestCompComponent
 
 //     AppComponent,

@@ -12,7 +12,7 @@ import { EditorComponent } from './project/editor/editor.component';
 // import { ListitemsComponent } from './project/editor/listitems/listitems.component';
 // import { BoarditemsComponent } from './project/editor/boarditems/boarditems.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { ReqEditor2Component } from './req-editor2/req-editor2.component';
+// import { ReqEditor2Component } from './req-editor2/req-editor2.component';
 import { TestCompComponent } from './test-comp/test-comp.component';
 
 const routes: Routes = [
@@ -26,7 +26,7 @@ const routes: Routes = [
   // { path: "list", component: ListComponent},
   // { path: "listitems", component: ListitemsComponent},
   { path: "toolbar", component: ToolbarComponent},
-  { path: "reqEditor2", component: ReqEditor2Component},
+  // { path: "reqEditor2", component: ReqEditor2Component},
   { path: "testComp", component: TestCompComponent}
 ];
 
