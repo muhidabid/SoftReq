@@ -6,10 +6,15 @@ const projectSchema = new Schema({
   _WID: {type: Schema.Types.ObjectId, ref:'Workspaces'},
   name: {type: String},
   description: {type: String},
-  W_ID: {
-    type: Schema.Types.ObjectId,
+  workspaceRef: {
+    type: String,
+    index: true,
     ref: 'Workspaces'
   },
+  // workspaceID: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Workspaces'
+  // },
   // createdOn: {
   //   type: Date,
   //   default: Date.now()

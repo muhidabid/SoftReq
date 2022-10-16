@@ -3,8 +3,9 @@ import { ObjectId } from 'mongoose';
 import { Project } from './project'
 
 export interface Workspace {
-  // _id: ObjectId;
+  _id: ObjectId;
   name: string;
   description: string;
-  P_IDs: [ObjectId];
+  projectsRef: [String];
+  // projectIDs: [ObjectId];
 }

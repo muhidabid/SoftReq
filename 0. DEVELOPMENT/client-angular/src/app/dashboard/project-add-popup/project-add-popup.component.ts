@@ -9,15 +9,15 @@ import { WorkspaceService } from 'src/app/services/workspace.service';
   styleUrls: ['./project-add-popup.component.css']
 })
 export class ProjectAddPopupComponent implements OnInit {
+  workspaceRef = "";
   enteredProjectName = "";
   enteredProjectDescription = "";
 
-
   constructor(
     public dialogRef: MatDialogRef<ProjectAddPopupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: null,
     private projectService: ProjectService,
-    private workspaceService: WorkspaceService
+    private workspaceService: WorkspaceService,
   ) { }
 
   ngOnInit(): void {
@@ -28,16 +28,20 @@ export class ProjectAddPopupComponent implements OnInit {
   }
 
   addProject(){
-    console.log('--> addProject called in project-add-popup.component.ts');
-    console.log("_WID: ", this.data._WID);
-    this.projectService.addProject(this.data._WID, this.enteredProjectName, this.enteredProjectDescription).subscribe((response: any) =>{
-      console.log("added");
+    this.projectService.addProject(this.enteredProjectName, this.enteredProjectDescription, this.workspaceRef).subscribe((response: any) =>{
+      console.log("project added to projects collection");
       console.log(response);
 
-      // add project id into workspace
-      // this.workspaceService.addProject(this.data._WID, response._id).subscribe((response: any)=>{
+      // response._id id the id of the newly created project
+      // this.workspaceService.addProjectReference(response._id, this.workspaceID).subscribe((response: any) => {
+      //   console.log("project reference added to workspace");
       //   console.log(response);
       // });
+
+
     });
+
+    window.location.reload();
   }
+
 }

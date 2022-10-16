@@ -8,6 +8,7 @@ import { ProjectAddPopupComponent } from './project-add-popup/project-add-popup.
 import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ExecOptionsWithStringEncoding } from 'child_process';
+import { ObjectId } from 'mongoose';
 
 @Component({
   selector: 'app-dashboard-grid',
@@ -36,11 +37,16 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  openProjectPopup(): void{
+  openProjectPopup(workspaceRef: String): void{
     const addPopupRef = this.addProjectPopup.open(ProjectAddPopupComponent, {
       height: '70%',
       width: '36%',
     });
+
+    console.log("Workspace REF: ");
+    console.log(workspaceRef.toString());
+
+    addPopupRef.componentInstance.workspaceRef = workspaceRef.toString();
 
     addPopupRef.afterClosed().subscribe(result => {
       console.log('The popup was closed');

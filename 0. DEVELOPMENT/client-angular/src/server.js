@@ -3,7 +3,7 @@
 // require express and bodyParser
 const express = require("express");
 const bodyParser = require("body-parser");
-const { connectWithMongoDB } = require("../backend-express/config/db.js");
+const connectWithMongoDB = require("../backend-express/config/db.js");
 
 // create express app
 const app = express();

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Project } from '../models/project';
 import { WebRequestService } from './web-request.service';
 
 @Injectable({
@@ -9,12 +8,8 @@ export class ProjectService {
 
   constructor(private webReqService: WebRequestService) {}
 
-  addProject(_WID:string, name: string, description: string){
+  addProject(name: string, description: string, workspaceRef: String){
     // We want to send a web request to create a list
-    return this.webReqService.post('addProject', {_WID, name, description});
-  }
-
-  getProjectById(id: string){
-    return this.webReqService.get<Project[]>('getProjectById/'+id);
+    return this.webReqService.post('addProject', {name, description, workspaceRef});
   }
 }
