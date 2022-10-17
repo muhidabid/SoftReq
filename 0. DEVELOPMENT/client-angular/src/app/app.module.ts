@@ -25,6 +25,8 @@ import { WorkspaceService } from './services/workspace.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ProjectAddPopupComponent } from './dashboard/project-add-popup/project-add-popup.component';
+import { HeaderModule } from './project/editor/header/header.module';
+import { BoardModule } from './project/editor/board/board.module';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { ProjectAddPopupComponent } from './dashboard/project-add-popup/project-
     MatInputModule,
     MatDialogModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    HeaderModule,
+    BoardModule
   ],
   providers: [WorkspaceService],
   bootstrap: [AppComponent]
