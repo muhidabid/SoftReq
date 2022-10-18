@@ -44,7 +44,7 @@ export class BoardComponent implements OnInit {
     this.boardService.addComment(columnId, event.id, event.text)
   }
   
-  onDeleteComment(comment: { id: number; }, columnId: number, item: { id: number; }) {
+  onDeleteComment(comment, columnId, item) {
     this.boardService.deleteComment(columnId, item.id, comment.id)
   }
 
