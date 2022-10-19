@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppRoutingModule } from './app-routing.module';
+
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -9,8 +11,12 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
-import { FormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
+import {MatChipsModule} from '@angular/material/chips';
+
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppComponent } from './app.component';
 import { LeftSidebarComponent } from './dashboard/left-sidebar/left-sidebar.component';
@@ -25,6 +31,8 @@ import { WorkspaceService } from './services/workspace.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ProjectAddPopupComponent } from './dashboard/project-add-popup/project-add-popup.component';
+import { HeaderModule } from './project/editor/header/header.module';
+import { BoardModule } from './project/editor/board/board.module';
 
 @NgModule({
   declarations: [
@@ -55,7 +63,14 @@ import { ProjectAddPopupComponent } from './dashboard/project-add-popup/project-
     MatInputModule,
     MatDialogModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatListModule,
+    MatCardModule,
+    MatChipsModule,
+    DragDropModule,
+    ReactiveFormsModule,
+    HeaderModule,
+    BoardModule
   ],
   providers: [WorkspaceService],
   bootstrap: [AppComponent]
