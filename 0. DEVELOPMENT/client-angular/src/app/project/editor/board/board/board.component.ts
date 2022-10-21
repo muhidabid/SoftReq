@@ -18,19 +18,19 @@ export class BoardComponent implements OnInit {
   }
 
   onColorChange(color: string, columnId: number) {
-    this.boardService.changeColumnColor(color, columnId)
+    this.boardService.changeListColor(color, columnId)
   }
-  
-  onAddCard(text: string, columnId: number) {
+
+  onAddCard(text: string, columnName: string, position: number) {
     if(text) {
-      this.boardService.addCard(text, columnId)
+      this.boardService.addCard(text, columnName, position)
     }
   }
-  
-  onDeleteColumn(columnId: number) {
-    this.boardService.deleteColumn(columnId)
+
+  onDeleteList(columnId: number) {
+    this.boardService.deleteList(columnId)
   }
-  
+
   onDeleteCard(cardId: number, columnId: number) {
     this.boardService.deleteCard(cardId, columnId)
   }
@@ -43,7 +43,7 @@ export class BoardComponent implements OnInit {
   onAddComment(event: {id: number, text: string}, columnId: number) {
     this.boardService.addComment(columnId, event.id, event.text)
   }
-  
+
   onDeleteComment(comment, columnId, item) {
     this.boardService.deleteComment(columnId, item.id, comment.id)
   }

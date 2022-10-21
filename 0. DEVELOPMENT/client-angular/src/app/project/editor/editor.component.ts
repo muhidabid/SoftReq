@@ -21,7 +21,7 @@ export class EditorComponent implements OnInit {
   enteredReq = "";
 
   constructor(
-    private _userstoriesservice: UserstoriesService, 
+    private _userstoriesservice: UserstoriesService,
     private userStoriesService: UserstoriesService,
     private http: HttpClient
     ) {}

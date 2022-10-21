@@ -6,6 +6,8 @@ import { WebRequestService } from './web-request.service';
 })
 export class ProjectService {
 
+  projectName: string;  // name of current project user is on
+
   constructor(private webReqService: WebRequestService) {}
 
   addProject(name: string, description: string, workspaceRef: String){

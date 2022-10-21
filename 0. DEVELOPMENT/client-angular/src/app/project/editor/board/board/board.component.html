@@ -1,34 +1,35 @@
 <div class="container-fluid">
   <div cdkDropListGroup class="row">
-    <div class="col-sm-6 col-lg-3 mb-3" *ngFor="let column of boardService.getBoard$() | async">
+    <div class="col-sm-6 col-lg-3 ms-3 rounded p-2" *ngFor="let list of boardService.getBoard$() | async" style="background-color: #DDDFE7;">
+    <!-- <div class="list" *ngFor="let list of boardService.getBoard$() | async"> -->
 
-      <!-- Column Title -->
-      <div class="d-flex justify-content-between align-items-center p-2 shadow-sm column-header">
-        <h2 class="m-0">{{column.title}}</h2>
-        <button mat-icon-button class="icon-delete" (click)="onDeleteColumn(column.id)">
+      <!-- List Title -->
+      <div class="d-flex justify-content-between align-items-center p-0 shadow-sm list-header border-0">
+        <h2 class="m-0">{{list.title}}</h2>
+        <button mat-icon-button class="icon-delete" (click)="onDeleteList(list.id)">
           <mat-icon style="font-size: 20px;">delete</mat-icon>
         </button>
       </div>
 
-      <!-- Add New Card To Column -->
-      <app-dialog (emitText)="onAddCard($event, column.id)" [question]="'Add new card in ' + column.title + ' column'">
+      <!-- Add New Card To List -->
+      <app-dialog (emitText)="onAddCard($event, list.title, 0)" [question]="'Add new card in ' + list.title + ' list'">
         <button mat-raised-button class="w-100 mb-1 btn-add">+</button>
       </app-dialog>
 
       <!-- Color Panel -->
-      <app-color-panel (emitColor)="onColorChange($event, column.id)"></app-color-panel>
-      
-      <div cdkDropList [cdkDropListData]="column.list" class="example-list" (cdkDropListDropped)="drop($any($event))">
-      <!-- <div cdkDropList [cdkDropListData]="column.list" class="example-list"> -->
-        <div cdkDrag class="example-box" [ngStyle]="{background: column.color}" *ngFor="let item of column.list">
-          <app-board-item 
-            [item]="item" 
-            (emitText)="onAddComment($event, column.id)" 
-            (emitCardItem)="onChangeLike($event, column.id)"
-            (emitDeleteCard)="onDeleteCard($event, column.id)"
+      <app-color-panel (emitColor)="onColorChange($event, list.id)"></app-color-panel>
+
+      <div cdkDropList [cdkDropListData]="list.cards" class="example-list" (cdkDropListDropped)="drop($any($event))">
+      <!-- <div cdkDropList [cdkDropListData]="list.list" class="example-list"> -->
+        <div cdkDrag class="example-box" [ngStyle]="{background: list.color}" *ngFor="let item of list.cards">
+          <app-board-item
+            [item]="item"
+            (emitText)="onAddComment($event, list.id)"
+            (emitCardItem)="onChangeLike($event, list.id)"
+            (emitDeleteCard)="onDeleteCard($event, list.id)"
           >
             <div *ngFor="let comment of item.comments">
-              <app-comment-item [comment]="comment" (emitComment)="onDeleteComment($event, column.id, item)"></app-comment-item>
+              <app-comment-item [comment]="comment" (emitComment)="onDeleteComment($event, list.id, item)"></app-comment-item>
             </div>
           </app-board-item>
         </div>

@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: "dashBoard", component: DashboardComponent},
   { path: "project", component: ProjectComponent},
   { path: "editor", component: EditorComponent},
+  // { path: "editor", component: EditorComponent, data: {}},
   { path: "toolbar", component: ToolbarComponent}
 ];
 
