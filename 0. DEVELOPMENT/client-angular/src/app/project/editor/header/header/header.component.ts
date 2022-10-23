@@ -13,6 +13,7 @@ import { ObjectId } from 'mongoose';
 export class HeaderComponent implements OnInit {
 
   projName: string;
+  projId: string;
   // subscription: Subscription;
 
   constructor(
@@ -26,6 +27,7 @@ export class HeaderComponent implements OnInit {
 
     // store projName to localStore
     this.projName = this.localStore.getData("currProjName");
+    this.projId = this.localStore.getData("currProjId");
 
     console.log("Project nameeee: ");
     console.log(this.projName);
@@ -36,9 +38,9 @@ export class HeaderComponent implements OnInit {
     this.localStore.removeData("currProjName");
   }
 
-  addColumn(event: string, position: number) {
+  addList(event: string, position: number) {
     if (event) {
-      this.boardService.addList(event, position)
+      this.boardService.addList(event, position, this.projId)
     }
   }
 }

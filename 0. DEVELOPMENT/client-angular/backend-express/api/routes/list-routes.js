@@ -2,6 +2,6 @@ const express = require("express");
 const router = express.Router();
 const listController = require("../controllers/list-controller");
 
-router.post("/getAllListsOfProject", listController.getAllListsOfProject);
+router.post("/addList", listController.addList);
 
 module.exports = router;

@@ -30,9 +30,11 @@ app.use(function (req, res, next) {
 // importing routers
 const workspaceRoutes = require("../backend-express/api/routes/workspace-routes.js");
 const projectRoutes = require("../backend-express/api/routes/project-routes.js");
+const listRoutes = require("../backend-express/api/routes/list-routes.js");
+// const cardRoutes = require("../backend-express/api/routes/card-routes.js");
 
 // connecting endpoints to routess
-app.use("/", [workspaceRoutes, projectRoutes]);
+app.use("/", [workspaceRoutes, projectRoutes, listRoutes]);
 // app.use("/", workspaceRoutes);
 // app.use("/", projectRoutes);
 

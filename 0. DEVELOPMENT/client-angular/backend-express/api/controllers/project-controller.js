@@ -137,7 +137,7 @@ const addProject = async (req, res, next) => {
   catch (err) {
     console.log("Error adding the project");
     console.log(err);
-    return res.status(404).json({ message: "Unable to Add workspace" });
+    return res.status(404).json({ message: "Unable to Add Project" });
   }
   console.log("Project added successfully!");
   return res.status(200);

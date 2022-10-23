@@ -62,6 +62,7 @@ export class BoardService {
     // },
   ]
 
+  // Initialize with dummy data
   private board: any = this.initBoard
   private board$ = new BehaviorSubject<any[]>(this.initBoard)
 
@@ -76,21 +77,12 @@ export class BoardService {
   //   return this.webReqService.post('getBoard', {projId});
   // }
 
+  // get all lists of the opened projectName Board = List[]
   getBoard$(projId: string) {
-    // get all lists of the opened projectName
-    // return this.webReqService.post('getBoard', {projId});
-
     this.webReqService.post('getBoard', {projId}).subscribe((response)=>{
       // override board to store DB board
-      console.log("Board gotten in board.service: ");
-      console.log(response);
-
-      console.log("BEFORE: this.board in board.service: ");
-      console.log(this.board);
       this.board = response;
-      console.log("AFTER: this.board in board.service: ");
-      console.log(this.board);
-
+      // Update the board BehaviorSubject
       this.board$.next([...this.board.board.listsRef]);
     });
 
@@ -107,18 +99,30 @@ export class BoardService {
     this.board$.next([...this.board]);
   }
 
-  addList(title: string, position: number) {
-    const newList: List = {
-      id: Date.now(),
-      title: title,
-      color: '#009886',
-      cardsRef: [],
-      projectRef: mongoose.Types.ObjectId(),
-      position: position,
-    };
+  addList(title: string, position: number, projRef: string) {
 
-    this.board = [...this.board, newList];
-    this.board$.next([...this.board]);
+    this.webReqService.post('addList', {title, position, projRef}).subscribe((response)=>{
+      // override board to store DB board
+      const newList = response;
+      // Update board
+      this.board = [...this.board.board.listsRef, newList];
+      // Update the board BehaviorSubject
+      this.board$.next([...this.board.board.listsRef]);
+    });
+
+    return this.board$.asObservable();
+
+    // const newList: List = {
+    //   id: Date.now(),
+    //   title: title,
+    //   color: '#009886',
+    //   cardsRef: [],
+    //   projectRef: mongoose.Types.ObjectId(),
+    //   position: position,
+    // };
+
+    // this.board = [...this.board, newList];
+    // this.board$.next([...this.board]);
   }
 
   addCard(text: string, listName: string, position: number) {
