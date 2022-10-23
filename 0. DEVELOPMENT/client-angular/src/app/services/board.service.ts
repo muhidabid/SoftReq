@@ -89,16 +89,6 @@ export class BoardService {
     return this.board$.asObservable();
   }
 
-  changeListColor(color: string, listId: number) {
-    this.board = this.board.map((list: List) => {
-      if (list.id === listId) {
-        list.color = color;
-      }
-      return list;
-    });
-    this.board$.next([...this.board]);
-  }
-
   addList(title: string, position: number, projRef: string) {
 
     let newList;
@@ -111,25 +101,30 @@ export class BoardService {
 
       // Update board
       this.board.board.listsRef = [...this.board.board.listsRef, newList.list];
-      // this.board.board.listsRef.push(newList);
-      // this.board = [...this.board.board.listsRef, newList];
       // Update the board BehaviorSubject
       this.board$.next([...this.board.board.listsRef]);
     });
 
     return this.board$.asObservable();
+  }
 
-    // const newList: List = {
-    //   id: Date.now(),
-    //   title: title,
-    //   color: '#009886',
-    //   cardsRef: [],
-    //   projectRef: mongoose.Types.ObjectId(),
-    //   position: position,
-    // };
+  deleteList(listId: string) {
+    this.webReqService.post('deleteList', {listId}).subscribe((response)=>{
+      this.board.board.listsRef = this.board.board.listsRef.filter((list: any) => list._id !== listId);
+      this.board$.next([...this.board.board.listsRef]);
+    });
 
-    // this.board = [...this.board, newList];
-    // this.board$.next([...this.board]);
+    return this.board$.asObservable();
+  }
+
+  changeListColor(color: string, listId: number) {
+    this.board = this.board.map((list: List) => {
+      if (list.id === listId) {
+        list.color = color;
+      }
+      return list;
+    });
+    this.board$.next([...this.board]);
   }
 
   addCard(text: string, listName: string, position: number, listRef: string) {
@@ -154,11 +149,6 @@ export class BoardService {
       return list;
     });
 
-    this.board$.next([...this.board]);
-  }
-
-  deleteList(listId: number) {
-    this.board = this.board.filter((list: List) => list.id !== listId);
     this.board$.next([...this.board]);
   }
 

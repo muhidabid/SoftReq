@@ -45,8 +45,12 @@ export class BoardComponent implements OnInit {
     }
   }
 
-  onDeleteList(columnId: number) {
-    this.boardService.deleteList(columnId)
+  onDeleteList(columnId: string) {
+    this.boardService.deleteList(columnId).subscribe((response)=>{
+      console.log("Deleted List being updated in board.component: ");
+      console.log(response);
+      this.board$ = response;
+    });
   }
 
   onDeleteCard(cardId: number, columnId: number) {

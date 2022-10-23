@@ -2,22 +2,6 @@ const mongoose = require('mongoose');
 const Project = require("../models/project-model");
 const List = require("../models/list-model")
 
-
-// const getAllListsOfProject = async (req, res, next) => {
-//   console.log("getAllListsOfProject called in list controller");
-//   const { projName } = req.body;
-//   let lists;
-//   try {
-//     // find all with provided projectRef
-//     lists = await Project.find({projectRef: projName});
-//   } catch (err) {
-//     console.log(err);
-//     return res.status(404).json({ message: "No lists to display :(" });
-//   }
-//   return res.status(200).json({ lists });
-// };
-
-
 const addList = async (req, res, next) => {
   const { title, position, projRef } = req.body;
 
@@ -69,4 +53,58 @@ const addList = async (req, res, next) => {
   return res.status(200).json({ list });
 };
 
+const deleteList = async (req, res, next) => {
+  const { listId } = req.body;
+
+  console.log("ListId of List being deleted: ", listId);
+
+  let deletedList;
+  try {
+    const session = await mongoose.startSession();
+    session.startTransaction();
+
+    // 1. delete list from db
+    let deletedList;
+    try{
+      console.log("Finding list to delete...");
+      deletedList = await List.findByIdAndDelete(
+        mongoose.Types.ObjectId(listId),
+        { session: session }
+      );
+      console.log("deleted list...?");
+    }
+    catch (err) {
+      console.log("Error adding listRef to Project: ");
+      console.log(err);
+    }
+
+    // 2. delete its reference from the project it was added to
+    try{
+      console.log("Finding project and deleting list ref...");
+      await Project.findByIdAndUpdate(
+        mongoose.Types.ObjectId(deletedList.projectRef),
+        {"$pull": {"listsRef": mongoose.Types.ObjectId(deletedList._id)}},
+        { session: session }
+      );
+      console.log("deleted listtRef...?");
+    }
+    catch (err) {
+      console.log("Error deleting listRef to Project: ");
+      console.log(err);
+    }
+
+    await session.commitTransaction();
+    session.endSession();
+  }
+  // catch and log error
+  catch (err) {
+    console.log("Error deleting the List");
+    console.log(err);
+    return res.status(404).json({ message: "Unable to Delete List" });
+  }
+  console.log("List deleted successfully!");
+  return res.status(200).json({ deletedList });
+};
+
 exports.addList = addList;
+exports.deleteList = deleteList;
