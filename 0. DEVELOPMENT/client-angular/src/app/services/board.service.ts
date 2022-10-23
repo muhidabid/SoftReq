@@ -71,10 +71,9 @@ export class BoardService {
     return this.board$.asObservable();
   }
 
-  getBoard(projName: string) {
+  getBoard(projId: string) {
     // get all lists of the opened projectName
-    return this.webReqService.post('getAllListsOfProject', {projName});
-
+    return this.webReqService.post('getBoard', {projId});
   }
 
   changeListColor(color: string, listId: number) {
@@ -87,13 +86,13 @@ export class BoardService {
     this.board$.next([...this.board]);
   }
 
-  addList(title: string, projectRef: ObjectId, position: number) {
+  addList(title: string, position: number) {
     const newList: List = {
       id: Date.now(),
       title: title,
       color: '#009886',
       cardsRef: [],
-      projectRef: projectRef,
+      projectRef: mongoose.Types.ObjectId(),
       position: position,
     };
 

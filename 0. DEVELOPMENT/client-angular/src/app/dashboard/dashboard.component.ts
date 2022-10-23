@@ -6,7 +6,7 @@ import { ProjectAddPopupComponent } from './project-add-popup/project-add-popup.
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { ObjectId } from 'mongoose';
+import mongoose, { ObjectId, ObjectIdSchemaDefinition } from 'mongoose';
 
 @Component({
   selector: 'app-dashboard-grid',
@@ -51,9 +51,10 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  routeToProject(projName: string): void{
+  routeToProject(projName: string, projId: ObjectId): void{
     // this._projectService.projectName = projName;
     this.localStore.saveData("currProjName", projName);
+    this.localStore.saveData("currProjId", projId);
     this._router.navigate(['editor', {projName: projName}]);
   }
 

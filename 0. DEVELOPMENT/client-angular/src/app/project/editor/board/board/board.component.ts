@@ -3,6 +3,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 import { BoardService } from 'src/app/services/board.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { List } from 'src/app/models/list';
+import mongoose from 'mongoose';
 
 @Component({
   selector: 'app-board',
@@ -11,6 +12,8 @@ import { List } from 'src/app/models/list';
 })
 export class BoardComponent implements OnInit {
 
+  // projId: mongoose.Types.ObjectId;
+  projId: string;
   projName: string;
   board: any;
 
@@ -22,13 +25,14 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {
     console.log('BOARD - INIT');
     this.projName = this.localStore.getData("currProjName");
-    // const board = this.boardService.getBoard("P4").subscribe((response)=>{
-    //   this.board = response;
-    //   console.log("Board gotten: ");
-    //   console.log(response);
-    // });
+    this.projId = this.localStore.getData("currProjId");
 
-
+    // const projObjectId = new mongoose.Types.ObjectId(this.projId);
+    const board = this.boardService.getBoard(this.projId).subscribe((response)=>{
+      this.board = response;
+      console.log("Board gotten: ");
+      console.log(response);
+    });
   }
 
   onColorChange(color: string, columnId: number) {

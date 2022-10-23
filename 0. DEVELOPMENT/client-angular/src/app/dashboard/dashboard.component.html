@@ -22,7 +22,7 @@
                 Create new project
               </div>
               <!-- <div class="project-under-workspace-heading" *ngFor="let P_ID of workspace.projectsRef" routerLink="/editor"> -->
-              <div class="project-under-workspace-heading" *ngFor="let project of workspace.projectsRef" (click)="routeToProject(project.name)">
+              <div class="project-under-workspace-heading" *ngFor="let project of workspace.projectsRef" (click)="routeToProject(project.name, project._id)">
                 <p>{{project.name}}</p>
               </div>
             </div>

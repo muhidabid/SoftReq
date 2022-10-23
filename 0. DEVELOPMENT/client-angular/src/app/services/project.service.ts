@@ -26,7 +26,6 @@ export class ProjectService {
     console.log("getProjectByName called in proj service");
     console.log(name);
 
-
     return this.webReqService.post<Project>('getProjectByName', { name });
   }
 }

@@ -35,16 +35,19 @@ const getProjectByName = async (req, res, next) => {
 
 ////////////////////////////////////////////////////////////////////
 
-const getPopulatedProjectByName = async (req, res, next) => {
-  const { name } = req.body;
-  let project;
+const getBoard = async (req, res, next) => {
+  const { projId } = req.body;
+  let board;
   try {
-    project = await Project.findOne({name: name}).populate('lists');
+    board = await Project.findById(
+      mongoose.Types.ObjectId(projId)
+    ).populate('listsRef');
+
   } catch (err) {
     console.log(err);
-    return res.status(404).json({ message: "No Project to display :(" });
+    return res.status(404).json({ message: "No Board to display :(" });
   }
-  return res.status(200).json({ project });
+  return res.status(200).json({ board });
 };
 
 ////////////////////////////////////////////////////////////////////
@@ -87,18 +90,7 @@ const addProject = async (req, res, next) => {
       // console.log(projectSaveResult[0]._id);
       await Workspace.findByIdAndUpdate(
         mongoose.Types.ObjectId(workspaceRef),
-        // {"_id": mongoose.Types.ObjectId(workspaceRef)},
         {"$push": {"projectsRef": projectSaveResult[0]._id}},
-        // function (err, docs) {
-        //   if (err){
-        //       console.log(err)
-        //   }
-        //   else{
-        //       console.log("Updated User : ", docs);
-        //   }
-        // },
-
-        // {session: session}
         { session: session }
       );
       console.log("added projectRef...?");
@@ -127,8 +119,8 @@ const addProject = async (req, res, next) => {
 
     // 4. Add reference of that List to this Project
     try{
-      await Project.findOneAndUpdate(
-        {'name': name},
+      await Project.findByIdAndUpdate(
+        projectSaveResult[0]._id,
         {"$push": {"listsRef": listSaveResult[0]._id}},
         {session: session}
       );
@@ -155,4 +147,4 @@ const addProject = async (req, res, next) => {
 exports.getAllProjects = getAllProjects;
 exports.addProject = addProject;
 exports.getProjectByName = getProjectByName;
-exports.getPopulatedProjectByName = getPopulatedProjectByName;
+exports.getBoard = getBoard;

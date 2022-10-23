@@ -13,7 +13,6 @@ import { ObjectId } from 'mongoose';
 export class HeaderComponent implements OnInit {
 
   projName: string;
-  project$: any;
   // subscription: Subscription;
 
   constructor(
@@ -30,15 +29,6 @@ export class HeaderComponent implements OnInit {
 
     console.log("Project nameeee: ");
     console.log(this.projName);
-
-
-    // get from DB this whole project
-    this._projectService.getProjectByName(this.projName).subscribe((response)=>{
-      this.project$ = response;
-      console.log("Projects response (angular): ");
-      console.log(response);
-      console.log(this.project$);
-    });
   }
 
   ngOnDestroy(): void {
@@ -46,20 +36,9 @@ export class HeaderComponent implements OnInit {
     this.localStore.removeData("currProjName");
   }
 
-  addColumn(event: string, projectRef: ObjectId, position: number) {
+  addColumn(event: string, position: number) {
     if (event) {
-      this.boardService.addList(event, projectRef, position)
+      this.boardService.addList(event, position)
     }
-  }
-
-  displayProjectTest(){
-    console.log("displayProjectTest called in header comp.");
-    // this._projectService.getProjectByName(this.projName).subscribe((response)=>{
-    //   this.project$ = response;
-    //   console.log("Projects response (angular): ");
-    //   console.log(response);
-    // });
-
-    return this.project$;
   }
 }

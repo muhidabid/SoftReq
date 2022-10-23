@@ -7,7 +7,7 @@ export class LocalStorageService {
 
   constructor() { }
 
-  public saveData(key: string, value: string) {
+  public saveData(key: string, value: any) {
     localStorage.setItem(key, value);
   }
 
