@@ -15,7 +15,7 @@ export class BoardComponent implements OnInit {
   // projId: mongoose.Types.ObjectId;
   projId: string;
   projName: string;
-  board: any;
+  board$: any;
 
   constructor(
     public boardService: BoardService,
@@ -28,10 +28,10 @@ export class BoardComponent implements OnInit {
     this.projId = this.localStore.getData("currProjId");
 
     // const projObjectId = new mongoose.Types.ObjectId(this.projId);
-    const board = this.boardService.getBoard(this.projId).subscribe((response)=>{
-      this.board = response;
-      console.log("Board gotten: ");
+    this.boardService.getBoard$(this.projId).subscribe((response)=>{
+      console.log("Board gotten in board.component: ");
       console.log(response);
+      this.board$ = response;
     });
   }
 

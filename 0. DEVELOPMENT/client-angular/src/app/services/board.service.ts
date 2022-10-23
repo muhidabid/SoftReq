@@ -62,18 +62,39 @@ export class BoardService {
     // },
   ]
 
-  private board: any[] = this.initBoard
+  private board: any = this.initBoard
   private board$ = new BehaviorSubject<any[]>(this.initBoard)
 
   constructor(private webReqService: WebRequestService) {}
 
-  getBoard$() {
-    return this.board$.asObservable();
-  }
+  // getBoard$() {
+  //   return this.board$.asObservable();
+  // }
 
-  getBoard(projId: string) {
+  // getBoard(projId: string) {
+  //   // get all lists of the opened projectName
+  //   return this.webReqService.post('getBoard', {projId});
+  // }
+
+  getBoard$(projId: string) {
     // get all lists of the opened projectName
-    return this.webReqService.post('getBoard', {projId});
+    // return this.webReqService.post('getBoard', {projId});
+
+    this.webReqService.post('getBoard', {projId}).subscribe((response)=>{
+      // override board to store DB board
+      console.log("Board gotten in board.service: ");
+      console.log(response);
+
+      console.log("BEFORE: this.board in board.service: ");
+      console.log(this.board);
+      this.board = response;
+      console.log("AFTER: this.board in board.service: ");
+      console.log(this.board);
+
+      this.board$.next([...this.board.board.listsRef]);
+    });
+
+    return this.board$.asObservable();
   }
 
   changeListColor(color: string, listId: number) {
