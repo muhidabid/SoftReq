@@ -6,6 +6,7 @@ import { ProjectAddPopupComponent } from './project-add-popup/project-add-popup.
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { ObjectId } from 'mongoose';
 
 @Component({
   selector: 'app-dashboard-grid',
@@ -14,7 +15,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 })
 export class DashboardComponent implements OnInit {
   // array holding workspace object
-  public workspaces$: Workspace[] = [];
+  public workspaces$: any[] = [];
   // private wap: any;
   constructor(
     private http: HttpClient,
@@ -34,7 +35,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  openProjectPopup(workspaceRef: String): void{
+  openProjectPopup(workspaceRef: ObjectId): void{
     const addPopupRef = this.addProjectPopup.open(ProjectAddPopupComponent, {
       height: '70%',
       width: '36%',
@@ -53,7 +54,7 @@ export class DashboardComponent implements OnInit {
   routeToProject(projName: string): void{
     // this._projectService.projectName = projName;
     this.localStore.saveData("currProjName", projName);
-    this._router.navigate(['editor', {projName: projName }]);
+    this._router.navigate(['editor', {projName: projName}]);
   }
 
 }

@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core'
 import { BehaviorSubject } from 'rxjs';
 import { List } from '../models/list';
 import { Card, Comment } from '../models/card';
+import { WebRequestService } from './web-request.service';
+import { ObjectId } from 'mongoose';
+var mongoose = require('mongoose');
 
 @Injectable({
   providedIn: 'root',
@@ -26,16 +29,17 @@ export class BoardService {
     //     },
     //   ]
     // },
+
     {
       id: 0,
       title: "To Do",
       color: '#009886',
-      cards: [{
+      cardsRef: [{
         id: 0,
         requirement: "Requirement here",
         version: 0,
         comments: [{id:0, text: "Some comment"}],
-        listRef: "List.title",
+        listRef: mongoose.Types.ObjectId(),
         position: 0,
 
         attributes: [{"name": "string", value: "any"}],
@@ -44,16 +48,33 @@ export class BoardService {
         qualityConcerns: [],
         ambiguityConcerns: [],
       },],
-      projectRef: "Project.name",
+      projectRef: mongoose.Types.ObjectId(),
       position: 0,
     },
+
+    // {
+    //   id: 0,
+    //   title: "To Do",
+    //   color: '#009886',
+    //   cardsRef: [],
+    //   projectRef: '6354fbda583c1fee0de1bf70',
+    //   position: 0,
+    // },
   ]
 
-  private board: List[] = this.initBoard
-  private board$ = new BehaviorSubject<List[]>(this.initBoard)
+  private board: any[] = this.initBoard
+  private board$ = new BehaviorSubject<any[]>(this.initBoard)
+
+  constructor(private webReqService: WebRequestService) {}
 
   getBoard$() {
-    return this.board$.asObservable()
+    return this.board$.asObservable();
+  }
+
+  getBoard(projName: string) {
+    // get all lists of the opened projectName
+    return this.webReqService.post('getAllListsOfProject', {projName});
+
   }
 
   changeListColor(color: string, listId: number) {
@@ -66,12 +87,12 @@ export class BoardService {
     this.board$.next([...this.board]);
   }
 
-  addList(title: string, projectRef: string, position: number) {
+  addList(title: string, projectRef: ObjectId, position: number) {
     const newList: List = {
       id: Date.now(),
       title: title,
       color: '#009886',
-      cards: [],
+      cardsRef: [],
       projectRef: projectRef,
       position: position,
     };
@@ -86,7 +107,7 @@ export class BoardService {
       requirement: text,
       version: 0,
       comments: [],
-      listRef: listName,
+      listRef: mongoose.Types.ObjectId(),
       position: position,
       attributes: [],
       notes: "",
@@ -96,7 +117,8 @@ export class BoardService {
 
     this.board = this.board.map((list: List) => {
       if (list.title === listName) {
-        list.cards = [newCard, ...list.cards];
+        // var x = ;
+        list.cardsRef = [newCard, ...mongoose.Types.ObjectId()];
       }
       return list;
     });
@@ -110,79 +132,79 @@ export class BoardService {
   }
 
   deleteCard(cardId: number, listId: number) {
-    this.board = this.board.map((list: List) => {
-      if (list.id === listId) {
-        list.cards = list.cards.filter((card: Card) => card.id !== cardId);
-      }
-      return list;
-    });
+    // this.board = this.board.map((list: List) => {
+    //   if (list.id === listId) {
+    //     list.cardsRef = list.cardsRef.filter((card: Card) => card.id !== cardId);
+    //   }
+    //   return list;
+    // });
 
-    this.board$.next([...this.board]);
+    // this.board$.next([...this.board]);
   }
 
   changeLike(cardId: number, listId: number, increase: boolean) {
-    this.board = this.board.map((list: List) => {
-      if (list.id === listId) {
-        const card = list.cards.map((card: Card) => {
-          if (card.id === cardId) {
-            if (increase) {
-              card.version++;
-            } else {
-              if (card.version > 0) {
-                card.version--;
-              }
-            }
-          }
-          return card;
-        });
+    // this.board = this.board.map((list: List) => {
+    //   if (list.id === listId) {
+    //     const card = list.cardsRef.map((card: Card) => {
+    //       if (card.id === cardId) {
+    //         if (increase) {
+    //           card.version++;
+    //         } else {
+    //           if (card.version > 0) {
+    //             card.version--;
+    //           }
+    //         }
+    //       }
+    //       return card;
+    //     });
 
-        list.cards = card;
-        return list;
-      } else {
-        return list;
-      }
-    });
+    //     list.cardsRef = card;
+    //     return list;
+    //   } else {
+    //     return list;
+    //   }
+    // });
 
-    this.board$.next([...this.board]);
+    // this.board$.next([...this.board]);
   }
 
   addComment(listId: number, cardId: number, text: string) {
-    this.board = this.board.map((list: List) => {
-      if (list.id === listId) {
-        const card = list.cards.map((card: Card) => {
-          if (card.id === cardId) {
-            const newComment = {
-              id: Date.now(),
-              text,
-            };
-            card.comments = [newComment, ...card.comments];
-          }
-          return card;
-        });
+    // this.board = this.board.map((list: List) => {
+    //   if (list.id === listId) {
+    //     const card = list.cardsRef.map((card: Card) => {
+    //       if (card.id === cardId) {
+    //         const newComment = {
+    //           id: Date.now(),
+    //           text,
+    //         };
+    //         card.comments = [newComment, ...card.comments];
+    //       }
+    //       return card;
+    //     });
 
-        list.cards = card;
-      }
-      return list;
-    });
+    //     list.cardsRef = card;
+    //   }
+    //   return list;
+    // });
 
-    this.board$.next([...this.board]);
+    // this.board$.next([...this.board]);
   }
 
   deleteComment(listId: number, itemId: number, commentId: number) {
-    this.board = this.board.map((list: List) => {
-      if(list.id === listId) {
-        const card = list.cards.map((item)=> {
-          if(item.id === itemId) {
-            item.comments = item.comments.filter((comment: Comment) => {
-              return comment.id !== commentId
-            })
-          }
-          return item
-        })
-        list.cards = card
-      }
-      return list
-    })
-    this.board$.next([...this.board])
+    // this.board = this.board.map((list: List) => {
+    //   if(list.id === listId) {
+    //     const card = list.cardsRef.map((item)=> {
+    //       if(item.id === itemId) {
+    //         item.comments = item.comments.filter((comment: Comment) => {
+    //           return comment.id !== commentId
+    //         })
+    //       }
+    //       return item
+    //     })
+    //     list.cardsRef = card
+    //   }
+    //   return list
+    // })
+    // this.board$.next([...this.board])
   }
 }

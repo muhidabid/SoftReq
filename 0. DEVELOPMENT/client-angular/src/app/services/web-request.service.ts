@@ -21,12 +21,12 @@ export class WebRequestService {
   //   return this.http.get(`${this.ROOT_URL}/${uri}`);
   // }
 
-  get<T>(uri: string) {
-    return this.http.get<T>(`${this.ROOT_URL}/${uri}`);
+   get<T>(uri: string, payload: any) {
+    return this.http.get<T>(`${this.ROOT_URL}/${uri}`, {params: payload});
   }
 
 
-  post(uri: string, payload: Object) {
+  post<T>(uri: string, payload: Object) {
     return this.http.post(`${this.ROOT_URL}/${uri}`, payload);
   }
 

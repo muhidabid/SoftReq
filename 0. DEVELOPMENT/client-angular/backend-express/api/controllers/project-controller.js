@@ -1,15 +1,7 @@
-// const connectWithMongoDB = require("../../config/db")
 const mongoose = require('mongoose');
 const Project = require("../models/project-model");
 const Workspace = require("../models/workspace-model");
-
-const conn = require("../../config/db");
-
-
-// const client = require('mongoose');
-// const session = client.startSession();
-// const projectCollection = conn.Collection("Projects");
-// const workspaceCollection = conn.Collection("Workspaces");
+const List = require("../models/list-model")
 
 const getAllProjects = async (req, res, next) => {
   let projects;
@@ -26,6 +18,37 @@ const getAllProjects = async (req, res, next) => {
 
 ////////////////////////////////////////////////////////////////////
 
+const getProjectByName = async (req, res, next) => {
+  // console.log("getProjectByName called in proj controller");
+  const { name } = req.body;
+  // console.log("Req body: ");
+  // console.log(req.body);
+  let project;
+  try {
+    project = await Project.findOne({name: name});
+  } catch (err) {
+    console.log(err);
+    return res.status(404).json({ message: "No Project to display :(" });
+  }
+  return res.status(200).json({ project });
+};
+
+////////////////////////////////////////////////////////////////////
+
+const getPopulatedProjectByName = async (req, res, next) => {
+  const { name } = req.body;
+  let project;
+  try {
+    project = await Project.findOne({name: name}).populate('lists');
+  } catch (err) {
+    console.log(err);
+    return res.status(404).json({ message: "No Project to display :(" });
+  }
+  return res.status(200).json({ project });
+};
+
+////////////////////////////////////////////////////////////////////
+
 const addProject = async (req, res, next) => {
   const { name, description, workspaceRef } = req.body;
 
@@ -33,73 +56,103 @@ const addProject = async (req, res, next) => {
 
   let project;
   try {
-    // create a new project
-    // project = new Project({
-    //   name,
-    //   description,
-    //   workspaceRef,
-    // });
-
-    // save to the collection
-    // await project.save();
-
-    // const session = await mongoose.connection.startSession();
     const session = await mongoose.startSession();
     session.startTransaction();
 
-    // const projectSaveResult = await projectCollection.save(project).session(session);
-    // await workspaceCollection.findByIdAndUpdate(workspaceRef, {$push: {projectsRef: projectSaveResult.name}}).session(session);
+    // 1. save a new project to db
     const projectSaveResult = await Project.create([
       {
-        name,
-        description,
-        workspaceRef,
+        name: name,
+        description: description,
+        workspaceRef: mongoose.Types.ObjectId(workspaceRef),
       }
     ],{ session });
 
+
+    console.log("Project save result: ");
+    console.log(projectSaveResult);
+
+    // project = new Project({
+    //   name: name,
+    //   description: description,
+    //   workspaceRef: workspaceRef,
+    // });
+
+    // const projectSaveResult = await Project.updateOne({name: name}, project, {upsert: true});
+
+    // 2. add its reference to the workspace it is added to
     try{
-      await Workspace.findOneAndUpdate(
-        {'name': workspaceRef},
-        {"$push": {"projectsRef": name}},
-        {session: session}
+      console.log("Finding workspace and adding project ref...");
+      // console.log("projectSaveResult[0]._id = ");
+      // console.log(projectSaveResult[0]._id);
+      await Workspace.findByIdAndUpdate(
+        mongoose.Types.ObjectId(workspaceRef),
+        // {"_id": mongoose.Types.ObjectId(workspaceRef)},
+        {"$push": {"projectsRef": projectSaveResult[0]._id}},
+        // function (err, docs) {
+        //   if (err){
+        //       console.log(err)
+        //   }
+        //   else{
+        //       console.log("Updated User : ", docs);
+        //   }
+        // },
+
+        // {session: session}
+        { session: session }
       );
+      console.log("added projectRef...?");
     }
     catch (err) {
       console.log("Error adding projectREF to Workspace: ");
       console.log(err);
     }
-    // await session.withTransaction(async () => {
-    //   // const projectSaveResult = await projectCollection.save(project, {session});
-    //   // const workspaceUpdateResult = workspaceCollection.findByIdAndUpdate({workspaceID}, {$push: {projectIDs: projectSaveResult._id}}, {session});
 
-    //   // const projectSaveResult = await projectCollection.save(project, {session: session});
-    //   // await workspaceCollection.findByIdAndUpdate(workspaceID, {$push: {projectIDs: projectSaveResult._id}}, {session: session});
+    // 3. add a sample List item of this project to the List collection
+    const firstListName = "Example List";
 
-    //   const projectSaveResult = await projectCollection.save(project).session(session);
-    //   await workspaceCollection.findByIdAndUpdate(workspaceID, {$push: {projectIDs: projectSaveResult._id}}).session(session);
-    // });
+    const listSaveResult = await List.create([
+      {
+        id: 0,
+        title: firstListName,
+        description: "#009885",
+        position: 0,
+        projectRef: projectSaveResult[0]._id,
+      }
+    ],{ session });
+
+    console.log("List save result: ");
+    console.log(listSaveResult);
+    // console.log(listSaveResult[0]._id);
+
+    // 4. Add reference of that List to this Project
+    try{
+      await Project.findOneAndUpdate(
+        {'name': name},
+        {"$push": {"listsRef": listSaveResult[0]._id}},
+        {session: session}
+      );
+    }
+    catch (err) {
+      console.log("Error adding List to Project: ");
+      console.log(err);
+    }
 
     await session.commitTransaction();
     session.endSession();
   }
   // catch and log error
   catch (err) {
-    // console.log("Error adding the project" + JSON.stringify(err, undefined, 2));
     console.log("Error adding the project");
     console.log(err);
     return res.status(404).json({ message: "Unable to Add workspace" });
   }
-  // // Check if inserted
-  // if (Object.entries(projects).length === 0) {
-  //   return res.status(404).json({ message: "Unable to Add workspace" });
-  // }
-  // log confirmation message on console
   console.log("Project added successfully!");
-  // return created object
-  // return res.status(200).json({ project });
   return res.status(200);
 };
 
 // export the functions
 exports.getAllProjects = getAllProjects;
 exports.addProject = addProject;
+exports.getProjectByName = getProjectByName;
+exports.getPopulatedProjectByName = getPopulatedProjectByName;

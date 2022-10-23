@@ -6,6 +6,5 @@ export interface Workspace {
   _id: ObjectId;
   name: string;
   description: string;
-  projectsRef: [string];
-  // projectIDs: [ObjectId];
+  projectsRef: ObjectId[];
 }

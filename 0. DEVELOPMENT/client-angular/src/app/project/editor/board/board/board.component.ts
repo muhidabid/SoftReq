@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { BoardService } from 'src/app/services/board.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { List } from 'src/app/models/list';
 
 @Component({
   selector: 'app-board',
@@ -9,12 +11,24 @@ import { BoardService } from 'src/app/services/board.service';
 })
 export class BoardComponent implements OnInit {
 
+  projName: string;
+  board: any;
+
   constructor(
-    public boardService: BoardService
+    public boardService: BoardService,
+    private localStore: LocalStorageService,
   ) { }
 
   ngOnInit(): void {
-    console.log('BOARD - INIT')
+    console.log('BOARD - INIT');
+    this.projName = this.localStore.getData("currProjName");
+    // const board = this.boardService.getBoard("P4").subscribe((response)=>{
+    //   this.board = response;
+    //   console.log("Board gotten: ");
+    //   console.log(response);
+    // });
+
+
   }
 
   onColorChange(color: string, columnId: number) {

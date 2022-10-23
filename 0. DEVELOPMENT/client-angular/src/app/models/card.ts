@@ -1,3 +1,4 @@
+import { ObjectId } from "mongoose";
 import * as internal from "stream";
 
 export interface Comment{
@@ -10,7 +11,7 @@ export interface Card{
   requirement: string;
   version: number;
   comments: Comment[];
-  listRef: string;
+  listRef: ObjectId;
   position: number;
 
   attributes: any[];

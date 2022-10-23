@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div cdkDropListGroup class="row">
     <div class="col-sm-6 col-lg-3 ms-3 rounded p-2" *ngFor="let list of boardService.getBoard$() | async" style="background-color: #DDDFE7;">
-    <!-- <div class="list" *ngFor="let list of boardService.getBoard$() | async"> -->
+      <!-- <div class="list" *ngFor="let list of boardService.getBoard$() | async"> -->
 
       <!-- List Title -->
       <div class="d-flex justify-content-between align-items-center p-0 shadow-sm list-header border-0">
@@ -19,9 +19,9 @@
       <!-- Color Panel -->
       <app-color-panel (emitColor)="onColorChange($event, list.id)"></app-color-panel>
 
-      <div cdkDropList [cdkDropListData]="list.cards" class="example-list" (cdkDropListDropped)="drop($any($event))">
+      <div cdkDropList [cdkDropListData]="list.cardsRef" class="example-list" (cdkDropListDropped)="drop($any($event))">
       <!-- <div cdkDropList [cdkDropListData]="list.list" class="example-list"> -->
-        <div cdkDrag class="example-box" [ngStyle]="{background: list.color}" *ngFor="let item of list.cards">
+        <div cdkDrag class="example-box" [ngStyle]="{background: list.color}" *ngFor="let item of list.cardsRef">
           <app-board-item
             [item]="item"
             (emitText)="onAddComment($event, list.id)"

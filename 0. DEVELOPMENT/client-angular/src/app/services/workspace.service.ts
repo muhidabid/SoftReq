@@ -24,11 +24,11 @@ export class WorkspaceService {
 
   addWorkspace(name: string, description: string){
     // We want to send a web request to create a list
-    return this.webReqService.post('addWorkspace', {name, description});
+    return this.webReqService.post('addWorkspace', {name});
   }
 
   getWorkspaces(): Observable<Workspace[]> {
-    return this.webReqService.get<WorkspaceModelServerResponse>('getWorkspaces').pipe(map(response => response.workspaces));
+    return this.webReqService.get<WorkspaceModelServerResponse>('getWorkspaces', {}).pipe(map(response => response.workspaces));
   }
 
   // post method

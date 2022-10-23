@@ -2,9 +2,10 @@
 <mat-toolbar  class="justify-content-between px-5 mb-4">
   <div>
     <span class="mat-h2">{{projName}}</span>
+    <p>{{project$.project.workspaceRef}}</p>
   </div>
   <div>
-    <app-dialog (emitText)="addColumn($event, projName, 0)" question="Add new column">
+    <app-dialog (emitText)="addColumn($event, project$.project._id, 0)" question="Add new column">
       <button mat-raised-button color="primary">
         New Column
       </button>
