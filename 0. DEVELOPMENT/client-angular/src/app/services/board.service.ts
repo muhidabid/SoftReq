@@ -77,11 +77,16 @@ export class BoardService {
   //   return this.webReqService.post('getBoard', {projId});
   // }
 
+  // DONE
   // get all lists of the opened projectName Board = List[]
   getBoard$(projId: string) {
     this.webReqService.post('getBoard', {projId}).subscribe((response)=>{
       // override board to store DB board
       this.board = response;
+
+      console.log("getBoard$ gives: ");
+      console.log(this.board);
+
       // Update the board BehaviorSubject
       this.board$.next([...this.board.board.listsRef]);
     });
@@ -89,6 +94,7 @@ export class BoardService {
     return this.board$.asObservable();
   }
 
+  // DONE
   addList(title: string, position: number, projRef: string) {
 
     let newList;
@@ -97,7 +103,6 @@ export class BoardService {
       newList = response;
       console.log("Response for added List:");
       console.log(newList);
-
 
       // Update board
       this.board.board.listsRef = [...this.board.board.listsRef, newList.list];
@@ -108,18 +113,20 @@ export class BoardService {
     return this.board$.asObservable();
   }
 
-  deleteList(listId: string) {
-    this.webReqService.post('deleteList', {listId}).subscribe((response)=>{
-      this.board.board.listsRef = this.board.board.listsRef.filter((list: any) => list._id !== listId);
+  // DONE
+  deleteList(listRef: string) {
+    this.webReqService.post('deleteList', {listRef}).subscribe((response)=>{
+      this.board.board.listsRef = this.board.board.listsRef.filter((list: any) => list._id !== listRef);
       this.board$.next([...this.board.board.listsRef]);
     });
 
     return this.board$.asObservable();
   }
 
-  changeListColor(color: string, listId: number) {
-    this.board = this.board.map((list: List) => {
-      if (list.id === listId) {
+  changeListColor(color: string, listId: string) {
+    this.board = this.board.map((list: any) => {
+      if (list._id === listId) {
+        // do this in DB
         list.color = color;
       }
       return list;
@@ -127,32 +134,47 @@ export class BoardService {
     this.board$.next([...this.board]);
   }
 
-  addCard(text: string, listName: string, position: number, listRef: string) {
-    const newCard: Card = {
-      id: Date.now(),
-      requirement: text,
-      version: 0,
-      comments: [],
-      listRef: mongoose.Types.ObjectId(),
-      position: position,
-      attributes: [],
-      notes: "",
-      qualityConcerns: [],
-      ambiguityConcerns: [],
-    };
+  // DONE
+  addCard(text: string, position: number, listRef: string) {
 
-    this.board = this.board.map((list: List) => {
-      if (list.title === listName) {
-        // var x = ;
-        list.cardsRef = [newCard, ...mongoose.Types.ObjectId()];
+    let newCard;
+    this.webReqService.post('addCard', {text, position, listRef}).subscribe((response)=>{
+      // override board to store DB board
+      newCard = response;
+      console.log("Response for added Card:");
+      console.log(newCard);
+
+      // Update board
+      console.log("Length:");
+      console.log(this.board.board.listsRef.length);
+
+      for (let i = 0; i < this.board.board.listsRef.length; i++) {
+        if (this.board.board.listsRef[i]._id == listRef){
+          this.board.board.listsRef[i].cardsRef = [...this.board.board.listsRef[i].cardsRef, newCard.card];
+          // Update the board BehaviorSubject
+          this.board$.next([...this.board.board.listsRef]);
+        }
       }
-      return list;
     });
 
-    this.board$.next([...this.board]);
+    return this.board$.asObservable();
   }
 
-  deleteCard(cardId: number, listId: number) {
+  deleteCard(cardRef: string, listRef: string) {
+    this.webReqService.post('deleteCard', {cardRef}).subscribe((response)=>{
+      for (let i = 0; i < this.board.board.listsRef.length; i++) {
+        if (this.board.board.listsRef[i]._id == listRef){
+          this.board.board.listsRef[i].cardsRef = this.board.board.listsRef[i].cardsRef.filter((card: any) => card._id !== cardRef);
+        }
+      }
+      this.board$.next([...this.board.board.listsRef]);
+
+      // this.board.board.listsRef = this.board.board.listsRef.filter((list: any) => list._id !== listId);
+      // this.board$.next([...this.board.board.listsRef]);
+    });
+
+    return this.board$.asObservable();
+
     // this.board = this.board.map((list: List) => {
     //   if (list.id === listId) {
     //     list.cardsRef = list.cardsRef.filter((card: Card) => card.id !== cardId);

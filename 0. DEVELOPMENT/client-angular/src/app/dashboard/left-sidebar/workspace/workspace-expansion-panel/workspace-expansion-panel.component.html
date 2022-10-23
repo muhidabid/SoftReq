@@ -4,8 +4,8 @@
     <mat-expansion-panel-header>
       {{workspace.name}}
     </mat-expansion-panel-header>
-    <div class="project-in-expansion-panel" *ngFor="let P_ID of workspace.projectsRef" routerLink="/editor">
-      <p>{{P_ID}}</p>
+    <div class="project-in-expansion-panel" *ngFor="let project of workspace.projectsRef" routerLink="/editor">
+      <p>{{project.name}}</p>
     </div>
   </mat-expansion-panel>
 </mat-accordion>

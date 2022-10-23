@@ -35,13 +35,17 @@ export class BoardComponent implements OnInit {
     });
   }
 
-  onColorChange(color: string, columnId: number) {
-    this.boardService.changeListColor(color, columnId)
+  onColorChange(color: string, listId: string) {
+    this.boardService.changeListColor(color, listId)
   }
 
-  onAddCard(text: string, columnName: string, position: number, listRef: string) {
+  onAddCard(text: string, position: number, listRef: string) {
     if(text) {
-      this.boardService.addCard(text, columnName, position, listRef)
+      this.boardService.addCard(text, position, listRef).subscribe((response)=>{
+        console.log("Board gotten after adding card in board.component: ");
+        console.log(response);
+        this.board$ = response;
+      });
     }
   }
 
@@ -53,8 +57,8 @@ export class BoardComponent implements OnInit {
     });
   }
 
-  onDeleteCard(cardId: number, columnId: number) {
-    this.boardService.deleteCard(cardId, columnId)
+  onDeleteCard(cardId: string, listId: string) {
+    this.boardService.deleteCard(cardId, listId)
   }
 
   onChangeLike(event: {card: any, increase: boolean}, columnId: number ) {

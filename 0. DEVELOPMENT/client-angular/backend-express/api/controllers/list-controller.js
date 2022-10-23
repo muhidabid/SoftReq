@@ -19,7 +19,7 @@ const addList = async (req, res, next) => {
         title: title,
         color: '#009886',
         position: position,
-        projectRef: projRef,
+        projectRef: mongoose.Types.ObjectId(projRef),
       }
     ],{ session });
 
@@ -54,9 +54,9 @@ const addList = async (req, res, next) => {
 };
 
 const deleteList = async (req, res, next) => {
-  const { listId } = req.body;
+  const { listRef } = req.body;
 
-  console.log("ListId of List being deleted: ", listId);
+  console.log("listRef of List being deleted: ", listRef);
 
   let deletedList;
   try {
@@ -68,13 +68,13 @@ const deleteList = async (req, res, next) => {
     try{
       console.log("Finding list to delete...");
       deletedList = await List.findByIdAndDelete(
-        mongoose.Types.ObjectId(listId),
+        mongoose.Types.ObjectId(listRef),
         { session: session }
       );
       console.log("deleted list...?");
     }
     catch (err) {
-      console.log("Error adding listRef to Project: ");
+      console.log("Error deleting list from Lists: ");
       console.log(err);
     }
 

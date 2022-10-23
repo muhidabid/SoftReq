@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 // export class WorkspaceExpansionPanelComponent implements OnInit {
 export class WorkspaceExpansionPanelComponent {
   // array holding workspace object
-  public workspaces$: Workspace[] = [];
+  public workspaces$: any[] = [];
 
   constructor(private _workspaceService: WorkspaceService) { }
 

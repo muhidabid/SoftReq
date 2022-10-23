@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Project = require("../models/project-model");
 const Workspace = require("../models/workspace-model");
 const List = require("../models/list-model")
+const Card = require("../models/card-model")
 
 const getAllProjects = async (req, res, next) => {
   let projects;
@@ -41,7 +42,13 @@ const getBoard = async (req, res, next) => {
   try {
     board = await Project.findById(
       mongoose.Types.ObjectId(projId)
-    ).populate('listsRef');
+    ).populate('listsRef').populate({
+      path: 'listsRef',
+      populate: {
+        path: 'cardsRef',
+        model: Card
+      }
+    });
 
   } catch (err) {
     console.log(err);
@@ -107,7 +114,7 @@ const addProject = async (req, res, next) => {
       {
         id: 0,
         title: firstListName,
-        description: "#009885",
+        color: "#009886",
         position: 0,
         projectRef: projectSaveResult[0]._id,
       }

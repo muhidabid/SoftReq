@@ -13,12 +13,12 @@
       </div>
 
       <!-- Add New Card To List -->
-      <app-dialog (emitText)="onAddCard($event, list.title, 0, list._id)" [question]="'Add new card in ' + list.title + ' list'">
+      <app-dialog (emitText)="onAddCard($event, 0, list._id)" [question]="'Add new card in ' + list.title + ' list'">
         <button mat-raised-button class="w-100 mb-1 btn-add">+</button>
       </app-dialog>
 
       <!-- Color Panel -->
-      <app-color-panel (emitColor)="onColorChange($event, list.id)"></app-color-panel>
+      <app-color-panel (emitColor)="onColorChange($event, list._id)"></app-color-panel>
 
       <div cdkDropList [cdkDropListData]="list.cardsRef" class="example-list" (cdkDropListDropped)="drop($any($event))">
       <!-- <div cdkDropList [cdkDropListData]="list.list" class="example-list"> -->
@@ -27,7 +27,7 @@
             [item]="item"
             (emitText)="onAddComment($event, list.id)"
             (emitCardItem)="onChangeLike($event, list.id)"
-            (emitDeleteCard)="onDeleteCard($event, list.id)"
+            (emitDeleteCard)="onDeleteCard($event, list._id)"
           >
             <div *ngFor="let comment of item.comments">
               <app-comment-item [comment]="comment" (emitComment)="onDeleteComment($event, list.id, item)"></app-comment-item>
