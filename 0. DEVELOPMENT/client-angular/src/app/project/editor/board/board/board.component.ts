@@ -3,7 +3,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 import { BoardService } from 'src/app/services/board.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { List } from 'src/app/models/list';
-import mongoose from 'mongoose';
+import mongoose, { ObjectId } from 'mongoose';
 
 @Component({
   selector: 'app-board',
@@ -39,9 +39,9 @@ export class BoardComponent implements OnInit {
     this.boardService.changeListColor(color, columnId)
   }
 
-  onAddCard(text: string, columnName: string, position: number) {
+  onAddCard(text: string, columnName: string, position: number, listRef: string) {
     if(text) {
-      this.boardService.addCard(text, columnName, position)
+      this.boardService.addCard(text, columnName, position, listRef)
     }
   }
 

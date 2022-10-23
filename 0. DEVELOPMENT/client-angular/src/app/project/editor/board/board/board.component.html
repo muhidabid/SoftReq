@@ -13,7 +13,7 @@
       </div>
 
       <!-- Add New Card To List -->
-      <app-dialog (emitText)="onAddCard($event, list.title, 0)" [question]="'Add new card in ' + list.title + ' list'">
+      <app-dialog (emitText)="onAddCard($event, list.title, 0, list._id)" [question]="'Add new card in ' + list.title + ' list'">
         <button mat-raised-button class="w-100 mb-1 btn-add">+</button>
       </app-dialog>
 

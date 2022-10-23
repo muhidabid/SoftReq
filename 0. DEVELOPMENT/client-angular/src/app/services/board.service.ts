@@ -101,11 +101,18 @@ export class BoardService {
 
   addList(title: string, position: number, projRef: string) {
 
+    let newList;
     this.webReqService.post('addList', {title, position, projRef}).subscribe((response)=>{
       // override board to store DB board
-      const newList = response;
+      newList = response;
+      console.log("Response for added List:");
+      console.log(newList);
+
+
       // Update board
-      this.board = [...this.board.board.listsRef, newList];
+      this.board.board.listsRef = [...this.board.board.listsRef, newList.list];
+      // this.board.board.listsRef.push(newList);
+      // this.board = [...this.board.board.listsRef, newList];
       // Update the board BehaviorSubject
       this.board$.next([...this.board.board.listsRef]);
     });
@@ -125,7 +132,7 @@ export class BoardService {
     // this.board$.next([...this.board]);
   }
 
-  addCard(text: string, listName: string, position: number) {
+  addCard(text: string, listName: string, position: number, listRef: string) {
     const newCard: Card = {
       id: Date.now(),
       requirement: text,

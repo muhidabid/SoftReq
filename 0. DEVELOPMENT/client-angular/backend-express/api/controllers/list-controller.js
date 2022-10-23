@@ -39,6 +39,8 @@ const addList = async (req, res, next) => {
       }
     ],{ session });
 
+    list = listSaveResult[0];
+
     // 2. add its reference to the project it is added to
     try{
       console.log("Finding project and adding list ref...");
@@ -64,7 +66,7 @@ const addList = async (req, res, next) => {
     return res.status(404).json({ message: "Unable to Add List" });
   }
   console.log("List added successfully!");
-  return res.status(200);
+  return res.status(200).json({ list });
 };
 
 exports.addList = addList;
