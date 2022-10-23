@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Project = require("../models/project-model");
 const List = require("../models/list-model")
+const Card = require("../models/card-model");
 
 const addList = async (req, res, next) => {
   const { title, position, projRef } = req.body;
@@ -89,6 +90,20 @@ const deleteList = async (req, res, next) => {
       console.log("deleted listtRef...?");
     }
     catch (err) {
+      console.log("Error deleting listRef to Project: ");
+      console.log(err);
+    }
+
+    // 3. delete all cards in that list
+    try{
+      console.log("Finding cards and deleting them...");
+      await Card.deleteMany(
+        {"listRef": mongoose.Types.ObjectId(deletedList._id)},
+        { session: session }
+      );
+      console.log("deleted listtRef...?");
+    }
+    catch (err){
       console.log("Error deleting listRef to Project: ");
       console.log(err);
     }
