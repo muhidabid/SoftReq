@@ -43,4 +43,7 @@ export class HeaderComponent implements OnInit {
       this.boardService.addList(event, position, this.projId)
     }
   }
+
+  saveBoard(){
+  }
 }

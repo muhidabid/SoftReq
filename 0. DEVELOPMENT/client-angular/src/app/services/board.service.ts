@@ -68,6 +68,19 @@ export class BoardService {
 
   constructor(private webReqService: WebRequestService) {}
 
+  updateBoard(board: any){
+    this.webReqService.post('updateBoard', {board}).subscribe((response)=>{
+      // override board to store DB board
+      this.board = board;
+
+      console.log("getBoard$ gives: ");
+      console.log(this.board);
+
+      // Update the board BehaviorSubject
+      this.board$.next([...this.board]);
+    });
+  }
+
   // getBoard$() {
   //   return this.board$.asObservable();
   // }

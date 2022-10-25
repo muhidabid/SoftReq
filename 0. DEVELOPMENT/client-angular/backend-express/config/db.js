@@ -24,8 +24,8 @@ const connectWithMongoDB = async () => {
     try {
       await mongoose
         .connect(
-          "mongodb+srv://user0:pass1234@softreq-main.beooq.mongodb.net/SoftReq?retryWrites=true&w=majority", // mongodb atlas string
-          // "mongodb:localhost:27017/SoftReq", //local mongodb compass string
+          // "mongodb+srv://user0:pass1234@softreq-main.beooq.mongodb.net/SoftReq?retryWrites=true&w=majority", // mongodb atlas string
+          "mongodb://localhost:27017/SoftReq", //local mongodb compass string
           {
             useNewUrlParser: true,
             useUnifiedTopology: true,

@@ -10,8 +10,8 @@ const addList = async (req, res, next) => {
 
   let list;
   try {
-    const session = await mongoose.startSession();
-    session.startTransaction();
+    // const session = await mongoose.startSession();
+    // session.startTransaction();
 
     // 1. save a new list to db
     const listSaveResult = await List.create([
@@ -22,7 +22,7 @@ const addList = async (req, res, next) => {
         position: position,
         projectRef: mongoose.Types.ObjectId(projRef),
       }
-    ],{ session });
+    ]);//,{ session });
 
     list = listSaveResult[0];
 
@@ -32,7 +32,7 @@ const addList = async (req, res, next) => {
       await Project.findByIdAndUpdate(
         mongoose.Types.ObjectId(projRef),
         {"$push": {"listsRef": listSaveResult[0]._id}},
-        { session: session }
+        // { session: session }
       );
       console.log("added listtRef...?");
     }
@@ -41,8 +41,8 @@ const addList = async (req, res, next) => {
       console.log(err);
     }
 
-    await session.commitTransaction();
-    session.endSession();
+    // await session.commitTransaction();
+    // session.endSession();
   }
   // catch and log error
   catch (err) {
@@ -61,8 +61,8 @@ const deleteList = async (req, res, next) => {
 
   let deletedList;
   try {
-    const session = await mongoose.startSession();
-    session.startTransaction();
+    // const session = await mongoose.startSession();
+    // session.startTransaction();
 
     // 1. delete list from db
     let deletedList;
@@ -70,7 +70,7 @@ const deleteList = async (req, res, next) => {
       console.log("Finding list to delete...");
       deletedList = await List.findByIdAndDelete(
         mongoose.Types.ObjectId(listRef),
-        { session: session }
+        // { session: session }
       );
       console.log("deleted list...?");
     }
@@ -85,7 +85,7 @@ const deleteList = async (req, res, next) => {
       await Project.findByIdAndUpdate(
         mongoose.Types.ObjectId(deletedList.projectRef),
         {"$pull": {"listsRef": mongoose.Types.ObjectId(deletedList._id)}},
-        { session: session }
+        // { session: session }
       );
       console.log("deleted listtRef...?");
     }
@@ -99,7 +99,7 @@ const deleteList = async (req, res, next) => {
       console.log("Finding cards and deleting them...");
       await Card.deleteMany(
         {"listRef": mongoose.Types.ObjectId(deletedList._id)},
-        { session: session }
+        // { session: session }
       );
       console.log("deleted listtRef...?");
     }
@@ -108,8 +108,8 @@ const deleteList = async (req, res, next) => {
       console.log(err);
     }
 
-    await session.commitTransaction();
-    session.endSession();
+    // await session.commitTransaction();
+    // session.endSession();
   }
   // catch and log error
   catch (err) {

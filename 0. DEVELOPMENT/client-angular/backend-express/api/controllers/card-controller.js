@@ -9,8 +9,8 @@ const addCard = async (req, res, next) => {
 
   let card;
   try {
-    const session = await mongoose.startSession();
-    session.startTransaction();
+    // const session = await mongoose.startSession();
+    // session.startTransaction();
 
     // 1. save a new list to db
     const cardSaveResult = await Card.create([
@@ -22,7 +22,7 @@ const addCard = async (req, res, next) => {
         position: position,
         notes: "-Enter your notes here-",
       }
-    ],{ session });
+    ]);//,{ session });
 
     card = cardSaveResult[0];
 
@@ -35,7 +35,7 @@ const addCard = async (req, res, next) => {
       await List.findByIdAndUpdate(
         mongoose.Types.ObjectId(listRef),
         {"$push": {"cardsRef": cardSaveResult[0]._id}},
-        { session: session }
+        // { session: session }
       );
       console.log("added cardRef...?");
     }
@@ -44,8 +44,8 @@ const addCard = async (req, res, next) => {
       console.log(err);
     }
 
-    await session.commitTransaction();
-    session.endSession();
+    // await session.commitTransaction();
+    // session.endSession();
   }
   // catch and log error
   catch (err) {
@@ -64,15 +64,15 @@ const deleteCard = async (req, res, next) => {
 
   let deletedCard;
   try {
-    const session = await mongoose.startSession();
-    session.startTransaction();
+    // const session = await mongoose.startSession();
+    // session.startTransaction();
 
     // 1. delete card from db
     try{
       console.log("Finding Card to delete...");
       deletedCard = await Card.findByIdAndDelete(
         mongoose.Types.ObjectId(cardRef),
-        { session: session }
+        // { session: session }
       );
       console.log("deleted card...?");
     }
@@ -87,7 +87,7 @@ const deleteCard = async (req, res, next) => {
       await List.findByIdAndUpdate(
         mongoose.Types.ObjectId(deletedCard.listRef),
         {"$pull": {"cardsRef": mongoose.Types.ObjectId(deletedCard._id)}},
-        { session: session }
+        // { session: session }
       );
       console.log("deleted cardRef...?");
     }
@@ -96,8 +96,8 @@ const deleteCard = async (req, res, next) => {
       console.log(err);
     }
 
-    await session.commitTransaction();
-    session.endSession();
+    // await session.commitTransaction();
+    // session.endSession();
   }
   // catch and log error
   catch (err) {

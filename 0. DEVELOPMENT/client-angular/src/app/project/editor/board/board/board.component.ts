@@ -77,13 +77,50 @@ export class BoardComponent implements OnInit {
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      console.log("moveItemInArray: ");
+      console.log(event);
     } else {
       transferArrayItem(event.previousContainer.data,
                         event.container.data,
                         event.previousIndex,
                         event.currentIndex);
+      console.log("transferArrayItem: ");
+      console.log(event);
     }
+
+    this.boardService.updateBoard(this.board$);
   }
+
+
+  // onKeyDown($event): void {
+  //   // Detect platform
+  //   if(navigator.platform.match('Mac')){
+  //       this.handleMacKeyEvents($event);
+  //   }
+  //   else {
+  //       this.handleWindowsKeyEvents($event);
+  //   }
+  // }
+
+  // handleMacKeyEvents($event) {
+  //   // MetaKey documentation
+  //   // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/metaKey
+  //   let charCode = String.fromCharCode($event.which).toLowerCase();
+  //   if ($event.metaKey && charCode === 's') {
+  //       // Action on Cmd + S
+  //       $event.preventDefault();
+  //   }
+  // }
+
+  // handleWindowsKeyEvents($event) {
+  //   let charCode = String.fromCharCode($event.which).toLowerCase();
+  //   if ($event.ctrlKey && charCode === 's') {
+  //       // Action on Ctrl + S
+  //       // $event.preventDefault();
+  //       console.log("Ctrl+S pressed");
+  //       console.log($event);
+  //   }
+  // }
 
   // drop(event: CdkDragDrop<string[]>) {
   //   if (event.previousContainer === event.container) {

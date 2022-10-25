@@ -4,7 +4,9 @@ const Project = require("../models/project-model")
 const getAllWorkspaces = async (req, res, next) => {
   let workspaces;
   try {
+    console.log("Finding workspaces...");
     workspaces = await Workspace.find({}).populate('projectsRef');
+    console.log("Workspaces found!");
     // workspaces = await Workspace.find({});
     console.log('Workspaces found (express):');
     console.log(workspaces);

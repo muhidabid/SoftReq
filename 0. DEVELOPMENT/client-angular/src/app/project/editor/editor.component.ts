@@ -62,5 +62,4 @@ export class EditorComponent implements OnInit {
     this.userStoriesService.readUserStory(this.enteredReq)
     console.log("this.userStoriesService.readUserStory(this.enteredReq): ", this.userStoriesService.readUserStory(this.enteredReq))
   }
-
 }

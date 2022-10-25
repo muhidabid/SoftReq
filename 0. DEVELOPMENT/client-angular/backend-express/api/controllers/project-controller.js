@@ -59,6 +59,27 @@ const getBoard = async (req, res, next) => {
 
 ////////////////////////////////////////////////////////////////////
 
+const updateBoard = async (req, res, next) => {
+  const { board } = req.body; // board is an array of lists
+  try {
+    // 1. Update all lists
+    for(i=0; i < board.length; i++){
+      await List.findByIdAndUpdate(
+        mongoose.Types.ObjectId(board[i]._id),
+        board[i],
+        { new: true, upsert: true }
+      )
+    }
+
+  } catch (err) {
+    console.log(err);
+    return res.status(404).json({ message: "No Board to display :(" });
+  }
+  return res.status(200).json({ board });
+};
+
+////////////////////////////////////////////////////////////////////
+
 const addProject = async (req, res, next) => {
   const { name, description, workspaceRef } = req.body;
 
@@ -66,8 +87,8 @@ const addProject = async (req, res, next) => {
 
   let project;
   try {
-    const session = await mongoose.startSession();
-    session.startTransaction();
+    // const session = await mongoose.startSession();
+    // session.startTransaction();
 
     // 1. save a new project to db
     const projectSaveResult = await Project.create([
@@ -76,7 +97,7 @@ const addProject = async (req, res, next) => {
         description: description,
         workspaceRef: mongoose.Types.ObjectId(workspaceRef),
       }
-    ],{ session });
+    ]);//,{ session });
 
 
     console.log("Project save result: ");
@@ -98,7 +119,7 @@ const addProject = async (req, res, next) => {
       await Workspace.findByIdAndUpdate(
         mongoose.Types.ObjectId(workspaceRef),
         {"$push": {"projectsRef": projectSaveResult[0]._id}},
-        { session: session }
+        // { session: session }
       );
       console.log("added projectRef...?");
     }
@@ -118,7 +139,7 @@ const addProject = async (req, res, next) => {
         position: 0,
         projectRef: projectSaveResult[0]._id,
       }
-    ],{ session });
+    ]);//,{ session });
 
     console.log("List save result: ");
     console.log(listSaveResult);
@@ -129,7 +150,7 @@ const addProject = async (req, res, next) => {
       await Project.findByIdAndUpdate(
         projectSaveResult[0]._id,
         {"$push": {"listsRef": listSaveResult[0]._id}},
-        {session: session}
+        // {session: session}
       );
     }
     catch (err) {
@@ -137,8 +158,8 @@ const addProject = async (req, res, next) => {
       console.log(err);
     }
 
-    await session.commitTransaction();
-    session.endSession();
+    // await session.commitTransaction();
+    // session.endSession();
   }
   // catch and log error
   catch (err) {
@@ -155,3 +176,4 @@ exports.getAllProjects = getAllProjects;
 exports.addProject = addProject;
 exports.getProjectByName = getProjectByName;
 exports.getBoard = getBoard;
+exports.updateBoard = updateBoard
