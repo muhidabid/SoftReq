@@ -121,5 +121,25 @@ const deleteList = async (req, res, next) => {
   return res.status(200).json({ deletedList });
 };
 
+const updateListColor = async (req, res, next) => {
+  const { color, listId } = req.body;
+
+  let updatedList;
+  try {
+    // 1. Update list color
+    updatedList = await List.findByIdAndUpdate(
+      mongoose.Types.ObjectId(listId),
+      { "color": color },
+      // { new: true, upsert: true }
+    )
+  } catch (err) {
+    console.log(err);
+    return res.status(404).json({ message: "List color didnt update :(" });
+  }
+  return res.status(200).json({ updatedList });
+
+}
+
 exports.addList = addList;
 exports.deleteList = deleteList;
+exports.updateListColor = updateListColor;

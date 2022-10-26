@@ -134,30 +134,62 @@
 
 .project-under-workspace-heading, .project-under-workspace-add-button{
   background-color: #5B9BD5;
-  color: white;
   border-radius: 2px;
   height: 100px;
+  width: 150px;
   margin: 10px;
   font-size: medium;
   font-weight: 500;
   cursor: pointer;
-  display: flex;
+  /* display: flex; */
 }
 
 .project-under-workspace-heading{
+  color: white;
+  display: flex;
   padding-top: 15px;
   padding-left: 20px;
+  padding-right: 20px;
+  position: relative;
+  font-size: small;
+}
+
+.project-info{
+  /* float: right; */
+  /* margin-left: 50%; */
+  position: absolute;
+  top: 5%;
+  right: 1%;
+  font-size: 20px;
 }
 
 .project-under-workspace-add-button{
   display: grid;
+  position: relative;
+  color: #797D8B;
   align-items: center;
   justify-content: center;
+  /* border-width: thick; */
+  /* border-color: black; */
+  background-color: #F2F2F2;
+}
+
+.add-proj-text{
+  font-size: small;
+  position: absolute;
+  bottom: 10%;
+  /* left: 5%;
+  right: 5%; */
+  justify-self: center;
 }
 
 .add-project-icon{
+  position: absolute;
+  font-size: xx-large;
+  top: 15%;
+  left: 38%;
+  right: 50%;
   transform: scale(1.5);
-  color: #797D8B;
 }
 
 /* .project-under-workspace-add-button{

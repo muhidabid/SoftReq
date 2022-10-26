@@ -1,9 +1,15 @@
 <mat-toolbar>
-  <img class="logo" src = "assets/images/softreq-logo/softreq-logo.svg" alt="SoftReq Logo"/>
+  <img class="logo" routerLink="/home-page" src = "assets/images/softreq-logo/softreq-logo.svg" alt="SoftReq Logo"/>
   <div class="menu-links">
-      <a routerLink="/dashBoard">Dashboard</a>
-      <a routerLink="/editor">Editor</a>
-      <a routerLink="/project">Project</a>
-      <a routerLink="/loginPage">Account</a>
+      <!-- <li><a role="button" routerLink="/dashBoard">Dashboard</a></li>
+      <li><a routerLink="/editor">Editor</a></li> -->
+      <!-- <li><a routerLink="/project">Project</a></li>
+      <li><a role="button" (click)="navToSection()">About</a></li>
+      <li><a role="button" routerLink="/loginPage">Login</a></li> -->
+
+      <li><div routerLink="/dashBoard">Dashboard</div></li>
+      <li><div class="about" (click)="navToSection()">About</div></li>
+      <li><div routerLink="/loginPage">Login</div></li>
+
   </div>
 </mat-toolbar>

@@ -1,0 +1,436 @@
+<!-- <div class="wrapper"> -->
+<!DOCTYPE html>
+<html lang="eng">
+
+<app-toolbar></app-toolbar>
+  <head>
+      <link rel="stylesheet" type="text/css" href="/assets/vendors/css/normalize.css">
+      <link rel="stylesheet" type="text/css" href="/assets/vendors/css/Grid(1).css">
+      <!-- <link rel="stylesheet" type="text/css" href="/assets/resources/css/style.css"> -->
+      <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400&display=swap" rel="stylesheet">
+      <link href="https://unpkg.com/ionicons@4.5.10-1/dist/css/ionicons.min.css" rel="stylesheet">
+      <!-- <style>
+        @import url('https://fonts.googleapis.com/css?family=Lato:100,300,300i,400&display=swap');
+        @import url('https://unpkg.com/ionicons@4.5.10-1/dist/css/ionicons.min.css');
+        /* <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400&display=swap" rel="stylesheet">
+        <link href="https://unpkg.com/ionicons@4.5.10-1/dist/css/ionicons.min.css" rel="stylesheet"> */
+      </style> -->
+      <title> Merafood </title>
+
+
+  </head>
+
+  <body>
+      <header>
+          <!-- <nav>
+              <div class="row">
+                  <img src="/assets/resources/img/softreq-logo.svg" alt="SoftReq logo" class="logo">
+                  <img src="/assets/resources/img/logo-white.png" alt="SoftReq logo" class="logo">
+                  <ul class="main-nav">
+                      <li> <a href="#">Food delivery</a> </li>
+                      <li> <a href="#">How it works</a> </li>
+                      <li> <a href="#">Our cities</a> </li>
+                      <li> <a href="#">Sign up</a> </li>
+                  </ul>
+              </div>
+          </nav> -->
+          <!-- <app-toolbar></app-toolbar> -->
+
+          <div class="hero-text-box">
+              <h1>Save resources keeping track of requirements</h1>
+              <h3>Faster work-flow guaranteed!</h3>
+              <a class="btn btn-full" routerLink="/dashBoard">Get started!</a>
+              <!-- <a class="btn btn-ghost" href="#">Show me more</a> -->
+          </div>
+      </header>
+
+
+      <section class="section-features" id="about-section">
+          <div class="row">
+              <h2>Manage Requirements seamlessly</h2>
+              <p class="long-copy">
+                  Hello, we’re SoftReq, your new premium food requirements management system. We know you’re always busy. No time for organizing manually. So let us take care of that, we’re really good at it, we promise!
+              </p>
+          </div>
+
+          <div class="row">
+              <div class="col span-1-of-4 box">
+                <mat-icon>timeline</mat-icon>
+                  <!-- <i class="icon ion-md-infinite icon-big"></i> -->
+                  <!-- <ion-icon name="infinite" class="icon-big"></ion-icon> -->
+                  <h3>Up to 365 days/year</h3>
+                  <p>Never spend hours organizing your requirements document again! We really mean that. Our subscription plans include up to 365 days/year cloud availability.</p>
+              </div>
+
+              <div class="col span-1-of-4 box">
+                <mat-icon>timer</mat-icon>
+                  <!-- <i class="icon ion-md-stopwatch icon-big"></i> -->
+                  <!-- <ion-icon name="stopwatch" class="icon-big"></ion-icon> -->
+                  <h3>Ready in no time!</h3>
+                  <p>You're only minutes away from your beautifully laid out dashboard with intuitive visuals for your application.</p>
+              </div>
+
+              <div class="col span-1-of-4 box">
+                  <!-- <i class="icon ion-md-folder icon-big"></i> -->
+                  <mat-icon>dvr</mat-icon>
+                  <!-- <ion-icon name="leaf" class="icon-big"></ion-icon> -->
+                  <h3>Stay organized</h3>
+                  <p>Our tool extracts all quality concerns and visualizes what your team needs to focus on. We also help you avoid ambiguities to prevent future disasters in your software.</p>
+              </div>
+
+              <div class="col span-1-of-4 box">
+                  <mat-icon>group_work</mat-icon>
+                  <!-- <i class="icon ion-md-heart icon-big"></i> -->
+                  <h3>Work together</h3>
+                  <p>We don't limit your creativity. Work with your team. Assign tasks and keep track of your progrss. Increase your productivity!</p>
+              </div>
+
+          </div>
+
+      </section>
+
+      <!-- <section class="section-meals">
+
+          <ul class="meals-showcase clearfi">
+              <li>
+                  <figure class="meal-photo">
+                      <img src="/assets/resources/img/1.jpg" alt="Korean bibimbap with egg and vegetables">
+                  </figure>
+              </li>
+              <li>
+                  <figure class="meal-photo">
+                      <img src="/assets/resources/img/2.jpg" alt="Simple italian pizza with cherry tomatoes">
+                  </figure>
+              </li>
+              <li>
+                  <figure class="meal-photo">
+                      <img src="/assets/resources/img/3.jpg" alt="Chicken breast steak with vegetables">
+                  </figure>
+              </li>
+              <li>
+                  <figure class="meal-photo">
+                      <img src="/assets/resources/img/4.jpg" alt="Autumn pumpkin soup">
+                  </figure>
+              </li>
+          </ul>
+
+          <ul class="meals-showcase clearfi">
+              <li>
+                  <figure class="meal-photo">
+                      <img src="/assets/resources/img/5.jpg" alt="Paleo beef steak with vegetables">
+                  </figure>
+              </li>
+              <li>
+                  <figure class="meal-photo">
+                      <img src="/assets/resources/img/6.jpg" alt="Healthy baguette with egg and vegetables">
+                  </figure>
+              </li>
+              <li>
+                  <figure class="meal-photo">
+                      <img src="/assets/resources/img/7.jpg" alt="Burger with cheddar and bacon">
+                  </figure>
+              </li>
+              <li>
+                  <figure class="meal-photo">
+                      <img src="/assets/resources/img/8.jpg" alt="Granola with cherries and strawberries">
+                  </figure>
+              </li>
+          </ul>
+
+      </section>
+
+      <section class="section-steps">
+          <div class="row">
+              <h2>How it works &mdash; Simple as 1, 2, 3</h2>
+          </div>
+
+          <div class="row">
+
+              <div class="col span-1-of-2 steps-box">
+                  <img src="/assets/resources/img/app-iPhone.png" class="app-screen" alt="Omnifood app on iphone">
+              </div>
+
+              <div class="col span-1-of-2 steps-box">
+
+                  <div class="works-step">
+                      <div>1</div>
+                          <p>Choose the subscription plan that best fits your needs and sign up today.</p>
+                  </div>
+                  <div class="works-step">
+                      <div>2</div>
+                          <p>Order your delicious meal using our mobile app or website. Or you can even call us!</p>
+                  </div>
+                  <div class="works-step">
+                      <div>3</div>
+                          <p>Enjoy your meal after less than 20 minutes. See you the next time!</p>
+                  </div>
+
+                  <a href="#" class="btn-app"><img src="/assets/resources/img/download-app.svg" alt="App Store Button"></a>
+                  <a href="#" class="btn-app"><img src="/assets/resources/img/download-app-android.png" alt="Play Store Button"></a>
+
+              </div>
+          </div>
+      </section> -->
+
+      <!-- <section class="section-cities">
+          <div class="row">
+              <h2>We're currently in these cities</h2>
+          </div>
+          <div>
+              <div class="col span-1-of-4 box">
+                  <img src="/assets/resources/img/lisbon-3.jpg" alt="lisbon">
+                  <h3>Lisbon</h3>
+
+                  <div class="city-feature">
+                      <i class="ion-ios-person icon-small"></i>
+                      1600+ happy eaters
+                  </div>
+                  <div class="city-feature">
+                      <i class="ion-ios-star icon-small"></i>
+                      60+ top chefs
+                  </div>
+                  <div class="city-feature">
+                      <i class="ion-logo-twitter icon-small"></i>
+                      <a href="#">@omnifood_lx</a>
+                  </div>
+
+              </div>
+
+              <div class="col span-1-of-4 box">
+                  <img src="/assets/resources/img/san-francisco.jpg" alt="San Fransisco">
+                  <h3>San Fransisco</h3>
+
+                  <div class="city-feature">
+                      <i class="ion-ios-person icon-small"></i>
+                      3700+ happy eaters
+
+                  </div>
+                  <div class="city-feature">
+                      <i class="ion-ios-star icon-small"></i>
+                      160+ top chefs
+                  </div>
+                  <div class="city-feature">
+                      <i class="ion-logo-twitter icon-small"></i>
+                      <a href="#">@omnifood_sf</a>
+                  </div>
+
+              </div>
+
+              <div class="col span-1-of-4 box">
+                  <img src="/assets/resources/img/berlin.jpg" alt="Berlin">
+                  <h3>Berlin</h3>
+
+                  <div class="city-feature">
+                      <i class="ion-ios-person icon-small"></i>
+                      2300+ happy eaters
+                  </div>
+                  <div class="city-feature">
+                      <i class="ion-ios-star icon-small"></i>
+                      110+ top chefs
+                  </div>
+                  <div class="city-feature">
+                      <i class="ion-logo-twitter icon-small"></i>
+                      <a href="#">@omnifood_berlin</a>
+                  </div>
+
+              </div>
+
+              <div class="col span-1-of-4 box">
+                  <img src="/assets/resources/img/london.jpg" alt="London">
+                  <h3>London</h3>
+
+                  <div class="city-feature">
+                      <i class="ion-ios-person icon-small"></i>
+                      1200+ happy eaters
+                  </div>
+                  <div class="city-feature">
+                      <i class="ion-ios-star icon-small"></i>
+                      50+ top chefs
+                  </div>
+                  <div class="city-feature">
+                      <i class="ion-logo-twitter icon-small"></i>
+                      <a href="#">@omnifood_london</a>
+                  </div>
+
+              </div>
+          </div>
+      </section> -->
+
+      <section class="section-testimonials">
+          <div class="row">
+              <h2>Our customers can't live without us</h2>
+          </div>
+          <div class="col">
+              <div class="col span-1-of-3">
+                  <blockquote>
+                      SoftReq is just awesome! I just launched a startup with the help of Softreq, it is a life-saver! Now that I got used to it, I use it in my projects with clients too!
+                      <cite><img src="/assets/resources/img/customer-1.jpg">Alberto Duncan</cite>
+                  </blockquote>
+              </div>
+              <div class="col span-1-of-3">
+                  <blockquote>
+                      Inexpensive, easy and intuitive, SoftReq is the best. We have lots of clients here in Lisbon, and keeping every project organized has become so much easier. Me and my team love it!
+                      <cite><img src="/assets/resources/img/customer-2.jpg">Joana Silva</cite>
+                  </blockquote>
+              </div>
+              <div class="col span-1-of-3">
+                  <blockquote>
+                      I was looking for a quick and easy way to manage my weekly projects. I tried a lot of tools, but SoftReq is the best Requirements Management tool out there. Keep up the great work!
+                      <cite><img src="/assets/resources/img/customer-3.jpg">Milton Chapman</cite>
+                  </blockquote>
+              </div>
+          </div>
+      </section>
+
+      <section class="section-plans">
+          <div class="row">
+              <h2>Start saving time today</h2>
+          </div>
+          <div class="row">
+              <div class="col span-1-of-3">
+                  <div class="plan-box">
+                      <div>
+                          <h3>Premium</h3>
+                          <p class="plan-price">$399 <span>/ month</span></p>
+                          <p class="plan-price-meal">That’s only 13.30$ per meal</p>
+                      </div>
+                      <div>
+                          <ul>
+                              <!-- <li><ion-icon name="checkmark"></ion-icon>1 meal every day</li> -->
+                              <li><mat-icon>check</mat-icon>Unlimited projects</li>
+                              <li><mat-icon>check</mat-icon>24/7 cutomer support</li>
+                              <li><mat-icon>check</mat-icon>Subscription to newsletter</li>
+                              <li><mat-icon>check</mat-icon>Real time Suggestions</li>
+                              <li><mat-icon>check</mat-icon>Advanced Project Statistics</li>
+                              <!-- <li><ion-icon name="checkmark"></ion-icon>1 meal every day</li>
+                              <li><ion-icon name="checkmark"></ion-icon>Order 24/7</li>
+                              <li><ion-icon name="checkmark"></ion-icon>Access to newest creations</li>
+                              <li><ion-icon name="checkmark"></ion-icon>Free delivery</li> -->
+                          </ul>
+                      </div>
+                      <div>
+                          <a href="#" class="btn btn-full">Sign up</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col span-1-of-3">
+                  <div class="plan-box">
+                      <div>
+                          <h3>Pro</h3>
+                          <p class="plan-price">149$ <span>/ month</span></p>
+                          <p class="plan-price-meal">That’s only 14.90$ per meal</p>
+                      </div>
+                      <div>
+                          <ul>
+                            <li><mat-icon>check</mat-icon>Unlimited projects</li>
+                            <li><mat-icon>check</mat-icon>24/7 cutomer support</li>
+                            <li><mat-icon>check</mat-icon>Subscription to newsletter</li>
+                            <li><mat-icon>check</mat-icon>Real time Suggestions</li>
+                            <!-- <li><ion-icon name="checkmark"></ion-icon>1 meal 10 days/month</li>
+                              <li><ion-icon name="checkmark"></ion-icon>Order 24/7</li>
+                              <li><ion-icon name="checkmark"></ion-icon>Access to newest creations</li>
+                              <li><ion-icon name="checkmark"></ion-icon>Free delivery</li> -->
+                          </ul>
+                      </div>
+                      <div>
+                          <a href="#" class="btn btn-ghost">Sign up</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col span-1-of-3">
+                  <div class="plan-box">
+                      <div>
+                          <h3>Starter</h3>
+                          <p class="plan-price">19$ <span>/ month</span></p>
+                          <p class="plan-price-meal">&nbsp;</p>
+                      </div>
+                      <div>
+                          <ul>
+                            <li><mat-icon>check</mat-icon>10 projects a month</li>
+                            <li><mat-icon>check</mat-icon>Subscription to newsletter</li>
+                            <li><mat-icon>check</mat-icon>Real time Suggestions</li>
+                              <!-- <li><ion-icon name="checkmark"></ion-icon>1 meal</li>
+                              <li><ion-icon name="checkmark"></ion-icon>Order from 8 am to 12 pm</li>
+                              <li><ion-icon name="close-circle-outline"></ion-icon></li>
+                              <li><ion-icon name="checkmark"></ion-icon>Free delivery</li> -->
+                          </ul>
+                      </div>
+                      <div>
+                          <a href="#" class="btn btn-ghost">Sign up</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <section class="section-form">
+          <div class="row">
+              <h2>We're happy to hear from you</h2>
+          </div>
+          <div class="row">
+              <form method="post" action="#" class="contact-form">
+                  <div class="row">
+                      <div class="col span-1-of-3">
+                          <label for="name">Name</label>
+                      </div>
+                      <div class="col span-2-of-3">
+                          <input type="text" name="name" id="name" placeholder="Your name" required>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col span-1-of-3">
+                          <label for="email">Email</label>
+                      </div>
+                      <div class="col span-2-of-3">
+                          <input type="email" name="email" id="email" placeholder="Your email" required>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col span-1-of-3">
+                          <label for="find-us">How did you find us?</label>
+                      </div>
+                      <div class="col span-2-of-3">
+                          <!-- <select name"find-us" id="find-us">
+                              <option value="friends" selected>Friends</option>
+                              <option value="search">Search Engine</option>
+                              <option value="ad">Advertisement</option>
+                              <option value="other">Other</option>
+                          </select> -->
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col span-1-of-3">
+                          <label>Newsletter?</label>
+                      </div>
+                      <div class="col span-2-of-3">
+                          <input type="checkbox" name="news" id="news" checked> Yes, please
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col span-1-of-3">
+                          <label>Drop us a line</label>
+                      </div>
+                      <div class="col span-2-of-3">
+                          <textarea name="message" placeholder="Your message"></textarea>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col span-1-of-3">
+                          <label>&nbsp;</label>
+                      </div>
+                      <div class="col span-2-of-3">
+                          <input type="submit" value="Send it!">
+                      </div>
+                  </div>
+              </form>
+          </div>
+
+      </section>
+
+  <script src="https://unpkg.com/ionicons@4.5.10-1/dist/ionicons.js"></script>
+
+  </body>
+
+</html>
+
+<!-- </div> -->

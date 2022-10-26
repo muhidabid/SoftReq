@@ -1,7 +1,7 @@
 <mat-accordion>
   <!-- *ngIf="workspaces.length | async> 0"> -->
   <mat-expansion-panel id="workspace-expansion-panel" class="mat-elevation-z0" *ngFor="let workspace of workspaces$">
-    <mat-expansion-panel-header>
+    <mat-expansion-panel-header class="workspace-name">
       {{workspace.name}}
     </mat-expansion-panel-header>
     <div class="project-in-expansion-panel" *ngFor="let project of workspace.projectsRef" routerLink="/editor">

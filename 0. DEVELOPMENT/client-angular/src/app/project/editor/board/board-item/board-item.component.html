@@ -1,41 +1,44 @@
 <!-- Stuff above text -->
 
-<div class="d-flex justify-content-end align-items-center mb-2">
+<div class="card-wrapper">
+  <div class="d-flex justify-content-end align-items-center mr-1">
+    <button mat-icon-button (click)="openPopup()">
+      <mat-icon class="icon">edit</mat-icon>
+    </button>
+  </div>
 
-  <button mat-icon-button class="mt-1" (click)="onCardItemEmit(item, false)">
-    <mat-icon class="icon">edit</mat-icon>
-  </button>
-</div>
+  <!-- Requirement -->
+  <div class="d-flex justify-content-between align-items-start mb-0">
+      <div class="requirement">
+        {{ item.requirement }}
+      </div>
+  </div>
 
-<!-- Requirement -->
-<div class="d-flex justify-content-between align-items-start mb-2">
-    <div class="mt-1">
-      {{ item.requirement }}
+  <!-- Stuff below text -->
+
+  <div class="d-flex justify-content-end align-items-center mb-0">
+
+    <!-- <button mat-button data-bs-toggle="modal" data-bs-target="#exampleModal">
+      View Details
+    </button> -->
+
+    <div class="version-wrapper">
+      <button mat-icon-button class="up-arrow" (click)="onCardItemEmit(item, false)">
+        <mat-icon class="icon">arrow_downward</mat-icon>
+      </button>
+      <button mat-icon-button class="down-arrow" disableRipple (click)="onCardItemEmit(item, true)">
+        <mat-icon class="icon">arrow_upward</mat-icon>
+      </button>
+      <span class="version-no">{{ item.version }}</span>
     </div>
-</div>
-
-<!-- Stuff below text -->
-
-<div class="d-flex justify-content-end align-items-center mb-2">
-
-  <!-- <button mat-button data-bs-toggle="modal" data-bs-target="#exampleModal">
-    View Details
-  </button> -->
-
-  <button mat-icon-button class="mt-1" (click)="onCardItemEmit(item, false)">
-    <mat-icon class="icon">arrow_downward</mat-icon>
-  </button>
-  <button mat-icon-button disableRipple (click)="onCardItemEmit(item, true)">
-    <mat-icon class="icon">arrow_upward</mat-icon>
-  </button>
-  <span>{{ item.version }}</span>
-  <button mat-icon-button disableRipple class="ml-2" (click)="onOpenComment()">
-    <mat-icon class="icon">chat_bubble_outline</mat-icon>
-  </button>
-  <span>{{ item.comments.length }}</span>
-  <button mat-icon-button class="icon-delete" (click)="onCardDelete(item._id)">
-    <mat-icon style="font-size: 30px; color: red;">delete</mat-icon>
-  </button>
+    <button mat-icon-button disableRipple class="ml-2" (click)="onOpenComment()">
+      <mat-icon class="icon">chat_bubble_outline</mat-icon>
+    </button>
+    <span>{{ item.comments.length }}</span>
+    <button mat-icon-button class="icon-delete" (click)="onCardDelete(item._id)">
+      <mat-icon style="font-size:20px; color:red; margin-left: 17px;">delete</mat-icon>
+    </button>
+  </div>
 </div>
 
 <div *ngIf="open">

@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CardEditComponent } from './card-edit/card-edit.component';
 
 @Component({
   selector: 'app-board-item',
@@ -13,7 +15,8 @@ export class BoardItemComponent implements OnInit {
 
   commentInput = ''
   open = false;
-  constructor() { }
+
+  constructor(private editCardPopup: MatDialog) { }
 
   ngOnInit(): void {}
 
@@ -35,5 +38,16 @@ export class BoardItemComponent implements OnInit {
   onCardDelete(id: string) {
     console.log('deleting '+id)
     this.emitDeleteCard.emit(id)
+  }
+
+  openPopup(): void{
+    const addPopupRef = this.editCardPopup.open(CardEditComponent, {
+      height: '70%',
+      width: '36%',
+    });
+
+    addPopupRef.afterClosed().subscribe(result => {
+      console.log('The popup was closed');
+    })
   }
 }

@@ -33,6 +33,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ProjectAddPopupComponent } from './dashboard/project-add-popup/project-add-popup.component';
 import { HeaderModule } from './project/editor/header/header.module';
 import { BoardModule } from './project/editor/board/board.module';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { BoardModule } from './project/editor/board/board.module';
     ProjectComponent,
     EditorComponent,
     ToolbarComponent,
-    ProjectAddPopupComponent
+    ProjectAddPopupComponent,
+    HomePageComponent
 // =======
 // >>>>>>> Stashed changes
   ],

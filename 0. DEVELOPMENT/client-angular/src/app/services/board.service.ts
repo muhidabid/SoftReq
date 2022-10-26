@@ -68,19 +68,6 @@ export class BoardService {
 
   constructor(private webReqService: WebRequestService) {}
 
-  updateBoard(board: any){
-    this.webReqService.post('updateBoard', {board}).subscribe((response)=>{
-      // override board to store DB board
-      this.board = board;
-
-      console.log("getBoard$ gives: ");
-      console.log(this.board);
-
-      // Update the board BehaviorSubject
-      this.board$.next([...this.board]);
-    });
-  }
-
   // getBoard$() {
   //   return this.board$.asObservable();
   // }
@@ -137,14 +124,20 @@ export class BoardService {
   }
 
   changeListColor(color: string, listId: string) {
-    this.board = this.board.map((list: any) => {
-      if (list._id === listId) {
-        // do this in DB
-        list.color = color;
-      }
-      return list;
+    this.webReqService.post('updateListColor', { color, listId }).subscribe((response)=>{
+      // update list color here
+      this.board = this.board.map((list: any) => {
+        if (list._id === listId) {
+          // do this in DB
+          list.color = color;
+        }
+        return list;
+      });
+      // Update the board BehaviorSubject
+      this.board$.next([...this.board]);
     });
-    this.board$.next([...this.board]);
+
+    return this.board$.asObservable();
   }
 
   // DONE
@@ -171,6 +164,20 @@ export class BoardService {
     });
 
     return this.board$.asObservable();
+  }
+
+  // DONE
+  updateBoard(board: any){
+    this.webReqService.post('updateBoard', {board}).subscribe((response)=>{
+      // override board to store DB board
+      this.board = board;
+
+      console.log("getBoard$ gives: ");
+      console.log(this.board);
+
+      // Update the board BehaviorSubject
+      this.board$.next([...this.board]);
+    });
   }
 
   deleteCard(cardRef: string, listRef: string) {

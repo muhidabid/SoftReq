@@ -11,12 +11,6 @@
   text-align: left;
 }
 
-::ng-deep .mat-expansion-panel-header
-{
-  height: 30px !important;
-  font-size: small;
-}
-
 .project-in-expansion-panel{
   /* background-color: lightgrey; */
   display: flex;
@@ -27,6 +21,10 @@
 
 }
 
+.project-in-expansion-panel:hover{
+  background-color: #F2F2F2;
+}
+
 /* ng-deep .workspace-expansion-panel > .mat-expansion-indicator:after {
   color: aliceblue;
 } */
@@ -34,4 +32,9 @@
 .mat-expansion-indicator {
   position: absolute;
   left: 15px;
+}
+
+.workspace-name{
+  font-size: small;
+
 }

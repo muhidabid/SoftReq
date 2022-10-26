@@ -36,3 +36,26 @@ mat-form-field.mat-form-field {
 .icon-confirm {
   font-size: 20px !important;
 }
+
+.requirement{
+  font-size: 13px;
+}
+
+.version-wrapper{
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  // background-color: white;
+}
+
+// .up-arrow{
+//   position: absolute;
+//   float: left;
+// }
+
+// .down-arrow{
+//   position: absolute;
+//   float: left;
+// }

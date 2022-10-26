@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
 
 enum colors {
+  WHITE = "#FFFFFF",
   RED = "#e92c64",
   GREEN = "#009886",
   BLUE = "#208eed",
@@ -20,7 +21,7 @@ export class ColorPanelComponent implements OnInit {
   colorsData = Object.values(colors)
 
   constructor() { }
-  
+
   ngOnInit(): void {
   }
 
