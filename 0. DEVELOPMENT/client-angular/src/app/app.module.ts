@@ -33,6 +33,10 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ProjectAddPopupComponent } from './dashboard/project-add-popup/project-add-popup.component';
 import { HeaderModule } from './project/editor/header/header.module';
 import { BoardModule } from './project/editor/board/board.module';
+import { HomePageComponent } from './home-page/home-page.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ProjectEditPopupComponent } from './dashboard/project-edit-popup/project-edit-popup.component';
+// import { MatTooltip } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,9 @@ import { BoardModule } from './project/editor/board/board.module';
     ProjectComponent,
     EditorComponent,
     ToolbarComponent,
-    ProjectAddPopupComponent
+    ProjectAddPopupComponent,
+    HomePageComponent,
+    ProjectEditPopupComponent
 // =======
 // >>>>>>> Stashed changes
   ],
@@ -70,7 +76,8 @@ import { BoardModule } from './project/editor/board/board.module';
     DragDropModule,
     ReactiveFormsModule,
     HeaderModule,
-    BoardModule
+    BoardModule,
+    MatTooltipModule
   ],
   providers: [WorkspaceService],
   bootstrap: [AppComponent]

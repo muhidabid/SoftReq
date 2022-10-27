@@ -6,7 +6,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjectComponent } from './project/project.component';
 import { EditorComponent } from './project/editor/editor.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
+// import { ToolbarComponent } from './toolbar/toolbar.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
   { path: "routeToPopup", component: WorkspaceAddPopupComponent},
@@ -14,12 +15,21 @@ const routes: Routes = [
   { path: "dashBoard", component: DashboardComponent},
   { path: "project", component: ProjectComponent},
   { path: "editor", component: EditorComponent},
-  { path: "toolbar", component: ToolbarComponent}
+  { path: "home-page", component: HomePageComponent, runGuardsAndResolvers: 'always'},
+  // { path: '', redirectTo: 'home-page', pathMatch: 'full' }
+  // { path: "editor", component: EditorComponent, data: {}},
+  // { path: "toolbar", component: ToolbarComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    scrollPositionRestoration: 'enabled',
+    anchorScrolling: 'enabled',
+    onSameUrlNavigation: 'reload',
+    // scrollOffset: [0, 50],
+    // relativeLinkResolution: 'legacy',
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [WorkspaceAddPopupComponent, LoginPageComponent, DashboardComponent]
+export const routingComponents = [WorkspaceAddPopupComponent, LoginPageComponent, DashboardComponent, HomePageComponent]

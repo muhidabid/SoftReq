@@ -1,0 +1,20 @@
+<div class="popupCard">
+  <p class="card-heading">Editing {{proj.name}}:</p>
+  <hr>
+
+  <form novalidate (ngSubmit)="editProject()">
+    <p class="form-title">Old project name: {{proj.name}}</p>
+    <mat-form-field appearance="outline">
+      <input placeholder="Enter new name" matInput type="text" name="projectName" [(ngModel)]="enteredProjectName">
+      <mat-hint>Client XYZ...</mat-hint>
+    </mat-form-field>
+
+  <p class="form-title">Old project description: {{proj.description}}</p>
+    <mat-form-field appearance="outline">
+      <input placeholder="Enter new description" matInput type="text" name="projectDescription" [(ngModel)]="enteredProjectDescription">
+      <mat-hint>This project is for Client XYZ's web projects...</mat-hint>
+    </mat-form-field>
+
+    <button mat-stroked-button class="add-project-button" type="submit">Create project</button>
+  </form>
+</div>

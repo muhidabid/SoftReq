@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CardEditComponent } from './card-edit/card-edit.component';
 
 @Component({
   selector: 'app-board-item',
@@ -9,11 +11,12 @@ export class BoardItemComponent implements OnInit {
   @Input() item: any;
   @Output() emitText: EventEmitter<{ id: number; text: string }> = new EventEmitter();
   @Output() emitCardItem: EventEmitter<{ card: any; increase: boolean }> = new EventEmitter();
-  @Output() emitDeleteCard: EventEmitter<number> = new EventEmitter();
-  
+  @Output() emitDeleteCard: EventEmitter<string> = new EventEmitter();
+
   commentInput = ''
   open = false;
-  constructor() { }
+
+  constructor(private editCardPopup: MatDialog) { }
 
   ngOnInit(): void {}
 
@@ -32,8 +35,21 @@ export class BoardItemComponent implements OnInit {
     this.emitCardItem.emit({ card, increase });
   }
 
-  onCardDelete(id: number) {
+  onCardDelete(id: string) {
     console.log('deleting '+id)
     this.emitDeleteCard.emit(id)
+  }
+
+  openPopup(): void{
+    const EditCardPopupRef = this.editCardPopup.open(CardEditComponent, {
+      height: '70%',
+      width: '50%',
+    });
+
+    EditCardPopupRef.componentInstance.attribs = this.item.attributes;
+
+    EditCardPopupRef.afterClosed().subscribe(result => {
+      console.log('The popup was closed');
+    })
   }
 }

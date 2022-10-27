@@ -13,6 +13,7 @@ import { CommentItemComponent } from './comment-item/comment-item.component';
 
 import { DialogModule } from '../dialog/dialog.module';
 import { ColorPanelComponent } from './color-panel/color-panel.component';
+import { CardEditComponent } from './board-item/card-edit/card-edit.component';
 // import { BoardItemPopupComponent } from './board-item-popup/board-item-popup.component';
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ColorPanelComponent } from './color-panel/color-panel.component';
     BoardItemComponent,
     CommentItemComponent,
     ColorPanelComponent,
+    CardEditComponent,
     // BoardItemPopupComponent
   ],
   imports: [

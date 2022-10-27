@@ -1,0 +1,63 @@
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #5496d3 !important;
+
+ }
+
+.popupCard{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column: 1;
+  margin: 6% 9%;
+}
+
+.card-heading{
+  font-weight: 700;
+  font-size: 27px;
+  line-height: 32px;
+}
+
+.form-title{
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  color: #797D8B;
+  margin-top: 5px;
+}
+
+.mat-form-field{
+  width: 30%;
+  height: 10%;
+}
+
+.add-project-button{
+  color: white;
+  background: #141C2C;
+  height: 30px;
+  font-weight: 10;
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+.add-attr-button{
+  color: white;
+  background: #141C2C;
+  height: 30px;
+  width: 100%;
+  font-weight: 450;
+  font-size: 20px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.add-attr-form{
+  margin-top: 3;
+  display: flex;
+  background-color: pink;
+  width: 100%;
+}
+
+.form{
+
+}

@@ -1,18 +1,18 @@
 const Workspace = require("../models/workspace-model");
+const Project = require("../models/project-model")
 
 const getAllWorkspaces = async (req, res, next) => {
-  console.log("-getAllWorkspaces controller endpoint called-");
   let workspaces;
   try {
-    console.log("Inside try");
-    workspaces = await Workspace.find({});
+    console.log("Finding workspaces...");
+    workspaces = await Workspace.find({}).populate('projectsRef');
+    console.log("Workspaces found!");
+    // workspaces = await Workspace.find({});
     console.log('Workspaces found (express):');
     console.log(workspaces);
 
   } catch (err) {
     console.log(err + 'Workspaces not found');
-  }
-  if (Object.entries(workspaces).length === 0) {
     return res.status(404).json({ message: "No Workspace to display" });
   }
   return res.status(200).json({ workspaces });
@@ -21,19 +21,17 @@ const getAllWorkspaces = async (req, res, next) => {
 ////////////////////////////////////////////////////////////////////
 
 const addWorkspace = async (req, res, next) => {
-  // const { name, description, projects, createdOn } = req.body;
   const { name, description } = req.body;
   let workspace;
   try {
     Workspace.init(); // document gets generated (to generate _id)
 
     workspace = new Workspace({
-      name,
-      description,
-      // projects,
-      // createdOn
+      name: name,
+      description: description,
     });
     await workspace.save();
+    // await Workspace.updateOne({name: name}, workspace, {upsert: true});
   } catch (err) {
     console.log("Error adding the workspace");
     console.log(err);
@@ -51,7 +49,7 @@ const addProjectReference = async (req, res, next) => {
   try {
     Workspace.findByIdAndUpdate(workspaceID,
       {
-        "$push": {"P_IDs": projectID}
+        "$push": {"projectsRef": projectID}
       }
     );
   } catch (err) {

@@ -1,24 +1,25 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+ObjectId = Schema.ObjectId;
 
 const projectSchema = new Schema({
-  name: {type: String},
+  name: {
+    type: String,
+    index: true
+  },
   description: {type: String},
   workspaceRef: {
-    type: String,
+    type: ObjectId,
     index: true,
     ref: 'Workspaces'
   },
-  // workspaceID: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'Workspaces'
-  // },
-  // createdOn: {
-  //   type: Date,
-  //   default: Date.now()
-  // }
+  listsRef: {
+    type: [ObjectId],
+    index: true,
+    ref: 'Lists'
+  },
 });
 
-module.exports = mongoose.model('projectModel', projectSchema, 'Projects');
+module.exports = mongoose.model('Projects', projectSchema, 'Projects');
 
 

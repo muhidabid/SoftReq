@@ -1,0 +1,33 @@
+<h2 class="card-heading">Add attributes:</h2>
+<button class="add-attr-button" (click)="toggleAddAttr()">
+  <mat-icon *ngIf="addButtShow === false">expand_more</mat-icon>
+  <mat-icon *ngIf="addButtShow === true">expand_less</mat-icon>
+  attribute
+</button>
+<div class="add-attr-form" *ngIf="addButtShow === true">
+  <form novalidate (ngSubmit)="addAttr()">
+    <div>
+      <p class="form-title">Name: {{attrKey}}</p>
+      <mat-form-field appearance="outline">
+        <input placeholder="Enter new name" matInput type="text" name="projectName" [(ngModel)]="attrKey">
+        <mat-hint>Client XYZ...</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <p class="form-title">Value: {{attrValue}}</p>
+      <mat-form-field appearance="outline">
+        <input placeholder="Enter new description" matInput type="text" name="projectDescription" [(ngModel)]="attrValue">
+        <mat-hint>This project is for Client XYZ's web projects...</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <button mat-stroked-button class="add-project-button" type="submit">Add</button>
+  </form>
+</div>
+<div *ngFor="let attr of attribs; index as i; first as isFirst">
+  {{attr.key}}
+  {{attr.value}}
+  <!-- <div *ngIf="attr.type === 'string'"></div>
+  <div *ngIf="attr.type === 'number'"></div> -->
+</div>

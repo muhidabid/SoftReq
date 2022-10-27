@@ -21,7 +21,7 @@ export class EditorComponent implements OnInit {
   enteredReq = "";
 
   constructor(
-    private _userstoriesservice: UserstoriesService, 
+    private _userstoriesservice: UserstoriesService,
     private userStoriesService: UserstoriesService,
     private http: HttpClient
     ) {}
@@ -62,5 +62,4 @@ export class EditorComponent implements OnInit {
     this.userStoriesService.readUserStory(this.enteredReq)
     console.log("this.userStoriesService.readUserStory(this.enteredReq): ", this.userStoriesService.readUserStory(this.enteredReq))
   }
-
 }

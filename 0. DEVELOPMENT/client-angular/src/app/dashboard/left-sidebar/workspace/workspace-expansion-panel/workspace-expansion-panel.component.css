@@ -11,18 +11,18 @@
   text-align: left;
 }
 
-::ng-deep .mat-expansion-panel-header
-{
-  height: 30px !important;
-  font-size: small;
+.project-in-expansion-panel{
+  /* background-color: lightgrey; */
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid lightblue;
+  margin-left: 10px;
+  cursor: pointer;
+
 }
 
-.project-in-expansion-panel{
-  background-color: darkgrey;
-  /* padding: 5px; */
-  margin: 10px;
-  /* width: 100%; */
-  cursor: pointer;
+.project-in-expansion-panel:hover{
+  background-color: #F2F2F2;
 }
 
 /* ng-deep .workspace-expansion-panel > .mat-expansion-indicator:after {
@@ -32,4 +32,9 @@
 .mat-expansion-indicator {
   position: absolute;
   left: 15px;
+}
+
+.workspace-name{
+  font-size: small;
+
 }

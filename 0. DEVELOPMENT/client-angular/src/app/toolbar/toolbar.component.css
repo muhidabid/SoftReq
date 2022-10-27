@@ -1,5 +1,7 @@
 .mat-toolbar{
   padding: 30px;
+  position: relative;
+  background-color:#F5F5F5;
 }
 
 .menu-links {
@@ -7,7 +9,7 @@
   margin-right: 0;
 }
 
-.menu-links a {
+/* .menu-links a {
 text-decoration: none;
 color: rgb(0, 0, 0);
 margin-left: 5px;
@@ -16,15 +18,45 @@ font-size: smaller;
 padding: 20px;
 padding-left: 10px;
 padding-right: 10px;
-}
+} */
 
-.menu-links a:hover {
+/* .menu-links a:hover {
 background-color: lightblue;
-}
+} */
 
 .logo{
-  height: 50px;
+  height: 1000%;
   /* padding-left: 5px; */
   margin: 0 2.37%;
   /* height: 100%; */
+  cursor: pointer;
+}
+
+
+.menu-links li{
+  display: inline-block;
+  margin-left: 40px;
+  cursor: pointer;
+  font-size: large;
+  color: #797D8B;
+}
+
+.menu-links li div:link,
+.menu-links li div:visited{
+  padding: 8px 0px;
+  color: #000;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 80%;
+  border-bottom: 2px solid transparent;
+}
+
+.menu-links li div:hover,
+.menu-links li div:active{
+  border-bottom: 2px solid #5B9BD5;
+  transition: border-bottom 0.2s;
+}
+
+.about{
+
 }

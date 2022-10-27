@@ -17,12 +17,20 @@
           <div class="workspace-detail" *ngFor="let workspace of workspaces$">
             <p class="workspace-heading">{{workspace.name}}</p>
             <div class="project-list">
-              <div class="project-under-workspace-add-button" (click)="openProjectPopup(workspace.name)">
-                <mat-icon class="add-project-icon">library_add</mat-icon>
-                Create new project
+              <div class="project-under-workspace-add-button" (click)="openProjectPopup(workspace._id)">
+                <mat-icon class="add-project-icon">add</mat-icon>
+                <p class="add-proj-text">Create new project</p>
               </div>
-              <div class="project-under-workspace-heading" *ngFor="let P_ID of workspace.projectsRef" routerLink="/editor">
-                <p>{{P_ID}}</p>
+              <!-- <div class="project-under-workspace-heading" *ngFor="let P_ID of workspace.projectsRef" routerLink="/editor"> -->
+              <div class="project-under-workspace-heading" *ngFor="let project of workspace.projectsRef">
+                <div class="proj-above-row" (click)="routeToProject(project.name, project._id)">
+                  <p>{{project.name}}</p>
+                  <mat-icon class="project-info" matTooltip={{project.description}}>info</mat-icon>
+                </div>
+                <div class="proj-bottom-row">
+                  <mat-icon class="edit-proj-icon" (click)="openProjEditPopup(project)">edit</mat-icon>
+                  <mat-icon class="del-proj-icon" (click)="deleteProj(project._id)">delete</mat-icon>
+                </div>
               </div>
             </div>
           </div>
