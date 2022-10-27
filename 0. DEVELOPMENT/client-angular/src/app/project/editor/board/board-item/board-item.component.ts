@@ -46,7 +46,7 @@ export class BoardItemComponent implements OnInit {
       width: '50%',
     });
 
-    EditCardPopupRef.componentInstance.attribs = this.item.attributes;
+    EditCardPopupRef.componentInstance.card = this.item;
 
     EditCardPopupRef.afterClosed().subscribe(result => {
       console.log('The popup was closed');

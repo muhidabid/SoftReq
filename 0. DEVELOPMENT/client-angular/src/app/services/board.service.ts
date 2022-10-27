@@ -216,6 +216,23 @@ export class BoardService {
     // this.board$.next([...this.board]);
   }
 
+  updateCard(card: any){
+    this.webReqService.post('updateCard', {card}).subscribe((response)=>{
+      for (let i = 0; i < this.project.board.listsRef.length; i++) {
+        if (this.project.board.listsRef[i]._id == card.listRef){
+          for(let j = 0; j < this.project.board.listsRef[i].cardsRef.length; j++){
+            if (this.project.board.listsRef[i].cardsRef[j]._id == card._id){
+              this.project.board.listsRef[i].cardsRef[j] = card;
+            }
+          }
+        }
+      }
+      // this.board$.next([...this.project.board.listsRef]);
+    });
+
+    // return this.board$.asObservable();
+  }
+
   changeLike(cardId: number, listId: number, increase: boolean) {
     // this.board = this.board.map((list: List) => {
     //   if (list.id === listId) {
