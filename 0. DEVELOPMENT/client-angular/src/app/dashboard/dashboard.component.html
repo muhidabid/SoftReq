@@ -22,9 +22,15 @@
                 <p class="add-proj-text">Create new project</p>
               </div>
               <!-- <div class="project-under-workspace-heading" *ngFor="let P_ID of workspace.projectsRef" routerLink="/editor"> -->
-              <div class="project-under-workspace-heading" *ngFor="let project of workspace.projectsRef" (click)="routeToProject(project.name, project._id)">
-                <p>{{project.name}}</p>
-                <mat-icon class="project-info">info</mat-icon>
+              <div class="project-under-workspace-heading" *ngFor="let project of workspace.projectsRef">
+                <div class="proj-above-row" (click)="routeToProject(project.name, project._id)">
+                  <p>{{project.name}}</p>
+                  <mat-icon class="project-info" matTooltip={{project.description}}>info</mat-icon>
+                </div>
+                <div class="proj-bottom-row">
+                  <mat-icon class="edit-proj-icon" (click)="openProjEditPopup(project)">edit</mat-icon>
+                  <mat-icon class="del-proj-icon" (click)="deleteProj(project._id)">delete</mat-icon>
+                </div>
               </div>
             </div>
           </div>

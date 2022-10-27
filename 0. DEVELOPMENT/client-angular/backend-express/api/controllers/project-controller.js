@@ -59,6 +59,37 @@ const getBoard = async (req, res, next) => {
 
 ////////////////////////////////////////////////////////////////////
 
+const editProject = async (req, res, next) => {
+  const { name, description, projRef } = req.body;
+
+  console.log("Project to which it's adding: ", projRef);
+
+  let projectUpdateResult;
+  try {
+    // const session = await mongoose.startSession();
+    // session.startTransaction();
+
+    // 1. save a new project to db
+    projectUpdateResult = await Project.findByIdAndUpdate(
+      mongoose.Types.ObjectId(projRef),
+      { name: name, description: description },
+      { new: true, upsert: true }
+    )
+    console.log("Project update result: ");
+    console.log(projectUpdateResult);
+  }
+  // catch and log error
+  catch (err) {
+    console.log("Error updating the project");
+    console.log(err);
+    return res.status(404).json({ message: "Unable to update Project" });
+  }
+  console.log("Project updated successfully!");
+  return res.status(200).json({ projectUpdateResult });
+};
+
+////////////////////////////////////////////////////////////////////
+
 const updateBoard = async (req, res, next) => {
   const { board } = req.body; // board is an array of lists
   try {
@@ -171,9 +202,57 @@ const addProject = async (req, res, next) => {
   return res.status(200);
 };
 
+////////////////////////////////////////////////////////////////////
+
+const deleteProj = async (req, res, next) => {
+  const { projRef } = req.body;
+
+  console.log("projRef of Project being deleted: ", projRef);
+
+  let deletedProj;
+  let Lists;
+  let deletedLists;
+  let deletedCards;
+  try{
+    // 1. delete project
+
+    deletedProj = await Project.findByIdAndDelete(
+      mongoose.Types.ObjectId(projRef),
+    );
+
+    // 2. delete all lists referencing project
+
+    // Find all first to use to delete cards
+    Lists = await List.find(
+      {projectRef: projRef}
+    );
+
+    // now delete
+    deletedLists = await List.deleteMany(
+      {projectRef: projRef}
+    );
+
+    // 3. delete all cards in those lists
+
+    for(i = 0; i < Lists.length; i++){
+      await Card.deleteMany(
+        {listRef: Lists[i]._id}
+      );
+    }
+  }
+  catch(err){
+    console.log("Error deleting projRef to Project: ");
+    console.log(err);
+  }
+}
+
+////////////////////////////////////////////////////////////////////
+
 // export the functions
 exports.getAllProjects = getAllProjects;
 exports.addProject = addProject;
 exports.getProjectByName = getProjectByName;
 exports.getBoard = getBoard;
-exports.updateBoard = updateBoard
+exports.updateBoard = updateBoard;
+exports.editProject = editProject;
+exports.deleteProj = deleteProj;

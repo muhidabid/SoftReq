@@ -41,12 +41,14 @@ export class BoardItemComponent implements OnInit {
   }
 
   openPopup(): void{
-    const addPopupRef = this.editCardPopup.open(CardEditComponent, {
+    const EditCardPopupRef = this.editCardPopup.open(CardEditComponent, {
       height: '70%',
-      width: '36%',
+      width: '50%',
     });
 
-    addPopupRef.afterClosed().subscribe(result => {
+    EditCardPopupRef.componentInstance.attribs = this.item.attributes;
+
+    EditCardPopupRef.afterClosed().subscribe(result => {
       console.log('The popup was closed');
     })
   }

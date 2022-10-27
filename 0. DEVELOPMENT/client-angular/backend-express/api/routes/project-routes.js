@@ -7,6 +7,7 @@ router.post("/getProjectByName", projectController.getProjectByName);
 router.post("/addProject", projectController.addProject);
 router.post("/getBoard", projectController.getBoard);
 router.post("/updateBoard", projectController.updateBoard);
-
+router.post("/editProject", projectController.editProject);
+router.post("/deleteProj", projectController.deleteProj);
 
 module.exports = router;

@@ -32,14 +32,6 @@ export class ProjectAddPopupComponent implements OnInit {
     this.projectService.addProject(this.enteredProjectName, this.enteredProjectDescription, this.workspaceRef).subscribe((response: any) =>{
       console.log("project added to projects collection");
       console.log(response);
-
-      // response._id id the id of the newly created project
-      // this.workspaceService.addProjectReference(response._id, this.workspaceID).subscribe((response: any) => {
-      //   console.log("project reference added to workspace");
-      //   console.log(response);
-      // });
-
-
     });
 
     window.location.reload();

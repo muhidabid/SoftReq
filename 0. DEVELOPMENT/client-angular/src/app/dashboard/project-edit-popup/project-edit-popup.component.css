@@ -26,38 +26,14 @@
 }
 
 .mat-form-field{
-  width: 30%;
-  height: 10%;
+  width: 100%;
 }
 
 .add-project-button{
   color: white;
   background: #141C2C;
-  height: 30px;
-  font-weight: 10;
+  height: 50px;
+  font-weight: 700;
   font-size: 20px;
   margin-top: 30px;
-}
-
-.add-attr-button{
-  color: white;
-  background: #141C2C;
-  height: 30px;
-  width: 100%;
-  font-weight: 450;
-  font-size: 20px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-}
-
-.add-attr-form{
-  margin-top: 3;
-  display: flex;
-  background-color: pink;
-  width: 100%;
-}
-
-.form{
-
 }

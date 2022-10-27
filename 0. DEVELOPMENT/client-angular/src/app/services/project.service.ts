@@ -22,6 +22,14 @@ export class ProjectService {
     return this.webReqService.post('addProject', {name, description, workspaceRef});
   }
 
+  editProject(name: string, description: string, projRef: string){
+    return this.webReqService.post('editProject', {name, description, projRef});
+  }
+
+  deleteProj(projRef: string){
+    return this.webReqService.post('deleteProj', {projRef});
+  }
+
   getProjectByName(name: string){
     console.log("getProjectByName called in proj service");
     console.log(name);
