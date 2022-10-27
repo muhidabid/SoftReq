@@ -65,6 +65,7 @@ export class BoardService {
   // Initialize with dummy data
   private board: any = this.initBoard
   private board$ = new BehaviorSubject<any[]>(this.initBoard)
+  private project: any;
 
   constructor(private webReqService: WebRequestService) {}
 
@@ -82,13 +83,17 @@ export class BoardService {
   getBoard$(projId: string) {
     this.webReqService.post('getBoard', {projId}).subscribe((response)=>{
       // override board to store DB board
-      this.board = response;
+      this.project = response;
+      // this.board = response;
 
       console.log("getBoard$ gives: ");
-      console.log(this.board);
+      console.log(this.project);
+
+      // this.board = this.board.board.listRef;
 
       // Update the board BehaviorSubject
-      this.board$.next([...this.board.board.listsRef]);
+      // this.board$.next([...this.board]);
+      this.board$.next([...this.project.board.listsRef]);
     });
 
     return this.board$.asObservable();
@@ -105,9 +110,9 @@ export class BoardService {
       console.log(newList);
 
       // Update board
-      this.board.board.listsRef = [...this.board.board.listsRef, newList.list];
+      this.project.board.listsRef = [...this.project.board.listsRef, newList.list];
       // Update the board BehaviorSubject
-      this.board$.next([...this.board.board.listsRef]);
+      this.board$.next([...this.project.board.listsRef]);
     });
 
     return this.board$.asObservable();
@@ -116,17 +121,22 @@ export class BoardService {
   // DONE
   deleteList(listRef: string) {
     this.webReqService.post('deleteList', {listRef}).subscribe((response)=>{
-      this.board.board.listsRef = this.board.board.listsRef.filter((list: any) => list._id !== listRef);
-      this.board$.next([...this.board.board.listsRef]);
+      this.project.board.listsRef = this.project.board.listsRef.filter((list: any) => list._id !== listRef);
+      this.board$.next([...this.project.board.listsRef]);
     });
 
     return this.board$.asObservable();
   }
 
+  // BUG - ERROR TypeError: this.board.map is not a function
+  // ERROR resolved if you change position of card
   changeListColor(color: string, listId: string) {
     this.webReqService.post('updateListColor', { color, listId }).subscribe((response)=>{
+      console.log("Board object in changeListColor: ");
+      console.log(this.project.board.listsRef);
+
       // update list color here
-      this.board = this.board.map((list: any) => {
+      this.project.board.listsRef = this.project.board.listsRef.map((list: any) => {
         if (list._id === listId) {
           // do this in DB
           list.color = color;
@@ -134,7 +144,7 @@ export class BoardService {
         return list;
       });
       // Update the board BehaviorSubject
-      this.board$.next([...this.board]);
+      this.board$.next([...this.project.board.listsRef]);
     });
 
     return this.board$.asObservable();
@@ -152,13 +162,13 @@ export class BoardService {
 
       // Update board
       console.log("Length:");
-      console.log(this.board.board.listsRef.length);
+      console.log(this.project.board.listsRef.length);
 
-      for (let i = 0; i < this.board.board.listsRef.length; i++) {
-        if (this.board.board.listsRef[i]._id == listRef){
-          this.board.board.listsRef[i].cardsRef = [...this.board.board.listsRef[i].cardsRef, newCard.card];
+      for (let i = 0; i < this.project.board.listsRef.length; i++) {
+        if (this.project.board.listsRef[i]._id == listRef){
+          this.project.board.listsRef[i].cardsRef = [...this.project.board.listsRef[i].cardsRef, newCard.card];
           // Update the board BehaviorSubject
-          this.board$.next([...this.board.board.listsRef]);
+          this.board$.next([...this.project.board.listsRef]);
         }
       }
     });
@@ -170,24 +180,25 @@ export class BoardService {
   updateBoard(board: any){
     this.webReqService.post('updateBoard', {board}).subscribe((response)=>{
       // override board to store DB board
-      this.board = board;
+      this.project.board.listsRef = board;
 
       console.log("getBoard$ gives: ");
-      console.log(this.board);
+      console.log(this.project.board.listsRef);
 
       // Update the board BehaviorSubject
-      this.board$.next([...this.board]);
+      this.board$.next([...this.project.board.listsRef]);
     });
   }
 
+  // DONE
   deleteCard(cardRef: string, listRef: string) {
     this.webReqService.post('deleteCard', {cardRef}).subscribe((response)=>{
-      for (let i = 0; i < this.board.board.listsRef.length; i++) {
-        if (this.board.board.listsRef[i]._id == listRef){
-          this.board.board.listsRef[i].cardsRef = this.board.board.listsRef[i].cardsRef.filter((card: any) => card._id !== cardRef);
+      for (let i = 0; i < this.project.board.listsRef.length; i++) {
+        if (this.project.board.listsRef[i]._id == listRef){
+          this.project.board.listsRef[i].cardsRef = this.project.board.listsRef[i].cardsRef.filter((card: any) => card._id !== cardRef);
         }
       }
-      this.board$.next([...this.board.board.listsRef]);
+      this.board$.next([...this.project.board.listsRef]);
 
       // this.board.board.listsRef = this.board.board.listsRef.filter((list: any) => list._id !== listId);
       // this.board$.next([...this.board.board.listsRef]);

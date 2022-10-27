@@ -29,16 +29,22 @@ export class BoardComponent implements OnInit {
 
     // const projObjectId = new mongoose.Types.ObjectId(this.projId);
     this.boardService.getBoard$(this.projId).subscribe((response)=>{
-      console.log("Board gotten in board.component: ");
+      console.log("Board gotten ON-INIT in board.component: ");
       console.log(response);
       this.board$ = response;
     });
   }
 
+  // DONE
   onColorChange(color: string, listId: string) {
-    this.boardService.changeListColor(color, listId)
+    this.boardService.changeListColor(color, listId).subscribe((response)=>{
+      console.log("Board gotten after color change in board.component: ");
+      console.log(response);
+      this.board$ = response;
+    });
   }
 
+  // DONE
   onAddCard(text: string, position: number, listRef: string) {
     if(text) {
       this.boardService.addCard(text, position, listRef).subscribe((response)=>{
@@ -49,6 +55,7 @@ export class BoardComponent implements OnInit {
     }
   }
 
+  // DONE
   onDeleteList(columnId: string) {
     this.boardService.deleteList(columnId).subscribe((response)=>{
       console.log("Deleted List being updated in board.component: ");
@@ -57,8 +64,13 @@ export class BoardComponent implements OnInit {
     });
   }
 
+  // DONE
   onDeleteCard(cardId: string, listId: string) {
-    this.boardService.deleteCard(cardId, listId)
+    this.boardService.deleteCard(cardId, listId).subscribe((response)=>{
+      console.log("Board gotten on delete card in board.component: ");
+      console.log(response);
+      this.board$ = response;
+    });
   }
 
   onChangeLike(event: {card: any, increase: boolean}, columnId: number ) {
