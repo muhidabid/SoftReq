@@ -1,33 +1,49 @@
-<h2 class="card-heading">Add attributes:</h2>
-<button class="add-attr-button" (click)="toggleAddAttr()">
-  <mat-icon *ngIf="addButtShow === false">expand_more</mat-icon>
-  <mat-icon *ngIf="addButtShow === true">expand_less</mat-icon>
-  attribute
-</button>
-<div class="add-attr-form" *ngIf="addButtShow === true">
-  <form novalidate (ngSubmit)="addAttr()">
+<div class="wrapper">
+  <h2 class="card-heading">Add attributes:</h2>
+
+  <p>Requirement:</p>
+  <input placeholder={{card.requirement}} matInput type="text" class="requirement" [(ngModel)]="card.requirement">
+
+  <!-- SHOW FORM BUTTON -->
+  <button class="add-attr-button" (click)="toggleAddAttr()">
+    <mat-icon *ngIf="addButtShow === false">expand_more</mat-icon>
+    <mat-icon *ngIf="addButtShow === true">expand_less</mat-icon>
+    attribute
+  </button>
+
+  <!-- ADD FORM -->
+  <form class="add-attr-form" novalidate (ngSubmit)="addAttrs()" *ngIf="addButtShow === true">
     <div>
-      <p class="form-title">Name: {{attrKey}}</p>
+      <p class="form-title">Name:</p>
       <mat-form-field appearance="outline">
-        <input placeholder="Enter new name" matInput type="text" name="projectName" [(ngModel)]="attrKey">
-        <mat-hint>Client XYZ...</mat-hint>
+        <input placeholder="Enter new name" matInput type="text" name="attrName" [(ngModel)]="attrKey">
+        <!-- <mat-hint>Priority</mat-hint> -->
       </mat-form-field>
     </div>
 
     <div>
-      <p class="form-title">Value: {{attrValue}}</p>
+      <p class="form-title">Value:</p>
       <mat-form-field appearance="outline">
         <input placeholder="Enter new description" matInput type="text" name="projectDescription" [(ngModel)]="attrValue">
-        <mat-hint>This project is for Client XYZ's web projects...</mat-hint>
+        <!-- <mat-hint>This project is for Client XYZ's web projects...</mat-hint> -->
       </mat-form-field>
     </div>
 
-    <button mat-stroked-button class="add-project-button" type="submit">Add</button>
+    <!-- <button mat-stroked-button class="add-attr-button" type="submit">Add</button> -->
+    <button mat-raised-button class="w-100 mb-1 btn-add" type="submit">Add</button>
   </form>
-</div>
-<div *ngFor="let attr of attribs; index as i; first as isFirst">
-  {{attr.key}}
-  {{attr.value}}
-  <!-- <div *ngIf="attr.type === 'string'"></div>
-  <div *ngIf="attr.type === 'number'"></div> -->
+
+  <!-- DISPLAY EXISTING ATTRIBS -->
+  <!-- <p>{{card | json}}</p> -->
+  <div class="existing-attr" *ngFor="let attr of card.attributes;">
+   <!-- index as i; first as isFirst"> -->
+    <p><b>Key:</b> {{attr.key}}</p>
+    <p><b>&emsp;Value:</b> {{attr.value}}</p>
+  </div>
+
+  <!-- SAVE CARD DETAILS  -->
+  <button class="save-button" (click)="saveCard()">
+    <mat-icon class="check" style="color:green;font-size: 14px;">check</mat-icon>
+    Save
+  </button>
 </div>

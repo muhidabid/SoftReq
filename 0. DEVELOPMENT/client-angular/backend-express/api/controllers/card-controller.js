@@ -109,5 +109,50 @@ const deleteCard = async (req, res, next) => {
   return res.status(200).json({ deletedCard });
 };
 
+const updateCard = async (req, res, next) => {
+  console.log("<---ENTERED UPDATECARD--->");
+  console.log(req.body);
+  const { card } = req.body;
+
+  // convert to JSON
+  // var cardJson = JSON.parse(card);
+
+  // console.log("BEFORE cardJson: ");
+  // console.log(cardJson);
+
+  // delete cardJson["_id"];
+  // delete cardJson["listRef"];
+
+  // console.log("AFTER cardJson: ");
+  // console.log(cardJson);
+
+
+  // var cardJsonWithObjecId = cardJson.map(query => ({
+  //     $match: {
+  //         ...query.$match,
+  //         _id: ObjectId(query.$match._id)
+  //     }
+  // }));
+
+  // cardJson._id = mongoose.Types.ObjectId(cardJson._id);
+  // cardJson.listRef = mongoose.Types.ObjectId(cardJson.listRef);
+
+  let updatedCard;
+  try {
+    // Update list card
+    updatedCard = await Card.findByIdAndUpdate(
+      mongoose.Types.ObjectId(card._id),
+      card,
+      { new: true, upsert: true }
+    )
+  } catch (err) {
+    console.log(err);
+    return res.status(404).json({ message: "Card didnt update :(" });
+  }
+  console.log("Card updated successfully!");
+  return res.status(200).json({ updatedCard });
+}
+
 exports.addCard = addCard;
 exports.deleteCard = deleteCard;
+exports.updateCard = updateCard;

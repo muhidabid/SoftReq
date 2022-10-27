@@ -4,6 +4,7 @@ import { BoardService } from 'src/app/services/board.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { List } from 'src/app/models/list';
 import mongoose, { ObjectId } from 'mongoose';
+import { EventEmitterService } from 'src/app/services/event-emitter.service';
 
 @Component({
   selector: 'app-board',
@@ -20,6 +21,7 @@ export class BoardComponent implements OnInit {
   constructor(
     public boardService: BoardService,
     private localStore: LocalStorageService,
+    private eventEmitterService: EventEmitterService
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +35,13 @@ export class BoardComponent implements OnInit {
       console.log(response);
       this.board$ = response;
     });
+
+    // if (this.eventEmitterService.subsVar==undefined) {
+    //   this.eventEmitterService.subsVar = this.eventEmitterService.
+    //   updateCard.subscribe((name:string) => {
+    //     this.updateCard();
+    //   });
+    // }
   }
 
   // DONE
@@ -73,6 +82,16 @@ export class BoardComponent implements OnInit {
     });
   }
 
+  // updateCard(card: any) {
+  //   this.boardService.updateCard(card).subscribe((response: any) =>{
+  //     console.log("attrs added to cards collection");
+  //     console.log(response);
+
+  //     // this.boardComp.board$ = response;
+
+  //   });
+  // }
+
   onChangeLike(event: {card: any, increase: boolean}, columnId: number ) {
     const { card: { id }, increase } = event
     this.boardService.changeLike(id, columnId, increase)
@@ -102,6 +121,8 @@ export class BoardComponent implements OnInit {
 
     this.boardService.updateBoard(this.board$);
   }
+
+
 
 
   // onKeyDown($event): void {
