@@ -17,20 +17,29 @@ def hello_world():
 @app.route("/extract_quality", methods=['POST'])
 def extract_quality():
   print("request:")
+  print(request)
+
+
+  print("request.form.get('req'):")
   print(request.form.get('req'))
 
   json_data = request.get_json()
   reqArr = json_data['req']
-  print(json_data['req'])
+
+  print("Req arr:")
+  print(reqArr)
   # req = request.form.get('req')
   # print("Req param: ")
   # print(req)
   # req = "The look and feel of the page should be nice."
   x = OneVR_LG()
   result = dict()
-  for req in reqArr:
-    result[req] = list(x.predict(req))
 
+  result[reqArr[0]] = list(x.predictMLARM(reqArr[0]))
+  # for req in reqArr:
+  #   result[req] = list(x.predict(req))
+
+  print("result: ")
   print(result)
 
   return json.dumps(result)

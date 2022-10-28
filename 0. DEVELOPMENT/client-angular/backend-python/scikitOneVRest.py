@@ -12,6 +12,8 @@ from sklearn.metrics import accuracy_score
 from sklearn.multiclass import OneVsRestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
+from scipy.sparse import csr_matrix, lil_matrix
+from skmultilearn.adapt import MLARAM
 
 stop_words = set(stopwords.words('english'))
 stop_words.update(['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight',
@@ -80,7 +82,8 @@ class OneVR_LG:
         self.categories = self.categories[2:]
 
         self.train, self.test = train_test_split(
-            self.data, random_state=42, test_size=0.30, shuffle=True)
+            self.data, random_state=42, test_size=0.20, shuffle=True)
+        self.balance()
         self.vectorizer = TfidfVectorizer(
             strip_accents='unicode', analyzer='word', ngram_range=(1, 3), norm='l2')
         self.train_text = self.train['requirement_txt']
@@ -94,7 +97,36 @@ class OneVR_LG:
         self.y_test = self.test.drop(
             labels=['Unnamed: 0', 'requirement_txt'], axis=1)
 
-    # def balance(self):
+    def balance(self):
+        train_US = self.train.where(self.train['US'] != 0)
+        train_US = train_US.dropna()
+        train_X = self.train.where(self.train['X'] != 0)
+        train_X = train_X.dropna()
+        train_EF = self.train.where(self.train['EF'] != 0)
+        train_EF = train_EF.dropna()
+        train_PE = self.train.where(self.train['PE'] != 0)
+        train_PE = train_PE.dropna()
+        train_PO = self.train.where(self.train['PO'] != 0)
+        train_PO = train_PO.dropna()
+        train_RE = self.train.where(self.train['RE'] != 0)
+        train_RE = train_RE.dropna()
+        train_SE = self.train.where(self.train['SE'] != 0)
+        train_SE = train_SE.dropna()
+        train_new = self.train.where(self.train[self.categories].sum() < 1)
+        train_new = train_new.where(train_new['X'] == 0)
+        train_new = train_new.where(train_new['US'] == 0)
+        train_new = train_new.dropna()
+        print(len(train_SE))
+
+        self.train = pd.concat([
+            train_EF,
+            train_PE,
+            train_PO,
+            train_RE,
+            train_SE,
+            train_US.sample(120),
+            train_X.sample(120),
+        ])
 
     def predict(self, new_entry):
         # Using pipeline for applying logistic regression and one vs rest classifier
@@ -122,8 +154,31 @@ class OneVR_LG:
         labels = np.ma.compressed(masking)
         return labels
 
+    def predictMLARM(self, new_entry):
 
-# classifier = OneVR_LG()
+        self.classifier_new = MLARAM()
+        new_entry = self.vectorizer.transform([new_entry])
 
-# l = classifier.predict("The system must display statistics")
-# print(l)
+        # Note that this classifier can throw up errors when handling sparse matrices.
+
+        self.x_train = lil_matrix(self.x_train).toarray()
+        self.y_train = lil_matrix(self.y_train).toarray()
+        self.x_test = lil_matrix(self.x_test).toarray()
+
+        # train
+        self.classifier_new.fit(self.x_train, self.y_train)
+
+        # predict
+        self.predictions_new = self.classifier_new.predict(self.x_test)
+
+        # accuracy
+        # print("Accuracy = ", accuracy_score(self.y_test, self.predictions_new))
+        a = self.classifier_new.predict(new_entry)[0]
+        masking = np.ma.masked_where(a < 1, self.categories)
+        # print(np.ma.compressed(masking))
+        return np.ma.compressed(masking)
+        # print("\n")
+
+
+x = OneVR_LG()
+x.predictMLARM("Must be backwards compatible")
