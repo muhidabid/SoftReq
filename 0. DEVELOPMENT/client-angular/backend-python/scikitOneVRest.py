@@ -94,6 +94,8 @@ class OneVR_LG:
         self.y_test = self.test.drop(
             labels=['Unnamed: 0', 'requirement_txt'], axis=1)
 
+    # def balance(self):
+
     def predict(self, new_entry):
         # Using pipeline for applying logistic regression and one vs rest classifier
         self.LogReg_pipeline = Pipeline([
