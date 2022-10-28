@@ -44,26 +44,33 @@ def amb_type_comp(us_filtered):
     scope_AMB = ['all', 'any', 'few', 'little', 'many', 'much', 'several', 'some']
     vague_AMB = ['good', 'better', 'worse', 'available', 'common', 'capability', 'easy', 'full', 'maximum', 'minimum', 'quickly', 'random', 'recently', 'sufficient', 'sufficiently', 'simple', 'useful', 'various']
 
+    lex_count = 0
+    ref_count = 0
+    coord_count = 0
+    scope_count = 0
+    vague_count = 0
+    unamb_count = 0
+    
     for word in us_filtered:
 
         if(word in lexical_AMB):
-            print("Lexical Ambiguity")
+            print("Lexical Ambiguity: ", word)
             lex_count = lex_count+1
 
         elif (word in referential_AMB):
-            print("Referential Ambiguity")
+            print("Referential Ambiguity: ", word)
             ref_count = ref_count + 1
 
         elif (word in coordination_AMB):
-            print("Coordination Ambiguity")
+            print("Coordination Ambiguity: ", word)
             coord_count = coord_count + 1
 
         elif (word in scope_AMB):
-            print("Scope Ambiguity")
+            print("Scope Ambiguity: ", word)
             scope_count = scope_count + 1
 
         elif (word in vague_AMB):
-            print("Vague Ambiguity")
+            print("Vague Ambiguity: ", word)
             vague_count = vague_count + 1
 
         else:
@@ -82,7 +89,8 @@ def amb_type_comp(us_filtered):
     plt.ylabel("Number of Ambiguities")
 
     plt.show()
-
+    
+    return 
 
 def main():
     # Read US here from application
@@ -94,3 +102,4 @@ def main():
     # detect amb and make bar chart
     amb_type_comp(us_clean)
 
+main()
