@@ -124,8 +124,8 @@ class OneVR_LG:
             train_PO,
             train_RE,
             train_SE,
-            train_US.sample(120),
-            train_X.sample(120),
+            train_US.sample(150),
+            train_X.sample(150),
         ])
 
     def predict(self, new_entry):

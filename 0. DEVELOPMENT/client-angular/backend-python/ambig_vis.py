@@ -38,7 +38,7 @@ def preprocess(us_input):
     return us_filtered
 
 def amb_type_comp(us_filtered):
-    lexical_AMB = ['bound', 'break', 'content', 'call', 'continue', 'contract', 'count', 'direct', 'even', 'express', 'form', 'forward', 'function', 'job', 'level', 'name', 'notice', 'number', 'out', 'position', 'record', 'reference', 'subject', 'string', 'switch', 'throw', 'translate', 'try', 'under']
+    lexical_AMB = ['bound', 'break', 'content', 'call', 'continue', 'contract', 'count', 'direct', 'even', 'express', 'form', 'forward', 'function', 'job', 'level', 'name', 'notice', 'number', 'out', 'position', 'record', 'reference', 'subject', 'string', 'switch', 'throw', 'translate', 'try', 'under', 'schedule']
     referential_AMB = ['everyone', 'everything', 'someone', 'something', 'anything', 'anyone', 'itself', 'yourself']
     coordination_AMB = ['also', 'if then', 'unless', 'if and only if']
     scope_AMB = ['all', 'any', 'few', 'little', 'many', 'much', 'several', 'some']
@@ -50,7 +50,7 @@ def amb_type_comp(us_filtered):
     scope_count = 0
     vague_count = 0
     unamb_count = 0
-    
+
     for word in us_filtered:
 
         if(word in lexical_AMB):
@@ -89,13 +89,13 @@ def amb_type_comp(us_filtered):
     plt.ylabel("Number of Ambiguities")
 
     plt.show()
-    
-    return 
+
+    return
 
 def main():
     # Read US here from application
-    us_new = "As an archivist, I want to batch edit metadata about files."
-    
+    us_new = "As a team member, I want to have a schedule of many coworking slots, so that I can work in tandem with the rest of the team and everyone on a more regular basis."
+
     # processing amb
     us_clean = preprocess(us_new)
 
