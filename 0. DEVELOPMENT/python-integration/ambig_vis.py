@@ -3,15 +3,17 @@ nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('averaged_perceptron_tagger')
 
+# from nltk import punkt
+# from nltk import averaged_perceptron_tagger
 from nltk.corpus import stopwords
 stop_words = set(stopwords.words('english'))
 
 import string
 import matplotlib.pyplot as plt
 
-def preprocess():
+def preprocess(us_input):
     # input
-    us_input = input("Enter UserStory: ")
+    # us_input = input("Enter UserStory: ")
     print("User Story: ", us_input)
 
     # lowercase
@@ -33,6 +35,7 @@ def preprocess():
 
     print('\nFiltered Tokens')
     print(us_filtered)
+    return us_filtered
 
 def amb_type_comp(us_filtered):
     lexical_AMB = ['bound', 'break', 'content', 'call', 'continue', 'contract', 'count', 'direct', 'even', 'express', 'form', 'forward', 'function', 'job', 'level', 'name', 'notice', 'number', 'out', 'position', 'record', 'reference', 'subject', 'string', 'switch', 'throw', 'translate', 'try', 'under']
@@ -67,9 +70,7 @@ def amb_type_comp(us_filtered):
             unamb_count = unamb_count + 1
             print("Unambigous")
 
-
-def visualize(lex_count, ref_count, coord_count, scope_count, vague_count, unamb_count):
-
+    # Create bar chart of results
     x = ["Lexical", "Referential", "Coordination", "Scope", "Vagueness", "None"]
     y = [lex_count, ref_count, coord_count, scope_count, vague_count, unamb_count]
 
@@ -81,3 +82,15 @@ def visualize(lex_count, ref_count, coord_count, scope_count, vague_count, unamb
     plt.ylabel("Number of Ambiguities")
 
     plt.show()
+
+
+def main():
+    # Read US here from application
+    us_new = "As an archivist, I want to batch edit metadata about files."
+    
+    # processing amb
+    us_clean = preprocess(us_new)
+
+    # detect amb and make bar chart
+    amb_type_comp(us_clean)
+
