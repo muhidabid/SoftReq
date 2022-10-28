@@ -40,10 +40,13 @@ export class HeaderComponent implements OnInit {
 
   addList(event: string, position: number) {
     if (event) {
-      this.boardService.addList(event, position, this.projId)
+      this.boardService.addList(event, position, this.projId);
     }
   }
 
-  saveBoard(){
-  }
+  // extract_quality(){
+  //   this.boardService.extract_quality(["The look and feel of the page should be nice.", "As a team member, I want to have a schedule of more coworking slots, so that I can work in tandem with the rest of the team on a more regular basis."]);
+  //   // after quality concerns are added to the DB
+  //   // window.location.reload();
+  // }
 }

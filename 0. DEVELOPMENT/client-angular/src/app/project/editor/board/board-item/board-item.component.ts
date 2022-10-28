@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { BoardService } from 'src/app/services/board.service';
 import { CardEditComponent } from './card-edit/card-edit.component';
 
 @Component({
@@ -16,7 +17,10 @@ export class BoardItemComponent implements OnInit {
   commentInput = ''
   open = false;
 
-  constructor(private editCardPopup: MatDialog) { }
+  constructor(
+    private editCardPopup: MatDialog,
+    public boardService: BoardService
+    ) { }
 
   ngOnInit(): void {}
 
@@ -51,5 +55,20 @@ export class BoardItemComponent implements OnInit {
     EditCardPopupRef.afterClosed().subscribe(result => {
       console.log('The popup was closed');
     })
+  }
+
+  extract_quality(){
+    // this.boardService.extract_quality(["The look and feel of the page should be nice.", "As a team member, I want to have a schedule of more coworking slots, so that I can work in tandem with the rest of the team on a more regular basis."]);
+    // const x = this.boardService.extract_quality([req]);
+    // console.log("Printing result in board-item:");
+    // console.log(x[req]);
+
+
+    const x = this.boardService.extract_quality(this.item);
+
+
+
+    // after quality concerns are added to the DB
+    // window.location.reload();
   }
 }

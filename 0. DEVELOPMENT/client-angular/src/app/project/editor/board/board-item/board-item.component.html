@@ -1,5 +1,13 @@
 <!-- Stuff above text -->
 
+<div class="quality-concerns-row">
+  <button class="ext-qual-conc-button" mat-raised-button color="primary" (click)="extract_quality()">
+    Extract quality concerns
+  </button>
+  <div *ngFor="let q of item.qualityConcerns">
+    <p>{{q}}</p>
+  </div>
+</div>
 <div class="card-wrapper">
   <div class="d-flex justify-content-end align-items-center mr-1">
     <button mat-icon-button (click)="openPopup()">
