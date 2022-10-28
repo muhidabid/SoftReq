@@ -4,6 +4,7 @@ import { List } from '../models/list';
 import { Card, Comment } from '../models/card';
 import { WebRequestService } from './web-request.service';
 import { ObjectId } from 'mongoose';
+import { HttpClient } from '@angular/common/http';
 var mongoose = require('mongoose');
 
 @Injectable({
@@ -67,7 +68,10 @@ export class BoardService {
   private board$ = new BehaviorSubject<any[]>(this.initBoard)
   private project: any;
 
-  constructor(private webReqService: WebRequestService) {}
+  constructor(
+    private webReqService: WebRequestService,
+    private http: HttpClient
+    ) {}
 
   // getBoard$() {
   //   return this.board$.asObservable();
@@ -216,6 +220,7 @@ export class BoardService {
     // this.board$.next([...this.board]);
   }
 
+  // DONE
   updateCard(card: any){
     this.webReqService.post('updateCard', {card}).subscribe((response)=>{
       for (let i = 0; i < this.project.board.listsRef.length; i++) {
@@ -298,4 +303,67 @@ export class BoardService {
     // })
     // this.board$.next([...this.board])
   }
+
+
+
+
+  extract_quality(card: any):any{
+    console.log("card: ");
+
+    console.log(card)
+    this.http.post<any>('http://127.0.0.1:5000/'+'extract_quality', {'req': [card.requirement]}).subscribe((response)=>{
+      console.log("Quality concern response obtained: ");
+      console.log(response);
+
+      console.log("Labels: ");
+      console.log(response[card.requirement]);
+
+
+
+      // card.qualityConcerns.push(response[card.requirement]);
+      card.qualityConcerns = response[card.requirement];
+      console.log("CARD.quali::");
+      console.log(card.qualityConcerns);
+
+
+
+
+      console.log("updated card in board serv:");
+      console.log(card);
+
+
+      // update db
+      this.webReqService.post('updateCard', {card}).subscribe((response)=>{
+        for (let i = 0; i < this.project.board.listsRef.length; i++) {
+          if (this.project.board.listsRef[i]._id == card.listRef){
+            for(let j = 0; j < this.project.board.listsRef[i].cardsRef.length; j++){
+              if (this.project.board.listsRef[i].cardsRef[j]._id == card._id){
+                this.project.board.listsRef[i].cardsRef[j] = card;
+              }
+            }
+          }
+        }
+        // this.board$.next([...this.project.board.listsRef]);
+      });
+  ;
+
+    });
+
+
+
+    // update in DB
+    // this.webReqService.post('updateCard', {card}).subscribe((response)=>{
+    //   for (let i = 0; i < this.project.board.listsRef.length; i++) {
+    //     if (this.project.board.listsRef[i]._id == card.listRef){
+    //       for(let j = 0; j < this.project.board.listsRef[i].cardsRef.length; j++){
+    //         if (this.project.board.listsRef[i].cardsRef[j]._id == card._id){
+    //           this.project.board.listsRef[i].cardsRef[j] = card;
+    //         }
+    //       }
+    //     }
+    //   }
+    // });
+  }
+
+
 }
