@@ -10,7 +10,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatChipsModule} from '@angular/material/chips';
@@ -36,6 +36,8 @@ import { BoardModule } from './project/editor/board/board.module';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ProjectEditPopupComponent } from './dashboard/project-edit-popup/project-edit-popup.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { RouterModule } from '@angular/router';
 // import { MatTooltip } from '@angular/material/tooltip';
 
 @NgModule({
@@ -77,9 +79,17 @@ import { ProjectEditPopupComponent } from './dashboard/project-edit-popup/projec
     ReactiveFormsModule,
     HeaderModule,
     BoardModule,
-    MatTooltipModule
+    MatTooltipModule,
+    RouterTestingModule,
+    RouterModule.forRoot([])
   ],
-  providers: [WorkspaceService],
+  providers: [
+    WorkspaceService,
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
