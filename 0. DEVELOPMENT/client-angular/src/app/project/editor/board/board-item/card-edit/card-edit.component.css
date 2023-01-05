@@ -18,7 +18,7 @@
 
 .form-title{
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 16px;
   color: #797D8B;
   bottom: 0;
@@ -40,6 +40,7 @@
   border-radius: 5px;
   display: flex;
   justify-content: center;
+  margin-top: 2%;
 }
 
 .save-button{
@@ -63,12 +64,13 @@
 }
 
 .add-attr-form{
-  margin-top: 3;
+  margin-top: 2%;
   display: flex;
   /* background-color: pink; */
   width: 100%;
   justify-content: center;
   align-items: center;
+  font-size: 12px;
 }
 
 .requirement{
@@ -80,4 +82,5 @@
 
 .existing-attr{
   display: flex;
+  margin-top: 2%;
 }

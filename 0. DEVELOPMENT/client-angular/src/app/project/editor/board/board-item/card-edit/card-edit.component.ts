@@ -6,6 +6,9 @@ import { BoardService } from 'src/app/services/board.service';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { BoardComponent } from '../../board/board.component';
 import { EventEmitterService } from 'src/app/services/event-emitter.service';
+// import {GrammarlyButtonElement, GrammarlyEditorPluginCallbacks, GrammarlyEditorPluginElement, GrammarlyEditorPluginElementEventMap} from '@grammarly/editor-sdk';
+// import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import * as Grammarly from "@grammarly/editor-sdk";
 
   /** Error when invalid control is dirty, touched, or submitted. */
   // export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -42,6 +45,7 @@ export class CardEditComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    Grammarly.init("client_RCyGDZmGyUSKUmkZnPV3mA");
   }
 
   closePopup(): void{

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BoardComponent } from './board/board.component';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +15,7 @@ import { DialogModule } from '../dialog/dialog.module';
 import { ColorPanelComponent } from './color-panel/color-panel.component';
 import { CardEditComponent } from './board-item/card-edit/card-edit.component';
 // import { BoardItemPopupComponent } from './board-item-popup/board-item-popup.component';
+
 @NgModule({
   declarations: [
     BoardComponent,
@@ -33,9 +34,10 @@ import { CardEditComponent } from './board-item/card-edit/card-edit.component';
     MatExpansionModule,
     FormsModule,
     DialogModule
-  ], 
+  ],
   exports: [
     BoardComponent
-  ]
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class BoardModule { }

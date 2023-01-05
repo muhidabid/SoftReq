@@ -2,13 +2,15 @@
   <h2 class="card-heading">Add attributes:</h2>
 
   <p>Requirement:</p>
-  <input placeholder={{card.requirement}} matInput type="text" class="requirement" [(ngModel)]="card.requirement">
+  <grammarly-editor-plugin>
+    <input placeholder={{card.requirement}} matInput type="text" class="requirement" [(ngModel)]="card.requirement">
+  </grammarly-editor-plugin>
 
   <!-- SHOW FORM BUTTON -->
   <button class="add-attr-button" (click)="toggleAddAttr()">
     <mat-icon *ngIf="addButtShow === false">expand_more</mat-icon>
     <mat-icon *ngIf="addButtShow === true">expand_less</mat-icon>
-    attribute
+    add attribute
   </button>
 
   <!-- ADD FORM -->
