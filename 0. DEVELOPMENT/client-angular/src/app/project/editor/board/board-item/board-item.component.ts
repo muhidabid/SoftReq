@@ -26,7 +26,7 @@ export class BoardItemComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    // Grammarly.init("client_RCyGDZmGyUSKUmkZnPV3mA");
+    Grammarly.init("client_RCyGDZmGyUSKUmkZnPV3mA");
   }
 
   onOpenComment() {
