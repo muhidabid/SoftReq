@@ -17,8 +17,10 @@ import sklearn.preprocessing as preproc
 from sklearn.feature_extraction import text as sk_text
 import pickle
 import numpy as np
+from sklearn.preprocessing import LabelEncoder
 
 classnames = ["ef", "pe", "po", "re", "se", "us"]
+
 models = list()
 vectorizers = list()
 has_loaded_models = False
@@ -46,6 +48,9 @@ def load_vectorizers():
 
 
 def predict(text):
+    le = LabelEncoder()
+    le.fit(["EF", "PE", "PO", "SE", "RE", "US", "X"])
+    no_labels = False
     labels = list()
     transforms = list()
     if(has_loaded_models and has_loaded_vectorizers):
@@ -56,7 +61,16 @@ def predict(text):
             labels.append(models[i].predict(transforms[i]))
 
         labels = np.concatenate(labels, axis=0)
-        print(labels)
+        # for i in range(len(labels)):
+        #     labels[i] = label_classes[labels[i]]
+
+        # no_labels = bool(np.prod((labels == "X")))
+        print(le.inverse_transform(labels))
+
+        # if(no_labels):
+        #     return np.array(["X"])
+        # else:
+        #     return labels
 
 
 if __name__ == "__main__":
@@ -64,4 +78,6 @@ if __name__ == "__main__":
     has_loaded_vectorizers = load_vectorizers()
     print(len(models))
     print(len(vectorizers))
-    predict(input())
+    print("Enter Story")
+    story = input()
+    predict(story)
