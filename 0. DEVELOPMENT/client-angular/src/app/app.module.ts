@@ -14,6 +14,7 @@ import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatTableModule} from '@angular/material/table';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -38,6 +39,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ProjectEditPopupComponent } from './dashboard/project-edit-popup/project-edit-popup.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RouterModule } from '@angular/router';
+import { BacklogPageComponent } from './backlog-page/backlog-page.component';
 // import { MatTooltip } from '@angular/material/tooltip';
 
 @NgModule({
@@ -55,7 +57,8 @@ import { RouterModule } from '@angular/router';
     ToolbarComponent,
     ProjectAddPopupComponent,
     HomePageComponent,
-    ProjectEditPopupComponent
+    ProjectEditPopupComponent,
+    BacklogPageComponent
 // =======
 // >>>>>>> Stashed changes
   ],
@@ -80,6 +83,7 @@ import { RouterModule } from '@angular/router';
     HeaderModule,
     BoardModule,
     MatTooltipModule,
+    MatTableModule,
     RouterTestingModule,
     RouterModule.forRoot([])
   ],
