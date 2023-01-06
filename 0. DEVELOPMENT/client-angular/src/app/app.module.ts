@@ -14,6 +14,7 @@ import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatSliderModule} from '@angular/material/slider';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -81,7 +82,8 @@ import { RouterModule } from '@angular/router';
     BoardModule,
     MatTooltipModule,
     RouterTestingModule,
-    RouterModule.forRoot([])
+    MatSliderModule,
+    RouterModule.forRoot([]),
   ],
   providers: [
     WorkspaceService,

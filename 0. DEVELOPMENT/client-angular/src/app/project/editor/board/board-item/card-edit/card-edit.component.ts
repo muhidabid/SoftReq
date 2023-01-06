@@ -8,6 +8,8 @@ import { BoardComponent } from '../../board/board.component';
 import { EventEmitterService } from 'src/app/services/event-emitter.service';
 // import {GrammarlyButtonElement, GrammarlyEditorPluginCallbacks, GrammarlyEditorPluginElement, GrammarlyEditorPluginElementEventMap} from '@grammarly/editor-sdk';
 // import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatFormField } from '@angular/material/form-field';
 import * as Grammarly from "@grammarly/editor-sdk";
 
   /** Error when invalid control is dirty, touched, or submitted. */
@@ -46,6 +48,14 @@ export class CardEditComponent implements OnInit {
 
   ngOnInit(): void {
     Grammarly.init("client_RCyGDZmGyUSKUmkZnPV3mA");
+  }
+
+  formatLabel(value: number): string {
+    if (value >= 1000) {
+      return Math.round(value / 1000) + 'k';
+    }
+
+    return `${value}`;
   }
 
   closePopup(): void{

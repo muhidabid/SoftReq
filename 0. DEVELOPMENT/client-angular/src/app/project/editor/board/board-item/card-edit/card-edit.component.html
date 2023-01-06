@@ -43,6 +43,13 @@
     <p><b>&emsp;Value:</b> {{attr.value}}</p>
   </div>
 
+  <!-- PRIORITY 1-5 -->
+  <mat-slider min="0" max="100000" step="1000" showTickMarks discrete [displayWith]="formatLabel">
+    <input matSliderThumb>
+  </mat-slider>
+
+
+
   <!-- SAVE CARD DETAILS  -->
   <button class="save-button" (click)="saveCard()">
     <mat-icon class="check" style="color:green;font-size: 14px;">check</mat-icon>

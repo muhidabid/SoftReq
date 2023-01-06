@@ -84,3 +84,7 @@
   display: flex;
   margin-top: 2%;
 }
+
+mat-slider {
+  width: 300px;
+}
