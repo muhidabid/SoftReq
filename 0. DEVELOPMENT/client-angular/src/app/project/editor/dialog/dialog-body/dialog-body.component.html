@@ -2,7 +2,9 @@
   <h3>{{data.question}}</h3>
   <mat-form-field class="w-100">
     <mat-label>Add Title</mat-label>
-    <input matInput [(ngModel)]="data.text">
+    <grammarly-editor-plugin>
+      <textarea matInput [(ngModel)]="data.text"></textarea>
+    </grammarly-editor-plugin>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
