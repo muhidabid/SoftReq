@@ -1,7 +1,7 @@
 <div class="wrapper">
   <h2 class="card-heading">Add attributes:</h2>
 
-  <p>Requirement:</p>
+  <p><b>Requirement:</b></p>
   <grammarly-editor-plugin>
     <input placeholder={{card.requirement}} matInput type="text" class="requirement" [(ngModel)]="card.requirement">
   </grammarly-editor-plugin>
@@ -46,17 +46,38 @@
 
   <!-- PRIORITY 1-5 -->
 
-  <div>
-    <p>Priority</p>
-    <!-- <mat-slider min="1" max="5" step="10" showTickMarks discrete [displayWith]="formatLabel">
-      <input matSliderThumb>
-    </mat-slider> -->
-    
-    <mat-slider min="1" max="5" step="0.5" value="1.5">
-      <input matSliderThumb>
-    </mat-slider>
-    <p>Some other lines here</p>
+  <div class="priority-group">
+    <p>Priority: {{value}}</p>
+
+    <ngx-slider
+    class="priority-slider"
+    [(value)]="value"
+    [options]="options"></ngx-slider>
+
+    <!-- <mat-slider
+    class="priority-slider"
+    thumbLabel
+    [displayWith]="formatLabel.bind(this)"
+    tickInterval="1"
+    step="1"
+    min="1"
+    max="5"
+    aria-label="units"
+    ></mat-slider> -->
   </div>
+
+  <!-- <p>{{testingSliderValues}}</p>
+  <mat-slider showTickMarks [(ngModel)]="testingSliderValues")]>
+    <input matSliderThumb>
+  </mat-slider> -->
+
+  <!-- <mat-slider min="1" max="5" step="1" showTickMarks discrete [displayWith]="formatLabel">
+    <input matSliderThumb>
+  </mat-slider> -->
+
+  <!-- <mat-slider min="1" max="5" step="0.5" value="1.5">
+    <input matSliderThumb>
+  </mat-slider> -->
 
 
 

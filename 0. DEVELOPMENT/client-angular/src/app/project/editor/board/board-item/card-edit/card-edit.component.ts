@@ -11,6 +11,7 @@ import { EventEmitterService } from 'src/app/services/event-emitter.service';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatFormField } from '@angular/material/form-field';
 import * as Grammarly from "@grammarly/editor-sdk";
+import { Options } from '@angular-slider/ngx-slider';
 
   /** Error when invalid control is dirty, touched, or submitted. */
   // export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -37,6 +38,7 @@ export class CardEditComponent implements OnInit {
 
 
   public temp;
+  // public priority = 0;
 
   constructor(
     public dialogRef: MatDialogRef<ProjectAddPopupComponent>,
@@ -48,15 +50,33 @@ export class CardEditComponent implements OnInit {
 
   ngOnInit(): void {
     Grammarly.init("client_RCyGDZmGyUSKUmkZnPV3mA");
+    this.value = this.card.priority;
   }
+
+  public value: number;
+  options: Options = {
+    floor: 0,
+    ceil: 5,
+    showSelectionBar: true,
+    getSelectionBarColor: (value: number): string => {
+      if (value <= 1) {
+          return 'red';
+      }
+      if (value <= 2) {
+          return 'orange';
+      }
+      if (value <= 4) {
+          return 'yellow';
+      }
+      return '#2AE02A';
+    }
+  };
 
   formatLabel(value: number): string {
-    if (value >= 1000) {
-      return Math.round(value / 1000) + 'k';
-    }
-
-    return `${value}`;
+    this.card.priority = value;
+    return `${this.card.priority}`;
   }
+
 
   closePopup(): void{
     this.dialogRef.close();
@@ -91,6 +111,7 @@ export class CardEditComponent implements OnInit {
   saveCard(): void{
     // this.eventEmitterService.updateCard();
     // this.closePopup();
+    this.card.priority = this.value;
     this.boardService.updateCard(this.card);
     window.location.reload();
     // this.boardService.updateCard(this.card).subscribe((response: any) =>{

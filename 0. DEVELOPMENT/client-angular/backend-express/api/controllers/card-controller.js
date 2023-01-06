@@ -21,6 +21,7 @@ const addCard = async (req, res, next) => {
         listRef: mongoose.Types.ObjectId(listRef),
         position: position,
         notes: "-Enter your notes here-",
+        priority: 1,
       }
     ]);//,{ session });
 

@@ -11,6 +11,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { BoardItemComponent } from './board-item/board-item.component';
 import { CommentItemComponent } from './comment-item/comment-item.component';
 import { MatSliderModule } from '@angular/material/slider';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+
 
 import { DialogModule } from '../dialog/dialog.module';
 import { ColorPanelComponent } from './color-panel/color-panel.component';
@@ -35,7 +38,9 @@ import { CardEditComponent } from './board-item/card-edit/card-edit.component';
     MatExpansionModule,
     FormsModule,
     DialogModule,
-    MatSliderModule
+    MatSliderModule,
+    BrowserAnimationsModule,
+    NgxSliderModule
   ],
   exports: [
     BoardComponent

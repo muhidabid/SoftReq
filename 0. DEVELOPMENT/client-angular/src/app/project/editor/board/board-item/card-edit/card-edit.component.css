@@ -85,6 +85,18 @@
   margin-top: 2%;
 }
 
+.priority-group{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 5%; */
+}
+
+.priority-slider{
+  width: 50%;
+  margin-left: 5%;
+}
+
 mat-slider {
   width: 300px;
 }
