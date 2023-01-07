@@ -39,7 +39,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ProjectEditPopupComponent } from './dashboard/project-edit-popup/project-edit-popup.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RouterModule } from '@angular/router';
-import { BacklogPageComponent } from './backlog-page/backlog-page.component';
+import { BacklogPageComponent } from './project/editor/backlog-page/backlog-page.component';
+
+
 // import { MatTooltip } from '@angular/material/tooltip';
 
 @NgModule({

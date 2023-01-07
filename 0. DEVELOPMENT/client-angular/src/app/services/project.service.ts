@@ -14,6 +14,7 @@ import mongoose from 'mongoose';
 export class ProjectService {
 
   projectName: string;  // name of current project user is on
+  private data:any = undefined;
 
   constructor(private webReqService: WebRequestService) {}
 
@@ -36,4 +37,12 @@ export class ProjectService {
 
     return this.webReqService.post<Project>('getProjectByName', { name });
   }
+
+  setData(data:any){
+    this.data = data;
+}
+
+  getData():any{
+    return this.data;
+}
 }

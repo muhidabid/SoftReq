@@ -17,6 +17,10 @@ export class BacklogPageComponent implements OnInit {
   projId: string;
   userstories: UserStories[] = [];
 
+  data:any;
+
+  
+
   @Input() item: any;
   @Output() emitText: EventEmitter<{ id: number; text: string }> = new EventEmitter();
   @Output() emitCardItem: EventEmitter<{ card: any; increase: boolean }> = new EventEmitter();
@@ -37,11 +41,15 @@ export class BacklogPageComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.data = this._projectService.getData();
+
     this.projName = this.localStore.getData("currProjName");
     this.projId = this.localStore.getData("currProjId");
 
     console.log("Project nameeee: ");
     console.log(this.projName);
+    console.log("Project ID: ");
+    console.log(this.projId)
 
     this.userstories = this._userstoriesservice.getUserStories();
   }

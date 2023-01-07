@@ -15,6 +15,9 @@ export class HeaderComponent implements OnInit {
 
   projName: string;
   projId: string;
+
+  data:any = {text: "example"};
+
   // subscription: Subscription;
 
   constructor(
@@ -38,7 +41,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnDestroy(): void {
     console.log("ngOnDestroy called in header");
-    this.localStore.removeData("currProjName");
+    // this.localStore.removeData("currProjName");
   }
 
   addList(event: string, position: number) {
@@ -48,9 +51,10 @@ export class HeaderComponent implements OnInit {
   }
 
   routeToProject(projName: string): void{
-    // this._projectService.projectName = projName;
+    this._projectService.projectName = projName;
+    this._projectService.setData(projName)
     this.localStore.saveData("currProjName", projName);
-    this._router.navigate(['backlog', {projName: projName}]);
+    this._router.navigate(['backlog']);
   }
 
   // extract_quality(){

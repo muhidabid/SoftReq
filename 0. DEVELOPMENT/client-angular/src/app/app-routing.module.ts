@@ -8,7 +8,7 @@ import { ProjectComponent } from './project/project.component';
 import { EditorComponent } from './project/editor/editor.component';
 // import { ToolbarComponent } from './toolbar/toolbar.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { BacklogPageComponent } from './backlog-page/backlog-page.component';
+import { BacklogPageComponent } from './project/editor/backlog-page/backlog-page.component';
 
 const routes: Routes = [
   { path: "routeToPopup", component: WorkspaceAddPopupComponent},

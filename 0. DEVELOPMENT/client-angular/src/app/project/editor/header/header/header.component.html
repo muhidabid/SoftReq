@@ -6,10 +6,12 @@
   <!-- <button mat-raised-button color="primary" (click)="saveBoard()">
     Save
   </button> -->
+
+  
   <div class="menu-links" (click)="routeToProject(projName)">
-    <!-- <button mat-raised-button color="primary"> -->
-      <li><div routerLink="/backlog">See Backlog</div></li>
-    <!-- </button> -->
+    <button mat-raised-button color="primary">
+      <li><div routerLink="/backlog">See Backlog of {{projName}}</div></li>
+    </button>
   </div>
 
   <div>
