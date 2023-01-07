@@ -1,0 +1,9 @@
+lexical_AMB = ['bound', 'break', 'content', 'call', 'continue', 'contract', 'count', 'direct', 'even', 'express', 'form', 'forward', 'function', 'job', 'level', 'name', 'notice', 'number', 'out', 'position', 'record', 'reference', 'subject', 'string', 'switch', 'throw', 'translate', 'try', 'under']
+
+referential_AMB = ['everyone', 'everything', 'someone', 'something', 'anything', 'anyone', 'itself', 'yourself']
+
+coordination_AMB = ['also', 'if then', 'unless', 'if and only if']
+
+scope_AMB = ['all', 'any', 'few', 'little', 'many', 'much', 'several', 'some']
+
+vague_AMB = ['good', 'better', 'worse', 'available', 'common', 'capability', 'easy', 'full', 'maximum', 'minimum', 'quickly', 'random', 'recently', 'sufficient', 'sufficiently', 'simple', 'useful', 'various']
