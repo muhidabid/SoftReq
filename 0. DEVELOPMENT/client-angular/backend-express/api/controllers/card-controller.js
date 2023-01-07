@@ -22,6 +22,7 @@ const addCard = async (req, res, next) => {
         position: position,
         notes: "-Enter your notes here-",
         priority: 1,
+        stability: true,
       }
     ]);//,{ session });
 

@@ -23,6 +23,7 @@ const cardSchema = new Schema({
   attributes: {type: [any]},
   notes: {type: String},
   priority: {type: Number},
+  stability: {type: Boolean},
 
   qualityConcerns: {type: [any]},
   ambiguityConcerns: {type: [any]},

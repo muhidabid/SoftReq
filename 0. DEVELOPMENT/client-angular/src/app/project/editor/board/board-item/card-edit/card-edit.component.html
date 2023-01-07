@@ -54,37 +54,19 @@
     [(value)]="value"
     [options]="options"></ngx-slider>
 
-    <!-- <mat-slider
-    class="priority-slider"
-    thumbLabel
-    [displayWith]="formatLabel.bind(this)"
-    tickInterval="1"
-    step="1"
-    min="1"
-    max="5"
-    aria-label="units"
-    ></mat-slider> -->
   </div>
 
-  <!-- <p>{{testingSliderValues}}</p>
-  <mat-slider showTickMarks [(ngModel)]="testingSliderValues")]>
-    <input matSliderThumb>
-  </mat-slider> -->
-
-  <!-- <mat-slider min="1" max="5" step="1" showTickMarks discrete [displayWith]="formatLabel">
-    <input matSliderThumb>
-  </mat-slider> -->
-
-  <!-- <mat-slider min="1" max="5" step="0.5" value="1.5">
-    <input matSliderThumb>
-  </mat-slider> -->
-
-
+  <label class="switch">
+    <input type="checkbox" (click)="toggleStability()" [checked]="card.stability">
+  </label>
+  <p *ngIf="card.stability">Stable</p>
+  <p *ngIf="!card.stability">Volatile</p>
 
 
   <!-- SAVE CARD DETAILS  -->
   <button class="save-button" (click)="saveCard()">
-    <mat-icon class="check" style="color:green;font-size: 14px;">check</mat-icon>
+    <mat-icon class="check" style="color:#f5f5f5;font-size: 14px;">check</mat-icon>
+    <!-- <mat-icon class="check" style="color:green;font-size: 14px;">check</mat-icon> -->
     Save
   </button>
 </div>

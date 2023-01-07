@@ -35,7 +35,7 @@ export class CardEditComponent implements OnInit {
   public attrToAdd: any [] = [];;
   public attrKey: any;
   public attrValue: any;
-
+  public stability: boolean;
 
   public temp;
   // public priority = 0;
@@ -51,6 +51,7 @@ export class CardEditComponent implements OnInit {
   ngOnInit(): void {
     Grammarly.init("client_RCyGDZmGyUSKUmkZnPV3mA");
     this.value = this.card.priority;
+    // this.stability = this.card.stability;
   }
 
   public value: number;
@@ -72,11 +73,11 @@ export class CardEditComponent implements OnInit {
     }
   };
 
-  formatLabel(value: number): string {
-    this.card.priority = value;
-    return `${this.card.priority}`;
+  toggleStability(): void{
+    this.card.stability = !this.card.stability;
+    // this.stability = !this.stability;
+    // this.card.stability = this.stability;
   }
-
 
   closePopup(): void{
     this.dialogRef.close();

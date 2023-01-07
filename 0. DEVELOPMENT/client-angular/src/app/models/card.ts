@@ -17,6 +17,7 @@ export interface Card{
   attributes: any[];
   notes: string;
   priority: number;
+  stability: boolean;
 
   qualityConcerns: any[];
   ambiguityConcerns: any[];
