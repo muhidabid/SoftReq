@@ -36,6 +36,7 @@ export class CardEditComponent implements OnInit {
   public attrKey: any;
   public attrValue: any;
   public stability: boolean;
+  public legalLiability: string;
 
   public temp;
   // public priority = 0;
@@ -78,6 +79,12 @@ export class CardEditComponent implements OnInit {
     // this.stability = !this.stability;
     // this.card.stability = this.stability;
   }
+
+  setLegalLiability(): void{
+
+  }
+
+  //-----------------------------------------
 
   closePopup(): void{
     this.dialogRef.close();

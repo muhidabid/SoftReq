@@ -47,7 +47,7 @@
   <!-- PRIORITY 1-5 -->
 
   <div class="priority-group">
-    <p>Priority: {{value}}</p>
+    <p><b>Priority:</b></p>
 
     <ngx-slider
     class="priority-slider"
@@ -56,12 +56,28 @@
 
   </div>
 
+  <!-- LEGAL LIABILITIES -->
+
+  <div class="legal-liabilities-group">
+    <label><b>Legal Liabilities:</b></label>
+    <mat-radio-group
+    style="margin-left: 10px"
+    aria-label="Select an option"
+    [(ngModel)]="card.legalLiability"
+    (ngModelChange)="setLegalLiability()"
+    >
+      <mat-radio-button value="Optional">Optional</mat-radio-button>
+      <mat-radio-button value="Recommended">Recommended</mat-radio-button>
+      <mat-radio-button value="Must">Must</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <!-- STABILITY - VOLATILITY -->
   <label class="switch">
     <input type="checkbox" (click)="toggleStability()" [checked]="card.stability">
   </label>
   <p *ngIf="card.stability">Stable</p>
   <p *ngIf="!card.stability">Volatile</p>
-
 
   <!-- SAVE CARD DETAILS  -->
   <button class="save-button" (click)="saveCard()">

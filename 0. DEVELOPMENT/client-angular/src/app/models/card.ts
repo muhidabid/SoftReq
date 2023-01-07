@@ -18,6 +18,7 @@ export interface Card{
   notes: string;
   priority: number;
   stability: boolean;
+  legalLiability: string;
 
   qualityConcerns: any[];
   ambiguityConcerns: any[];

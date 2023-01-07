@@ -91,6 +91,15 @@
   margin-top: 2%;
 }
 
+/* LEGAL LIABILITIES */
+
+.legal-liabilities-group{
+  display: flex;
+  justify-content: center;
+}
+
+/* PRIORITY */
+
 .priority-group{
   display: flex;
   align-items: center;
@@ -140,4 +149,17 @@
   left: calc(100% - (1.9em/2 + .3em));
  }
 
+/* RADIO BUTTON COLORS */
 
+/* ::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+	opacity: 0.5 !important;     click effect color change
+	background-color: blue !important;
+} */
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+	background-color: #673AB7!important;   /*inner circle color change*/
+}
+
+::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+	border-color:#673AB7!important; /*outer ring color change*/
+}

@@ -23,6 +23,7 @@ const addCard = async (req, res, next) => {
         notes: "-Enter your notes here-",
         priority: 1,
         stability: true,
+        legalLiability: "Recommended",
       }
     ]);//,{ session });
 

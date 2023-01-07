@@ -24,6 +24,7 @@ const cardSchema = new Schema({
   notes: {type: String},
   priority: {type: Number},
   stability: {type: Boolean},
+  legalLiability: {type: String},
 
   qualityConcerns: {type: [any]},
   ambiguityConcerns: {type: [any]},
