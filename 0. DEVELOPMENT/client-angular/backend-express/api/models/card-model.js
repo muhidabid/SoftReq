@@ -25,6 +25,11 @@ const cardSchema = new Schema({
   priority: {type: Number},
   stability: {type: Boolean},
   legalLiability: {type: String},
+  crossReferences: {
+    type: [ObjectId],
+    index: true,
+    ref: 'Cards'
+  },
 
   qualityConcerns: {type: [any]},
   ambiguityConcerns: {type: [any]},

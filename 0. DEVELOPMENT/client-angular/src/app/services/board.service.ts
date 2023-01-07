@@ -304,8 +304,21 @@ export class BoardService {
     // this.board$.next([...this.board])
   }
 
+  // Upserts a single requirement reference
+  upsertCrossReference(referenceItem: any, selectedRequirement: any){
+    this.webReqService.post('upsertCrossReference', {referenceItem, selectedRequirement}).subscribe((response)=>{
+      // Do something after DB is updated
 
 
+      // override board to store DB board
+      // this.project.board.listsRef = board;
+
+      // Update the board BehaviorSubject
+      // this.board$.next([...this.project.board.listsRef]);
+    });
+  }
+
+  // PYTHON BACKEND RELATED
 
   extract_quality(card: any):any{
     console.log("card: ");

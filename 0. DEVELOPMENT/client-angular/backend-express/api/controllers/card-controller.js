@@ -156,6 +156,27 @@ const updateCard = async (req, res, next) => {
   return res.status(200).json({ updatedCard });
 }
 
+const upsertCrossReference = async (req, res, next) => {
+  console.log("<---ENTERED addCrossReference--->");
+  console.log(req.body);
+  const { referenceItem, selectedRequirement } = req.body;
+
+  let updatedCard;
+  try {
+    // Update crossReferences of card
+    updatedCard = await Card.findByIdAndUpdate(
+      mongoose.Types.ObjectId(selectedRequirement._id),
+      selectedRequirement,
+      { new: true, upsert: true }
+    )
+  } catch (err) {
+    console.log(err);
+    return res.status(404).json({ message: "Card didnt update :(" });
+  }
+  console.log("Card updated successfully!");
+  return res.status(200).json({ updatedCard });
+}
+
 exports.addCard = addCard;
 exports.deleteCard = deleteCard;
 exports.updateCard = updateCard;

@@ -19,6 +19,7 @@ export interface Card{
   priority: number;
   stability: boolean;
   legalLiability: string;
+  crossReferences: ObjectId[];
 
   qualityConcerns: any[];
   ambiguityConcerns: any[];
