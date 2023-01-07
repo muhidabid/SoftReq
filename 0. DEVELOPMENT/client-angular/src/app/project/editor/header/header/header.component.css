@@ -1,0 +1,23 @@
+.menu-links li{
+    display: inline-block;
+    margin-left: 40px;
+    cursor: pointer;
+    font-size: large;
+    color: #797D8B;
+  }
+  
+  .menu-links li div:link,
+  .menu-links li div:visited{
+    padding: 8px 0px;
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 80%;
+    border-bottom: 2px solid transparent;
+  }
+  
+  .menu-links li div:hover,
+  .menu-links li div:active{
+    border-bottom: 2px solid #5B9BD5;
+    transition: border-bottom 0.2s;
+  }

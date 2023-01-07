@@ -4,8 +4,133 @@
     <span class="mat-h2">{{projName}}</span>
 </mat-toolbar>
 
-<div>
-    <table mat-table *ngFor="let workspace of allreqs$">
+
+<div id="backlog">
+    <mat-card>
+        <table [cellPadding]="10">
+            <tr>
+                <th onclick="sortTable(0)">ID</th>
+                <th>Requirement</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Legal Liability</th>
+                <th>Cross Reference</th>
+            </tr>
+
+            <tr>
+                <td>001</td>
+                <td>As a user, I want to be able to contact repositories.</td>
+                <td>4</td>
+                <td>Optional</td>
+                <td>003</td>
+            </tr>
+
+            <tr>
+                <td>002</td>
+                <td>As a user, I want to do this</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>As a uskdoenf efiuweknfo coienkw</td>
+                <td>2</td>
+                <td>Mandatory</td>
+                <td>005, 002, 001</td>
+            </tr>
 
     </table>
+    </mat-card>
+    
+
+    <!-- <table mat-table *ngFor="let req of allreqs$">
+        <ng-container matColumnDef="ID">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell>V1</td>
+            <td mat-cell>V2</td>
+            <td mat-cell>V3</td>
+            <td mat-cell>V4</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Requirement</th>
+            <td mat-cell>As a cook I want to ____</td>
+            <td mat-cell>As a painter I want to ____</td>
+            <td mat-cell>As a teacher I want to ____</td>
+            <td mat-cell>As a vet I want to ____</td>
+        </ng-container>
+
+    </table> -->
+
+    <!-- <table mat-table [dataSource]="EmpData">
+        <ng-container matColumnDef="Id">
+            <th mat-header-cell *matHeaderCellDef> Emp Id </th>
+            <td mat-cell *matCellDef="let emp"> {{emp.Id}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="FirstName">
+            <th mat-header-cell *matHeaderCellDef> First Name </th>
+            <td mat-cell *matCellDef="let emp"> {{emp.FirstName}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['Id']"></tr>
+    </table> -->
+
+
+    <!-- <table mat-table>
+        <tr mat-header-cell>
+            <td mat-cell>V1</td>
+            <td mat-cell>V2</td>
+        </tr>
+        <tr mat-header-cell>
+            <td mat-cell>B8</td>
+            <td mat-cell>B9</td>
+        </tr>
+      </table> -->
+
 </div>
+
+<div id="sprints">
+    <h1>Sprints</h1>
+    <p>This is a view of the sprints</p>
+
+    <mat-card>
+        <button mat-icon-button disableRipple class="ml-2" (click)="onOpenComment()">
+            <h2>Sprint 1</h2>
+        </button>
+        <button mat-icon-button class="up-arrow" (click)="onCardItemEmit(item, false)">
+            <mat-icon class="icon">arrow_downward</mat-icon>
+          </button>
+        <button mat-icon-button class="down-arrow" disableRipple (click)="onCardItemEmit(item, true)">
+            <mat-icon class="icon">arrow_upward</mat-icon>
+        </button>
+        <!-- <span class="version-no">{{ item.version }}</span> -->
+
+
+
+        <div *ngIf="open">
+            <mat-form-field class="w-100 mb-2">
+              <mat-label>Leave a comment</mat-label>
+              <textarea matInput [(ngModel)]="commentInput" (mousedown)="$event.stopPropagation()"></textarea>
+              <button
+                mat-button
+                *ngIf="commentInput"
+                matSuffix
+                mat-icon-button
+                color="primary"
+                class="icon-confirm"
+                (click)="onCommentTextEmit(item.id)"
+              >
+                <mat-icon>done</mat-icon>
+              </button>
+            </mat-form-field>
+          
+            <ng-content></ng-content>
+          </div>
+    </mat-card>
+    <div class="container-fluid">
+        <div cdkDropListGroup class="w-100 row flex-row flex-nowrap overflow-auto">
+            <h2>This is draggable</h2>
+        </div>
+    </div>
+</div>
+
