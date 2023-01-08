@@ -1,12 +1,6 @@
 # SoftReq
 Final Year Project 2022: 
 
-Muhid Abid i180560 
-
-Hassan Riaz i180580
-
-Ayesha Rauf i181594
-
 | Name      | Roll Num |
 | --------- | -----:|
 | Muhid Abid  | i180560 |
