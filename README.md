@@ -7,6 +7,12 @@ Hassan Riaz i180580
 
 Ayesha Rauf i181594
 
+| Name      | Roll Num |
+| --------- | -----:|
+| Muhid Abid  | i180560 |
+| Hassan Riaz     |   i180580 |
+| Ayesha Rauf     |   i181594 |
+
 ## Introduction
 SoftReq is an Integrated Software Requirements Management Tool. Built using  Angular, this web application provides support for developers and business analysts with managing requirements for a software application project. 
 
@@ -96,7 +102,7 @@ For questions and bug reports open issues. 🐛
 
 ## 😋 How to contribute
 
-Have an idea? Found a bug? See how to contribute.
+Have an idea? Found a bug? See [how to contribute](/CONTRIBUTING.md) 
 
 ## Further help
 
