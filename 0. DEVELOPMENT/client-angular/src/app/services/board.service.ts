@@ -49,6 +49,7 @@ export class BoardService {
         qualityConcerns: [],
         ambiguityConcerns: [],
       },],
+      backlogRef: mongoose.Types.ObjectId(),
       projectRef: mongoose.Types.ObjectId(),
       position: 0,
     },
@@ -64,9 +65,11 @@ export class BoardService {
   ]
 
   // Initialize with dummy data
-  private board: any = this.initBoard
-  private board$ = new BehaviorSubject<any[]>(this.initBoard)
+  private board: any = this.initBoard;
+  private board$ = new BehaviorSubject<any[]>(this.initBoard);
+  private boardForBacklog$ = new BehaviorSubject<any[]>(this.initBoard);
   private project: any;
+  private backlog: any;
 
   constructor(
     private webReqService: WebRequestService,
@@ -100,7 +103,28 @@ export class BoardService {
       this.board$.next([...this.project.board.listsRef]);
     });
 
+    // returns an array of Lists
     return this.board$.asObservable();
+  }
+
+  // This function is different from getBoard in the sense
+  // It returns gets the whole populated board but only returns Backlog
+  getBoardForBacklog$(projId: string) {
+    this.webReqService.post('getBoard', {projId}).subscribe((response)=>{
+      // override board to store DB board
+      this.backlog = response;
+
+      console.log("boardForBacklog$ gives: ");
+      console.log(this.backlog);
+
+      // this.board = this.board.board.listRef;
+
+      // Update the board BehaviorSubject
+      this.boardForBacklog$.next(this.backlog.board.backlogRef);
+      // this.boardForBacklog$ = this.backlog.board.backlogRef;
+    });
+
+    return this.boardForBacklog$.asObservable();
   }
 
   // DONE
@@ -179,6 +203,36 @@ export class BoardService {
 
     return this.board$.asObservable();
   }
+
+  // ---- Backlog ----
+
+  addCardToBacklog(text: string, positionInBacklog: number, backlogRef: string){
+    let newCard;
+    this.webReqService.post('addCardToBacklog', {text, positionInBacklog, backlogRef}).subscribe((response)=>{
+      // override board to store DB board
+      newCard = response;
+      console.log("Response for addCardToBacklog:");
+      console.log(newCard);
+
+      // Update board
+      console.log("this.backlog:");
+      console.log(this.backlog);
+
+      console.log("this.boardForBacklog$::");
+      console.log(this.boardForBacklog$);
+
+      this.backlog.board.backlogRef.cardsRef = [...this.backlog.board.backlogRef.cardsRef, newCard.card];
+      // Update the board BehaviorSubject
+      // only sends backlog object
+      // this.boardForBacklog$ = of(this.backlog.board.backlogRef.cardsRef);
+      this.boardForBacklog$.next(this.backlog.board.backlogRef);
+    });
+
+    return this.boardForBacklog$.asObservable();
+  }
+
+  ////////////////////////////////////////////////
+
 
   // DONE
   updateBoard(board: any){
@@ -336,6 +390,8 @@ export class BoardService {
 
     return this.board$.asObservable();
   }
+
+
 
   // ---- PYTHON BACKEND RELATED ----
 

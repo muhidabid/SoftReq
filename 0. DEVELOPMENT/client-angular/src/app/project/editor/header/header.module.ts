@@ -10,6 +10,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { DialogModule } from '../dialog/dialog.module';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DialogModule } from '../dialog/dialog.module';
     DialogModule,
     AppRoutingModule,
     RouterTestingModule,
+    MatTabsModule,
     RouterModule.forRoot([])
   ],
   exports: [

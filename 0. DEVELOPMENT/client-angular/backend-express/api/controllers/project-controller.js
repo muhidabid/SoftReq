@@ -3,6 +3,7 @@ const Project = require("../models/project-model");
 const Workspace = require("../models/workspace-model");
 const List = require("../models/list-model")
 const Card = require("../models/card-model")
+const Backlog = require("../models/backlog-model");
 
 const getAllProjects = async (req, res, next) => {
   let projects;
@@ -43,7 +44,8 @@ const getBoard = async (req, res, next) => {
     board = await Project.findById(
       mongoose.Types.ObjectId(projId)
     )
-    .populate('listsRef').populate({
+    .populate('listsRef')
+    .populate({
       path: 'listsRef',
       populate: {
         path: 'cardsRef',
@@ -54,6 +56,22 @@ const getBoard = async (req, res, next) => {
         },
       }
     })
+    .populate('backlogRef')
+    .populate({
+      path: 'backlogRef',
+      populate: {
+        path: 'cardsRef',
+        model: Card,
+      }
+    })
+
+    // .exec(function (err, results) {
+    //   console.log("Error in getting Board: ");
+    //   console.log(err);
+    //   console.log("Results in getting Board: ");
+    //   console.log(results);
+    // });
+
     // .populate('listsRef').populate({
     //   path: 'listsRef',
     //   populate: {
@@ -68,6 +86,51 @@ const getBoard = async (req, res, next) => {
   }
   return res.status(200).json({ board });
 };
+
+////////////////////////////////////////////////////////////////////
+
+// const getBacklog = async (req, res, next) => {
+//   const { projId } = req.body;
+//   let backlog;
+//   try {
+//     backlog = await Project.findById(
+//       mongoose.Types.ObjectId(projId)
+//     )
+//     .populate('listsRef')
+//     .populate({
+//       path: 'listsRef',
+//       populate: {
+//         path: 'cardsRef',
+//         model: Card,
+//         populate: {
+//           path: 'crossReferences',
+//           model: Card,
+//         },
+//       }
+//     })
+//     // .populate('backlogRef')
+
+//     // .exec(function (err, results) {
+//     //   console.log("Error in getting Board: ");
+//     //   console.log(err);
+//     //   console.log("Results in getting Board: ");
+//     //   console.log(results);
+//     // });
+
+//     // .populate('listsRef').populate({
+//     //   path: 'listsRef',
+//     //   populate: {
+//     //     path: 'cardsRef',
+//     //     model: Card
+//     //   }
+//     // });
+
+//   } catch (err) {
+//     console.log(err);
+//     return res.status(404).json({ message: "No Board to display :(" });
+//   }
+//   return res.status(200).json({ board });
+// };
 
 ////////////////////////////////////////////////////////////////////
 
@@ -139,6 +202,7 @@ const addProject = async (req, res, next) => {
         name: name,
         description: description,
         workspaceRef: mongoose.Types.ObjectId(workspaceRef),
+        // backlogRef: mongoose.Types.ObjectId(""),
       }
     ]);//,{ session });
 
@@ -201,6 +265,41 @@ const addProject = async (req, res, next) => {
       console.log(err);
     }
 
+    // 5. Add a new empty Backlog to this Project
+    let backlog;
+    try {
+      // 1. save a new backlog to db
+      const backlogSaveResult = await Backlog.create([
+        {
+          projectRef: mongoose.Types.ObjectId(projectSaveResult[0]._id),
+        }
+      ]);
+
+      backlog = backlogSaveResult[0];
+
+      // 2. add its reference to the project it is added to
+      try{
+        console.log("Finding project and adding backlog ref...");
+        await Project.findByIdAndUpdate(
+          mongoose.Types.ObjectId(projectSaveResult[0]._id),
+          {"backlogRef": backlogSaveResult[0]._id},
+        );
+        console.log("added backlogRef...?");
+      }
+      catch (err) {
+        console.log("Error adding backlogRef to Project: ");
+        console.log(err);
+      }
+    }
+    // catch and log error
+    catch (err) {
+      console.log("Error adding the Backlog");
+      console.log(err);
+      return res.status(404).json({ message: "Unable to Add Backlog" });
+    }
+    console.log("Backlog added successfully!");
+
+
     // await session.commitTransaction();
     // session.endSession();
   }
@@ -251,6 +350,50 @@ const deleteProj = async (req, res, next) => {
         {listRef: Lists[i]._id}
       );
     }
+
+    // 4. delete the project's backlog
+    console.log("backlogRef of Project being deleted: ", deletedProj.backlogRef);
+
+    let deletedBacklog;
+    try {
+      // const session = await mongoose.startSession();
+      // session.startTransaction();
+
+      // 1. delete backlog from db
+      let deletedBacklog;
+      try{
+        console.log("Finding backlog to delete...");
+        deletedBacklog = await Backlog.findByIdAndDelete(
+          // mongoose.Types.ObjectId(deletedProj.backlogRef),
+          deletedProj.backlogRef,
+        );
+        console.log("deleted backlog...?");
+      }
+      catch (err) {
+        console.log("Error deleting backlog from Backlogs: ");
+        console.log(err);
+      }
+
+      // 2. delete all cards in that backlog
+      try{
+        console.log("Finding cards and deleting them...");
+        await Card.deleteMany(
+          {"backlogRef": deletedBacklog._id},
+        );
+        console.log("deleted backlogRef...?");
+      }
+      catch (err){
+        console.log("Error deleting cards of that backlog: ");
+        console.log(err);
+      }
+    }
+    // catch and log error
+    catch (err) {
+      console.log("Error deleting the Backlog");
+      console.log(err);
+      return res.status(404).json({ message: "Unable to Delete Backlog" });
+    }
+    console.log("Backlog deleted successfully!");
   }
   catch(err){
     console.log("Error deleting projRef to Project: ");

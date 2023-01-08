@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Card = require("../models/card-model");
-const List = require("../models/list-model")
+const List = require("../models/list-model");
+const Backlog = require("../models/backlog-model");
 
 const addCard = async (req, res, next) => {
   const { text, position, listRef } = req.body;
@@ -59,6 +60,60 @@ const addCard = async (req, res, next) => {
   console.log("Card added successfully!");
   return res.status(200).json({ card });
 };
+
+//----------------------------------------------------------
+
+const addCardToBacklog = async (req, res, next) => {
+  const { text, positionInBacklog, backlogRef } = req.body;
+
+  console.log("Backlog to which Card is adding: ", backlogRef);
+
+  let card;
+  try {
+    // 1. save a new card to db
+    const cardSaveResult = await Card.create([
+      {
+        id: 0,
+        requirement: text,
+        version: 0,
+        backlogRef: mongoose.Types.ObjectId(backlogRef),
+        positionInBacklog: 0,
+        notes: "-Enter your notes here-",
+        priority: 1,
+        stability: true,
+        legalLiability: "Recommended",
+      }
+    ]);
+
+    card = cardSaveResult[0];
+
+    console.log("cardSaveResult[0]._id:");
+    console.log(cardSaveResult[0]._id);
+
+    // 2. add its reference to the backlog it is added to
+    try{
+      console.log("Finding backlog and adding card ref...");
+      await Backlog.findByIdAndUpdate(
+        mongoose.Types.ObjectId(backlogRef),
+        {"$push": {"cardsRef": cardSaveResult[0]._id}},
+      );
+      console.log("added cardRef...?");
+    }
+    catch (err) {
+      console.log("Error adding cardRef to Backlog: ");
+      console.log(err);
+    }
+  }
+  // catch and log error
+  catch (err) {
+    console.log("Error adding the Card");
+    console.log(err);
+    return res.status(404).json({ message: "Unable to Add Card" });
+  }
+  console.log("Card added successfully!");
+  return res.status(200).json({ card });
+};
+//----------------------------------------------------------
 
 const deleteCard = async (req, res, next) => {
   const { cardRef } = req.body;
@@ -212,6 +267,7 @@ const deleteCrossReference = async (req, res, next) => {
 }
 
 exports.addCard = addCard;
+exports.addCardToBacklog = addCardToBacklog;
 exports.deleteCard = deleteCard;
 exports.updateCard = updateCard;
 exports.addCrossReference = addCrossReference;

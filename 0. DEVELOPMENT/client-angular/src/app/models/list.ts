@@ -1,6 +1,6 @@
 import { ObjectId } from "mongoose";
-import * as internal from "stream";
-import { Card } from "./card";
+// import * as internal from "stream";
+// import { Card } from "./card";
 
 export interface List{
   id: number;

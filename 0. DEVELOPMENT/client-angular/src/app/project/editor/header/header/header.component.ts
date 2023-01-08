@@ -12,6 +12,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  // links = ['Board', 'Backlog'];
+  // activeLink = this.links[0];
+
+  navLinks: any[];
 
   projName: string;
   projId: string;
@@ -26,7 +30,20 @@ export class HeaderComponent implements OnInit {
     private localStore: LocalStorageService,
     private router: Router, private route: ActivatedRoute,
     private _router: Router
-  ) { }
+  ) {
+    this.navLinks = [
+      {
+        label: 'Backlog',
+        link: '/backlog',
+        index: 0
+      },
+      {
+        label: 'Board',
+        link: '/editor',
+        index: 1
+      },
+    ];
+  }
 
   ngOnInit(): void {
     console.log("ngOnInit called in header");
@@ -43,6 +60,15 @@ export class HeaderComponent implements OnInit {
     console.log("ngOnDestroy called in header");
     // this.localStore.removeData("currProjName");
   }
+
+  // toggleBackground() {
+  //   this.background = this.background ? undefined : 'primary';
+  // }
+
+  // addLink() {
+  //   this.links.push(`Link ${this.links.length + 1}`);
+  // }
+
 
   addList(event: string, position: number) {
     if (event) {

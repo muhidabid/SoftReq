@@ -11,7 +11,9 @@ export interface Card{
   requirement: string;
   version: number;
   comments: Comment[];
+  backlogRef: ObjectId;
   listRef: ObjectId;
+  positionInBacklog: number;
   position: number;
 
   attributes: any[];

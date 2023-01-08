@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
+// import { DialogModule } from '../dialog/dialog.module';
+import { DialogModule } from './project/editor/dialog/dialog.module';
 
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
@@ -72,6 +74,7 @@ import { SprintItemComponent } from './project/editor/backlog-page/sprint-item/s
   imports: [
     BrowserModule,
     AppRoutingModule,
+    DialogModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatExpansionModule,

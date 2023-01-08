@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { UserStories } from 'src/app/models/userstories';
 import { UserstoriesService } from 'src/app/services/userstories.service';
+import { BoardService } from 'src/app/services/board.service';
 
 @Component({
   selector: 'app-backlog-page',
@@ -19,8 +20,8 @@ export class BacklogPageComponent implements OnInit {
   userstories: UserStories[] = [];
 
   data:any;
-
-  
+  board$: any;
+  backlog$: any;
 
   @Input() item: any;
   @Output() emitText: EventEmitter<{ id: number; text: string }> = new EventEmitter();
@@ -28,9 +29,10 @@ export class BacklogPageComponent implements OnInit {
 
   commentInput = ''
   open = false;
+  public isOpen: boolean[] = [];
 
   public userstories$: any[] = [];
-  
+
   ownedAnimals = [
     "Dog", "Cat", "Fish", "turtle"
   ];
@@ -38,10 +40,11 @@ export class BacklogPageComponent implements OnInit {
   otherAnimals = [
     "tiger", "lion", "monkey"
   ];
-  
+
   constructor(
     private _projectService: ProjectService,
     private localStore: LocalStorageService,
+    public boardService: BoardService,
     private _userstoriesservice: UserstoriesService,
     private http: HttpClient
   ) { }
@@ -58,7 +61,27 @@ export class BacklogPageComponent implements OnInit {
     console.log("Project ID: ");
     console.log(this.projId)
 
-    this.userstories = this._userstoriesservice.getUserStories();
+    // this.userstories = this._userstoriesservice.getUserStories();
+
+    this.boardService.getBoard$(this.projId).subscribe((response)=>{
+      console.log("Board (Array of Lists) gotten ON-INIT in backlog-page.component: ");
+      console.log(response);
+      this.board$ = response;
+    });
+
+    this.boardService.getBoardForBacklog$(this.projId).subscribe((response)=>{
+      console.log("Backlog gotten ON-INIT in backlog-page.component: ");
+      console.log(response);
+      this.backlog$ = response;
+    });
+
+
+    // Now we have all the lists fetched into this component
+    // Make an array of open/close toggle booleans to control List cards
+    for(let list of this.board$){
+      this.isOpen.push(false);
+    }
+
 
     // fetch data from workspace service
 
@@ -69,9 +92,10 @@ export class BacklogPageComponent implements OnInit {
     // });
   }
 
-  onOpenComment() {
-    console.log('opening ')
-    this.open = !this.open
+  onOpenList(index: number) {
+    console.log('toggling open list '+index)
+    // this.open = !this.open
+    this.isOpen[index] = !this.isOpen[index];
   }
 
   onCommentTextEmit(id: number) {
@@ -114,6 +138,17 @@ export class BacklogPageComponent implements OnInit {
                           event.currentIndex);
         console.log("transferArrayItem: ");
         console.log(event);
+      }
+      this.boardService.updateBoard(this.board$);
+    }
+
+    onAddCardToBacklog(text: string, positionInBacklog: number, backlogRef: string) {
+      if(text) {
+        this.boardService.addCardToBacklog(text, positionInBacklog, backlogRef).subscribe((response)=>{
+          console.log("Board gotten after adding card in bacaklog.component: ");
+          console.log(response);
+          this.backlog$ = response;
+        });
       }
     }
 
