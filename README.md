@@ -10,7 +10,7 @@ Ayesha Rauf i181594
 ## Introduction
 SoftReq is an Integrated Software Requirements Management Tool. Built using  Angular, this web application provides support for developers and business analysts with managing requirements for a software application project. 
 
-## Features
+## ✅ Features
 - Track your software development projects according to workspaces and projects.
 - Organize requirements for each project within a Kanban view for easy visualization.
 - Add Requirement Attributes (Priority, Status, Legal Liability, Cross-Reference)
@@ -19,7 +19,7 @@ SoftReq is an Integrated Software Requirements Management Tool. Built using  Ang
 - Check for Requirement redundancies
 
 
-## How to Run
+## 🏃 How to Run
 #### Prerequisites
 - Install angular cli
 - Set up a Mongo database with an empty workspace
@@ -43,13 +43,13 @@ In‘0. DEVELOPMENT\client-angular\backend-python’, to start Python server:
 
 Open a new tab on your local browser and go to http://localhost:4200/home-page
 
-## Web Application Structure
+## 🏛️ Web Application Structure
 
 
 
 ![projectmapping](https://user-images.githubusercontent.com/62544274/211210938-2a341c6f-543d-49cc-b5d7-4505ad8abf14.png)
 
-## Navigating the Application
+## 🧭 Navigating the Application
 Once you run the SoftReq application, you will be at the home page. Go to 'Dashboard' from the menu where you can create new workspaces to keep track of your projects.
 
 #### Creating a New Workspace:
@@ -70,7 +70,7 @@ From within a workspace, multiple projects can be created.
 
 - Click on the newly-created project in the center of the screen.
 
-#### Adding Requirement
+#### Adding Requirements
 
 From within a project, multiple user requirements can be assigned to that project.
 
@@ -88,6 +88,19 @@ Once requirements are created, you can:
 - Drag and drop a requirement from one list to another.
 
 - See all requirements in the backlog view to organize into sprints.
+
+
+## ❓ Get Help
+
+For questions and bug reports open issues. 🐛
+
+## 😋 How to contribute
+
+Have an idea? Found a bug? See how to contribute.
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 ------------
 
