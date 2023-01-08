@@ -29,7 +29,7 @@
           cdkDrag
           class="backlog-item"
           [cdkDragDisabled]="false"
-          style="background: white; color: #212529;"
+          style="background: white; color: #212529; margin-top:5px; padding:5px; border-radius:5px;"
           *ngFor="let item of backlog$.cardsRef"
           >
             {{item.requirement}}
