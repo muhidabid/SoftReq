@@ -5,8 +5,6 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { List } from 'src/app/models/list';
 import mongoose, { ObjectId } from 'mongoose';
 import { EventEmitterService } from 'src/app/services/event-emitter.service';
-import { WebRequestService } from 'src/app/services/web-request.service';
-import { HttpClient } from '@angular/common/http';
 import { Card } from 'src/app/models/card';
 import { CardEditComponent } from '../board-item/card-edit/card-edit.component';
 
@@ -28,8 +26,6 @@ export class BoardComponent implements OnInit {
     public boardService: BoardService,
     private localStore: LocalStorageService,
     private eventEmitterService: EventEmitterService,
-    private webReqService: WebRequestService,
-    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -122,7 +118,7 @@ export class BoardComponent implements OnInit {
   }
 
   onDeleteComment(comment, columnId, item) {
-    this.boardService.deleteComment(columnId, item.id, comment.id)
+    this.boardService.deleteComment(columnId, item.id, comment.id);
   }
 
   // Function that assists in drag and drop of list items for the board
@@ -168,7 +164,9 @@ export class BoardComponent implements OnInit {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     }
     // else if (this.selectedRequirement.crossReferences.indexOf(referenceItem.requirement) === -1){
-    else {
+    else if (this.selectedRequirement.requirement !== referenceItem.requirement) {
+
+      // Check if the requirement being dropped is already present in the list
       var isPresent: boolean;
       isPresent = false;
 
@@ -178,15 +176,16 @@ export class BoardComponent implements OnInit {
         }
       }
 
+      // add if not present
       copyArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex
       );
+
+      this.boardService.addCrossReference(referenceItem, this.selectedRequirement);
     }
-
-
 
     // // need to clone, otherwise mutation will affect the source visual
     // const visual = referenceItem.clone();
@@ -206,7 +205,16 @@ export class BoardComponent implements OnInit {
     // this.selectedRequirement.crossReferences.push(referenceItem._id);
 
 
-    // this.boardService.upsertCrossReference(referenceItem, this.selectedRequirement);
+  }
+
+
+  onDeleteCrossReference(referenceItem: any){
+    // this.selectedRequirement = this.boardService.deleteCrossReference(referenceItem, this.selectedRequirement);
+    this.boardService.deleteCrossReference(referenceItem, this.selectedRequirement).subscribe((response)=>{
+      console.log("Cross Reference successfully deleted");
+      console.log(response);
+      this.board$ = response;
+    });
   }
 
 

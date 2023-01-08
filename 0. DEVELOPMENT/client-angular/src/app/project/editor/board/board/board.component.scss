@@ -78,6 +78,9 @@
   background: #888;
 }
 
+
+
+
 // SLIDE PANEL FOR CROSS REFERENCED REQUIREMENTS
 
 /* panel layout mechanics */
@@ -168,6 +171,19 @@ p {
   -webkit-transition: all 0.25s;
   box-shadow: none;
 }
+
+
+
+// SIDE PANEL CROSS REFERENCE ITEM
+.cross-reference-item{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 5%;
+}
+
+
 
 // .side-panel-button {
 //   /* Variables */
