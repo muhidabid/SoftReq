@@ -8,6 +8,7 @@ import { ProjectComponent } from './project/project.component';
 import { EditorComponent } from './project/editor/editor.component';
 // import { ToolbarComponent } from './toolbar/toolbar.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { BacklogPageComponent } from './project/editor/backlog-page/backlog-page.component';
 
 const routes: Routes = [
   { path: "routeToPopup", component: WorkspaceAddPopupComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: "project", component: ProjectComponent},
   { path: "editor", component: EditorComponent},
   { path: "home-page", component: HomePageComponent, runGuardsAndResolvers: 'always'},
+  { path: "backlog", component: BacklogPageComponent}
   // { path: '', redirectTo: 'home-page', pathMatch: 'full' }
   // { path: "editor", component: EditorComponent, data: {}},
   // { path: "toolbar", component: ToolbarComponent}

@@ -4,6 +4,7 @@ import { ProjectService } from 'src/app/services/project.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Project } from 'src/app/models/project';
 import { ObjectId } from 'mongoose';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,12 +15,17 @@ export class HeaderComponent implements OnInit {
 
   projName: string;
   projId: string;
+
+  data:any = {text: "example"};
+
   // subscription: Subscription;
 
   constructor(
     public boardService: BoardService,
     private _projectService: ProjectService,
     private localStore: LocalStorageService,
+    private router: Router, private route: ActivatedRoute,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -35,13 +41,20 @@ export class HeaderComponent implements OnInit {
 
   ngOnDestroy(): void {
     console.log("ngOnDestroy called in header");
-    this.localStore.removeData("currProjName");
+    // this.localStore.removeData("currProjName");
   }
 
   addList(event: string, position: number) {
     if (event) {
       this.boardService.addList(event, position, this.projId);
     }
+  }
+
+  routeToProject(projName: string): void{
+    this._projectService.projectName = projName;
+    this._projectService.setData(projName)
+    this.localStore.saveData("currProjName", projName);
+    this._router.navigate(['backlog']);
   }
 
   // extract_quality(){

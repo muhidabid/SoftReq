@@ -7,6 +7,14 @@
   <!-- <button mat-raised-button color="primary" (click)="saveBoard()">
     Save
   </button> -->
+
+  
+  <div class="menu-links" (click)="routeToProject(projName)">
+    <button mat-raised-button color="primary">
+      <div routerLink="/backlog">See Backlog of {{projName}}</div>
+    </button>
+  </div>
+
   <div>
     <!-- <button mat-raised-button color="primary" (click)="extract_quality()">
       Extract quality concerns
@@ -17,4 +25,5 @@
       </button>
     </app-dialog>
   </div>
+
 </mat-toolbar>

@@ -2,6 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { WebRequestService } from './web-request.service';
 import { BehaviorSubject } from 'rxjs';
+import { UserStories } from '../models/userstories';
+
+export interface WorkspaceModelServerResponse {
+  userstories: UserStories[];
+}
 
 @Injectable({
   providedIn: 'root'
