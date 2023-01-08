@@ -52,11 +52,13 @@ Open a new tab on your local browser and go to http://localhost:4200/home-page
 ## Navigating the Application
 Once you run the SoftReq application, you will be at the home page. Go to 'Dashboard' from the menu where you can create new workspaces to keep track of your projects.
 
-#### Creating a New Workspace and Project:
+#### Creating a New Workspace:
 
 - Click on the ‘Workspace +’ button on the left side bar of the screen. In the pop-up window that opened, enter a name for your workspace and a small description. 
 
 - Click on ‘Create Workspace’ to go to the new workspace.
+
+#### Creating a New Project:
 
 From within a workspace, multiple projects can be created. 
 
