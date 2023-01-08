@@ -19,7 +19,7 @@ SoftReq is an Integrated Software Requirements Management Tool. Built using  Ang
 - Check for Requirement redundancies
 
 
-## How to Run?
+## How to Run
 #### Prerequisites
 - Install angular cli
 - Set up a Mongo database with an empty workspace
@@ -42,6 +42,10 @@ In‘0. DEVELOPMENT\client-angular\backend-python’, to start Python server:
     python flask-apis.py
 
 Open a new tab on your local browser and go to http://localhost:4200/home-page
+
+## Web Application Structure
+
+![projectmapping](https://user-images.githubusercontent.com/62544274/211210938-2a341c6f-543d-49cc-b5d7-4505ad8abf14.png)
 
 
 
