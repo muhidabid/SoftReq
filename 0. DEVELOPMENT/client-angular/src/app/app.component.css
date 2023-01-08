@@ -4,6 +4,10 @@
   background-color: #E5E5E5;
 }
 
+.highlightText {
+  background: yellow;
+}
+
 /* width */
 /* ::-webkit-scrollbar {
   height: 4px;

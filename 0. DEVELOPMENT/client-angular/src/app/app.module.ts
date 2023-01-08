@@ -45,6 +45,7 @@ import { RouterModule } from '@angular/router';
 import { BacklogPageComponent } from './project/editor/backlog-page/backlog-page.component';
 import { TableItemComponent } from './project/editor/backlog-page/table-item/table-item.component';
 import { SprintItemComponent } from './project/editor/backlog-page/sprint-item/sprint-item.component';
+// import { TextareaHighlightComponent } from './reusable-tool-components/textarea-highlight/textarea-highlight.component';
 
 
 // import { MatTooltip } from '@angular/material/tooltip';
@@ -67,7 +68,8 @@ import { SprintItemComponent } from './project/editor/backlog-page/sprint-item/s
     ProjectEditPopupComponent,
     BacklogPageComponent,
     TableItemComponent,
-    SprintItemComponent
+    SprintItemComponent,
+    // TextareaHighlightComponent
 // =======
 // >>>>>>> Stashed changes
   ],

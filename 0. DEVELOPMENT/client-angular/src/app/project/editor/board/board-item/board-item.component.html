@@ -4,10 +4,14 @@
   <button class="ext-qual-conc-button" mat-raised-button color="primary" (click)="extract_quality()">
     Extract quality concerns
   </button>
+  <button class="ext-qual-conc-button" mat-raised-button color="primary" (click)="extract_ambiguity(item.requirement, item.ambiguityConcerns)">
+    Extract ambiguity
+  </button>
+
   <div *ngFor="let q of item.qualityConcerns">
-    <!-- <p>{{q}}</p> -->
     <div class="q-conc-tag">{{q}}</div>
   </div>
+
 </div>
 <div class="card-wrapper">
   <div class="d-flex justify-content-end align-items-center mr-1">
@@ -19,11 +23,8 @@
   <!-- Requirement -->
   <div class="d-flex justify-content-between align-items-start mb-0">
       <div class="requirement">
-        <!-- {{ item.requirement }} -->
         <grammarly-editor-plugin>
-          <!-- <input type="text" value="item.requirement" readonly> -->
-          <!-- <textarea readonly>{{ item.requirement }}</textarea> -->
-          <div contentEditable="true">{{ item.requirement }}</div>
+          <div contentEditable="true" [innerHtml]="item.requirement | highlighter:item.ambiguityConcerns:'partial'"></div>
         </grammarly-editor-plugin>
       </div>
   </div>
