@@ -1,7 +1,10 @@
 # SoftReq
 Final Year Project 2022: 
+
 Muhid Abid i180560 
+
 Hassan Riaz i180580
+
 Ayesha Rauf i181594
 
 ## Introduction
@@ -23,8 +26,7 @@ SoftReq is an Integrated Software Requirements Management Tool. Built using  Ang
 
 #### Running the Application
 
-"0. DEVELOPMENT"
-- This folder is the main development folder of our project.
+"0. DEVELOPMENT" This folder is the main development folder of our project.
 
 In‘0. DEVELOPMENT\client-angular’, to start Angular server:
 
@@ -43,7 +45,7 @@ Open a new tab on your local browser and go to http://localhost:4200/home-page
 
 
 
-# ClientAngular
+<!-- # ClientAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
 
@@ -69,4 +71,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page. -->
