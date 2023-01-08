@@ -40,6 +40,8 @@ import { ProjectEditPopupComponent } from './dashboard/project-edit-popup/projec
 import { RouterTestingModule } from '@angular/router/testing';
 import { RouterModule } from '@angular/router';
 import { BacklogPageComponent } from './project/editor/backlog-page/backlog-page.component';
+import { TableItemComponent } from './project/editor/backlog-page/table-item/table-item.component';
+import { SprintItemComponent } from './project/editor/backlog-page/sprint-item/sprint-item.component';
 
 
 // import { MatTooltip } from '@angular/material/tooltip';
@@ -60,7 +62,9 @@ import { BacklogPageComponent } from './project/editor/backlog-page/backlog-page
     ProjectAddPopupComponent,
     HomePageComponent,
     ProjectEditPopupComponent,
-    BacklogPageComponent
+    BacklogPageComponent,
+    TableItemComponent,
+    SprintItemComponent
 // =======
 // >>>>>>> Stashed changes
   ],

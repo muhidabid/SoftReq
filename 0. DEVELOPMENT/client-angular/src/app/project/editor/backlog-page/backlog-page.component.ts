@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { ProjectService } from 'src/app/services/project.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { HttpClient } from '@angular/common/http';
@@ -28,14 +29,20 @@ export class BacklogPageComponent implements OnInit {
   commentInput = ''
   open = false;
 
-  public allreqs$: any[] = [];
+  public userstories$: any[] = [];
   
+  ownedAnimals = [
+    "Dog", "Cat", "Fish", "turtle"
+  ];
+
+  otherAnimals = [
+    "tiger", "lion", "monkey"
+  ];
   
   constructor(
     private _projectService: ProjectService,
     private localStore: LocalStorageService,
     private _userstoriesservice: UserstoriesService,
-    private userStoriesService: UserstoriesService,
     private http: HttpClient
   ) { }
 
@@ -52,6 +59,14 @@ export class BacklogPageComponent implements OnInit {
     console.log(this.projId)
 
     this.userstories = this._userstoriesservice.getUserStories();
+
+    // fetch data from workspace service
+
+    // this._userstoriesservice.getUserStories().subscribe((response)=>{
+    //   this.userstories$ = response;
+    //   console.log("Workspaces response (angular): ");
+    //   console.log(response);
+    // });
   }
 
   onOpenComment() {
@@ -69,6 +84,37 @@ export class BacklogPageComponent implements OnInit {
     console.log('emitting ')
     this.emitCardItem.emit({ card, increase });
   }
-  
+
+  // drop(event: CdkDragDrop<string[]>) {
+  //   if (event.previousContainer === event.container) {
+  //     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+  //     console.log("moveItemInArray: ");
+  //     console.log(event);
+  //   } else {
+  //     transferArrayItem(event.previousContainer.data,
+  //                       event.container.data,
+  //                       event.previousIndex,
+  //                       event.currentIndex);
+  //     console.log("transferArrayItem: ");
+  //     console.log(event);
+  //   }
+
+  //   this.boardService.updateBoard(this.board$);
+  // }
+
+  drop(event: CdkDragDrop<string[]>) {
+      if (event.previousContainer === event.container) {
+        moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+        console.log("moveItemInArray: ");
+        console.log(event);
+      } else {
+        transferArrayItem(event.previousContainer.data,
+                          event.container.data,
+                          event.previousIndex,
+                          event.currentIndex);
+        console.log("transferArrayItem: ");
+        console.log(event);
+      }
+    }
 
 }
