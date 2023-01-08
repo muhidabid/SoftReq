@@ -113,6 +113,16 @@
 
         <div *ngIf="isOpen[i]" style="background-color: #e3d2ff; padding: 3px 0px 3px 0px; border-radius: 5px;">
           <div
+          *ngIf="list.cardsRef?.length == 0"
+          style="display: flex; justify-content: space-around;"
+          cdkDropList
+          [cdkDropListData]="list.cardsRef"
+          (cdkDropListDropped)="dropBoard($any($event))">
+            --&gt;&nbsp;Drop a card here&nbsp;&lt;--
+            <!-- <br><mat-icon class="icon">add</mat-icon> -->
+          </div>
+
+          <div
           cdkDropList
           [cdkDropListData]="list.cardsRef"
           (cdkDropListDropped)="dropBoard($any($event))">
