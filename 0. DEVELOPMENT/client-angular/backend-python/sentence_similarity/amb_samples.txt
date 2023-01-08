@@ -1,0 +1,26 @@
+The tool shall monitor the unit under diagnosis for a certain period of time.
+
+The system must make it easy to correct mistakes.
+
+As a repoadmin, I want to provide a better interface to the repository.
+
+As an app developer, I want to deal with existing datasets if their properties are different but compatible when creating a dataset as part of app deployment.
+
+As a researcher, I want to create a log book page for an experiment and attach a directory that contains various files.
+
+As a researcher, I want to collect data as a library of data, which can then be used by some experiments that are defined at a later stage.
+
+As a consumer, I want to buy ALFRED for a low price.
+
+As a MedicalCaregiver, I want to have feedback on the activity level of the user.
+
+As a legalofficer, I want something to inform me about data sensitivity, so that I can establish sharing options.
+
+As a manager, I want everyone to be able to contact repositories.
+
+The system must divide resources and use up as little storage as possible.
+
+The system must break if it reaches minimum level of power activity.
+
+The test can only continue if it receives all inputs from previous page.
+
