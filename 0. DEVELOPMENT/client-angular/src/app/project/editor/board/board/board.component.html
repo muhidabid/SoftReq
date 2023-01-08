@@ -55,10 +55,11 @@
         <h2 *ngIf="!selectedRequirement">Please Select a Requirement to view cross references</h2>
 
         <!-- SIDE PANEL HEADING -->
-        <h2 *ngIf="selectedRequirement">-----NAME OR ID OF REQ: {{ selectedRequirement.requirement }}</h2>
-
+        <h3 *ngIf="selectedRequirement"><b>&emsp;Requirement</b> <br> </h3>
+        <h4 *ngIf="selectedRequirement" style="background-color: #DDDFE7; border-radius: 5px; color: #212529;">&emsp;{{ selectedRequirement.requirement }}</h4>
+        <h3 *ngIf="selectedRequirement"><b>Cross References</b></h3>
         <!-- DRAG AND DROPPABLE LIST FOR CROSS REFERENCED REQUIREMENTS -->
-        <div class="rounded p-2 h-100" style="background-color: #DDDFE7;">
+        <div class="rounded p-2 h-100" style="background-color:#DDDFE7;">
 
           <div cdkDropList [cdkDropListData]="selectedRequirement.crossReferences" class="example-list" (cdkDropListDropped)="dropIntoReferences($any($event))">
             <div
