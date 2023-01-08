@@ -6,6 +6,12 @@ import { BoardService } from 'src/app/services/board.service';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { BoardComponent } from '../../board/board.component';
 import { EventEmitterService } from 'src/app/services/event-emitter.service';
+// import {GrammarlyButtonElement, GrammarlyEditorPluginCallbacks, GrammarlyEditorPluginElement, GrammarlyEditorPluginElementEventMap} from '@grammarly/editor-sdk';
+// import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatFormField } from '@angular/material/form-field';
+import * as Grammarly from "@grammarly/editor-sdk";
+import { Options } from '@angular-slider/ngx-slider';
 
   /** Error when invalid control is dirty, touched, or submitted. */
   // export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -29,9 +35,11 @@ export class CardEditComponent implements OnInit {
   public attrToAdd: any [] = [];;
   public attrKey: any;
   public attrValue: any;
-
+  public stability: boolean;
+  public legalLiability: string;
 
   public temp;
+  // public priority = 0;
 
   constructor(
     public dialogRef: MatDialogRef<ProjectAddPopupComponent>,
@@ -42,7 +50,41 @@ export class CardEditComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    Grammarly.init("client_RCyGDZmGyUSKUmkZnPV3mA");
+    this.value = this.card.priority;
+    // this.stability = this.card.stability;
   }
+
+  public value: number;
+  options: Options = {
+    floor: 0,
+    ceil: 5,
+    showSelectionBar: true,
+    getSelectionBarColor: (value: number): string => {
+      if (value <= 1) {
+          return 'red';
+      }
+      if (value <= 2) {
+          return 'orange';
+      }
+      if (value <= 4) {
+          return 'yellow';
+      }
+      return '#2AE02A';
+    }
+  };
+
+  toggleStability(): void{
+    this.card.stability = !this.card.stability;
+    // this.stability = !this.stability;
+    // this.card.stability = this.stability;
+  }
+
+  setLegalLiability(): void{
+
+  }
+
+  //-----------------------------------------
 
   closePopup(): void{
     this.dialogRef.close();
@@ -77,6 +119,7 @@ export class CardEditComponent implements OnInit {
   saveCard(): void{
     // this.eventEmitterService.updateCard();
     // this.closePopup();
+    this.card.priority = this.value;
     this.boardService.updateCard(this.card);
     window.location.reload();
     // this.boardService.updateCard(this.card).subscribe((response: any) =>{

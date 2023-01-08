@@ -304,8 +304,40 @@ export class BoardService {
     // this.board$.next([...this.board])
   }
 
+  // ---- CROSS REFERENCES ----
+
+  // Upserts a single requirement reference
+  addCrossReference(referenceItem: any, selectedRequirement: any){
+    this.webReqService.post('addCrossReference', {referenceItem, selectedRequirement}).subscribe((response)=>{
+      // Do something after DB is updated
 
 
+      // override board to store DB board
+      // this.project.board.listsRef = board;
+
+      // Update the board BehaviorSubject
+      // this.board$.next([...this.project.board.listsRef]);
+    });
+  }
+
+  deleteCrossReference(referenceItem: any, selectedRequirement: any){
+    this.webReqService.post('deleteCrossReference', {referenceItem, selectedRequirement}).subscribe((response)=>{
+      console.log("Log CARDSREF");
+      console.log(this.project.board.listsRef[0].cardsRef);
+
+      for (let i = 0; i < this.project.board.listsRef[0].cardsRef.length; i++) {
+        if (this.project.board.listsRef[0].cardsRef[i]._id == selectedRequirement._id){
+          this.project.board.listsRef[0].cardsRef[i].crossReferences = this.project.board.listsRef[0].cardsRef[i].crossReferences.filter((ref: any) => ref._id !== referenceItem._id);
+          break;
+        }
+      }
+      this.board$.next([...this.project.board.listsRef]);
+    });
+
+    return this.board$.asObservable();
+  }
+
+  // ---- PYTHON BACKEND RELATED ----
 
   extract_quality(card: any):any{
     console.log("card: ");

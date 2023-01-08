@@ -2,6 +2,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BoardService } from 'src/app/services/board.service';
 import { CardEditComponent } from './card-edit/card-edit.component';
+import * as Grammarly from "@grammarly/editor-sdk";
+// import {GrammarlyEditorPluginElement  } from "@grammarly/editor-sdk";
+
 
 @Component({
   selector: 'app-board-item',
@@ -22,7 +25,9 @@ export class BoardItemComponent implements OnInit {
     public boardService: BoardService
     ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    Grammarly.init("client_RCyGDZmGyUSKUmkZnPV3mA");
+  }
 
   onOpenComment() {
     console.log('opening ')

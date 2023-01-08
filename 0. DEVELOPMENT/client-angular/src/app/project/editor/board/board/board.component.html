@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="position-absolute container-fluid">
   <div cdkDropListGroup class="w-100 row flex-row flex-nowrap overflow-auto">
     <!-- <div class="col-sm-6 col-lg-3 ms-3 rounded p-2" *ngFor="let list of boardService.getBoard$(projId) | async" style="background-color: #DDDFE7;"> -->
     <div class="col-sm-6 col-lg-3 ms-3 rounded p-2 h-100" *ngFor="let list of board$" style="background-color: #DDDFE7;">
@@ -11,6 +11,7 @@
         <button mat-icon-button class="icon-delete" (click)="onDeleteList(list._id)">
           <mat-icon style="font-size: 20px;">delete</mat-icon>
         </button>
+
       </div>
 
       <!-- Add New Card To List -->
@@ -21,14 +22,15 @@
       <!-- Color Panel -->
       <app-color-panel (emitColor)="onColorChange($event, list._id)"></app-color-panel>
 
+      <!-- LIST OF REQUIREMENTS -->
       <div cdkDropList [cdkDropListData]="list.cardsRef" class="example-list" (cdkDropListDropped)="drop($any($event))">
-      <!-- <div cdkDropList [cdkDropListData]="list.list" class="example-list"> -->
         <div cdkDrag class="example-box" [ngStyle]="{background: list.color}" *ngFor="let item of list.cardsRef">
           <app-board-item
             [item]="item"
             (emitText)="onAddComment($event, list.id)"
             (emitCardItem)="onChangeLike($event, list.id)"
             (emitDeleteCard)="onDeleteCard($event, list._id)"
+            (click)="setSelectedRequirement(item)"
           >
             <div *ngFor="let comment of item.comments">
               <app-comment-item [comment]="comment" (emitComment)="onDeleteComment($event, list.id, item)"></app-comment-item>
@@ -37,5 +39,48 @@
         </div>
       </div>
     </div>
+
+    <!-- SLIDE IN PANEL FOR CROSS REFERENCED REQUIREMENTS -->
+    <div *ngIf="selectedRequirement" class="panel-wrap" id="panel-wrap">
+      <div class="panel">
+
+        <!-- TOGGLE SIDE PANEL BUTTON -->
+        <button *ngIf="!crossRefSidePanelOpen" onclick="document.getElementById('panel-wrap').classList.add('slide');" (click)="toggleCrossRefSidePanelOpen();" class="side-panel-button" id="side-panel-button">
+          &lt;
+        </button>
+        <button *ngIf="crossRefSidePanelOpen" onclick="document.getElementById('panel-wrap').classList.remove('slide'); " (click)="toggleCrossRefSidePanelOpen();" class="side-panel-button" id="side-panel-button">
+          &gt;
+        </button>
+
+        <h2 *ngIf="!selectedRequirement">Please Select a Requirement to view cross references</h2>
+
+        <!-- SIDE PANEL HEADING -->
+        <h3 *ngIf="selectedRequirement"><b>&emsp;Requirement</b> <br> </h3>
+        <h4 *ngIf="selectedRequirement" style="background-color: #DDDFE7; border-radius: 5px; color: #212529;">&emsp;{{ selectedRequirement.requirement }}</h4>
+        <h3 *ngIf="selectedRequirement"><b>Cross References</b></h3>
+        <!-- DRAG AND DROPPABLE LIST FOR CROSS REFERENCED REQUIREMENTS -->
+        <div class="rounded p-2 h-100" style="background-color:#DDDFE7;">
+
+          <div cdkDropList [cdkDropListData]="selectedRequirement.crossReferences" class="example-list" (cdkDropListDropped)="dropIntoReferences($any($event))">
+            <div
+            *ngFor="let ref of selectedRequirement.crossReferences"
+            cdkDrag
+            class="cross-reference-item"
+            [cdkDragDisabled]="true"
+            style="background: white; color: #212529;">
+              {{ref.requirement}}
+              <button mat-icon-button class="icon-delete" (click)="onDeleteCrossReference(ref)">
+                <mat-icon style="font-size: 20px; color: rgb(255, 102, 102);">delete</mat-icon>
+              </button>
+              <!-- {{ref | json}} -->
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
   </div>
 </div>

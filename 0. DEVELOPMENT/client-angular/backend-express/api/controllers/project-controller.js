@@ -42,13 +42,25 @@ const getBoard = async (req, res, next) => {
   try {
     board = await Project.findById(
       mongoose.Types.ObjectId(projId)
-    ).populate('listsRef').populate({
+    )
+    .populate('listsRef').populate({
       path: 'listsRef',
       populate: {
         path: 'cardsRef',
-        model: Card
+        model: Card,
+        populate: {
+          path: 'crossReferences',
+          model: Card,
+        },
       }
-    });
+    })
+    // .populate('listsRef').populate({
+    //   path: 'listsRef',
+    //   populate: {
+    //     path: 'cardsRef',
+    //     model: Card
+    //   }
+    // });
 
   } catch (err) {
     console.log(err);

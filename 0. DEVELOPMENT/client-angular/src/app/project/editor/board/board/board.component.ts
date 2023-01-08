@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {CdkDragDrop, copyArrayItem, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { BoardService } from 'src/app/services/board.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { List } from 'src/app/models/list';
 import mongoose, { ObjectId } from 'mongoose';
 import { EventEmitterService } from 'src/app/services/event-emitter.service';
+import { Card } from 'src/app/models/card';
+import { CardEditComponent } from '../board-item/card-edit/card-edit.component';
 
 @Component({
   selector: 'app-board',
@@ -17,11 +19,13 @@ export class BoardComponent implements OnInit {
   projId: string;
   projName: string;
   board$: any;
+  crossRefSidePanelOpen: boolean;
+  selectedRequirement: any;
 
   constructor(
     public boardService: BoardService,
     private localStore: LocalStorageService,
-    private eventEmitterService: EventEmitterService
+    private eventEmitterService: EventEmitterService,
   ) { }
 
   ngOnInit(): void {
@@ -36,12 +40,24 @@ export class BoardComponent implements OnInit {
       this.board$ = response;
     });
 
+    this.crossRefSidePanelOpen = false;
+    // this.selectedRequirement = {} as Card;
+
     // if (this.eventEmitterService.subsVar==undefined) {
     //   this.eventEmitterService.subsVar = this.eventEmitterService.
     //   updateCard.subscribe((name:string) => {
     //     this.updateCard();
     //   });
     // }
+  }
+
+  setSelectedRequirement(item: any){
+    this.selectedRequirement = item;
+  }
+
+  //TOGGLE crossRefSidePanelOpen
+  toggleCrossRefSidePanelOpen(){
+    this.crossRefSidePanelOpen = !this.crossRefSidePanelOpen;
   }
 
   // DONE
@@ -102,15 +118,19 @@ export class BoardComponent implements OnInit {
   }
 
   onDeleteComment(comment, columnId, item) {
-    this.boardService.deleteComment(columnId, item.id, comment.id)
+    this.boardService.deleteComment(columnId, item.id, comment.id);
   }
 
+  // Function that assists in drag and drop of list items for the board
+  // Calls boardService that Calls DB post request to updateBoard & Behaviour Subject
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
       console.log("moveItemInArray: ");
       console.log(event);
     } else {
+      console.log("Previous Container _dropListRef:");
+      console.log(event.previousContainer._dropListRef);
       transferArrayItem(event.previousContainer.data,
                         event.container.data,
                         event.previousIndex,
@@ -122,6 +142,80 @@ export class BoardComponent implements OnInit {
     this.boardService.updateBoard(this.board$);
   }
 
+  dropIntoReferences(event: CdkDragDrop<string[]>){
+    // Logic to make a copy and add to references of the Selected Requirement
+
+    console.log("This dropped:");
+    console.log(event.previousContainer.data[event.previousIndex]);
+
+    console.log("Refernces:");
+    console.log(this.selectedRequirement.crossReferences);
+
+    var referenceItem: any;
+    referenceItem = event.previousContainer.data[event.previousIndex];
+
+    console.log("referenceItem._id:");
+    console.log(referenceItem._id);
+
+
+
+
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    }
+    // else if (this.selectedRequirement.crossReferences.indexOf(referenceItem.requirement) === -1){
+    else if (this.selectedRequirement.requirement !== referenceItem.requirement) {
+
+      // Check if the requirement being dropped is already present in the list
+      var isPresent: boolean;
+      isPresent = false;
+
+      for(let ref of this.selectedRequirement.crossReferences){
+        if (ref.requirement == referenceItem.requirement){
+          return;
+        }
+      }
+
+      // add if not present
+      copyArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+
+      this.boardService.addCrossReference(referenceItem, this.selectedRequirement);
+    }
+
+    // // need to clone, otherwise mutation will affect the source visual
+    // const visual = referenceItem.clone();
+    // // insert at index where dragged
+    // event.container.data.splice(event.currentIndex, 0, visual);
+    // // HACK which is the reason I created the GitHub issue
+    // // the parent resets the cdk-drops when this emits
+    // this.resetDragSources.emit();
+    // event.source._dragRef.reset();
+
+
+
+    // // Update behavior object present in Board (this file itself)
+    // const prevData = event.previousContainer.data;
+
+
+    // this.selectedRequirement.crossReferences.push(referenceItem._id);
+
+
+  }
+
+
+  onDeleteCrossReference(referenceItem: any){
+    // this.selectedRequirement = this.boardService.deleteCrossReference(referenceItem, this.selectedRequirement);
+    this.boardService.deleteCrossReference(referenceItem, this.selectedRequirement).subscribe((response)=>{
+      console.log("Cross Reference successfully deleted");
+      console.log(response);
+      this.board$ = response;
+    });
+  }
 
 
 

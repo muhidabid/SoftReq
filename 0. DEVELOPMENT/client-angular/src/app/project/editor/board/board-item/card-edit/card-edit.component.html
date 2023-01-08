@@ -1,15 +1,18 @@
 <div class="wrapper">
   <h2 class="card-heading">Add attributes:</h2>
 
-  <p>Requirement:</p>
-  <input placeholder={{card.requirement}} matInput type="text" class="requirement" [(ngModel)]="card.requirement">
+  <p><b>Requirement:</b></p>
+  <grammarly-editor-plugin>
+    <input placeholder={{card.requirement}} matInput type="text" class="requirement" [(ngModel)]="card.requirement">
+  </grammarly-editor-plugin>
 
   <!-- SHOW FORM BUTTON -->
   <button class="add-attr-button" (click)="toggleAddAttr()">
     <mat-icon *ngIf="addButtShow === false">expand_more</mat-icon>
     <mat-icon *ngIf="addButtShow === true">expand_less</mat-icon>
-    attribute
+    add attribute
   </button>
+
 
   <!-- ADD FORM -->
   <form class="add-attr-form" novalidate (ngSubmit)="addAttrs()" *ngIf="addButtShow === true">
@@ -41,9 +44,45 @@
     <p><b>&emsp;Value:</b> {{attr.value}}</p>
   </div>
 
+  <!-- PRIORITY 1-5 -->
+
+  <div class="priority-group">
+    <p><b>Priority:</b></p>
+
+    <ngx-slider
+    class="priority-slider"
+    [(value)]="value"
+    [options]="options"></ngx-slider>
+
+  </div>
+
+  <!-- LEGAL LIABILITIES -->
+
+  <div class="legal-liabilities-group">
+    <label><b>Legal Liabilities:</b></label>
+    <mat-radio-group
+    style="margin-left: 10px"
+    aria-label="Select an option"
+    [(ngModel)]="card.legalLiability"
+    (ngModelChange)="setLegalLiability()"
+    >
+      <mat-radio-button value="Optional">Optional</mat-radio-button>
+      <mat-radio-button value="Recommended">Recommended</mat-radio-button>
+      <mat-radio-button value="Must">Must</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <!-- STABILITY - VOLATILITY -->
+  <label class="switch">
+    <input type="checkbox" (click)="toggleStability()" [checked]="card.stability">
+  </label>
+  <p *ngIf="card.stability">Stable</p>
+  <p *ngIf="!card.stability">Volatile</p>
+
   <!-- SAVE CARD DETAILS  -->
   <button class="save-button" (click)="saveCard()">
-    <mat-icon class="check" style="color:green;font-size: 14px;">check</mat-icon>
+    <mat-icon class="check" style="color:#f5f5f5;font-size: 14px;">check</mat-icon>
+    <!-- <mat-icon class="check" style="color:green;font-size: 14px;">check</mat-icon> -->
     Save
   </button>
 </div>

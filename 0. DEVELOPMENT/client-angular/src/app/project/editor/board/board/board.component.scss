@@ -77,3 +77,146 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #888;
 }
+
+
+
+
+// SLIDE PANEL FOR CROSS REFERENCED REQUIREMENTS
+
+/* panel layout mechanics */
+.panel-wrap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 30em;
+  transform: translateX(95%);
+  transition: .3s ease-out;
+}
+.panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 5px;
+  background: #333;
+  color: #eee;
+  overflow-x: visible;
+  overflow-y: scroll;
+  padding: 1em;
+}
+
+/* simulate panel state control --
+this can also be triggered by a
+class name added to the body tag.
+Just using a checkbox sibling here
+for simplicity
+*/
+// #side-panel-trigger:checked ~ .panel-wrap {
+//   transform: translateX(0%);
+// }
+#panel-wrap.slide {
+  transform: translateX(0%);
+}
+
+
+/* demo display */
+*,*:before, *:after {box-sizing: border-box;}
+
+body {
+  font-family: sans-serif;
+  font-size: 18px;
+}
+h3 {
+  margin: 0;
+}
+p {
+  line-height: 1.4;
+  margin: 2em 0 0 0;
+}
+[type="checkbox"] {
+  font-size: 1em;
+}
+
+
+
+
+
+
+
+// SIDE PANEL BUTTON
+
+.side-panel-button {
+  position: fixed;
+  transform: translateX(-75%);
+  padding: 12.5px 20px;
+  border: 0;
+  border-radius: 100px;
+  // background-color: #2ba8fb;
+  background-color: #673AB7;
+  color: #ffffff;
+  font-weight: Bold;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+.side-panel-button:hover {
+  // background-color: #6fc5ff;
+  background-color: #7d5ab8;
+  box-shadow: 0 0 20px #6fc5ff50;
+}
+
+.side-panel-button:active {
+  background-color: #3d94cf;
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  box-shadow: none;
+}
+
+
+
+// SIDE PANEL CROSS REFERENCE ITEM
+.cross-reference-item{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 5%;
+}
+
+
+
+// .side-panel-button {
+//   /* Variables */
+//  --button_radius: 7500em;
+//  --button_color: #e8e8e8;
+//  --button_outline_color: #000000;
+//  font-size: 17px;
+//  font-weight: bold;
+//  border: none;
+//  border-radius: var(--button_radius);
+//  background: var(--button_outline_color);
+// }
+
+// .side-panel-button-top {
+//  display: block;
+//  box-sizing: border-box;
+//  border: 2px solid var(--button_outline_color);
+//  border-radius: var(--button_radius);
+//  padding: 0.75em 1.5em;
+//  background: var(--button_color);
+//  color: var(--button_outline_color);
+//  transform: translateY(-0.2em);
+//  transition: transform 0.1s ease;
+// }
+
+// .side-panel-button:hover .side-panel-button-top {
+//   /* Pull the button upwards when hovered */
+//  transform: translateY(-0.33em);
+// }
+
+// .side-panel-button:active .side-panel-button-top {
+//   /* Push the button downwards when pressed */
+//  transform: translateY(0);
+// }

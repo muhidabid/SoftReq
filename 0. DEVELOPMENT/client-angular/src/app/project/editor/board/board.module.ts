@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BoardComponent } from './board/board.component';
 import { FormsModule } from '@angular/forms';
@@ -10,11 +10,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { BoardItemComponent } from './board-item/board-item.component';
 import { CommentItemComponent } from './comment-item/comment-item.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import {MatRadioModule} from '@angular/material/radio';
 
 import { DialogModule } from '../dialog/dialog.module';
 import { ColorPanelComponent } from './color-panel/color-panel.component';
 import { CardEditComponent } from './board-item/card-edit/card-edit.component';
 // import { BoardItemPopupComponent } from './board-item-popup/board-item-popup.component';
+
 @NgModule({
   declarations: [
     BoardComponent,
@@ -32,10 +37,15 @@ import { CardEditComponent } from './board-item/card-edit/card-edit.component';
     DragDropModule,
     MatExpansionModule,
     FormsModule,
-    DialogModule
-  ], 
+    DialogModule,
+    MatSliderModule,
+    BrowserAnimationsModule,
+    NgxSliderModule,
+    MatRadioModule
+  ],
   exports: [
     BoardComponent
-  ]
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class BoardModule { }
