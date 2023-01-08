@@ -1,4 +1,9 @@
 # SoftReq
+Developed as a Final Year Project
+
+## Introduction
+SoftReq is an Integrated Software Requirements Management Tool
+
 <--Angular, MongoDB, Python, NodeJS-->
 
 This project is an Integrated Software Requirements Management Tool under development.
