@@ -222,6 +222,7 @@ export class BoardService {
       console.log(this.boardForBacklog$);
 
       this.backlog.board.backlogRef.cardsRef = [...this.backlog.board.backlogRef.cardsRef, newCard.card];
+
       // Update the board BehaviorSubject
       // only sends backlog object
       // this.boardForBacklog$ = of(this.backlog.board.backlogRef.cardsRef);
