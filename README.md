@@ -96,7 +96,7 @@ For questions and bug reports open issues. 🐛
 
 ## 😋 How to contribute
 
-Have an idea? Found a bug? See [how to contribute](/CONTRIBUTING.md) 
+Have an idea? Found a bug? See [how to contribute](CONTRIBUTING.md) 
 
 ## Further help
 
