@@ -40,78 +40,89 @@ coordination_encoded = pickle.load(open("coordination_encoded.pickel", "rb"))
 scope_encoded = pickle.load(open("scope_encoded.pickel", "rb"))
 
 
-def sentence_ambiguity(sentence):
+class AmbguityDetector:
 
-    # tokens = tokenizer.backend_tokenizer.normalizer.normalize_str(sentence)
-    # lemmatizer = WordNetLemmatizer()
-    tokens = word_tokenize(sentence)
-    filtered_tokens = list()
-    for token in tokens:
-        if token not in stopwords_custom:
-            filtered_tokens.append(token)
+    def __init__(self):
+        self.model = SentenceTransformer(
+            'sentence-transformers/all-MiniLM-L6-v2')
 
-    for i in filtered_tokens:
-        filtered_tokens[filtered_tokens.index(i)] = i.lower()
-        if i in punctuation:
-            filtered_tokens.remove(i)
+    def sentence_ambiguity(self, sentence):
 
-    lexical = dict()
-    scope = dict()
-    referential = dict()
-    vague = dict()
-    coordination = dict()
-    ambiguity = dict()
-    ambiguous_words=list()
+        model = self.model
+        tokens = word_tokenize(sentence)
+        filtered_tokens = list()
+        for token in tokens:
+            if token not in stopwords_custom:
+                filtered_tokens.append(token)
 
-    for i in filtered_tokens:
-        temp = model.encode(i, convert_to_tensor=True)
-        for j in lexical_AMB:
-            temp2 = lexical_encoded[j]
-            cos_sim = util.pytorch_cos_sim(temp, temp2).numpy().reshape([1, ])
-            if(cos_sim[0] >= 0.6):
-                ambiguous_words.append(i)
-                lexical[i+"+"+j] = cos_sim[0]
+        for i in filtered_tokens:
+            filtered_tokens[filtered_tokens.index(i)] = i.lower()
+            if i in punctuation:
+                filtered_tokens.remove(i)
 
-        for j in scope_AMB:
-            temp2 = scope_encoded[j]
-            cos_sim = util.pytorch_cos_sim(temp, temp2).numpy().reshape([1, ])
-            if(cos_sim[0] >= 0.6):
-                ambiguous_words.append(i)
-                scope[i+"+"+j] = cos_sim[0]
+        lexical = dict()
+        scope = dict()
+        referential = dict()
+        vague = dict()
+        coordination = dict()
+        ambiguity = dict()
+        ambiguous_words = list()
 
-        for j in referential_AMB:
-            temp2 = referential_encoded[j]
-            cos_sim = util.pytorch_cos_sim(temp, temp2).numpy().reshape([1, ])
-            if(cos_sim[0] >= 0.6):
-                ambiguous_words.append(i)
-                referential[i+"+"+j] = cos_sim[0]
+        for i in filtered_tokens:
+            temp = model.encode(i, convert_to_tensor=True)
+            for j in lexical_AMB:
+                temp2 = lexical_encoded[j]
+                cos_sim = util.pytorch_cos_sim(
+                    temp, temp2).numpy().reshape([1, ])
+                if(cos_sim[0] >= 0.6):
+                    ambiguous_words.append(i)
+                    lexical[i+"+"+j] = cos_sim[0]
 
-        for j in vague_AMB:
-            temp2 = vague_encoded[j]
-            cos_sim = util.pytorch_cos_sim(temp, temp2).numpy().reshape([1, ])
-            if(cos_sim[0] >= 0.6):
-                ambiguous_words.append(i)
-                vague[i+"+"+j] = cos_sim[0]
+            for j in scope_AMB:
+                temp2 = scope_encoded[j]
+                cos_sim = util.pytorch_cos_sim(
+                    temp, temp2).numpy().reshape([1, ])
+                if(cos_sim[0] >= 0.6):
+                    ambiguous_words.append(i)
+                    scope[i+"+"+j] = cos_sim[0]
 
-        for j in coordination_AMB:
-            temp2 = coordination_encoded[j]
-            cos_sim = util.pytorch_cos_sim(temp, temp2).numpy().reshape([1, ])
-            if(cos_sim[0] >= 0.6):
-                ambiguous_words.append(i)
-                coordination[i+"+"+j] = cos_sim[0]
-        
-        ambiguous_words=list(dict.fromkeys(ambiguous_words))
-        ambiguity["lexical"] = lexical
-        ambiguity["referential"] = referential
-        ambiguity["scope"] = scope
-        ambiguity["vague"] = vague
-        ambiguity["coordination"] = coordination
-        ambiguity["words"]=ambiguous_words
+            for j in referential_AMB:
+                temp2 = referential_encoded[j]
+                cos_sim = util.pytorch_cos_sim(
+                    temp, temp2).numpy().reshape([1, ])
+                if(cos_sim[0] >= 0.6):
+                    ambiguous_words.append(i)
+                    referential[i+"+"+j] = cos_sim[0]
 
-    print(filtered_tokens)
-    print(ambiguity)
-    return ambiguity
+            for j in vague_AMB:
+                temp2 = vague_encoded[j]
+                cos_sim = util.pytorch_cos_sim(
+                    temp, temp2).numpy().reshape([1, ])
+                if(cos_sim[0] >= 0.6):
+                    ambiguous_words.append(i)
+                    vague[i+"+"+j] = cos_sim[0]
+
+            for j in coordination_AMB:
+                temp2 = coordination_encoded[j]
+                cos_sim = util.pytorch_cos_sim(
+                    temp, temp2).numpy().reshape([1, ])
+                if(cos_sim[0] >= 0.6):
+                    ambiguous_words.append(i)
+                    coordination[i+"+"+j] = cos_sim[0]
+
+            ambiguous_words = list(dict.fromkeys(ambiguous_words))
+            ambiguity["lexical"] = lexical
+            ambiguity["referential"] = referential
+            ambiguity["scope"] = scope
+            ambiguity["vague"] = vague
+            ambiguity["coordination"] = coordination
+            ambiguity["words"] = ambiguous_words
+
+        print(filtered_tokens)
+        print(ambiguity)
+        return ambiguity
 
 
-sentence_ambiguity(
+a = AmbguityDetector()
+a.sentence_ambiguity(
     "The test can only continue if it receives all inputs from previous page.")
