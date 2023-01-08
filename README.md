@@ -7,7 +7,7 @@ Ayesha Rauf i181594
 ## Introduction
 SoftReq is an Integrated Software Requirements Management Tool. Built using  Angular, this web application provides support for developers and business analysts with managing requirements for a software application project. 
 
-##Features
+## Features
 - Track your software development projects according to workspaces and projects.
 - Organize requirements for each project within a Kanban view for easy visualization.
 - Add Requirement Attributes (Priority, Status, Legal Liability, Cross-Reference)
@@ -17,11 +17,11 @@ SoftReq is an Integrated Software Requirements Management Tool. Built using  Ang
 
 
 ## How to Run?
-####Prerequisites
+#### Prerequisites
 - Install angular cli
 - Set up a Mongo database with an empty workspace
 
-####Running the Application
+#### Running the Application
 
 "0. DEVELOPMENT"
 - This folder is the main development folder of our project.
