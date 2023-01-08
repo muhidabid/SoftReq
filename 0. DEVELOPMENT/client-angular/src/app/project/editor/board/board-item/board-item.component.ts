@@ -19,6 +19,10 @@ export class BoardItemComponent implements OnInit {
 
   commentInput = ''
   open = false;
+  testWord = "capability";
+
+  searchText='text';
+  text=`somedummy text here`
 
   constructor(
     private editCardPopup: MatDialog,
@@ -63,17 +67,22 @@ export class BoardItemComponent implements OnInit {
   }
 
   extract_quality(){
-    // this.boardService.extract_quality(["The look and feel of the page should be nice.", "As a team member, I want to have a schedule of more coworking slots, so that I can work in tandem with the rest of the team on a more regular basis."]);
-    // const x = this.boardService.extract_quality([req]);
-    // console.log("Printing result in board-item:");
-    // console.log(x[req]);
-
-
     const x = this.boardService.extract_quality(this.item);
-
-
 
     // after quality concerns are added to the DB
     // window.location.reload();
+  }
+
+  extract_ambiguity(requirement: string, ambiguityConcern: string){
+    const x = this.boardService.extract_ambiguity(this.item);
+
+    // let textToSearch = (<HTMLInputElement>document.getElementById("text-to-search")).value;
+    let paragraph = document.getElementById("requirement");
+
+    ambiguityConcern = ambiguityConcern.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+
+    let pattern = new RegExp(`${ambiguityConcern}`,"gi");
+
+    paragraph.innerHTML = paragraph.textContent.replace(pattern, match => `<mark>${match}</mark>`);
   }
 }

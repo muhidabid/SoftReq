@@ -22,7 +22,9 @@ import {MatRadioModule} from '@angular/material/radio';
 import { DialogModule } from '../dialog/dialog.module';
 import { ColorPanelComponent } from './color-panel/color-panel.component';
 import { CardEditComponent } from './board-item/card-edit/card-edit.component';
+import { HighlighterPipe } from './board-item/highlighter.pipe';
 // import { BoardItemPopupComponent } from './board-item-popup/board-item-popup.component';
+import { TextareaHighlightComponent } from 'src/app/reusable-tool-components/textarea-highlight/textarea-highlight.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { CardEditComponent } from './board-item/card-edit/card-edit.component';
     CommentItemComponent,
     ColorPanelComponent,
     CardEditComponent,
+    HighlighterPipe,
+    TextareaHighlightComponent,
     // BoardItemPopupComponent
   ],
   imports: [
