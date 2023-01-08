@@ -21,63 +21,54 @@ from sklearn.preprocessing import LabelEncoder
 
 classnames = ["ef", "pe", "po", "re", "se", "us"]
 
-models = list()
-vectorizers = list()
-has_loaded_models = False
-has_loaded_vectorizers = False
 
+class BinaryClassifierLG:
 
-def product(arg):
-    total = 1
-    for val in arg:
-        total = total*val
+    def __init__(self):
+        self.models = list()
+        self.vectorizers = list()
+        self.models_loaded = self.load_models()
+        self.vectorizers_loaded = self.load_vectorizers()
 
-    return total
+    def load_models(self):
+        for classname in classnames:
+            self.models.append(pickle.load(open(classname+"_lr.pickel", "rb")))
+        return True
 
+    def load_vectorizers(self):
+        for classname in classnames:
+            self.vectorizers.append(pickle.load(
+                open(classname+"_tfidf.pickel", "rb")))
+        return True
 
-def load_models():
-    for classname in classnames:
-        models.append(pickle.load(open(classname+"_lr.pickel", "rb")))
-    return True
+    def predict(self, text):
+        le = LabelEncoder()
+        le.fit(["EF", "PE", "PO", "SE", "RE", "US", "X"])
+        no_labels = False
+        labels = list()
+        transforms = list()
+        if(self.models_loaded and self.vectorizers_loaded):
+            for vectorizer in self.vectorizers:
+                transforms.append(vectorizer.transform([text]))
 
+            for i in range(len(self.models)):
+                labels.append(self.models[i].predict(transforms[i]))
 
-def load_vectorizers():
-    for classname in classnames:
-        vectorizers.append(pickle.load(open(classname+"_tfidf.pickel", "rb")))
-    return True
+            labels = np.concatenate(labels, axis=0)
 
+            labels = le.inverse_transform(labels)
+            no_labels = bool(np.prod((labels == "X")))
+            # print(labels)
 
-def predict(text):
-    le = LabelEncoder()
-    le.fit(["EF", "PE", "PO", "SE", "RE", "US", "X"])
-    no_labels = False
-    labels = list()
-    transforms = list()
-    if(has_loaded_models and has_loaded_vectorizers):
-        for vectorizer in vectorizers:
-            transforms.append(vectorizer.transform([text]))
-
-        for i in range(len(models)):
-            labels.append(models[i].predict(transforms[i]))
-
-        labels = np.concatenate(labels, axis=0)
-        # for i in range(len(labels)):
-        #     labels[i] = label_classes[labels[i]]
-
-        # no_labels = bool(np.prod((labels == "X")))
-        print(le.inverse_transform(labels))
-
-        # if(no_labels):
-        #     return np.array(["X"])
-        # else:
-        #     return labels
+            if(no_labels):
+                return np.array(["X"])
+            else:
+                return labels
 
 
 if __name__ == "__main__":
-    has_loaded_models = load_models()
-    has_loaded_vectorizers = load_vectorizers()
-    print(len(models))
-    print(len(vectorizers))
+
     print("Enter Story")
-    story = input()
-    predict(story)
+    z = BinaryClassifierLG()
+    ind = input()
+    print(z.predict(ind))
