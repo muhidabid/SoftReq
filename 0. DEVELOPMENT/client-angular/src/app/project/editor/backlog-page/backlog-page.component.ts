@@ -140,6 +140,7 @@ export class BacklogPageComponent implements OnInit {
         console.log(event);
       }
       this.boardService.updateBoard(this.board$);
+      this.boardService.updateBacklog(this.backlog$);
     }
 
   dropBacklog(event: CdkDragDrop<string[]>) {
@@ -155,6 +156,7 @@ export class BacklogPageComponent implements OnInit {
         console.log("transferArrayItem: ");
         console.log(event);
       }
+      this.boardService.updateBoard(this.board$);
       this.boardService.updateBacklog(this.backlog$);
     }
 
