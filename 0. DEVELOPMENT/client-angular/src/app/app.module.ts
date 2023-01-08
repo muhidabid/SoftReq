@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
+// import { DialogModule } from '../dialog/dialog.module';
+import { DialogModule } from './project/editor/dialog/dialog.module';
 
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
@@ -15,6 +17,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatTableModule} from '@angular/material/table';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -39,6 +42,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ProjectEditPopupComponent } from './dashboard/project-edit-popup/project-edit-popup.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RouterModule } from '@angular/router';
+import { BacklogPageComponent } from './project/editor/backlog-page/backlog-page.component';
+import { TableItemComponent } from './project/editor/backlog-page/table-item/table-item.component';
+import { SprintItemComponent } from './project/editor/backlog-page/sprint-item/sprint-item.component';
+
+
 // import { MatTooltip } from '@angular/material/tooltip';
 
 @NgModule({
@@ -56,13 +64,17 @@ import { RouterModule } from '@angular/router';
     ToolbarComponent,
     ProjectAddPopupComponent,
     HomePageComponent,
-    ProjectEditPopupComponent
+    ProjectEditPopupComponent,
+    BacklogPageComponent,
+    TableItemComponent,
+    SprintItemComponent
 // =======
 // >>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    DialogModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatExpansionModule,
@@ -81,6 +93,7 @@ import { RouterModule } from '@angular/router';
     HeaderModule,
     BoardModule,
     MatTooltipModule,
+    MatTableModule,
     RouterTestingModule,
     MatSliderModule,
     RouterModule.forRoot([]),

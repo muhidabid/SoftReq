@@ -4,6 +4,7 @@ import { ProjectService } from 'src/app/services/project.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Project } from 'src/app/models/project';
 import { ObjectId } from 'mongoose';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,16 +12,38 @@ import { ObjectId } from 'mongoose';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  // links = ['Board', 'Backlog'];
+  // activeLink = this.links[0];
+
+  navLinks: any[];
 
   projName: string;
   projId: string;
+
+  data:any = {text: "example"};
+
   // subscription: Subscription;
 
   constructor(
     public boardService: BoardService,
     private _projectService: ProjectService,
     private localStore: LocalStorageService,
-  ) { }
+    private router: Router, private route: ActivatedRoute,
+    private _router: Router
+  ) {
+    this.navLinks = [
+      {
+        label: 'Backlog',
+        link: '/backlog',
+        index: 0
+      },
+      {
+        label: 'Board',
+        link: '/editor',
+        index: 1
+      },
+    ];
+  }
 
   ngOnInit(): void {
     console.log("ngOnInit called in header");
@@ -35,13 +58,29 @@ export class HeaderComponent implements OnInit {
 
   ngOnDestroy(): void {
     console.log("ngOnDestroy called in header");
-    this.localStore.removeData("currProjName");
+    // this.localStore.removeData("currProjName");
   }
+
+  // toggleBackground() {
+  //   this.background = this.background ? undefined : 'primary';
+  // }
+
+  // addLink() {
+  //   this.links.push(`Link ${this.links.length + 1}`);
+  // }
+
 
   addList(event: string, position: number) {
     if (event) {
       this.boardService.addList(event, position, this.projId);
     }
+  }
+
+  routeToProject(projName: string): void{
+    this._projectService.projectName = projName;
+    this._projectService.setData(projName)
+    this.localStore.saveData("currProjName", projName);
+    this._router.navigate(['backlog']);
   }
 
   // extract_quality(){

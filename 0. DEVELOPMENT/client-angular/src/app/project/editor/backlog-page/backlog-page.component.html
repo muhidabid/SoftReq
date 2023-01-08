@@ -1,0 +1,133 @@
+<app-toolbar></app-toolbar>
+
+<!-- <mat-toolbar>
+    <span class="mat-h2">{{projName}}</span>
+</mat-toolbar> -->
+
+<app-header></app-header>
+
+<div cdkDropListGroup>
+
+<div id="backlog">
+  <h2>Backlog</h2>
+    <mat-card>
+      <div class="rounded p-2 h-100" style="background-color:#DDDFE7;">
+        <div cdkDropList [cdkDropListData]="backlog$.cardsRef" class="example-list" (cdkDropListDropped)="dropBacklog($any($event))">
+          <!-- *ngFor="let ref of selectedRequirement.crossReferences" -->
+
+          <!-- Add New Card To List -->
+          <app-dialog (emitText)="onAddCardToBacklog($event, 0, backlog$._id)" [question]="'Add new card in backlog'">
+            <!-- {{backlog$ | json}} -->
+            <button mat-raised-button class="w-100 mb-1 btn-add">+</button>
+          </app-dialog>
+
+          <div
+          cdkDrag
+          class="backlog-item"
+          [cdkDragDisabled]="false"
+          style="background: white; color: #212529;"
+          *ngFor="let item of backlog$.cardsRef"
+          >
+            {{item.requirement}}
+            <!-- {{item.requirement}} -->
+
+            <!-- {{ref.requirement}} -->
+            <!-- <button mat-icon-button class="icon-delete" (click)="onDeleteCrossReference(ref)">
+              <mat-icon style="font-size: 20px; color: rgb(255, 102, 102);">delete</mat-icon>
+            </button> -->
+            <!-- {{ref | json}} -->
+          </div>
+        </div>
+      </div>
+        <!-- <table [cellPadding]="10">
+            <tr>
+                <th onclick="sortTable(0)">ID</th>
+                <th>Requirement</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Legal Liability</th>
+                <th>Cross Reference</th>
+            </tr>
+
+            <tr>
+                    <div cdkDropList [cdkDropListData]="ownedAnimals" (cdkDropListDropped)="drop($any($event))">
+                        <div cdkDrag class="drag-item">
+
+                            <app-table-item></app-table-item>
+                        </div>
+                    </div>
+            </tr>
+
+            <tr>
+                <td>001</td>
+                <td>As a user, I want to be able to contact repositories.</td>
+                <td>4</td>
+                <td>Optional</td>
+                <td>003</td>
+            </tr>
+
+            <tr>
+                <td>002</td>
+                <td>As a user, I want to do this</td>
+            </tr>
+
+            <tr>
+                <td>003</td>
+                <td>As a uskdoenf efiuweknfo coienkw</td>
+                <td>2</td>
+                <td>Mandatory</td>
+                <td>005, 002, 001</td>
+            </tr>
+
+        </table> -->
+    </mat-card>
+
+
+
+</div>
+
+<!-- Filhaal DONE -->
+<div id="lists">
+    <h2>Lists</h2>
+    <p>This is a view of the sprints</p>
+
+    <mat-card *ngFor="let list of board$; let i = index" [attr.data-index]="i">
+        <div class="wrapper" style="display: flex;justify-content: space-between;">
+          <button mat-icon-button disableRipple class="ml-2">
+          <!-- (click)="onOpenComment()"> -->
+            <h2>{{list.title}}</h2>
+          </button>
+          <button mat-icon-button class="up-arrow" (click)="onOpenList(i)">
+          <!-- (click)="onCardItemEmit(item, false)"> -->
+            <mat-icon *ngIf="!isOpen[i]" class="icon">arrow_downward</mat-icon>
+            <mat-icon *ngIf="isOpen[i]" class="icon">arrow_upward</mat-icon>
+          </button>
+          <!-- <span class="version-no">{{ item.version }}</span> -->
+        </div>
+
+
+
+        <div *ngIf="isOpen[i]" style="background-color: #e3d2ff; padding: 3px 0px 3px 0px; border-radius: 5px;">
+          <div cdkDropList [cdkDropListData]="list.cardsRef" (cdkDropListDropped)="dropBoard($any($event))">
+            <div cdkDrag class="drag-list-item" *ngFor="let item of list.cardsRef">
+              {{item.requirement}}
+            </div>
+          </div>
+
+          <!-- <div cdkDropList [cdkDropListData]="ownedAnimals" (cdkDropListDropped)="drop($any($event))">
+            <div cdkDrag class="drag-item" *ngFor="let animal of ownedAnimals">
+              {{animal}}
+            </div>
+          </div>
+
+          <div cdkDropList [cdkDropListData]="otherAnimals" (cdkDropListDropped)="drop($any($event))">
+            <div cdkDrag class="drag-item" *ngFor="let animals of otherAnimals">
+              {{animals}}
+            </div>
+          </div> -->
+        <!-- <ng-content></ng-content> -->
+        </div>
+    </mat-card>
+    </div>
+</div>
+

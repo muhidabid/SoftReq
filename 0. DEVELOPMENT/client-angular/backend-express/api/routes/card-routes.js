@@ -3,6 +3,7 @@ const router = express.Router();
 const cardController = require("../controllers/card-controller");
 
 router.post("/addCard", cardController.addCard);
+router.post("/addCardToBacklog", cardController.addCardToBacklog);
 router.post("/deleteCard", cardController.deleteCard);
 router.post("/updateCard", cardController.updateCard);
 router.post("/addCrossReference", cardController.addCrossReference);

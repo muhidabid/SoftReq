@@ -6,5 +6,6 @@ export interface Project {
   name: string;
   description: string;
   workspaceRef: String;
+  backlogRef: String;
   listsRef: ObjectId[];
 }

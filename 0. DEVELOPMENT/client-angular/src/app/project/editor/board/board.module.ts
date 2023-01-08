@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { BoardComponent } from './board/board.component';
 import { FormsModule } from '@angular/forms';
 
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { RouterTestingModule } from '@angular/router/testing';
+import { RouterModule } from '@angular/router';
+
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -41,7 +45,10 @@ import { CardEditComponent } from './board-item/card-edit/card-edit.component';
     MatSliderModule,
     BrowserAnimationsModule,
     NgxSliderModule,
-    MatRadioModule
+    MatRadioModule,
+    AppRoutingModule,
+    RouterTestingModule,
+    RouterModule.forRoot([])
   ],
   exports: [
     BoardComponent

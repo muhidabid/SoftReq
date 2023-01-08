@@ -13,11 +13,17 @@ const cardSchema = new Schema({
       text: {type: String},
     }],
   },
+  backlogRef: {
+    type: ObjectId,
+    index: true,
+    ref: 'Backlogs'
+  },
   listRef: {
     type: ObjectId,
     index: true,
     ref: 'Lists'
   },
+  positionInBacklog: {type: Number},
   position: {type: Number},
 
   attributes: {type: [any]},

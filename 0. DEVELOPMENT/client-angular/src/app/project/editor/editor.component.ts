@@ -33,12 +33,12 @@ export class EditorComponent implements OnInit {
     //   console.log(response);
     // });
 
-    this.userStoriesService.currentUserStory.subscribe(
-      msg => this.enteredReq = msg
-    );
+    // this.userStoriesService.currentUserStory.subscribe(
+    //   msg => this.enteredReq = msg
+    // );
 
     // fetch data from workspace service
-    this.userstories = this._userstoriesservice.getUserStories();
+    // this.userstories = this._userstoriesservice.getUserStories();
 
     // trying something here
   //   this.http.post<any>('https://reqres.in/api/posts', { title: 'Angular POST Request Example' }).subscribe(data => {
@@ -56,10 +56,10 @@ export class EditorComponent implements OnInit {
   // }
   }
 
-  addUserStoryToPage(enteredReq: HTMLTextAreaElement) {
-    console.log("btn click added user story");
-    console.log(this.enteredReq)
-    this.userStoriesService.readUserStory(this.enteredReq)
-    console.log("this.userStoriesService.readUserStory(this.enteredReq): ", this.userStoriesService.readUserStory(this.enteredReq))
-  }
+  // addUserStoryToPage(enteredReq: HTMLTextAreaElement) {
+  //   console.log("btn click added user story");
+  //   console.log(this.enteredReq)
+  //   this.userStoriesService.readUserStory(this.enteredReq)
+  //   console.log("this.userStoriesService.readUserStory(this.enteredReq): ", this.userStoriesService.readUserStory(this.enteredReq))
+  // }
 }
