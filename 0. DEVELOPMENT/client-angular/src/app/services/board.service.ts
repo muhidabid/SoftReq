@@ -389,13 +389,15 @@ export class BoardService {
 
   deleteCrossReference(referenceItem: any, selectedRequirement: any){
     this.webReqService.post('deleteCrossReference', {referenceItem, selectedRequirement}).subscribe((response)=>{
-      console.log("Log CARDSREF");
-      console.log(this.project.board.listsRef[0].cardsRef);
+      console.log("this.project.board");
+      console.log(this.project.board);
 
-      for (let i = 0; i < this.project.board.listsRef[0].cardsRef.length; i++) {
-        if (this.project.board.listsRef[0].cardsRef[i]._id == selectedRequirement._id){
-          this.project.board.listsRef[0].cardsRef[i].crossReferences = this.project.board.listsRef[0].cardsRef[i].crossReferences.filter((ref: any) => ref._id !== referenceItem._id);
-          break;
+      for (let i = 0; i < this.project.board.listsRef.length; i++) {
+        for (let j = 0; j < this.project.board.listsRef[i].cardsRef.length; j++) {
+          if (this.project.board.listsRef[i].cardsRef[j]._id == selectedRequirement._id){
+            this.project.board.listsRef[i].cardsRef[j].crossReferences = this.project.board.listsRef[i].cardsRef[j].crossReferences.filter((ref: any) => ref._id !== referenceItem._id);
+            break;
+          }
         }
       }
       this.board$.next([...this.project.board.listsRef]);
