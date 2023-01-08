@@ -1,26 +1,47 @@
 # SoftReq
-Developed as a Final Year Project
+Final Year Project 2022: 
+Muhid Abid i180560 
+Hassan Riaz i180580
+Ayesha Rauf i181594
 
 ## Introduction
-SoftReq is an Integrated Software Requirements Management Tool
+SoftReq is an Integrated Software Requirements Management Tool. Built using  Angular, this web application provides support for developers and business analysts with managing requirements for a software application project. 
 
-<--Angular, MongoDB, Python, NodeJS-->
+##Features
+- Track your software development projects according to workspaces and projects.
+- Organize requirements for each project within a Kanban view for easy visualization.
+- Add Requirement Attributes (Priority, Status, Legal Liability, Cross-Reference)
+- Extract Quality Concerns.
+- Detect Requirement Ambiguities.
+- Check for Requirement redundancies
 
-This project is an Integrated Software Requirements Management Tool under development.
 
+## How to Run?
+####Prerequisites
+- Install angular cli
+- Set up a Mongo database with an empty workspace
+
+####Running the Application
 
 "0. DEVELOPMENT"
 - This folder is the main development folder of our project.
-- It's an Angular project
+
+In‘0. DEVELOPMENT\client-angular’, to start Angular server:
+
+    npm install
+	ng serve
+
+In‘0. DEVELOPMENT\client-angular\src’, to start Express server:
+
+    node server.js
+
+In‘0. DEVELOPMENT\client-angular\backend-python’, to start Python server: 
+
+    python flask-apis.py
+
+Open a new tab on your local browser and go to http://localhost:4200/home-page
 
 
---> All other folders are for testing purposes
-
-
-(Final Year Project 2022) 
-Muhid Abid	i180560
-Ayesha Rauf	i181594
-Hassan Riaz	i180580
 
 # ClientAngular
 
