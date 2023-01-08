@@ -126,7 +126,7 @@ export class BacklogPageComponent implements OnInit {
   //   this.boardService.updateBoard(this.board$);
   // }
 
-  drop(event: CdkDragDrop<string[]>) {
+  dropBoard(event: CdkDragDrop<string[]>) {
       if (event.previousContainer === event.container) {
         moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
         console.log("moveItemInArray: ");
@@ -140,6 +140,22 @@ export class BacklogPageComponent implements OnInit {
         console.log(event);
       }
       this.boardService.updateBoard(this.board$);
+    }
+
+  dropBacklog(event: CdkDragDrop<string[]>) {
+      if (event.previousContainer === event.container) {
+        moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+        console.log("moveItemInArray: ");
+        console.log(event);
+      } else {
+        transferArrayItem(event.previousContainer.data,
+                          event.container.data,
+                          event.previousIndex,
+                          event.currentIndex);
+        console.log("transferArrayItem: ");
+        console.log(event);
+      }
+      this.boardService.updateBacklog(this.backlog$);
     }
 
     onAddCardToBacklog(text: string, positionInBacklog: number, backlogRef: string) {

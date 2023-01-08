@@ -248,6 +248,19 @@ export class BoardService {
     });
   }
 
+  updateBacklog(backlog: any){
+    this.webReqService.post('updateBacklog', {backlog}).subscribe((response)=>{
+      // override this.backlog to store DB backlog
+      this.backlog = backlog;
+
+      console.log("getBacklog$ gives: ");
+      console.log(this.backlog);
+
+      // Update the backlog BehaviorSubject
+      this.boardForBacklog$.next(this.backlog);
+    });
+  }
+
   // DONE
   deleteCard(cardRef: string, listRef: string) {
     this.webReqService.post('deleteCard', {cardRef}).subscribe((response)=>{

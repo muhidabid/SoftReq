@@ -107,6 +107,27 @@ const deleteBacklog = async (req, res, next) => {
   return res.status(200).json({ deletedBacklog });
 };
 
+///////////////////////////////////////////////////////////////////////////////////
+
+const updateBacklog = async (req, res, next) => {
+  const { backlog } = req.body;
+
+  try {
+    // 1. Update backlog
+    await Backlog.findByIdAndUpdate(
+      mongoose.Types.ObjectId(backlog._id),
+      backlog,
+      { new: true, upsert: true }
+    )
+
+  } catch (err) {
+    console.log(err);
+    return res.status(404).json({ message: "No backlog to display :(" });
+  }
+  return res.status(200).json({ backlog });
+};
+
 
 exports.addBacklog = addBacklog;
 exports.deleteBacklog = deleteBacklog;
+exports.updateBacklog = updateBacklog;

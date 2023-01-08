@@ -32,9 +32,10 @@ const workspaceRoutes = require("../backend-express/api/routes/workspace-routes.
 const projectRoutes = require("../backend-express/api/routes/project-routes.js");
 const listRoutes = require("../backend-express/api/routes/list-routes.js");
 const cardRoutes = require("../backend-express/api/routes/card-routes.js");
+const backlogRoutes = require("../backend-express/api/routes/backlog-routes.js");
 
 // connecting endpoints to routess
-app.use("/", [workspaceRoutes, projectRoutes, listRoutes, cardRoutes]);
+app.use("/", [workspaceRoutes, projectRoutes, listRoutes, cardRoutes, backlogRoutes]);
 // app.use("/", workspaceRoutes);
 // app.use("/", projectRoutes);
 
