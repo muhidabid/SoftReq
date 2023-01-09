@@ -15,8 +15,8 @@ SoftReq is an Integrated Software Requirements Management Tool. Built using  Ang
 
 ## 🏃 How to Run
 #### Prerequisites
-- Install angular cli
-- Set up a Mongo database with a 'Workspaces' collection with a sample workspace of the type:
+1. Install angular cli
+2. Set up a Mongo database with a 'Workspaces' collection with a sample workspace of the type:
 
 ````
 {
@@ -29,6 +29,8 @@ SoftReq is an Integrated Software Requirements Management Tool. Built using  Ang
     },
 }
 ````
+
+3. Replace your MongoDB connection URL in `0.DEVELOPMENT\backend-express\config\db.js`
 
 #### Running the Application
 
