@@ -62,15 +62,15 @@ export class CardEditComponent implements OnInit {
     showSelectionBar: true,
     getSelectionBarColor: (value: number): string => {
       if (value <= 1) {
-          return 'red';
+          return '#2AE02A';
       }
       if (value <= 2) {
-          return 'orange';
-      }
-      if (value <= 4) {
           return 'yellow';
       }
-      return '#2AE02A';
+      if (value <= 4) {
+          return 'orange';
+      }
+      return 'red';
     }
   };
 

@@ -127,6 +127,64 @@ const updateBacklog = async (req, res, next) => {
   return res.status(200).json({ backlog });
 };
 
+///////////////////////////////////////////////////////////////////////
+
+// deleteBacklogCard = async (req, res, next) => {
+//   const { referenceItem, backlogRef } = req.body;
+
+//   console.log("card being deleted of backlogRef: ", backlogRef);
+
+//   let deletedCard;
+//   try {
+//     // 1. delete card from db
+//     try{
+//       console.log("Finding card to delete...");
+//       deletedCard = await Backlog.findByIdAndDelete(
+//         mongoose.Types.ObjectId(backlogRef),
+//       );
+//       console.log("deleted backlog...?");
+//     }
+//     catch (err) {
+//       console.log("Error deleting backlog from Backlogs: ");
+//       console.log(err);
+//     }
+
+//     // 2. delete its reference from the project it was added to
+//     try{
+//       console.log("Finding project and deleting backlogRef...");
+//       await Project.findByIdAndUpdate(
+//         mongoose.Types.ObjectId(deletedBacklog.projectRef),
+//         {"$pull": {"backlogRef": mongoose.Types.ObjectId(deletedBacklog._id)}},
+//       );
+//       console.log("deleted backlogRef...?");
+//     }
+//     catch (err) {
+//       console.log("Error deleting backlogRef from Project: ");
+//       console.log(err);
+//     }
+
+//     // 3. delete all cards in that backlog
+//     try{
+//       console.log("Finding cards and deleting them...");
+//       await Card.deleteMany(
+//         {"backlogRef": mongoose.Types.ObjectId(deletedBacklog._id)},
+//       );
+//       console.log("deleted backlogRef...?");
+//     }
+//     catch (err){
+//       console.log("Error deleting cards of that backlog: ");
+//       console.log(err);
+//     }
+//   }
+//   // catch and log error
+//   catch (err) {
+//     console.log("Error deleting the Backlog");
+//     console.log(err);
+//     return res.status(404).json({ message: "Unable to Delete Backlog" });
+//   }
+//   console.log("Backlog deleted successfully!");
+//   return res.status(200).json({ deletedBacklog });
+// }
 
 exports.addBacklog = addBacklog;
 exports.deleteBacklog = deleteBacklog;

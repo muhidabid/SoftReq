@@ -12,6 +12,32 @@
     margin: 20px;
 }
 
+.backlog-item{
+  background: white;
+  color: #212529;
+  margin-top:5px;
+  padding: 5px 10px 5px 15px;
+  border-radius:5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.backlog-item-right-group{
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+.priority-circular-signal{
+  height: 13px;
+  width: 13px;
+  background-color: #bbb;
+  border-radius: 50%;
+  border-color: #212529 solid 1px;
+  display: inline-block;
+}
+
 .drag-list-item{
   margin: 5px;
   padding: 0 4px 0 4px;
@@ -98,3 +124,4 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #888;
   }
+

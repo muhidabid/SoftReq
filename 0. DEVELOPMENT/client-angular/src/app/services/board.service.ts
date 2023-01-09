@@ -407,7 +407,46 @@ export class BoardService {
     return this.board$.asObservable();
   }
 
+  // ---- BACKLOG ----
 
+  deleteBacklogCard(cardId: string){
+    this.webReqService.post('deleteCard', {cardId}).subscribe((response)=>{
+      let deletedCard: any;
+      deletedCard = response;
+
+      console.log("deleteBacklogCard this.backlog:");
+      console.log(this.backlog);
+
+      // Update observable
+      this.backlog.board.backlogRef = this.backlog.board.backlogRef.cardsRef.filter((card: any) => card._id !== deletedCard._id);
+      this.boardForBacklog$.next(this.backlog.board.backlogRef);
+    });
+
+    return this.boardForBacklog$.asObservable();
+  }
+
+  upsertBacklogRefInCard(backlogId, cardDroppedId){
+    this.webReqService.post('upsertBacklogRefInCard', {backlogId, cardDroppedId}).subscribe((response)=>{
+      let updatedCard: any;
+      updatedCard = response;
+
+      console.log("upsertBacklogRefInCard this.backlog:");
+      console.log(this.backlog);
+
+      // Update observable
+      // this.backlog.board.backlogRef = this.backlog.board.backlogRef.cardsRef.filter((card: any) => card._id !== updatedCard._id);
+
+      for(let i of this.backlog.board.backlogRef.cardsRef){
+        if(this.backlog.board.backlogRef.cardsRef[i]._id === updatedCard._id){
+          this.backlog.board.backlogRef.cardsRef[i].backlogRef = updatedCard.backlogRef;
+        }
+      }
+
+      this.boardForBacklog$.next(this.backlog.board.backlogRef);
+    });
+
+    return this.boardForBacklog$.asObservable();
+  }
 
   // ---- PYTHON BACKEND RELATED ----
 

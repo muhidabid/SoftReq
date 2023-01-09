@@ -17,11 +17,9 @@
         [cdkDropListData]="backlog$.cardsRef"
         class="example-list"
         (cdkDropListDropped)="dropBacklog($any($event))">
-          <!-- *ngFor="let ref of selectedRequirement.crossReferences" -->
 
           <!-- Add New Card To List -->
           <app-dialog (emitText)="onAddCardToBacklog($event, 0, backlog$._id)" [question]="'Add new card in backlog'">
-            <!-- {{backlog$ | json}} -->
             <button mat-raised-button class="w-100 mb-1 btn-add">+</button>
           </app-dialog>
 
@@ -29,15 +27,40 @@
           cdkDrag
           class="backlog-item"
           [cdkDragDisabled]="false"
-          style="background: white; color: #212529; margin-top:5px; padding:5px; border-radius:5px;"
           *ngFor="let item of backlog$.cardsRef"
           >
             {{item.requirement}}
-            <!-- {{item.requirement}} -->
 
-            <!-- {{ref.requirement}} -->
-            <!-- <button mat-icon-button class="icon-delete" (click)="onDeleteCrossReference(ref)">
-              <mat-icon style="font-size: 20px; color: rgb(255, 102, 102);">delete</mat-icon>
+            <div class="backlog-item-right-group">
+              <!-- INDICATING NUMBER OF REQUIREMENETS DEPENDENT ON THIS (CROSS REFERENCE) -->
+              <div style="margin-right: 7px;">{{item.crossReferences.length}}</div>
+
+              <!-- INDICATING PRIORITY -->
+              <div
+              class="priority-circular-signal"
+              *ngIf="item.priority <= 1"
+              style="border-radius: 50px; background-color: #2AE02A;"
+              ></div>
+              <div
+              class="priority-circular-signal"
+              *ngIf="item.priority === 2"
+              style="border-radius: 50px; background-color: yellow;"
+              ></div>
+              <div
+              class="priority-circular-signal"
+              *ngIf="item.priority === 3 || item.priority === 4"
+              style="border-radius: 50px; background-color: orange;"
+              ></div>
+              <div
+              class="priority-circular-signal"
+              *ngIf="item.priority === 5"
+              style="border-radius: 50px; background-color: red;"
+              ></div>
+            </div>
+
+            <!-- DELETE BUTTON -->
+            <!-- <button mat-icon-button class="icon-delete">
+              <mat-icon style="font-size: 20px; color: rgb(255, 102, 102);" (click)="onDeleteBacklogCard(item._id)">delete</mat-icon>
             </button> -->
             <!-- {{ref | json}} -->
           </div>

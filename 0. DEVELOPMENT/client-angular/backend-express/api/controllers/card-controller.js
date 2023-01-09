@@ -122,15 +122,11 @@ const deleteCard = async (req, res, next) => {
 
   let deletedCard;
   try {
-    // const session = await mongoose.startSession();
-    // session.startTransaction();
-
     // 1. delete card from db
     try{
       console.log("Finding Card to delete...");
       deletedCard = await Card.findByIdAndDelete(
         mongoose.Types.ObjectId(cardRef),
-        // { session: session }
       );
       console.log("deleted card...?");
     }
@@ -145,7 +141,6 @@ const deleteCard = async (req, res, next) => {
       await List.findByIdAndUpdate(
         mongoose.Types.ObjectId(deletedCard.listRef),
         {"$pull": {"cardsRef": mongoose.Types.ObjectId(deletedCard._id)}},
-        // { session: session }
       );
       console.log("deleted cardRef...?");
     }
@@ -167,8 +162,21 @@ const deleteCard = async (req, res, next) => {
       console.log(err);
     }
 
-    // await session.commitTransaction();
-    // session.endSession();
+    // 4. delete its reference from any backlog it was added to
+    try{
+      console.log("Finding backlog and deleting card ref...");
+      console.log(deletedCard);
+      await Backlog.findByIdAndUpdate(
+        mongoose.Types.ObjectId(deletedCard.backlogRef),
+        {"$pull": {"cardsRef": mongoose.Types.ObjectId(deletedCard._id)}},
+      );
+      console.log("deleted cardRef from backlog...?");
+    }
+    catch (err) {
+      console.log("Error deleting cardRef from Backlog: ");
+      console.log(err);
+    }
+
   }
   // catch and log error
   catch (err) {
@@ -256,6 +264,27 @@ const deleteCrossReference = async (req, res, next) => {
     updatedCard = await Card.findByIdAndUpdate(
       mongoose.Types.ObjectId(selectedRequirement._id),
       {"$pull": {"crossReferences": mongoose.Types.ObjectId(referenceItem._id)}},
+      { new: true, upsert: true }
+    )
+  } catch (err) {
+    console.log(err);
+    return res.status(404).json({ message: "Card didnt update :(" });
+  }
+  console.log("Card updated successfully!");
+  return res.status(200).json({ updatedCard });
+}
+
+////////////////////////////////////////////////////////
+
+upsertBacklogRefInCard = async (req, res, next) => {
+  const {backlogId, cardDroppedId} = req.body;
+
+  let updatedCard;
+  try {
+    // Update backlogRef of card
+    updatedCard = await Card.findByIdAndUpdate(
+      mongoose.Types.ObjectId(cardDroppedId),
+      {"$push": {"backlogRef": mongoose.Types.ObjectId(backlogId)}},
       { new: true, upsert: true }
     )
   } catch (err) {
