@@ -19,6 +19,7 @@ export class BoardComponent implements OnInit {
   projId: string;
   projName: string;
   board$: any;
+  backlog$: any;
   crossRefSidePanelOpen: boolean;
   selectedRequirement: any;
 
@@ -41,6 +42,13 @@ export class BoardComponent implements OnInit {
     });
 
     this.crossRefSidePanelOpen = false;
+
+    this.boardService.getBoardForBacklog$(this.projId).subscribe((response)=>{
+      console.log("Backlog gotten ON-INIT in backlog-page.component: ");
+      console.log(response);
+      this.backlog$ = response;
+    });
+
     // this.selectedRequirement = {} as Card;
 
     // if (this.eventEmitterService.subsVar==undefined) {
@@ -140,6 +148,7 @@ export class BoardComponent implements OnInit {
     }
 
     this.boardService.updateBoard(this.board$);
+    this.boardService.updateBacklog(this.backlog$);
   }
 
   dropIntoReferences(event: CdkDragDrop<string[]>){
@@ -186,25 +195,6 @@ export class BoardComponent implements OnInit {
 
       this.boardService.addCrossReference(referenceItem, this.selectedRequirement);
     }
-
-    // // need to clone, otherwise mutation will affect the source visual
-    // const visual = referenceItem.clone();
-    // // insert at index where dragged
-    // event.container.data.splice(event.currentIndex, 0, visual);
-    // // HACK which is the reason I created the GitHub issue
-    // // the parent resets the cdk-drops when this emits
-    // this.resetDragSources.emit();
-    // event.source._dragRef.reset();
-
-
-
-    // // Update behavior object present in Board (this file itself)
-    // const prevData = event.previousContainer.data;
-
-
-    // this.selectedRequirement.crossReferences.push(referenceItem._id);
-
-
   }
 
 
@@ -216,6 +206,8 @@ export class BoardComponent implements OnInit {
       this.board$ = response;
     });
   }
+
+
 
 
 
