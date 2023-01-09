@@ -1,6 +1,28 @@
 <div class="position-absolute container-fluid">
   <div cdkDropListGroup class="w-100 row flex-row flex-nowrap overflow-auto">
     <!-- <div class="col-sm-6 col-lg-3 ms-3 rounded p-2" *ngFor="let list of boardService.getBoard$(projId) | async" style="background-color: #DDDFE7;"> -->
+
+    <!-- BACKLOG -->
+    <div class="col-sm-6 col-lg-3 ms-3 rounded p-2 h-100" style="background-color: #DDDFE7;">
+      <!-- Backlog Title -->
+      <div class="d-flex justify-content-between align-items-center p-0 shadow-sm list-header border-0">
+        <h2 class="m-0">Backlog</h2>
+      </div>
+
+      <!-- REQUIREMENTS -->
+      <div cdkDropList [cdkDropListData]="backlog$.cardsRef" class="example-list" (cdkDropListDropped)="drop($any($event))">
+        <div cdkDrag class="example-box" [ngStyle]="{background: '#E3D2FF', color: 'black'}" *ngFor="let item of backlog$.cardsRef">
+          <app-board-item
+            [item]="item"
+            (click)="setSelectedRequirement(item)"
+          >
+          </app-board-item>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOARD LISTS EXCEPT BACKLOG -->
+
     <div class="col-sm-6 col-lg-3 ms-3 rounded p-2 h-100" *ngFor="let list of board$" style="background-color: #DDDFE7;">
       <!-- <div class="list" *ngFor="let list of boardService.getBoard$() | async"> -->
 

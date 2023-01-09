@@ -157,7 +157,7 @@ export class BacklogPageComponent implements OnInit {
       console.log(event);
 
       let cardDroppedId = event.previousContainer.data[event.previousIndex]['_id'];
-      this.boardService.upsertBacklogRefInCard(this.backlog$._id, cardDroppedId);
+      // this.boardService.upsertBacklogRefInCard(this.backlog$._id, cardDroppedId);
     }
     this.boardService.updateBoard(this.board$);
     this.boardService.updateBacklog(this.backlog$);
