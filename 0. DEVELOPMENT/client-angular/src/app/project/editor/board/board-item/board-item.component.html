@@ -1,15 +1,16 @@
 <!-- Stuff above text -->
 
 <div class="quality-concerns-row">
-  <button class="ext-qual-conc-button" mat-raised-button color="primary" (click)="extract_quality()">
-    Extract quality concerns
-  </button>
-  <button class="ext-qual-conc-button" mat-raised-button color="primary" (click)="extract_ambiguity(item.requirement, item.ambiguityConcerns)">
-    Extract ambiguity
-  </button>
+  <div style="display: flex;">
+    <button class="ext-qual-conc-button" mat-raised-button color="primary" (click)="extract_quality()">
+      Extract quality concerns
+    </button>
+    <button class="ext-qual-conc-button" mat-raised-button color="primary" (click)="extract_ambiguity(item.requirement, item.ambiguityConcerns)">
+      Extract ambiguity
+    </button>
+  </div>
 
   <div *ngFor="let q of item.qualityConcerns">
-
     <div *ngIf="q === 'X'" class="q-conc-tag">No Quality Concerns</div>
     <div *ngIf="q !== 'X'" class="q-conc-tag">{{q}}</div>
   </div>
