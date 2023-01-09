@@ -30,26 +30,26 @@ SoftReq is an Integrated Software Requirements Management Tool. Built using  Ang
 }
 ````
 
-3. Replace your MongoDB connection URL in ‘0.DEVELOPMENT\backend-express\config\db.js‘
+3. Replace your MongoDB connection URL in `0.DEVELOPMENT\backend-express\config\db.js`
 
 #### Running the Application
 
-"0. DEVELOPMENT" This folder is the main development folder of our project.
+`0. DEVELOPMENT` This folder is the main development folder of our project.
 
-In‘0. DEVELOPMENT\client-angular’, to start Angular server:
+In `0. DEVELOPMENT\client-angular`, to start Angular server:
 
     npm install
     ng serve
 
-In‘0. DEVELOPMENT\client-angular\src’, to start Express server:
+In `0. DEVELOPMENT\client-angular\src`, to start Express server:
 
     node server.js
 
-In‘0. DEVELOPMENT\client-angular\backend-python’, to start Python server: 
+In `0. DEVELOPMENT\client-angular\backend-python`, to start Python server: 
 
     python flask-apis.py
 
-Open a new tab on your local browser and go to http://localhost:4200/home-page
+Open a new tab on your local browser and go to `http://localhost:4200/home-page`
 
 ## 🏛️ Web Application Structure
 
