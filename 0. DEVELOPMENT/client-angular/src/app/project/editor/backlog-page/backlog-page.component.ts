@@ -144,30 +144,41 @@ export class BacklogPageComponent implements OnInit {
     }
 
   dropBacklog(event: CdkDragDrop<string[]>) {
-      if (event.previousContainer === event.container) {
-        moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-        console.log("moveItemInArray: ");
-        console.log(event);
-      } else {
-        transferArrayItem(event.previousContainer.data,
-                          event.container.data,
-                          event.previousIndex,
-                          event.currentIndex);
-        console.log("transferArrayItem: ");
-        console.log(event);
-      }
-      this.boardService.updateBoard(this.board$);
-      this.boardService.updateBacklog(this.backlog$);
-    }
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      console.log("moveItemInArray: ");
+      console.log(event);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+                        event.container.data,
+                        event.previousIndex,
+                        event.currentIndex);
+      console.log("transferArrayItem: ");
+      console.log(event);
 
-    onAddCardToBacklog(text: string, positionInBacklog: number, backlogRef: string) {
-      if(text) {
-        this.boardService.addCardToBacklog(text, positionInBacklog, backlogRef).subscribe((response)=>{
-          console.log("Board gotten after adding card in bacaklog.component: ");
-          console.log(response);
-          this.backlog$ = response;
-        });
-      }
+      let cardDroppedId = event.previousContainer.data[event.previousIndex]['_id'];
+      this.boardService.upsertBacklogRefInCard(this.backlog$._id, cardDroppedId);
     }
+    this.boardService.updateBoard(this.board$);
+    this.boardService.updateBacklog(this.backlog$);
+  }
+
+  onAddCardToBacklog(text: string, positionInBacklog: number, backlogRef: string) {
+    if(text) {
+      this.boardService.addCardToBacklog(text, positionInBacklog, backlogRef).subscribe((response)=>{
+        console.log("Board gotten after adding card in bacaklog.component: ");
+        console.log(response);
+        this.backlog$ = response;
+      });
+    }
+  }
+
+  onDeleteBacklogCard(cardId: string){
+    this.boardService.deleteBacklogCard(cardId).subscribe((response)=>{
+      console.log("Cross Reference successfully deleted");
+      console.log(response);
+      this.board$ = response;
+    });
+  }
 
 }

@@ -9,7 +9,9 @@
   </button>
 
   <div *ngFor="let q of item.qualityConcerns">
-    <div class="q-conc-tag">{{q}}</div>
+
+    <div *ngIf="q === 'X'" class="q-conc-tag">No Quality Concerns</div>
+    <div *ngIf="q !== 'X'" class="q-conc-tag">{{q}}</div>
   </div>
 
 </div>
