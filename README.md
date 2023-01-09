@@ -39,7 +39,7 @@ SoftReq is an Integrated Software Requirements Management Tool. Built using  Ang
 
 #### Running the Application
 
-<b>"0. DEVELOPMENT"<\b> This folder is the main development folder of our project.
+**"0. DEVELOPMENT"** This folder is the main development folder of our project.
 
 In `0. DEVELOPMENT\client-angular`, to start Angular server:
 
@@ -147,5 +147,3 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page. -->
-
-<b>We hope you find SoftReq a useful application for your requirements management needs.<\b>
