@@ -9,6 +9,8 @@ Final Year Project 2022:
 ## Introduction
 SoftReq is an Integrated Software Requirements Management Tool. Built using  Angular, this web application provides support for developers and business analysts with managing requirements for a software application project.
 
+https://github.com/muhidabid/SoftReq/assets/82958857/d5fccaf6-62ab-4674-8c91-1ad4a8956e0d
+
 ## ✅ Features
 - Track your software development projects according to workspaces and projects.
 - Organize requirements for each project within a Kanban view for easy visualization.
