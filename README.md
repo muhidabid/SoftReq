@@ -7,7 +7,7 @@ Final Year Project 2022:
 | Ayesha Rauf     |   i181594 |
 
 ## Introduction
-SoftReq is an Integrated Software Requirements Management Tool. Built using  Angular, this web application provides support for developers and business analysts with managing requirements for a software application project.
+SoftReq is an Integrated Software Requirements Management Tool. Built using  Angular, this web application provides support for developers and business analysts with managing requirements for a software application project. 
 
 https://github.com/muhidabid/SoftReq/assets/82958857/3ab94eee-ab0c-4b4e-a762-7f1bd1566790
 
@@ -19,6 +19,10 @@ https://github.com/muhidabid/SoftReq/assets/82958857/3ab94eee-ab0c-4b4e-a762-7f1
 - Detect Requirement Ambiguities.
 - Check for Requirement redundancies
 
+### Details
+- The ambighuity detection AI is trained on a ~3k hand-labeled software requirements dataset, which you can find in this repo, based on the [IEEE ISO/IEC 25010](https://iso25000.com/index.php/en/iso-25000-standards/iso-25010) quality model.
+- This project was done over 32 weeks in MEAN+Python web stack.
+- High fidelity Figma designs were made as a base then a mongodb database was designed and integrated with NodeJS & Flask APIs, and Angular.
 
 ## 🏃 How to Run
 #### Prerequisites
