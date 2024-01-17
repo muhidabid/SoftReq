@@ -24,6 +24,8 @@ https://github.com/muhidabid/SoftReq/assets/82958857/3ab94eee-ab0c-4b4e-a762-7f1
 - This project was done over 32 weeks in MEAN+Python web stack.
 - High fidelity Figma designs were made as a base then a mongodb database was designed and integrated with NodeJS & Flask APIs, and Angular.
 
+![FYPPoster-S22-11-D-SoftReq](https://github.com/muhidabid/SoftReq/assets/82958857/903d3dbf-8354-4bdb-a205-60ae6d1797f3)
+
 ## 🏃 How to Run
 #### Prerequisites
 1. Install angular cli
