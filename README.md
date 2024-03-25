@@ -1,4 +1,6 @@
-Final Year Project 2022: 
+Under Dr. Khubaib Amjad Alam
+
+Contributors:
 
 | Name      | Roll Num |
 | --------- | -----:|
