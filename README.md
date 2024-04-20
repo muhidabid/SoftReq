@@ -112,6 +112,8 @@ Once requirements are created, you can:
 
 - See all requirements in the backlog view to organize into sprints.
 
+## Demo
+Check out our ambiguity detection implementation [here](huggingface.co/spaces/hasanriaz121/ambiguity-detection)
 
 ## ❓ Get Help
 
