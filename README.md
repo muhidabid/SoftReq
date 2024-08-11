@@ -1,3 +1,10 @@
+<div align="center">
+    <img src="https://skillicons.dev/icons?i=angular,nodejs,express,mongodb,python,flask,typescript,bootstrap,html,css,vscode,github,git,figma" />
+<br>
+</div>
+
+<br/>
+
 Under Dr. Khubaib Amjad Alam
 
 Contributors:
